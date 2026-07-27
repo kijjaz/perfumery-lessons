@@ -191,21 +191,27 @@ function build10FacetPresentation() {
     "• Desiccated State: Master F10 (Maillard Caramel & Dried Persimmon Paste)"
   ).getTextStyle().setFontFamily("Outfit").setFontSize(12).setForegroundColor("#F3F3F5");
 
-  // Slide 13: Parameter Matrix & Waterfall
+  // Slide 13: Physical-Chemical Volatility Waterfall Model
   const matrixSlide = presentation.appendSlide(SlidesApp.PredefinedLayout.BLANK);
   matrixSlide.getBackground().setSolidFill("#070708");
   const mHead = matrixSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 30, 640, 60);
-  mHead.getText().setText("PHYSICAL-CHEMICAL WATERFALL MODEL").getTextStyle().setFontFamily("Outfit").setFontSize(22).setBold(true).setForegroundColor("#D4AF37");
+  mHead.getText().setText("PHYSICAL-CHEMICAL VOLATILITY WATERFALL MODEL").getTextStyle().setFontFamily("Outfit").setFontSize(22).setBold(true).setForegroundColor("#D4AF37");
   const mBody = matrixSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 95, 640, 270);
   mBody.getText().setText(
-    "Volatility Waterfall Partitioning on Skin:\n\n" +
-    "1. Top Volatility (>100 Pa): Hexanal (1200 Pa), Ethyl Butanoate (1700 Pa), cis-3-Hexenol (200 Pa)\n" +
-    "   → Immediate diffusive pop and fresh outer skin impression.\n\n" +
-    "2. Heart Volatility (1 - 100 Pa): IBMP (12 Pa), Stemone (28 Pa), Benzaldehyde (127 Pa)\n" +
-    "   → Pith brake and seed core structural transition.\n\n" +
-    "3. Base Volatility (<1 Pa): γ-Decalactone (0.12 Pa), Calone 1951 (0.05 Pa), β-Damascenone (0.25 Pa)\n" +
-    "   → High skin substantivity, velvety flesh, and humid drydown tenacity."
-  ).getTextStyle().setFontFamily("Outfit").setFontSize(13).setForegroundColor("#F3F3F5");
+    "10-Facet Evaporative Volatility Waterfall Kinetics on Skin:\n\n" +
+    "1. Diffusive Top Cascade (VP > 100 Pa | 0 – 30 Mins):\n" +
+    "   Facets: F1 (Skin), F4 (Dew), F8 (Calyx), F9 (Ferment Lift)\n" +
+    "   Materials: Hexanal (1200 Pa), Ethyl Butanoate (1700 Pa), cis-3-Hexenol (200 Pa)\n" +
+    "   → Immediate green skin friction, juicy fruit lift, and fresh spray pop.\n\n" +
+    "2. Structural Heart Transition (VP 1 – 100 Pa | 30 Mins – 2 Hours):\n" +
+    "   Facets: F2 (Pith Brake), F5 (Aril Mucilage), F6 (Latex Sap), F7 (Cyanic Seed)\n" +
+    "   Materials: IBMP (12 Pa), Stemone (28 Pa), Benzaldehyde (127 Pa), 3M3SBA (18 Pa)\n" +
+    "   → Intermediate actors bridge top greens into heavy fruit pulp, preventing formula fracturing.\n\n" +
+    "3. Substantive Base Drydown (VP < 1 Pa | 2 – 8+ Hours):\n" +
+    "   Facets: F3 (Fleshy Pulp), F10 (Desiccated Preserves)\n" +
+    "   Materials: γ-Decalactone (0.12 Pa), β-Damascenone (0.25 Pa), Calone 1951 (0.05 Pa)\n" +
+    "   → Low VP lactones bind skin lipids, sustaining velvety peach fuzz and humid sillage."
+  ).getTextStyle().setFontFamily("Outfit").setFontSize(11).setForegroundColor("#F3F3F5");
 
   Logger.log("Done! Presentation URL: " + presentation.getUrl());
 }

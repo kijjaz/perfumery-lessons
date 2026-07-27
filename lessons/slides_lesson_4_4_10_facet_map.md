@@ -154,11 +154,11 @@
 
 ---
 
-### Slide 13: Master Parameter Matrix & Volatility Waterfall Model
-* **Evaporative Waterfall Concept:**
-  - High Volatility (>100 Pa): Hexanal, Ethyl Butanoate, cis-3-Hexenol (Top Note Diffusion)
-  - Medium Volatility (1-100 Pa): IBMP, Stemone, Benzaldehyde (Heart Note Transition)
-  - Substantive Low Volatility (<1 Pa): $\gamma$-Decalactone, Calone 1951, $\beta$-Damascenone (Drydown Tenacity)
+### Slide 13: Physical-Chemical Volatility Waterfall Model
+* **Evaporative Waterfall Kinetics & 10-Facet Timeline:**
+  - **1. Diffusive Top Cascade ($\text{VP} > 100\text{ Pa}$, 0–30 Mins):** Facet 1 (Skin), Facet 4 (Dew Water), Facet 8 (Calyx), Facet 9 (Ferment Lift). Key materials: *Hexanal*, *Ethyl Butanoate*, *cis-3-Hexenol*, *Ethyl Acetate*. High VP molecules flash off alcohol to project initial green skin friction and juicy lift.
+  - **2. Structural Heart Transition ($\text{VP } 1\text{--}100\text{ Pa}$, 30 Mins–2 Hours):** Facet 2 (Pith Brake), Facet 5 (Aril Mucilage), Facet 6 (Latex Sap), Facet 7 (Cyanic Seed). Key materials: *IBMP*, *Stemone*, *Benzaldehyde*, *3M3SBA*, *2,3,5-TMP*. Intermediate volatility actors bridge top greens into heavy fruit pulp, preventing formula fracturing.
+  - **3. Substantive Base Drydown ($\text{VP} < 1\text{ Pa}$, 2–8+ Hours):** Facet 3 (Fleshy Pulp), Facet 10 (Desiccated Preserves). Key materials: *$\gamma$-Decalactone*, *$\beta$-Damascenone*, *Calone 1951*, *Furaneol*. Substantive low VP lactones bind skin lipids, sustaining velvety peach fuzz, jammy preserves, and humid sillage long after top notes dissipate.
 * **Formulator Rule:** Omitting green pith (Facet 2) or lactones/seeds (Facets 5, 7) creates artificial candy. Multi-facet layering ensures natural living realism.
 
 ---
