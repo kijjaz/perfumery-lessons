@@ -53,6 +53,21 @@ function build10FacetPresentation() {
   subtitleText.setText("Perfumery Course • Lesson 4.4 • Structural Engineering Disguised as Art");
   subtitleText.getTextStyle().setFontFamily("Outfit").setFontSize(14).setForegroundColor("#A0A0A5");
   
+  // Slide 2: The Botanical & Lifecycle Facet Paradigm
+  const conceptSlide = presentation.appendSlide(SlidesApp.PredefinedLayout.BLANK);
+  conceptSlide.getBackground().setSolidFill("#070708");
+  const cHead = conceptSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 30, 640, 60);
+  cHead.getText().setText("THE BOTANICAL & LIFECYCLE FACET PARADIGM").getTextStyle().setFontFamily("Outfit").setFontSize(22).setBold(true).setForegroundColor("#D4AF37");
+  const cBody = conceptSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 95, 640, 270);
+  cBody.getText().setText(
+    "Deconstructing Fruits: Biology vs. Smell & Taste Perception:\n\n" +
+    "• Synthetic Trap: Simple ester mixtures (Ethyl Butanoate + Isoamyl Acetate) smell like flat candy.\n" +
+    "• Natural Biology: Living fruits consist of 8 Anatomical Tissues and 2 Lifecycle Transformations.\n\n" +
+    "1. 8 Anatomical Facets (F1–F8): Peel Skin (F1), Pith Albedo (F2), Ester Pulp (F3), Cytoplasmic Water (F4), Aril Casing (F5), Stem Sap (F6), Seed Stone (F7), & Leaf Crown (F8).\n" +
+    "2. 2 Lifecycle Facets (F9–F10): Yeast Ferment Lees (F9) & Maillard Desiccated Preserves (F10).\n\n" +
+    "→ Multi-facet layering anchors ester pulp into a living, 3D botanical illusion!"
+  ).getTextStyle().setFontFamily("Outfit").setFontSize(12).setForegroundColor("#F3F3F5");
+  
   // 10 Facets Data
   const facets = [
     {

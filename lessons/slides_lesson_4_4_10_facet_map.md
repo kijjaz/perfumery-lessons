@@ -12,7 +12,17 @@
 
 ---
 
-### Slide 2: Facet 1 — Epicarp / Skin (Outer Exocarp & Flavedo Wax)
+### Slide 2: The Botanical & Lifecycle Facet Paradigm
+* **Title:** The Botanical & Lifecycle Facet Paradigm (Biology vs. Olfactory Realism)
+* **Synthetic Formulator Trap:** Simple ester mixtures (*Ethyl Butanoate* + *Isoamyl Acetate*) produce flat, synthetic "candy" approximations.
+* **Natural Biology Foundation:** A living fruit consists of **8 Anatomical Tissues** and **2 Lifecycle Transformations**:
+  - **8 Anatomical Facets (F1–F8):** Skin Peel (F1), Pith Albedo (F2), Ester Pulp (F3), Cytoplasmic Water (F4), Aril Casing (F5), Stem Sap (F6), Seed Stone (F7), & Leaf Crown (F8).
+  - **2 Lifecycle Facets (F9–F10):** Yeast Ferment Lees (F9) & Maillard Desiccated Preserves (F10).
+* **Takeaway:** Multi-facet layering anchors ester pulp into a living, 3D botanical illusion.
+
+---
+
+### Slide 3: Facet 1 — Epicarp / Skin (Outer Exocarp & Flavedo Wax)
 * **Category:** Spatial / Anatomical
 * **Anatomical Origin:** Outer Exocarp & Citrus Flavedo Wax
 * **Key Sensory Contribution:** Crisp skin friction, waxy peel bite, crunchy top-note spark
