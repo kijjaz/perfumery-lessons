@@ -171,7 +171,27 @@ function build10FacetPresentation() {
     bodyText.getTextStyle().setFontFamily("Outfit").setFontSize(13).setForegroundColor("#F3F3F5");
   });
   
-  // Slide 12: Parameter Matrix & Waterfall
+  // Slide 12: Master 10x10 Fruit Archetype Matrix
+  const archSlide = presentation.appendSlide(SlidesApp.PredefinedLayout.BLANK);
+  archSlide.getBackground().setSolidFill("#070708");
+  const aHead = archSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 30, 640, 60);
+  aHead.getText().setText("MASTER 10x10 FRUIT ARCHETYPE MATRIX").getTextStyle().setFontFamily("Outfit").setFontSize(22).setBold(true).setForegroundColor("#D4AF37");
+  const aBody = archSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 95, 640, 270);
+  aBody.getText().setText(
+    "100-Cell Botanical Facet Expression across 10 Fruit Archetypes:\n\n" +
+    "• Stone Fruits: Dominant F3 (Pulp), F7 (Cyanic Seed), F10 (Desiccated Prune)\n" +
+    "• Red Berries: Dominant F3 (Pulp), F8 (Calyx Crown), F10 (Jam Caramel)\n" +
+    "• Tropical & Exotic: Dominant F3 (Pulp), F5 (Thiol Aril), F9 (Lees Ferment)\n" +
+    "• Pome Fruits: Dominant F1 (Crunchy Peel), F3 (Williams Pear Flesh)\n" +
+    "• The Fig Illusion: Dominant F6 (Bitter Milk Sap), F10 (Dried Fig Paste)\n" +
+    "• Cassis & Dark Fruits: Dominant F3 (Tart Pulp), F5 (Thiol Envelope), F9 (Liqueur)\n" +
+    "• Aqueous Fruits: Dominant F2 (White Pith Brake), F4 (Humid Vacuole Cloud)\n" +
+    "• Grape & Wild Berry: Dominant F3 (Narcotic Pulp), F7 (Tannic Seed), F9 (Wine Lees)\n" +
+    "• Savory & Vegetal: Dominant F2 (Pyrazine Pith), F6 (Leaf Sap), F8 (Vine Crown)\n" +
+    "• Desiccated State: Master F10 (Maillard Caramel & Dried Persimmon Paste)"
+  ).getTextStyle().setFontFamily("Outfit").setFontSize(12).setForegroundColor("#F3F3F5");
+
+  // Slide 13: Parameter Matrix & Waterfall
   const matrixSlide = presentation.appendSlide(SlidesApp.PredefinedLayout.BLANK);
   matrixSlide.getBackground().setSolidFill("#070708");
   const mHead = matrixSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 30, 640, 60);

@@ -137,7 +137,24 @@
 
 ---
 
-### Slide 12: Master Parameter Matrix & Volatility Waterfall Model
+---
+
+### Slide 12: Master 10x10 Fruit Archetype Matrix
+* **100-Cell Expression Mapping:**
+  * **Stone Fruits:** Dominant F3 (Pulp), F7 (Cyanic Seed), F10 (Desiccated Prune Preserves).
+  * **Red Berries:** Dominant F3 (Pulp), F8 (Green Calyx Crown), F10 (Jam Caramel).
+  * **Tropical & Exotic:** Dominant F3 (Pulp), F5 (Thiol Aril), F9 (Lees Ferment).
+  * **Pome Fruits:** Dominant F1 (Crunchy Peel), F3 (Williams Pear Flesh).
+  * **The Fig Illusion:** Dominant F6 (Bitter Leaf Sap), F10 (Dried Fig Paste).
+  * **Cassis & Dark Fruits:** Dominant F3 (Tart Pulp), F5 (Thiol Envelope), F9 (Liqueur).
+  * **Aqueous Fruits:** Dominant F2 (White Pith Brake), F4 (Humid Vacuole Cloud).
+  * **Grape & Wild Berry:** Dominant F3 (Narcotic Pulp), F7 (Tannic Seed), F9 (Wine Lees).
+  * **Savory & Vegetal:** Dominant F2 (Pyrazine Pith), F6 (Leaf Sap), F8 (Vine Crown).
+  * **Desiccated State:** Master F10 (Maillard Caramel & Dried Persimmon Paste).
+
+---
+
+### Slide 13: Master Parameter Matrix & Volatility Waterfall Model
 * **Evaporative Waterfall Concept:**
   - High Volatility (>100 Pa): Hexanal, Ethyl Butanoate, cis-3-Hexenol (Top Note Diffusion)
   - Medium Volatility (1-100 Pa): IBMP, Stemone, Benzaldehyde (Heart Note Transition)
@@ -146,6 +163,7 @@
 
 ---
 
-### Slide 13: Lab Exercise 4.4 & Conclusion
+### Slide 14: Lab Exercise 4.4 & Conclusion
 * **Lab Goal:** Formulating a 10-Facet Hyper-Realistic Passionfruit & Peach Accord.
 * **Key Takeaway:** Perfumery fruit formulation is structural engineering. Balance volatility, physical-chemical parameters, and anatomical facets to craft living botanical illusions.
+
