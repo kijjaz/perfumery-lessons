@@ -500,11 +500,30 @@ L 201.2 80.4
             for (let i = 1; i <= totalSlides; i++) {
                 const s = document.getElementById(`slide-${i}`);
                 if (i === currentSlide) s.classList.add('active');
+        function checkHash() {
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#slide-')) {
+                const num = parseInt(hash.replace('#slide-', ''), 10);
+                if (!isNaN(num) && num >= 1 && num <= totalSlides) {
+                    currentSlide = num;
+                }
+            }
+        }
+
+        function updateSlide() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const s = document.getElementById(`slide-${i}`);
+                if (i === currentSlide) s.classList.add('active');
                 else s.classList.remove('active');
             }
             document.getElementById('slideNum').innerText = `Slide ${currentSlide} / ${totalSlides}`;
             const pct = Math.round((currentSlide / totalSlides) * 100);
             document.getElementById('progressFill').style.width = pct + '%';
+            if (history.replaceState) {
+                history.replaceState(null, null, `#slide-${currentSlide}`);
+            } else {
+                window.location.hash = `slide-${currentSlide}`;
+            }
         }
 
         function nextSlide() {
@@ -523,7 +542,14 @@ L 201.2 80.4
             else if (e.key === 'Escape') document.getElementById('slideGridModal').style.display = 'none';
         });
 
+        window.addEventListener('hashchange', function() {
+            checkHash();
+            updateSlide();
+        });
+
         initGridModal();
+        checkHash();
+        updateSlide();
     </script>
 </body>
 </html>
