@@ -2630,7 +2630,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Peach, Apricot, Plum, Nectarine</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Medium-Dense</p>
@@ -2649,56 +2649,68 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 15%, #8ac926 15% 20%, #ffca3a 20% 60%, #e76f51 60% 75%, #f77f00 75% 85%, #d4af37 85% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A1
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Velvet fuzzy skin, waxy lactonic friction (gamma-Decalactone, Hexanal)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Velvet fuzzy skin, waxy lactonic friction (gamma-Decalactone, Hexanal)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Trace</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Trace</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Subtle dry green pit brake (1-Hexanol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Subtle dry green pit brake (1-Hexanol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Core juicy peach flesh (Ethyl 2-MB, gamma-Decalactone)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Core juicy peach flesh (Ethyl 2-MB, gamma-Decalactone)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F7: Seed</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F7: Seed</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Cyanic bitter almond pit stone (Benzaldehyde, 2,3,5-TMP)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Cyanic bitter almond pit stone (Benzaldehyde, 2,3,5-TMP)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F9: Ferment</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F9: Ferment</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Moderate plum lees & ume wine (Ethyl Lactate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Moderate plum lees & ume wine (Ethyl Lactate)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Cooked prune preserves (beta-Damascenone)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Cooked prune preserves (beta-Damascenone)</p>
             </div>
             
                     </div>
@@ -2721,7 +2733,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Strawberry, Raspberry, Redcurrant</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Medium</p>
@@ -2740,56 +2752,68 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 15%, #ffca3a 15% 55%, #1982c4 55% 70%, #e76f51 70% 75%, #52b788 75% 90%, #d4af37 90% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A2
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Crisp berry skin spark (Hexanal)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Crisp berry skin spark (Hexanal)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Jammy berry pulp (Frambinone, Furaneol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Jammy berry pulp (Frambinone, Furaneol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F4: Water</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F4: Water</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Dewy berry juice humidity (cis-3-Hexenol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Dewy berry juice humidity (cis-3-Hexenol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F7: Seed</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Trace</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F7: Seed</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Trace</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Nutty achene seed crunch (2,3,5-TMP)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Nutty achene seed crunch (2,3,5-TMP)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F8: Calyx</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F8: Calyx</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Sharp green strawberry leaf crown (cis-3-Hexenyl Acetate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Sharp green strawberry leaf crown (cis-3-Hexenyl Acetate)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">High Burnt jam caramel (Furaneol, Ethyl Maltol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">High Burnt jam caramel (Furaneol, Ethyl Maltol)</p>
             </div>
             
                     </div>
@@ -2812,7 +2836,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Passionfruit, Mango, Guava, Mangosteen, Lychee, Durian</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Low-Medium</p>
@@ -2831,56 +2855,68 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 10%, #8ac926 10% 20%, #ffca3a 20% 55%, #9b51e0 55% 80%, #2a9d8f 80% 85%, #f77f00 85% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A3
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Peppery resinous mango skin wax (Myrcene, d-Limonene)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Peppery resinous mango skin wax (Myrcene, d-Limonene)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Bitter white albedo rind (IBMP, Thiazoles)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Bitter white albedo rind (IBMP, Thiazoles)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Radiant tropical ester pulp (Ethyl Hexanoate, Ethyl Butanoate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Radiant tropical ester pulp (Ethyl Hexanoate, Ethyl Butanoate)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F5: Aril</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F5: Aril</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Gelatinous mangosteen aril thiol (3M3SBA, delta-Decalactone)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Gelatinous mangosteen aril thiol (3M3SBA, delta-Decalactone)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F6: Sap</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Trace</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F6: Sap</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Trace</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Unripe mango stem turpentine bleed (Terpinolene, Galbanum)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Unripe mango stem turpentine bleed (Terpinolene, Galbanum)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F9: Ferment</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F9: Ferment</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">High passionfruit lees & durian ester (Isoamyl Acetate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">High passionfruit lees & durian ester (Isoamyl Acetate)</p>
             </div>
             
                     </div>
@@ -2903,7 +2939,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Green Apple, Red Apple, Williams Pear, Quince</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Low (Volatile)</p>
@@ -2922,56 +2958,68 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 35%, #8ac926 35% 50%, #ffca3a 50% 85%, #e76f51 85% 90%, #f77f00 90% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A4
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Crunchy green apple/pear peel bite (Hexanal, Triplal)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Crunchy green apple/pear peel bite (Hexanal, Triplal)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Granular cellulosic pear core (1-Hexanol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Granular cellulosic pear core (1-Hexanol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Crisp Williams pear flesh (Pear Ester, Ethyl 2-MB)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Crisp Williams pear flesh (Pear Ester, Ethyl 2-MB)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F7: Seed</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Trace</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F7: Seed</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Trace</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Cyanic apple seed core (Benzaldehyde)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Cyanic apple seed core (Benzaldehyde)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F9: Ferment</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F9: Ferment</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Hard apple cider & pear perry (Ethyl Lactate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Hard apple cider & pear perry (Ethyl Lactate)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Baked apple pie preserves (beta-Damascenone)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Baked apple pie preserves (beta-Damascenone)</p>
             </div>
             
                     </div>
@@ -2994,7 +3042,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Fresh Fig Fruit, Fig Leaf, Green Fig Stem Bleed</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Medium-Dense</p>
@@ -3013,48 +3061,60 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 10%, #8ac926 10% 20%, #ffca3a 20% 40%, #2a9d8f 40% 75%, #d4af37 75% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A5
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Dusty green fig skin friction</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Dusty green fig skin friction</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Dry pericarp wall (Veramoss)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Dry pericarp wall (Veramoss)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Jammy red fig pulp (gamma-Decalactone, Furaneol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Jammy red fig pulp (gamma-Decalactone, Furaneol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F6: Sap</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F6: Sap</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Bitter fig leaf milk sap bleed (Stemone, Galbanum)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Bitter fig leaf milk sap bleed (Stemone, Galbanum)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Dried Turkish fig paste (Sotolon, Coumarin)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Dried Turkish fig paste (Sotolon, Coumarin)</p>
             </div>
             
                     </div>
@@ -3077,7 +3137,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Blackcurrant, Blackberry, Blueberry, Dark Plum</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Dense</p>
@@ -3096,56 +3156,68 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 10%, #8ac926 10% 20%, #ffca3a 20% 50%, #9b51e0 50% 80%, #52b788 80% 90%, #f77f00 90% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A6
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Waxy dark skin friction (Octanal)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Waxy dark skin friction (Octanal)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Tannic dark skin brake (Veramoss)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Tannic dark skin brake (Veramoss)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Tart dark berry pulp (Ethyl Pelargonate, Frambinone)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Tart dark berry pulp (Ethyl Pelargonate, Frambinone)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F5: Aril</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F5: Aril</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Catty blackcurrant thiol (Corps Cassis, 4MMP)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Catty blackcurrant thiol (Corps Cassis, 4MMP)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F8: Calyx</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F8: Calyx</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Earthy dark green stem (IBQ, Violet Leaf Abs)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Earthy dark green stem (IBQ, Violet Leaf Abs)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F9: Ferment</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F9: Ferment</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Crème de Cassis liqueur lees (2-Phenylethyl Acetate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Crème de Cassis liqueur lees (2-Phenylethyl Acetate)</p>
             </div>
             
                     </div>
@@ -3168,7 +3240,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Watermelon, Cantaloupe, Honeydew, Cucumber</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Low (Volatile)</p>
@@ -3187,56 +3259,68 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 10%, #8ac926 10% 40%, #ffca3a 40% 60%, #1982c4 60% 95%, #2a9d8f 95% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A7
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Crisp green watermelon rind (cis-3-Hexenol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Crisp green watermelon rind (cis-3-Hexenol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Bitter white rind & cucumber pith brake (Nonadienal)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Bitter white rind & cucumber pith brake (Nonadienal)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Sweet translucent melon flesh (Melonal, Ethyl 2-MB)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Sweet translucent melon flesh (Melonal, Ethyl 2-MB)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F4: Water</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F4: Water</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Humid vacuole spray cloud (Calone 1951)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Humid vacuole spray cloud (Calone 1951)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F6: Sap</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Trace</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F6: Sap</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Trace</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Watery cucumber stem sap</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Watery cucumber stem sap</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #666; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #666; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Absent</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #666; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #666; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Absent</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">N/A (Dehydrated state absent in melon notes)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">N/A (Dehydrated state absent in melon notes)</p>
             </div>
             
                     </div>
@@ -3259,7 +3343,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Concord Grape, Muscadine Grape, Elderberry, Wild Bramble</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Very Dense</p>
@@ -3278,48 +3362,60 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 10%, #ffca3a 10% 45%, #e76f51 45% 65%, #f77f00 65% 90%, #d4af37 90% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A8
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Waxy Concord grape skin slip</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Waxy Concord grape skin slip</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Sweet narcotic Concord grape pulp (Methyl Anthranilate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Sweet narcotic Concord grape pulp (Methyl Anthranilate)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F7: Seed</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F7: Seed</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Bitter tannic grape seed (Eugenol, Guaiacol)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Bitter tannic grape seed (Eugenol, Guaiacol)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F9: Ferment</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F9: Ferment</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Port wine & cognac lees (Ethyl Lactate, Cognac Oil)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Port wine & cognac lees (Ethyl Lactate, Cognac Oil)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Raisin paste & vino cotto syrup (beta-Damascenone, Ethyl Vanillin)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Raisin paste & vino cotto syrup (beta-Damascenone, Ethyl Vanillin)</p>
             </div>
             
                     </div>
@@ -3342,7 +3438,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Rhubarb Stalk, Tomato Vine, Bitter Grapefruit Rind</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Low (Volatile)</p>
@@ -3361,48 +3457,60 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 10%, #8ac926 10% 40%, #2a9d8f 40% 70%, #52b788 70% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A9
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Tough tomato skin friction</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Tough tomato skin friction</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F2: Pith</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F2: Pith</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Green stalk & pith pyrazine brake (IBMP, Rhubofix)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Green stalk & pith pyrazine brake (IBMP, Rhubofix)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Trace</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #9b51e0; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #9b51e0; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Trace</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Sour vegetal acid pulp (Isovaleric Acid)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Sour vegetal acid pulp (Isovaleric Acid)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F6: Sap</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F6: Sap</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Tomato leaf & rhubarb sap bleed (Stemone, Galbanum)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Tomato leaf & rhubarb sap bleed (Stemone, Galbanum)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F8: Calyx</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F8: Calyx</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">DOMINANT Green tomato vine stem crown (cis-3-Hexenyl Acetate)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">DOMINANT Green tomato vine stem crown (cis-3-Hexenyl Acetate)</p>
             </div>
             
                     </div>
@@ -3425,7 +3533,7 @@ Q 23.0 28.5, 24.2 28.5
                         <p style="font-weight: 700; font-size: 1.15rem; color: var(--gold-bright); margin-top: 2px;">Hoshigaki Dried Persimmon, Dried Prune, Dried Date, Jam Preserves</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
                         <div class="origin-card" style="margin-bottom:0;">
                             <strong style="color: var(--text-dim); font-size: 0.75rem;">Volatility Weight:</strong>
                             <p style="font-size: 0.95rem; font-weight: 600;">Very Dense</p>
@@ -3444,48 +3552,60 @@ Q 23.0 28.5, 24.2 28.5
                     </div>
                 </div>
 
-                <div>
-                    <h4 style="color: var(--gold-primary); font-size: 0.88rem; text-transform: uppercase; margin-bottom: 10px;">Botanical & Lifecycle Facet Expression</h4>
-                    <div style="max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <!-- Facet Color Fingerprint Donut Chart -->
+                    <div style="background: rgba(15,15,18,0.9); border: 1px solid var(--border-gold); border-radius: 12px; padding: 12px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(#4ba6a6 0% 5%, #ffca3a 5% 25%, #e76f51 25% 40%, #f77f00 40% 55%, #d4af37 55% 100%); position: relative; flex-shrink: 0; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+                            <div style="position: absolute; inset: 16px; background: var(--bg-slide); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--gold-bright); font-weight: 800;">
+                                A10
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--gold-primary); font-size: 0.82rem; text-transform: uppercase;">Facet Color Fingerprint</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 2px;">Proportional olfactory volume across the 10 botanical facets.</p>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
                         
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F1: Skin</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F1: Skin</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Crystallized sugar bloom skin</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Crystallized sugar bloom skin</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F3: Pulp</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F3: Pulp</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Concentrated fruit paste core (beta-Damascenone, beta-Ionone)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Concentrated fruit paste core (beta-Damascenone, beta-Ionone)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F7: Seed</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F7: Seed</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Roasted nut pit core (2,3,5-TMP, Cyclotene)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Roasted nut pit core (2,3,5-TMP, Cyclotene)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F9: Ferment</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Active</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #4ba6a6; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F9: Ferment</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #4ba6a6; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Active</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">Rummy port wine lees (Green Cognac Oil)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">Rummy port wine lees (Green Cognac Oil)</p>
             </div>
             
-            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--gold-bright); font-size: 0.85rem;">F10: Desiccated</strong>
-                    <span style="font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 8px; border-radius: 10px; text-transform: uppercase;">Dominant</span>
+            <div style="background: rgba(22,22,26,0.8); border: 1px solid var(--border-color); border-left: 3px solid #f9d71c; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <strong style="color: var(--gold-bright); font-size: 0.82rem;">F10: Desiccated</strong>
+                    <span style="font-size: 0.68rem; font-weight: 700; background: rgba(255,255,255,0.05); color: #f9d71c; padding: 2px 6px; border-radius: 8px; text-transform: uppercase;">Dominant</span>
                 </div>
-                <p style="font-size: 0.8rem; color: var(--text-dim);">MASTER FACET Maillard caramel & dried persimmon paste (Furaneol, Sotolon)</p>
+                <p style="font-size: 0.78rem; color: var(--text-dim);">MASTER FACET Maillard caramel & dried persimmon paste (Furaneol, Sotolon)</p>
             </div>
             
                     </div>
