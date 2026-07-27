@@ -2429,74 +2429,179 @@ Q 23.0 28.5, 24.2 28.5
                 </div>
                 <span class="slide-badge">100-Cell Botanical Expression</span>
             </div>
-            <div class="slide-body slide-full">
-                <div class="origin-card">
-                    <p style="color: var(--text-dim); margin-bottom: 12px; font-size: 0.85rem;">Mapping 10 fruit archetypes across 8 Anatomical and 2 Lifecycle Facets (Dominant, Trace, and Absent expressions).</p>
+            <div class="slide-body slide-full" style="gap:15px;">
+                <div class="origin-card" style="padding:15px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <p style="color: var(--text-dim); font-size: 0.82rem;">Mapping 10 fruit archetypes across 8 Anatomical and 2 Lifecycle Facets (Dominant, Trace, and Absent expressions).</p>
+                        <select id="archetypeSelect" style="background:var(--bg-card); border:1px solid var(--border-gold); color:var(--gold-bright); padding:4px 10px; border-radius:6px; font-size:0.8rem; font-family:'Space Mono';" onchange="updateArchetypeDetail()">
+                            <option value="0">1. Stone Fruits (Peach, Apricot, Plum)</option>
+                            <option value="1">2. Red Berries (Strawberry, Raspberry)</option>
+                            <option value="2">3. Tropical & Exotic (Passionfruit, Mango, Guava)</option>
+                            <option value="3">4. Pome Fruits (Apple, Pear)</option>
+                            <option value="4">5. The Fig Illusion (Fig Fruit & Sap)</option>
+                            <option value="5">6. Cassis & Dark Fruits (Blackcurrant)</option>
+                            <option value="6">7. Aqueous Fruits (Watermelon, Melon)</option>
+                            <option value="7">8. Grape & Wild Berry (Concord Grape)</option>
+                            <option value="8">9. Savory & Vegetal (Rhubarb, Tomato Vine)</option>
+                            <option value="9">10. Desiccated State (Dried Persimmon, Prune)</option>
+                        </select>
+                    </div>
                     
-                    <div style="overflow-x: auto;">
-                        <table style="width: 100%; border-collapse: collapse; font-size: 0.72rem; text-align: left;">
+                    <div style="overflow-x: auto; max-height: 240px;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.7rem; text-align: left;">
                             <thead>
-                                <tr style="background: rgba(212,175,55,0.1); color: var(--gold-primary);">
-                                    <th style="padding: 6px;">Fruit Family</th>
-                                    <th style="padding: 6px;">F1: Skin</th>
-                                    <th style="padding: 6px;">F2: Pith</th>
-                                    <th style="padding: 6px;">F3: Pulp</th>
-                                    <th style="padding: 6px;">F4: Water</th>
-                                    <th style="padding: 6px;">F5: Aril</th>
-                                    <th style="padding: 6px;">F6: Sap</th>
-                                    <th style="padding: 6px;">F7: Seed</th>
-                                    <th style="padding: 6px;">F8: Calyx</th>
-                                    <th style="padding: 6px;">F9: Ferm</th>
-                                    <th style="padding: 6px;">F10: Desic</th>
+                                <tr style="background: rgba(212,175,55,0.1); color: var(--gold-primary); position:sticky; top:0;">
+                                    <th style="padding: 5px;">Fruit Family</th>
+                                    <th style="padding: 5px;">F1: Skin</th>
+                                    <th style="padding: 5px;">F2: Pith</th>
+                                    <th style="padding: 5px;">F3: Pulp</th>
+                                    <th style="padding: 5px;">F4: Water</th>
+                                    <th style="padding: 5px;">F5: Aril</th>
+                                    <th style="padding: 5px;">F6: Sap</th>
+                                    <th style="padding: 5px;">F7: Seed</th>
+                                    <th style="padding: 5px;">F8: Calyx</th>
+                                    <th style="padding: 5px;">F9: Ferm</th>
+                                    <th style="padding: 5px;">F10: Desic</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">1. Stone Fruits</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(0)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">1. Stone Fruits</td>
                                     <td>Velvet</td><td>Subtle</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Trace</td><td>N/A</td><td>Trace</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Subtle</td><td>Moderate</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">2. Red Berries</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(1)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">2. Red Berries</td>
                                     <td>Crisp</td><td>Trace</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Dewy</td><td>Subtle</td><td>N/A</td><td>Nutty</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Moderate</td><td>High Jam</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">3. Tropical / Exotic</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(2)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">3. Tropical / Exotic</td>
                                     <td>Peppery</td><td>Bitter</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Moderate</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Unripe</td><td>Pit</td><td>Crown</td><td>High Lees</td><td>Caramelized</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">4. Pome Fruits</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(3)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">4. Pome Fruits</td>
                                     <td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Granular</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Crisp</td><td>N/A</td><td>N/A</td><td>Cyanic</td><td>Stem</td><td>Cider</td><td>Baked</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">5. Fig Illusion</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(4)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">5. Fig Illusion</td>
                                     <td>Dusty</td><td>Dry Wall</td><td>Jammy</td><td>Cool</td><td>Sweet</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Nutty</td><td>Crown</td><td>Fig Lees</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">6. Cassis & Dark</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(5)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">6. Cassis & Dark</td>
                                     <td>Waxy</td><td>Tannic</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Deep</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Resinous</td><td>Seed</td><td>Earthy</td><td>Liqueur</td><td>High Jam</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">7. Aqueous Fruits</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(6)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">7. Aqueous Fruits</td>
                                     <td>Rind</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Sweet</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>N/A</td><td>Sap</td><td>Nutty</td><td>Vine</td><td>Sour</td><td>N/A</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">8. Grape & Wild</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(7)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">8. Grape & Wild</td>
                                     <td>Waxy</td><td>Tannic</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Dewy</td><td>Slippery</td><td>Vine Sap</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Sepal</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Syrup</td>
                                 </tr>
-                                <tr style="border-bottom: 1px solid var(--border-color);">
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">9. Savory / Vegetal</td>
+                                <tr style="border-bottom: 1px solid var(--border-color); cursor:pointer;" onclick="selectArchetype(8)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">9. Savory / Vegetal</td>
                                     <td>Tough</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Sour</td><td>Vegetal</td><td>Cavity</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Bitter</td><td style="color:var(--gold-bright); font-weight:700;">DOMINANT</td><td>Pickle</td><td>Dried</td>
                                 </tr>
-                                <tr>
-                                    <td style="font-weight:700; color:var(--gold-primary); padding: 5px;">10. Desiccated</td>
+                                <tr style="cursor:pointer;" onclick="selectArchetype(9)">
+                                    <td style="font-weight:700; color:var(--gold-primary); padding: 4px;">10. Desiccated</td>
                                     <td>Bloom</td><td>Dry</td><td>Paste</td><td>N/A</td><td>Sticky</td><td>Gum</td><td>Roasted</td><td>Brittle</td><td>Port Lees</td><td style="color:var(--gold-bright); font-weight:700;">MASTER</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- Selected Archetype Detail Drawer -->
+                    <div id="archetypeDrawer" style="background: rgba(10,10,12,0.95); border: 1px solid var(--border-gold); border-radius: 10px; padding: 14px; margin-top: 10px;">
+                        <!-- Populated via JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            const archetypeDetails = [
+                {
+                    family: "1. Stone Fruits (Peach, Apricot, Plum)",
+                    engine: "gamma-Decalactone, Benzaldehyde",
+                    behavior: "High logP (2.7); binds skin lipids for persistent velvety peach fuzz.",
+                    facets: "F1: Velvet skin | F2: Subtle pit brake | F3: DOMINANT core pulp | F7: DOMINANT cyanic pit stone (Benzaldehyde) | F10: DOMINANT dried prune preserves (beta-Damascenone)"
+                },
+                {
+                    family: "2. Red Berries (Strawberry, Raspberry)",
+                    engine: "Frambinone (Raspberry Ketone), Furaneol (DMHF), C16",
+                    behavior: "Low vapor pressure; provides cotton-candy sweetness & mid-note warmth.",
+                    facets: "F1: Crisp skin spark | F3: DOMINANT jammy berry pulp (Frambinone) | F8: DOMINANT green leaf sepal (cis-3-Hexenyl Acetate) | F10: Burnt jam caramel"
+                },
+                {
+                    family: "3. Tropical & Exotic (Passionfruit, Mango, Guava, Mangosteen)",
+                    engine: "3M3SBA, 3MH / 3MHA, Isoamyl Acetate, delta-Decalactone",
+                    behavior: "Ultra-low threshold thiols; high volatile impact & radiant sillage.",
+                    facets: "F1: Peppery mango skin wax (Myrcene) | F3: DOMINANT tropical ester pulp | F5: DOMINANT gelatinous aril thiol (3M3SBA) | F9: High lees ferment"
+                },
+                {
+                    family: "4. Pome Fruits (Apple, Pear)",
+                    engine: "Pear Ester (Ethyl (2E,4Z)-decadienoate), Ethyl 2-MB, Triplal",
+                    behavior: "High vapor pressure (>50 Pa); flashes immediately to lift floral cores.",
+                    facets: "F1: DOMINANT crunchy peel bite (Hexanal, Triplal) | F3: DOMINANT Williams pear flesh (Pear Ester, Ethyl 2-MB) | F9: Hard cider perry"
+                },
+                {
+                    family: "5. The Fig Illusion (Fig Fruit, Leaf & Sap)",
+                    engine: "Stemone, gamma-Octalactone, Iso E Super",
+                    behavior: "Hydroxylamine imine engine paired with lactones; bridges greens to woods.",
+                    facets: "F1: Dusty green skin | F3: Jammy fig pulp | F6: DOMINANT bitter fig leaf milk sap (Stemone, Galbanum) | F10: DOMINANT dried Turkish fig paste"
+                },
+                {
+                    family: "6. Cassis & Dark Fruits (Blackcurrant, Blackberry, Blueberry)",
+                    engine: "Blackcurrant Bud Absolute, Corps Cassis (4MMP), Oxane",
+                    behavior: "Thiol engine (4MMP); high impact friction cutting through heavy musks.",
+                    facets: "F1: Waxy dark skin | F3: DOMINANT tart dark pulp | F5: DOMINANT catty blackcurrant thiol (4MMP) | F9: Crème de Cassis liqueur"
+                },
+                {
+                    family: "7. Aqueous Fruits (Watermelon, Cantaloupe, Cucumber)",
+                    engine: "Calone 1951, Melonal, (2E,6Z)-Nonadienal",
+                    behavior: "High Henry's Law constant in water; transparent spatial expander.",
+                    facets: "F1: Crisp rind | F2: DOMINANT bitter white pith & cucumber brake (Nonadienal) | F4: DOMINANT humid vacuole spray cloud (Calone 1951)"
+                },
+                {
+                    family: "8. Grape & Wild Berry (Concord Grape, Elderberry)",
+                    engine: "Methyl Anthranilate, Dimethyl Anthranilate, Ethyl Lactate",
+                    behavior: "Aromatic primary amine; low volatility bridge into indolic white florals.",
+                    facets: "F1: Waxy grape skin | F3: DOMINANT narcotic Concord grape pulp (Methyl Anthranilate) | F7: DOMINANT grape seed | F9: DOMINANT wine & cognac lees"
+                },
+                {
+                    family: "9. Savory & Vegetal Fruits (Rhubarb, Tomato Vine, Bitter Grapefruit)",
+                    engine: "Isobutyl Methoxypyrazine (IBMP), Rhubofix, Stemone",
+                    behavior: "Pyrazine ring engine; ultra-low threshold (<1 ppt) astringent brake.",
+                    facets: "F2: DOMINANT green stalk pyrazine brake (IBMP, Rhubofix) | F6: DOMINANT tomato leaf sap bleed (Stemone) | F8: DOMINANT vine crown"
+                },
+                {
+                    family: "10. Desiccated State (Hoshigaki Persimmon, Prune, Dried Date)",
+                    engine: "Overdosed Damascones (beta-Damascenone), Furaneol, Sotolon, Ethyl Vanillin",
+                    behavior: "Furanone/caramelized sugar mechanics; heavy resinous amber fixative.",
+                    facets: "F3: Concentrated fruit paste | F7: Roasted nut pit (2,3,5-TMP) | F10: MASTER Maillard caramel & dried persimmon paste (Sotolon, Furaneol)"
+                }
+            ];
+
+            function selectArchetype(idx) {
+                document.getElementById('archetypeSelect').value = idx;
+                updateArchetypeDetail();
+            }
+
+            function updateArchetypeDetail() {
+                const idx = parseInt(document.getElementById('archetypeSelect').value);
+                const item = archetypeDetails[idx];
+                document.getElementById('archetypeDrawer').innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                        <strong style="color:var(--gold-bright); font-size:0.9rem;">${item.family}</strong>
+                        <span style="font-size:0.75rem; color:var(--text-dim); font-family:'Space Mono';">Engine: ${item.engine}</span>
+                    </div>
+                    <p style="font-size:0.78rem; color:var(--text-dim); margin-bottom:6px;"><strong>Behavior:</strong> ${item.behavior}</p>
+                    <p style="font-size:0.78rem; color:var(--gold-primary);"><strong>Key Facet Breakdown:</strong> ${item.facets}</p>
+                `;
+            }
+
+            // Init default
+            updateArchetypeDetail();
+        </script>
         
         <!-- Slide 13: Physical-Chemical Waterfall Model -->
         <div class="slide-container " id="slide-13">
