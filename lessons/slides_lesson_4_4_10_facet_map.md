@@ -154,7 +154,143 @@
 
 ---
 
-### Slide 13: Physical-Chemical Volatility Waterfall Model
+### Slide 13: Archetype 1 — Stone Fruits (Peach, Apricot, Plum, Nectarine)
+* **Iconic Example Fruits:** Peach, Apricot, Plum, Nectarine
+* **Volatility Weight:** Medium-Dense | **Profile Axis:** Sweet / Velvety Floral
+* **Primary Chemical Engine:** $\gamma$-Decalactone, Benzaldehyde
+* **Facet Expression:**
+  - **F1 (Skin):** Velvet fuzzy skin friction ($\gamma$-Decalactone, Hexanal)
+  - **F2 (Pith):** Subtle dry green pit brake (1-Hexanol)
+  - **F3 (Pulp):** **DOMINANT** Core juicy peach flesh (Ethyl 2-MB, $\gamma$-Decalactone)
+  - **F7 (Seed):** **DOMINANT** Cyanic bitter almond pit stone (Benzaldehyde, 2,3,5-TMP)
+  - **F9 (Ferment):** Moderate plum lees & ume wine (Ethyl Lactate)
+  - **F10 (Desiccated):** **DOMINANT** Cooked prune preserves ($\beta$-Damascenone)
+
+---
+
+### Slide 14: Archetype 2 — Red Berries (Strawberry, Raspberry, Redcurrant)
+* **Iconic Example Fruits:** Strawberry, Raspberry, Redcurrant
+* **Volatility Weight:** Medium | **Profile Axis:** High Sweet / Jammy / Floral
+* **Primary Chemical Engine:** Frambinone (Raspberry Ketone), Furaneol (DMHF), C16
+* **Facet Expression:**
+  - **F1 (Skin):** Crisp berry skin spark (Hexanal)
+  - **F3 (Pulp):** **DOMINANT** Jammy berry pulp (Frambinone, Furaneol)
+  - **F4 (Water):** Dewy berry juice humidity (cis-3-Hexenol)
+  - **F7 (Seed):** Nutty achene seed crunch (2,3,5-TMP)
+  - **F8 (Calyx):** **DOMINANT** Sharp green strawberry leaf crown (cis-3-Hexenyl Acetate)
+  - **F10 (Desiccated):** High Burnt jam caramel (Furaneol, Ethyl Maltol)
+
+---
+
+### Slide 15: Archetype 3 — Tropical & Exotic (Passionfruit, Mango, Guava, Mangosteen)
+* **Iconic Example Fruits:** Passionfruit, Mango, Guava, Mangosteen, Lychee, Durian
+* **Volatility Weight:** Low-Medium | **Profile Axis:** Medium Sweet / Sulfurous / Creamy
+* **Primary Chemical Engine:** 3M3SBA, 3MH / 3MHA, Isoamyl Acetate, $\delta$-Decalactone
+* **Facet Expression:**
+  - **F1 (Skin):** Peppery resinous mango skin wax (Myrcene, d-Limonene)
+  - **F2 (Pith):** Bitter white albedo rind (IBMP, Thiazoles)
+  - **F3 (Pulp):** **DOMINANT** Radiant tropical ester pulp (Ethyl Hexanoate, Ethyl Butanoate)
+  - **F5 (Aril):** **DOMINANT** Gelatinous mangosteen aril thiol (3M3SBA, $\delta$-Decalactone)
+  - **F6 (Sap):** Unripe mango stem turpentine bleed (Terpinolene, Galbanum)
+  - **F9 (Ferment):** High passionfruit lees & durian ester (Isoamyl Acetate)
+
+---
+
+### Slide 16: Archetype 4 — Pome Fruits (Apple, Pear)
+* **Iconic Example Fruits:** Green Apple, Red Apple, Williams Pear, Quince
+* **Volatility Weight:** Low (Volatile) | **Profile Axis:** Medium-High Sweet / Crisp Green
+* **Primary Chemical Engine:** Pear Ester (Ethyl (2E,4Z)-decadienoate), Ethyl 2-MB, Triplal
+* **Facet Expression:**
+  - **F1 (Skin):** **DOMINANT** Crunchy green apple/pear peel bite (Hexanal, Triplal)
+  - **F2 (Pith):** Granular cellulosic pear core (1-Hexanol)
+  - **F3 (Pulp):** **DOMINANT** Crisp Williams pear flesh (Pear Ester, Ethyl 2-MB)
+  - **F7 (Seed):** Cyanic apple seed core (Benzaldehyde)
+  - **F9 (Ferment):** Hard apple cider & pear perry (Ethyl Lactate)
+  - **F10 (Desiccated):** Baked apple pie preserves ($\beta$-Damascenone)
+
+---
+
+### Slide 17: Archetype 5 — The Fig Illusion (Fig Fruit, Leaf & Sap)
+* **Iconic Example Fruits:** Fresh Fig Fruit, Fig Leaf, Green Fig Stem Bleed
+* **Volatility Weight:** Medium-Dense | **Profile Axis:** Green / Lactonic / Woody
+* **Primary Chemical Engine:** Stemone, $\gamma$-Octalactone, Iso E Super
+* **Facet Expression:**
+  - **F1 (Skin):** Dusty green fig skin friction
+  - **F2 (Pith):** Dry pericarp wall (Veramoss)
+  - **F3 (Pulp):** Jammy red fig pulp ($\gamma$-Decalactone, Furaneol)
+  - **F6 (Sap):** **DOMINANT** Bitter fig leaf milk sap bleed (Stemone, Galbanum)
+  - **F10 (Desiccated):** **DOMINANT** Dried Turkish fig paste (Sotolon, Coumarin)
+
+---
+
+### Slide 18: Archetype 6 — Cassis & Dark Fruits (Blackcurrant, Blackberry)
+* **Iconic Example Fruits:** Blackcurrant, Blackberry, Blueberry, Dark Plum
+* **Volatility Weight:** Dense | **Profile Axis:** Tart / Sulfuric / Animalic
+* **Primary Chemical Engine:** Blackcurrant Bud Absolute, Corps Cassis (4MMP), Oxane
+* **Facet Expression:**
+  - **F1 (Skin):** Waxy dark skin friction (Octanal)
+  - **F2 (Pith):** Tannic dark skin brake (Veramoss)
+  - **F3 (Pulp):** **DOMINANT** Tart dark berry pulp (Ethyl Pelargonate, Frambinone)
+  - **F5 (Aril):** **DOMINANT** Catty blackcurrant thiol (Corps Cassis, 4MMP)
+  - **F8 (Calyx):** Earthy dark green stem (IBQ, Violet Leaf Abs)
+  - **F9 (Ferment):** Crème de Cassis liqueur lees (2-Phenylethyl Acetate)
+
+---
+
+### Slide 19: Archetype 7 — Aqueous Fruits (Watermelon, Cantaloupe, Cucumber)
+* **Iconic Example Fruits:** Watermelon, Cantaloupe, Honeydew, Cucumber
+* **Volatility Weight:** Low (Volatile) | **Profile Axis:** Watery / Fresh / Aquatic
+* **Primary Chemical Engine:** Calone 1951, Melonal, (2E,6Z)-Nonadienal
+* **Facet Expression:**
+  - **F1 (Skin):** Crisp green watermelon rind (cis-3-Hexenol)
+  - **F2 (Pith):** **DOMINANT** Bitter white rind & cucumber pith brake (Nonadienal)
+  - **F3 (Pulp):** Sweet translucent melon flesh (Melonal, Ethyl 2-MB)
+  - **F4 (Water):** **DOMINANT** Humid vacuole spray cloud (Calone 1951)
+  - **F6 (Sap):** Watery cucumber stem sap
+  - **F10 (Desiccated):** N/A (Dehydrated state absent in melon notes)
+
+---
+
+### Slide 20: Archetype 8 — Grape & Wild Berry (Concord Grape, Elderberry)
+* **Iconic Example Fruits:** Concord Grape, Muscadine Grape, Elderberry, Wild Bramble
+* **Volatility Weight:** Very Dense | **Profile Axis:** Narcotic / Floral / Winey
+* **Primary Chemical Engine:** Methyl Anthranilate, Dimethyl Anthranilate, Ethyl Lactate
+* **Facet Expression:**
+  - **F1 (Skin):** Waxy Concord grape skin slip
+  - **F3 (Pulp):** **DOMINANT** Sweet narcotic Concord grape pulp (Methyl Anthranilate)
+  - **F7 (Seed):** **DOMINANT** Bitter tannic grape seed (Eugenol, Guaiacol)
+  - **F9 (Ferment):** **DOMINANT** Port wine & cognac lees (Ethyl Lactate, Cognac Oil)
+  - **F10 (Desiccated):** Raisin paste & vino cotto syrup ($\beta$-Damascenone, Ethyl Vanillin)
+
+---
+
+### Slide 21: Archetype 9 — Savory & Vegetal Fruits (Rhubarb, Tomato Vine)
+* **Iconic Example Fruits:** Rhubarb Stalk, Tomato Vine, Bitter Grapefruit Rind
+* **Volatility Weight:** Low (Volatile) | **Profile Axis:** Earthy / Astringent / Metallic
+* **Primary Chemical Engine:** Isobutyl Methoxypyrazine (IBMP), Rhubofix, Stemone
+* **Facet Expression:**
+  - **F1 (Skin):** Tough tomato skin friction
+  - **F2 (Pith):** **DOMINANT** Green stalk & pith pyrazine brake (IBMP, Rhubofix)
+  - **F3 (Pulp):** Sour vegetal acid pulp (Isovaleric Acid)
+  - **F6 (Sap):** **DOMINANT** Tomato leaf & rhubarb sap bleed (Stemone, Galbanum)
+  - **F8 (Calyx):** **DOMINANT** Green tomato vine stem crown (cis-3-Hexenyl Acetate)
+
+---
+
+### Slide 22: Archetype 10 — Desiccated & Roasted State (Hoshigaki Persimmon, Prune)
+* **Iconic Example Fruits:** Hoshigaki Dried Persimmon, Dried Prune, Dried Date, Jam Preserves
+* **Volatility Weight:** Very Dense | **Profile Axis:** Sticky / Resinous / Caramelized
+* **Primary Chemical Engine:** Overdosed Damascones ($\beta$-Damascenone), Furaneol, Sotolon, Ethyl Vanillin
+* **Facet Expression:**
+  - **F1 (Skin):** Crystallized sugar bloom skin
+  - **F3 (Pulp):** Concentrated fruit paste core ($\beta$-Damascenone, $\beta$-Ionone)
+  - **F7 (Seed):** Roasted nut pit core (2,3,5-TMP, Cyclotene)
+  - **F9 (Ferment):** Rummy port wine lees (Green Cognac Oil)
+  - **F10 (Desiccated):** **MASTER FACET** Maillard caramel & dried persimmon paste (Furaneol, Sotolon)
+
+---
+
+### Slide 23: Physical-Chemical Volatility Waterfall Model
 * **Evaporative Waterfall Kinetics & 10-Facet Timeline:**
   - **1. Diffusive Top Cascade ($\text{VP} > 100\text{ Pa}$, 0–30 Mins):** Facet 1 (Skin), Facet 4 (Dew Water), Facet 8 (Calyx), Facet 9 (Ferment Lift). Key materials: *Hexanal*, *Ethyl Butanoate*, *cis-3-Hexenol*, *Ethyl Acetate*. High VP molecules flash off alcohol to project initial green skin friction and juicy lift.
   - **2. Structural Heart Transition ($\text{VP } 1\text{--}100\text{ Pa}$, 30 Mins–2 Hours):** Facet 2 (Pith Brake), Facet 5 (Aril Mucilage), Facet 6 (Latex Sap), Facet 7 (Cyanic Seed). Key materials: *IBMP*, *Stemone*, *Benzaldehyde*, *3M3SBA*, *2,3,5-TMP*. Intermediate volatility actors bridge top greens into heavy fruit pulp, preventing formula fracturing.
@@ -163,7 +299,8 @@
 
 ---
 
-### Slide 14: Lab Exercise 4.4 & Conclusion
+### Slide 24: Lab Exercise 4.4 & Conclusion
 * **Lab Goal:** Formulating a 10-Facet Hyper-Realistic Passionfruit & Peach Accord.
 * **Key Takeaway:** Perfumery fruit formulation is structural engineering. Balance volatility, physical-chemical parameters, and anatomical facets to craft living botanical illusions.
+
 

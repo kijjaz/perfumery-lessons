@@ -189,7 +189,32 @@ function build10FacetPresentation() {
     "• Grape & Wild Berry: Dominant F3 (Narcotic Pulp), F7 (Tannic Seed), F9 (Wine Lees)\n" +
     "• Savory & Vegetal: Dominant F2 (Pyrazine Pith), F6 (Leaf Sap), F8 (Vine Crown)\n" +
     "• Desiccated State: Master F10 (Maillard Caramel & Dried Persimmon Paste)"
-  ).getTextStyle().setFontFamily("Outfit").setFontSize(12).setForegroundColor("#F3F3F5");
+  // Slides 13 to 22: Dedicated Fruit Archetype Deep Dives
+  const archetypesList = [
+    { name: "Stone Fruits", examples: "Peach, Apricot, Plum, Nectarine", engine: "γ-Decalactone, Benzaldehyde", facets: "F1 Skin, F2 Pith (trace), F3 Pulp (DOMINANT), F7 Cyanic Seed (DOMINANT), F9 Ferment, F10 Desiccated Prune (DOMINANT)" },
+    { name: "Red Berries", examples: "Strawberry, Raspberry, Redcurrant", engine: "Frambinone, Furaneol, C16", facets: "F1 Skin, F3 Pulp (DOMINANT), F4 Water, F7 Seed, F8 Calyx Crown (DOMINANT), F10 Jam Caramel" },
+    { name: "Tropical & Exotic", examples: "Passionfruit, Mango, Guava, Mangosteen, Lychee", engine: "3M3SBA, 3MH/3MHA, Isoamyl Acetate, δ-Decalactone", facets: "F1 Skin, F2 Pith, F3 Pulp (DOMINANT), F5 Thiol Aril (DOMINANT), F6 Sap (trace), F9 Lees Ferment" },
+    { name: "Pome Fruits", examples: "Green Apple, Red Apple, Williams Pear, Quince", engine: "Pear Ester, Ethyl 2-MB, Triplal", facets: "F1 Peel Bite (DOMINANT), F2 Pith, F3 Pear Flesh (DOMINANT), F7 Seed, F9 Hard Cider, F10 Baked Pie" },
+    { name: "The Fig Illusion", examples: "Fresh Fig Fruit, Fig Leaf, Green Fig Stem Bleed", engine: "Stemone, γ-Octalactone, Iso E Super", facets: "F1 Skin, F2 Pith, F3 Pulp, F6 Bitter Milk Sap (DOMINANT), F10 Dried Fig Paste (DOMINANT)" },
+    { name: "Cassis & Dark Fruits", examples: "Blackcurrant, Blackberry, Blueberry, Dark Plum", engine: "Blackcurrant Bud Abs, Corps Cassis (4MMP)", facets: "F1 Skin, F2 Pith, F3 Tart Pulp (DOMINANT), F5 Catty Thiol (DOMINANT), F8 Stem, F9 Liqueur" },
+    { name: "Aqueous Fruits", examples: "Watermelon, Cantaloupe, Honeydew, Cucumber", engine: "Calone 1951, Melonal, (2E,6Z)-Nonadienal", facets: "F1 Rind, F2 Cucumber Pith Brake (DOMINANT), F3 Pulp, F4 Humid Vacuole Cloud (DOMINANT), F6 Sap" },
+    { name: "Grape & Wild Berry", examples: "Concord Grape, Muscadine Grape, Elderberry", engine: "Methyl Anthranilate, Dimethyl Anthranilate, Ethyl Lactate", facets: "F1 Skin, F3 Narcotic Pulp (DOMINANT), F7 Tannic Seed (DOMINANT), F9 Wine Lees (DOMINANT), F10 Raisin Syrup" },
+    { name: "Savory & Vegetal", examples: "Rhubarb Stalk, Tomato Vine, Bitter Grapefruit", engine: "Isobutyl Methoxypyrazine (IBMP), Rhubofix, Stemone", facets: "F1 Skin, F2 Green Stalk Pith Brake (DOMINANT), F3 Pulp, F6 Leaf Sap (DOMINANT), F8 Vine Crown (DOMINANT)" },
+    { name: "Desiccated & Roasted", examples: "Hoshigaki Dried Persimmon, Dried Prune, Dried Date", engine: "Overdosed Damascones, Furaneol, Sotolon, Ethyl Vanillin", facets: "F1 Bloom Skin, F3 Fruit Paste, F7 Roasted Nut Pit, F9 Port Lees, F10 Maillard Preserves (MASTER)" }
+  ];
+
+  archetypesList.forEach((a, i) => {
+    const aSlide = presentation.appendSlide(SlidesApp.PredefinedLayout.BLANK);
+    aSlide.getBackground().setSolidFill("#070708");
+    const h = aSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 30, 640, 60);
+    h.getText().setText(`ARCHETYPE ${i+1}: ${a.name.toUpperCase()}`).getTextStyle().setFontFamily("Outfit").setFontSize(22).setBold(true).setForegroundColor("#D4AF37");
+    const b = aSlide.insertShape(SlidesApp.ShapeType.TEXT_BOX, 40, 95, 640, 270);
+    b.getText().setText(
+      `Iconic Example Fruits: ${a.examples}\n\n` +
+      `Primary Chemical Engine: ${a.engine}\n\n` +
+      `Botanical Facet Breakdown:\n${a.facets}`
+    ).getTextStyle().setFontFamily("Outfit").setFontSize(13).setForegroundColor("#F3F3F5");
+  });
 
   // Slide 13: Physical-Chemical Volatility Waterfall Model
   const matrixSlide = presentation.appendSlide(SlidesApp.PredefinedLayout.BLANK);
