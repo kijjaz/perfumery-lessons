@@ -293,3 +293,191 @@ Students will construct a 100g trial formula (in Ethanol/DPG) that spans all 10 
 2. **Adding the Anatomical Shell**: Add Facet 1 (Hexanal), Facet 2 (IBMP), and Facet 8 (cis-3-Hexenyl Acetate). Smell again. Notice how the fruit acquires a crunchy, green botanical shell.
 3. **Injecting Humidity & Sulfur**: Add Facet 4 (Calone 1951, cis-3-Hexenol) and Facet 5 (3M3SBA). Smell on blotter. Observe the immediate release of dewy, juicy humidity and authentic tropical realism.
 4. **Thermal & Kernel Anchoring**: Add Facets 7, 9, and 10 (Benzaldehyde, Ethyl Acetate, $\beta$-Damascenone). Observe how the accord gains multi-dimensional depth, skin substantivity, and natural complex sillage.
+
+---
+
+## 40.5 Master 10x10 Botanical Facet Expression Matrix
+
+Different fruit families express distinct subsets of the 10 facets. Below is the master **10x10 Botanical Facet Expression Matrix** mapping 10 iconic fruit archetypes across all 8 Anatomical and 2 Lifecycle Facets:
+
+```text
+========================================================================================================================
+MASTER 10x10 BOTANICAL FACET EXPRESSION MATRIX
+========================================================================================================================
+FRUIT FAMILY          | F1: SKIN | F2: PITH | F3: PULP | F4: WATER| F5: ARIL | F6: SAP  | F7: SEED | F8: CALYX| F9: FERM | F10: DESIC
+----------------------+----------+----------+----------+----------+----------+----------+----------+----------+----------+----------
+1. Stone Fruits       | Velvet   | Subtle   | DOMINANT | Trace    | N/A      | Trace    | DOMINANT | Subtle   | Moderate | DOMINANT 
+2. Red Berries        | Crisp    | Trace    | DOMINANT | Dewy     | Subtle   | N/A      | Nutty    | DOMINANT | Moderate | High Jam 
+3. Tropical & Exotic  | Peppery  | Bitter   | DOMINANT | Moderate | DOMINANT | Unripe   | Pit      | Crown    | High Lees| Caramelized
+4. Pome Fruits        | DOMINANT | Granular | DOMINANT | Crisp    | N/A      | N/A      | Cyanic   | Stem     | Cider    | Baked    
+5. The Fig Illusion   | Dusty    | Dry Wall | Jammy    | Cool     | Sweet    | DOMINANT | Nutty    | Crown    | Fig Lees | DOMINANT 
+6. Cassis & Dark      | Waxy     | Tannic   | DOMINANT | Deep     | DOMINANT | Resinous | Seed     | Earthy   | Liqueur  | High Jam 
+7. Aqueous Fruits     | Rind     | DOMINANT | Sweet    | DOMINANT | N/A      | Sap      | Nutty    | Vine     | Sour     | N/A      
+8. Grape & Wild Berry | Waxy     | Tannic   | DOMINANT | Dewy     | Slippery | Vine Sap | DOMINANT | Sepal    | DOMINANT | Syrup    
+9. Savory & Vegetal   | Tough    | DOMINANT | Sour     | Vegetal  | Cavity   | DOMINANT | Bitter   | DOMINANT | Pickle   | Dried    
+10. Desiccated State  | Bloom    | Dry      | Paste    | N/A      | Sticky   | Gum      | Roasted  | Brittle  | Port Lees| MASTER   
+========================================================================================================================
+```
+
+### Detailed Fruit Archetype Breakdown
+
+#### 1. Stone Fruits (Peach, Apricot, Plum)
+* **Volatility Weight**: Medium-Dense | **Profile Axis**: Sweet / Velvety Floral
+* **Primary Engine**: $\gamma$-Decalactone, Benzaldehyde
+* **Physical-Chemical Behavior**: High logP (2.7); binds skin lipids for persistent velvety peach fuzz.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Velvet fuzzy skin, waxy lactonic skin friction ($\gamma$-Decalactone, Hexanal).
+  * **F2 (Pith)**: Subtle dry green inner pit brake (1-Hexanol).
+  * **F3 (Pulp)**: **Dominant** juicy peach/apricot core pulp (Ethyl 2-MB, $\gamma$-Decalactone).
+  * **F4 (Water)**: Low-medium aqueous juice (Melonal trace).
+  * **F5 (Aril)**: N/A.
+  * **F6 (Sap)**: Trace green stem bleed on unripe picking.
+  * **F7 (Seed)**: **Dominant** cyanic bitter almond/cherry pit stone (Benzaldehyde, 2,3,5-TMP).
+  * **F8 (Calyx)**: Subtle green leaf sepal crown.
+  * **F9 (Ferment)**: Plum lees / fermented ume wine note (Ethyl Lactate).
+  * **F10 (Desiccated)**: **Dominant** cooked prune, sun-dried persimmon, baked plum preserves ($\beta$-Damascenone).
+
+#### 2. Red Berries (Strawberry, Raspberry)
+* **Volatility Weight**: Medium | **Profile Axis**: High Sweet / Jammy / Floral
+* **Primary Engine**: Frambinone (Raspberry Ketone), Furaneol (DMHF), C16
+* **Physical-Chemical Behavior**: Low vapor pressure; provides cotton-candy sweetness and mid-note warmth.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Crisp berry skin spark (Hexanal).
+  * **F2 (Pith)**: Trace white core achene structure.
+  * **F3 (Pulp)**: **Dominant** jammy raspberry/strawberry parenchyma (Frambinone, Furaneol).
+  * **F4 (Water)**: Dewy berry juice humidity (cis-3-Hexenol).
+  * **F5 (Aril)**: Subtle slippery seed mucilage.
+  * **F6 (Sap)**: N/A.
+  * **F7 (Seed)**: Nutty achene seed crunch (2,3,5-TMP trace).
+  * **F8 (Calyx)**: **Dominant** sharp green strawberry leaf crown sepal (cis-3-Hexenyl Acetate).
+  * **F9 (Ferment)**: Rummy strawberry wine / cider fermentation (Ethyl Acetate).
+  * **F10 (Desiccated)**: Burnt strawberry jam caramel (Furaneol, Ethyl Maltol).
+
+#### 3. Tropical & Exotic (Passionfruit, Mango, Guava, Mangosteen)
+* **Volatility Weight**: Low-Medium | **Profile Axis**: Medium Sweet / Sulfurous / Creamy
+* **Primary Engine**: 3M3SBA, 3MH / 3MHA, Isoamyl Acetate, $\delta$-Decalactone
+* **Physical-Chemical Behavior**: Ultra-low odor threshold thiols; high volatile impact and radiant sillage.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Peppery resinous mango skin wax (Myrcene, d-Limonene).
+  * **F2 (Pith)**: Bitter white albedo rind (IBMP, 2-Isopropyl-4-methylthiazole).
+  * **F3 (Pulp)**: **Dominant** radiant tropical ester pulp (Ethyl Butanoate, Ethyl Hexanoate).
+  * **F4 (Water)**: Tropical juice spray cloud.
+  * **F5 (Aril)**: **Dominant** gelatinous slippery mangosteen/passionfruit aril thiol (3M3SBA, $\delta$-Decalactone).
+  * **F6 (Sap)**: Unripe mango stem turpentine bleed (Terpinolene, Galbanum).
+  * **F7 (Seed)**: Lignified tropical seed pit.
+  * **F8 (Calyx)**: Green peduncle stem crown.
+  * **F9 (Ferment)**: Fermenting passionfruit lees & overripe durian ester (Isoamyl Acetate).
+  * **F10 (Desiccated)**: Dried mango paste / caramelized guava preserves (Sotolon).
+
+#### 4. Pome Fruits (Apple, Pear)
+* **Volatility Weight**: Low (Volatile) | **Profile Axis**: Medium-High Sweet / Crisp Green
+* **Primary Engine**: Pear Ester (Ethyl (2E,4Z)-decadienoate), Ethyl 2-MB, Triplal
+* **Physical-Chemical Behavior**: High vapor pressure (>50 Pa); flashes immediately to lift floral cores.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: **Dominant** crunchy green apple/pear peel bite (Hexanal, (E)-2-Hexenal, Triplal).
+  * **F2 (Pith)**: Granular, dry cellulosic pear core (1-Hexanol).
+  * **F3 (Pulp)**: **Dominant** crisp juicy Williams pear flesh (Pear Ester, Ethyl 2-MB).
+  * **F4 (Water)**: Crisp apple water vapor.
+  * **F5 (Aril)**: N/A.
+  * **F6 (Sap)**: N/A.
+  * **F7 (Seed)**: Trace cyanic apple seed core (Benzaldehyde trace).
+  * **F8 (Calyx)**: Green stem foliage.
+  * **F9 (Ferment)**: Hard apple cider / pear perry fermentation (Ethyl Lactate).
+  * **F10 (Desiccated)**: Baked apple pie / caramelized apple syrup ($\beta$-Damascenone).
+
+#### 5. The Fig Illusion (Fig Fruit, Leaf & Sap)
+* **Volatility Weight**: Medium-Dense | **Profile Axis**: Green / Lactonic / Woody
+* **Primary Engine**: Stemone, $\gamma$-Octalactone, Iso E Super
+* **Physical-Chemical Behavior**: Hydroxylamine imine engine paired with lactones; bridges greens to woods.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Dusty green fig skin friction.
+  * **F2 (Pith)**: Dry woody inner pericarp wall (Veramoss).
+  * **F3 (Pulp)**: Jammy red fig core pulp ($\gamma$-Decalactone, Furaneol).
+  * **F4 (Water)**: Cool green fig moisture.
+  * **F5 (Aril)**: Slippery sweet seed syconium envelope.
+  * **F6 (Sap)**: **Dominant** bitter rubbery fig leaf milk & stem bleed (Stemone, Galbanum).
+  * **F7 (Seed)**: Crunchy nutty fig seed core.
+  * **F8 (Calyx)**: Green branch peduncle crown.
+  * **F9 (Ferment)**: Fermented fig wine / raisin lees.
+  * **F10 (Desiccated)**: **Dominant** dried Turkish fig paste & caramelized preserve paste (Sotolon, Coumarin).
+
+#### 6. Cassis & Dark Fruits (Blackcurrant, Blackberry, Blueberry)
+* **Volatility Weight**: Dense | **Profile Axis**: Tart / Sulfuric / Animalic
+* **Primary Engine**: Blackcurrant Bud Absolute, Corps Cassis (4MMP), Oxane
+* **Physical-Chemical Behavior**: Thiol engine (4MMP); high impact friction cutting through heavy musks.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Waxy dark cassis skin friction (Octanal).
+  * **F2 (Pith)**: Astringent dark skin tannin brake (Veramoss).
+  * **F3 (Pulp)**: **Dominant** tart dark berry pulp (Ethyl Pelargonate, Frambinone).
+  * **F4 (Water)**: Deep berry water transparency.
+  * **F5 (Aril)**: **Dominant** catty/sulfurous blackcurrant bud thiol envelope (Corps Cassis, 4MMP).
+  * **F6 (Sap)**: Resinous blackcurrant shrub wood bleed.
+  * **F7 (Seed)**: Tannic woody seed core.
+  * **F8 (Calyx)**: Earthy dark green stem & leaf sepal (IBQ, Violet Leaf Abs).
+  * **F9 (Ferment)**: Heavy cassis liqueur / Crème de Cassis lees (2-Phenylethyl Acetate).
+  * **F10 (Desiccated)**: Cooked blackberry jam paste ($\beta$-Damascenone).
+
+#### 7. Aqueous Fruits (Watermelon, Cantaloupe, Cucumber)
+* **Volatility Weight**: Low (Volatile) | **Profile Axis**: Watery / Fresh / Aquatic
+* **Primary Engine**: Calone 1951, Melonal, (2E,6Z)-Nonadienal
+* **Physical-Chemical Behavior**: High Henry's Law constant in water; transparent spatial expander.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Crisp green watermelon rind friction (cis-3-Hexenol).
+  * **F2 (Pith)**: **Dominant** bitter white rind & cucumber pith brake (Nonadienal, 1-Hexanol).
+  * **F3 (Pulp)**: Sweet translucent melon core pulp (Melonal, Ethyl 2-MB).
+  * **F4 (Water)**: **Dominant** humid spray cloud & cytoplasmic vacuole water (Calone 1951, Floralozone).
+  * **F5 (Aril)**: N/A.
+  * **F6 (Sap)**: Watery cucumber stem sap.
+  * **F7 (Seed)**: Nutty melon seed oil.
+  * **F8 (Calyx)**: Green melon vine sepal.
+  * **F9 (Ferment)**: Sour overripe melon rind.
+  * **F10 (Desiccated)**: N/A (Dehydrated state absent in aqueous melon notes).
+
+#### 8. Grape & Wild Berry (Concord Grape, Elderberry)
+* **Volatility Weight**: Very Dense | **Profile Axis**: Narcotic / Floral / Winey
+* **Primary Engine**: Methyl Anthranilate, Dimethyl Anthranilate, Ethyl Lactate
+* **Physical-Chemical Behavior**: Aromatic primary amine; low volatility bridge into indolic white florals.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Waxy Concord grape skin slip.
+  * **F2 (Pith)**: Tannic astringent grape skin brake.
+  * **F3 (Pulp)**: **Dominant** sweet, narcotic Concord grape & elderberry pulp (Methyl Anthranilate).
+  * **F4 (Water)**: Grape juice humidity.
+  * **F5 (Aril)**: Slippery muscadine seed envelope.
+  * **F6 (Sap)**: Grapevine stem sap.
+  * **F7 (Seed)**: **Dominant** bitter tannic grape seed core (Eugenol, Guaiacol).
+  * **F8 (Calyx)**: Green grapevine sepal crown.
+  * **F9 (Ferment)**: **Dominant** rich wine lees, port wine, and cognac glycolysis (Ethyl Lactate, Cognac Oil).
+  * **F10 (Desiccated)**: Raisin paste, caramelized grape syrup, and cooked vino cotto ($\beta$-Damascenone, Ethyl Vanillin).
+
+#### 9. Savory & Vegetal Fruits (Rhubarb, Tomato Vine, Bitter Grapefruit)
+* **Volatility Weight**: Low (Volatile) | **Profile Axis**: Earthy / Astringent / Metallic
+* **Primary Engine**: Isobutyl Methoxypyrazine (IBMP), Rhubofix, Stemone
+* **Physical-Chemical Behavior**: Pyrazine ring engine; ultra-low threshold (<1 ppt) astringent brake.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Tough green rind / tomato skin friction.
+  * **F2 (Pith)**: **Dominant** hyper-potent green pith & stalks (IBMP, Rhubofix).
+  * **F3 (Pulp)**: Sour vegetal acid pulp (Isovaleric Acid trace).
+  * **F4 (Water)**: Crisp vegetal sap water (cis-3-Hexenol).
+  * **F5 (Aril)**: Gelatinous tomato seed cavity.
+  * **F6 (Sap)**: **Dominant** crushed tomato leaf & rhubarb stalk sap bleed (Stemone, Galbanum).
+  * **F7 (Seed)**: Bitter vegetal seed.
+  * **F8 (Calyx)**: **Dominant** green tomato vine stem crown (cis-3-Hexenyl Acetate).
+  * **F9 (Ferment)**: Vegetal pickle / sauerkraut acid lees.
+  * **F10 (Desiccated)**: Sun-dried tomato paste / roasted rhubarb preserve (Sotolon).
+
+#### 10. Desiccated & Roasted Fruits (Hoshigaki Persimmon, Prune, Dried Date, Caramelized Jam)
+* **Volatility Weight**: Very Dense | **Profile Axis**: Sticky / Resinous / Caramelized
+* **Primary Engine**: Overdosed Damascones ($\beta$-Damascenone), Furaneol, Sotolon, Ethyl Vanillin
+* **Physical-Chemical Behavior**: Furanone/caramelized sugar mechanics; heavy resinous amber fixative.
+* **10-Facet Breakdown**:
+  * **F1 (Skin)**: Wrinkled, crystallized sugar bloom on dried persimmon skin.
+  * **F2 (Pith)**: Dry cellulosic preserve fiber wall.
+  * **F3 (Pulp)**: Concentrated jammy fruit paste core ($\beta$-Damascenone, $\beta$-Ionone).
+  * **F4 (Water)**: N/A (Dehydrated state).
+  * **F5 (Aril)**: Sticky caramelized seed coating envelope.
+  * **F6 (Sap)**: Dried tree gum resin bleed.
+  * **F7 (Seed)**: Roasted nut pit core (2,3,5-TMP, Cyclotene).
+  * **F8 (Calyx)**: Dry brittle persimmon calyx crown.
+  * **F9 (Ferment)**: Rummy port wine lees & fermented fig liqueur (Green Cognac Oil).
+  * **F10 (Desiccated)**: **Dominant Master Facet** — Maillard caramel, burnt sugar, Hoshigaki dried persimmon, prune paste (Furaneol, Sotolon, Coumarin).
+
