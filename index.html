@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #070708;
+            --bg-card: rgba(20, 20, 22, 0.75);
+            --bg-input: rgba(30, 30, 35, 0.8);
+            --text-primary: #f3f3f5;
+            --text-dim: #a0a0a5;
+            --gold-primary: #d4af37;
+            --gold-bright: #f9d71c;
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --accent-teal: #4ba6a6;
+            --accent-purple: #9b51e0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Google Sans Flex', 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(75, 166, 166, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 {
+            font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold-primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase;
+        }
+        .subtitle { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; margin-bottom: 20px; }
+        .nav-link-btn {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card);
+            border: 1px solid var(--border-gold); color: var(--gold-primary); padding: 8px 18px;
+            border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            transition: all 0.25s ease; margin-bottom: 20px;
+        }
+        .nav-link-btn:hover { background: var(--gold-primary); color: #000; box-shadow: 0 0 12px var(--gold-glow); }
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 28px; margin-bottom: 30px; backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .card-gold { border-color: var(--border-gold); box-shadow: 0 8px 32px 0 var(--gold-glow); }
+        .card-title { font-size: 1.35rem; font-weight: 700; color: var(--gold-primary); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 20px; border-left: 4px solid var(--gold-primary); padding-left: 15px; }
+        .mol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .mol-card { background: rgba(25, 25, 28, 0.8); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; }
+        .mol-card:hover { border-color: var(--border-gold); }
+        .mol-name { font-weight: 700; color: var(--gold-primary); font-size: 1.1rem; }
+        .mol-cas { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; }
+        .mono { font-family: 'Space Mono', monospace; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+        th { background: rgba(212, 175, 55, 0.1); color: var(--gold-primary); padding: 12px; border-bottom: 2px solid var(--border-gold); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
+        td { padding: 12px; border-bottom: 1px solid var(--border-color); }
+    </style>
+
+    <title>Perfumery Student Organ & Course Curriculum Portal</title>
+    <style>
+        .portal-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            background: linear-gradient(180deg, rgba(212,175,55,0.08) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-gold);
+            margin-bottom: 40px;
+            border-radius: 20px;
+        }
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 26px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .module-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-gold);
+            box-shadow: 0 10px 30px var(--gold-glow);
+        }
+        .module-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .module-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        .lesson-link-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        .lesson-link-list li {
+            margin-bottom: 10px;
+        }
+        .lesson-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(30, 30, 35, 0.6);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .lesson-link:hover {
+            background: var(--gold-primary);
+            color: #000;
+            border-color: var(--gold-bright);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portal-header">
+        <i class="fa-solid fa-flask-vial" style="font-size: 3.5rem; color: var(--gold-primary); margin-bottom: 15px;"></i>
+        <h1>The Architecture of Scent</h1>
+        <div class="subtitle">Structural Engineering Disguised as Art • Course Curriculum Portal</div>
+        <p style="max-width: 750px; margin: 0 auto; color: var(--text-dim); font-size: 0.95rem;">
+            Welcome to the interactive digital curriculum. Access all course modules, interactive chemical structure maps, volatility simulators, presentation slide decks, and lab manuals below.
+        </p>
+    </div>
+
+    <!-- Modules Grid -->
+    <div class="module-grid">
+        
+        <!-- Module 1 -->
+        <div class="module-card">
+            <div>
+                <div class="module-tag">Module 1</div>
+                <div class="module-title">The Olfactory Haiku & Lexicon of Form</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">Deconstructing traditional pyramid myths, mastering the Ellena Framework, and creating 2-part synthetic synergies.</p>
+                
+                <ul class="lesson-link-list">
+                    <li>
+                        <a href="lessons/lesson_1_1_scent_language.html" class="lesson-link">
+                            <span><i class="fa-solid fa-book-open"></i> Lesson 1.1: Scent Language</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons/lesson_1_2_olfactory_haiku.html" class="lesson-link">
+                            <span><i class="fa-solid fa-feather"></i> Lesson 1.2: Olfactory Haiku</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-card">
+            <div>
+                <div class="module-tag">Module 2</div>
+                <div class="module-title">The Functional Hierarchy (Physics for Artists)</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">Vapor pressure physics, molecular weights, the Architectural Casting System, and olfactory bridges.</p>
+                
+                <ul class="lesson-link-list">
+                    <li>
+                        <a href="lessons/lesson_2_1_volatility_roles.html" class="lesson-link">
+                            <span><i class="fa-solid fa-chart-line"></i> Lesson 2.1: Volatility Curve</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons/lesson_2_2_olfactory_bridges.html" class="lesson-link">
+                            <span><i class="fa-solid fa-bridge"></i> Lesson 2.2: Olfactory Bridges</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-card" style="border-color: var(--border-gold);">
+            <div>
+                <div class="module-tag" style="color: var(--gold-bright);">Module 4 • Advanced</div>
+                <div class="module-title">Engineering Spatial Volume & Trace Chemistry</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">Trace sulfur engineering at picogram thresholds, super-amber engines, and 10-facet botanical fruit architecture.</p>
+                
+                <ul class="lesson-link-list">
+                    <li>
+                        <a href="lessons/lesson_4_3_sulfur_dynamics.html" class="lesson-link">
+                            <span><i class="fa-solid fa-atom"></i> Lesson 4.3: Sulfur Dynamics</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons/lesson_4_4_10_facet_botanical_lifecycle_map.html" class="lesson-link">
+                            <span><i class="fa-solid fa-cubes"></i> Lesson 4.4: 10-Facet Fruit Map</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons/slides_lesson_4_4_10_facet_map.html" class="lesson-link" style="background: rgba(212,175,55,0.15); border-color: var(--border-gold);">
+                            <span><i class="fa-solid fa-presentation-screen"></i> Slides: 10-Facet Map Deck</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
