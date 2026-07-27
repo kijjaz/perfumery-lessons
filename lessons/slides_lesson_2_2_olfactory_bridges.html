@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2.2: Olfactory Bridges Presentation Deck</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #050508;
+            --bg-slide: #0b0b0f;
+            --bg-card: rgba(20, 20, 25, 0.85);
+            --text-primary: #f3f3f5;
+            --text-dim: #909095;
+            --gold-primary: #d4af37;
+            --gold-bright: #f9d71c;
+            --gold-glow: rgba(212, 175, 55, 0.2);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-teal: #4ba6a6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .deck-wrapper {
+            width: 95vw;
+            max-width: 1350px;
+            height: 90vh;
+            max-height: 820px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-container {
+            background: var(--bg-slide);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px var(--gold-glow);
+            flex: 1;
+            padding: 35px 45px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide-container.active { display: flex; }
+
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slide-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--gold-glow);
+            color: var(--gold-bright);
+            border: 1px solid var(--border-gold);
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .slide-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .slide-full { grid-template-columns: 1fr; }
+
+        .origin-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding: 0 10px;
+        }
+
+        .btn-nav {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-primary);
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            background: var(--gold-primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .progress-bar-container {
+            width: 250px;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright));
+            width: 16%;
+            transition: width 0.3s ease;
+        }
+
+        .slide-num-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <div class="deck-wrapper">
+
+            <!-- Slide 1: Title -->
+            <div class="slide-container active" id="slide-1">
+                <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding: 40px;">
+                    <div style="font-size: 3rem; font-weight: 800; color: var(--gold-primary); letter-spacing: -1px; margin-bottom: 10px; text-transform: uppercase;">
+                        OLFACTORY BRIDGES & SPATIAL COHESION
+                    </div>
+                    <div style="font-size: 1.3rem; color: #fff; font-weight: 400; margin-bottom: 20px;">Preventing Evaporative Gaps & Formula Fragmentation</div>
+                    <div style="font-size: 1rem; color: var(--text-dim); max-width: 750px; margin-bottom: 30px; line-height: 1.6;">
+                        Understanding polarity, boiling point intersections, and mechanical bridge insertion.
+                    </div>
+                    <div style="font-family: 'Space Mono', monospace; font-size: 0.85rem; color: var(--gold-primary); background: rgba(212,175,55,0.1); padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border-gold);">
+                        Phase 2: The Functional Hierarchy | Lesson 2.2
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Concept -->
+            <div class="slide-container " id="slide-2">
+                <div class="slide-header">
+                    <div class="slide-title">
+                        <i class="fa-solid fa-layer-group" style="color: var(--gold-primary);"></i> THE GAP COLLAPSE MECHANISM
+                    </div>
+                    <span class="slide-badge">Architectural Casting</span>
+                </div>
+                <div class="slide-body slide-full">
+                    <div class="origin-card" style="padding: 30px;">
+                        <h3 style="color: var(--gold-bright); font-size: 1.25rem; margin-bottom: 15px;">Why Top Notes and Base Notes Snap Apart</h3>
+                        <p style="font-size: 1rem; color: var(--text-dim); line-height: 1.6; white-space: pre-line;">
+                            Without a bridging material (e.g. Hydroxycitronellal or Linalool), volatile top notes evaporate quickly, leaving a hollow gap before heavy base fixatives warm up on skin.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Chemical Phenylethyl Alcohol (PEA) -->
+            <div class="slide-container " id="slide-3">
+                <div class="slide-header">
+                    <div class="slide-title">
+                        <i class="fa-solid fa-atom"></i> Phenylethyl Alcohol (PEA)
+                    </div>
+                    <span class="slide-badge">CAS 60-12-8</span>
+                </div>
+                <div class="slide-body">
+                    <div>
+                        <div class="origin-card" style="margin-bottom: 15px;">
+                            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 4px;">Odor Profile:</h4>
+                            <p style="color: var(--gold-bright); font-size: 1.05rem; font-weight: 700;">Fresh Honeyed Rose Petal & Dewy Floral Bridge</p>
+                        </div>
+                        <div class="origin-card" style="margin-bottom: 15px;">
+                            <h4 style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 4px;">Structural Role:</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-primary);">Classic floral bridge; smoothly bridges volatile citrus into heavy rose & musk bases.</p>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="origin-card" style="padding: 12px;">
+                                <span style="font-size: 0.75rem; color: var(--text-dim);">Threshold:</span>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold-bright); font-weight: 700; margin-top: 2px;">10 ppb</div>
+                            </div>
+                            <div class="origin-card" style="padding: 12px;">
+                                <span style="font-size: 0.75rem; color: var(--text-dim);">Dilution:</span>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--accent-teal); font-weight: 700; margin-top: 2px;">100% neat or 20% solution.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(10,10,12,0.9); border: 1px solid var(--border-gold); border-radius: 16px; padding: 25px; text-align: center;">
+                        <h4 style="color: var(--gold-primary); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;">2D Molecular Vector (RDKit)</h4>
+                        <div style="background: #000; padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; justify-content: center;">
+                            <?xml version='1.0' encoding='iso-8859-1'?>
+<svg version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='220px' height='140px' viewBox='0 0 220 140'>
+<!-- END OF HEADER -->
+<rect style='opacity:1.0;fill:#00000000;stroke:none' width='220.0' height='140.0' x='0.0' y='0.0'> </rect>
+<path class='bond-0 atom-0 atom-1' d='M 11.0,79.4 L 22.2,41.2' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 17.7,77.7 L 27.0,46.2' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 22.2,41.2 L 60.9,31.8' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 60.9,31.8 L 88.4,60.6' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 59.0,38.4 L 81.7,62.3' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-3 atom-4' d='M 88.4,60.6 L 77.2,98.8' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 77.2,98.8 L 38.5,108.2' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 72.4,93.8 L 40.4,101.6' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-5 atom-3 atom-6' d='M 88.4,60.6 L 127.1,51.3' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 127.1,51.3 L 154.5,80.1' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-7 atom-7 atom-8' d='M 154.5,80.1 L 186.8,72.3' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-8 atom-5 atom-0' d='M 38.5,108.2 L 11.0,79.4' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 11.6,77.5 L 11.0,79.4 L 12.4,80.8' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 21.7,43.1 L 22.2,41.2 L 24.2,40.7' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 59.0,32.3 L 60.9,31.8 L 62.3,33.2' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 77.7,96.9 L 77.2,98.8 L 75.2,99.3' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 40.4,107.7 L 38.5,108.2 L 37.1,106.8' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 125.2,51.7 L 127.1,51.3 L 128.5,52.7' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 153.2,78.7 L 154.5,80.1 L 156.2,79.7' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='atom-8' d='M 188.1 70.8
+Q 188.1 68.1, 189.4 66.5
+Q 190.7 65.0, 193.2 65.0
+Q 195.7 65.0, 197.1 66.5
+Q 198.4 68.1, 198.4 70.8
+Q 198.4 73.5, 197.1 75.1
+Q 195.7 76.6, 193.2 76.6
+Q 190.8 76.6, 189.4 75.1
+Q 188.1 73.5, 188.1 70.8
+M 193.2 75.3
+Q 195.0 75.3, 195.9 74.2
+Q 196.8 73.0, 196.8 70.8
+Q 196.8 68.5, 195.9 67.4
+Q 195.0 66.3, 193.2 66.3
+Q 191.5 66.3, 190.6 67.4
+Q 189.7 68.5, 189.7 70.8
+Q 189.7 73.0, 190.6 74.2
+Q 191.5 75.3, 193.2 75.3
+' fill='#D3AF38'/>
+<path class='atom-8' d='M 200.2 65.2
+L 201.7 65.2
+L 201.7 70.0
+L 207.5 70.0
+L 207.5 65.2
+L 209.0 65.2
+L 209.0 76.4
+L 207.5 76.4
+L 207.5 71.2
+L 201.7 71.2
+L 201.7 76.4
+L 200.2 76.4
+L 200.2 65.2
+' fill='#D3AF38'/>
+</svg>
+
+                        </div>
+                        <div style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-dim); margin-top: 10px;">SMILES: c1ccc(cc1)CCO</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Chemical Dihydromyrcenol -->
+            <div class="slide-container " id="slide-4">
+                <div class="slide-header">
+                    <div class="slide-title">
+                        <i class="fa-solid fa-atom"></i> Dihydromyrcenol
+                    </div>
+                    <span class="slide-badge">CAS 18479-58-8</span>
+                </div>
+                <div class="slide-body">
+                    <div>
+                        <div class="origin-card" style="margin-bottom: 15px;">
+                            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 4px;">Odor Profile:</h4>
+                            <p style="color: var(--gold-bright); font-size: 1.05rem; font-weight: 700;">Radiant Citrus Lime, Clean Metallic Fougère Spark</p>
+                        </div>
+                        <div class="origin-card" style="margin-bottom: 15px;">
+                            <h4 style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 4px;">Structural Role:</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-primary);">High-impact diffuser bridge; forces floral and woody notes to radiate instantly upon spraying.</p>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="origin-card" style="padding: 12px;">
+                                <span style="font-size: 0.75rem; color: var(--text-dim);">Threshold:</span>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 0.95rem; color: var(--gold-bright); font-weight: 700; margin-top: 2px;">12 ppb</div>
+                            </div>
+                            <div class="origin-card" style="padding: 12px;">
+                                <span style="font-size: 0.75rem; color: var(--text-dim);">Dilution:</span>
+                                <div style="font-family: 'Space Mono', monospace; font-size: 0.9rem; color: var(--accent-teal); font-weight: 700; margin-top: 2px;">100% neat.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(10,10,12,0.9); border: 1px solid var(--border-gold); border-radius: 16px; padding: 25px; text-align: center;">
+                        <h4 style="color: var(--gold-primary); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;">2D Molecular Vector (RDKit)</h4>
+                        <div style="background: #000; padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; justify-content: center;">
+                            <?xml version='1.0' encoding='iso-8859-1'?>
+<svg version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='220px' height='140px' viewBox='0 0 220 140'>
+<!-- END OF HEADER -->
+<rect style='opacity:1.0;fill:#00000000;stroke:none' width='220.0' height='140.0' x='0.0' y='0.0'> </rect>
+<path class='bond-0 atom-0 atom-1' d='M 11.0,49.9 L 41.7,67.6' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 41.7,67.6 L 41.7,103.0' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-1 atom-3' d='M 41.7,67.6 L 72.3,49.9' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-1 atom-3' d='M 47.0,70.7 L 72.3,56.1' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-3 atom-4' d='M 72.3,49.9 L 103.0,67.6' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 103.0,67.6 L 133.7,49.9' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-5 atom-5 atom-6' d='M 133.7,49.9 L 164.3,67.6' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 164.3,67.6 L 146.6,98.3' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-7 atom-6 atom-8' d='M 164.3,67.6 L 189.2,82.0' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-8 atom-6 atom-9' d='M 164.3,67.6 L 182.0,37.0' style='fill:none;fill-rule:evenodd;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 70.8,50.8 L 72.3,49.9 L 73.9,50.8' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 101.5,66.7 L 103.0,67.6 L 104.5,66.7' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 132.1,50.8 L 133.7,49.9 L 135.2,50.8' style='fill:none;stroke:#D3AF38;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='atom-8' d='M 190.4 85.4
+Q 190.4 83.0, 191.6 81.6
+Q 192.8 80.3, 195.0 80.3
+Q 197.2 80.3, 198.4 81.6
+Q 199.6 83.0, 199.6 85.4
+Q 199.6 87.8, 198.4 89.2
+Q 197.2 90.6, 195.0 90.6
+Q 192.8 90.6, 191.6 89.2
+Q 190.4 87.8, 190.4 85.4
+M 195.0 89.4
+Q 196.5 89.4, 197.3 88.4
+Q 198.2 87.4, 198.2 85.4
+Q 198.2 83.4, 197.3 82.4
+Q 196.5 81.4, 195.0 81.4
+Q 193.5 81.4, 192.6 82.4
+Q 191.8 83.4, 191.8 85.4
+Q 191.8 87.4, 192.6 88.4
+Q 193.5 89.4, 195.0 89.4
+' fill='#D3AF38'/>
+<path class='atom-8' d='M 201.2 80.4
+L 202.5 80.4
+L 202.5 84.6
+L 207.6 84.6
+L 207.6 80.4
+L 209.0 80.4
+L 209.0 90.4
+L 207.6 90.4
+L 207.6 85.8
+L 202.5 85.8
+L 202.5 90.4
+L 201.2 90.4
+L 201.2 80.4
+' fill='#D3AF38'/>
+</svg>
+
+                        </div>
+                        <div style="font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--text-dim); margin-top: 10px;">SMILES: CC(C)=CCCC(C)(O)C</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Lab -->
+            <div class="slide-container " id="slide-5">
+                <div class="slide-header">
+                    <div class="slide-title">
+                        <i class="fa-solid fa-flask"></i> LAB EXERCISE 2.2: BREAKING THE BRIDGE
+                    </div>
+                    <span class="slide-badge">Laboratory Exercise</span>
+                </div>
+                <div class="slide-body slide-full">
+                    <div class="origin-card" style="padding: 30px;">
+                        <h3 style="color: var(--gold-bright); font-size: 1.25rem; margin-bottom: 12px;">Systematic Removal of Structural Glue</h3>
+                        <p style="font-size: 1rem; color: var(--text-dim); line-height: 1.6;">Building a floral-woody accord and pulling the bridge to witness the instant evaporative collapse.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Summary -->
+            <div class="slide-container " id="slide-6">
+                <div class="slide-header">
+                    <div class="slide-title">
+                        <i class="fa-solid fa-award"></i> CONCLUSION & LESSON 2.2 SUMMARY
+                    </div>
+                    <span class="slide-badge">Lesson Complete</span>
+                </div>
+                <div class="slide-body slide-full">
+                    <div class="origin-card" style="padding: 30px; text-align: center;">
+                        <h3 style="color: var(--gold-bright); font-size: 1.4rem; margin-bottom: 12px;">Seamless Evaporative Continuity</h3>
+                        <p style="font-size: 1rem; color: var(--text-dim); max-width: 750px; margin: 0 auto 20px auto; line-height: 1.6;">Olfactory bridges ensure a smooth, continuous evaporative arc from bottle spray to skin drydown.</p>
+                    </div>
+                </div>
+            </div>
+            
+        <!-- Navigation Bar -->
+        <div class="nav-controls">
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-nav" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                <button class="btn-nav" onclick="toggleSlideGrid()" title="Jump to Slide (Grid)"><i class="fa-solid fa-table-cells-large"></i> Grid</button>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="progress-bar-container">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="slide-num-text" id="slideNum">Slide 1 / 6</span>
+            </div>
+            
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-nav" onclick="toggleFullscreen()" title="Fullscreen Mode [F]"><i class="fa-solid fa-expand"></i></button>
+                <button class="btn-nav" onclick="nextSlide()">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide Grid Modal Navigator -->
+    <div id="slideGridModal" style="display: none; position: fixed; inset: 0; background: rgba(5,5,8,0.92); backdrop-filter: blur(12px); z-index: 1000; justify-content: center; align-items: center; padding: 30px;">
+        <div style="background: var(--bg-slide); border: 1px solid var(--border-gold); border-radius: 20px; max-width: 950px; width: 100%; max-height: 85vh; padding: 25px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <h3 style="color: var(--gold-primary); font-size: 1.4rem; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-table-cells-large"></i> Jump to Presentation Slide
+                </h3>
+                <button class="btn-nav" onclick="toggleSlideGrid()"><i class="fa-solid fa-xmark"></i> Close</button>
+            </div>
+            
+            <div style="overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-right: 5px;" id="slideGridItems">
+                <!-- Populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 6;
+
+        function initGridModal() {
+            const container = document.getElementById('slideGridItems');
+            let html = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                html += `
+                <div onclick="jumpToSlide(${i})" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--gold-primary)';" onmouseout="this.style.borderColor='var(--border-color)';">
+                    <div style="font-size: 0.72rem; color: var(--gold-bright); font-weight: 700; margin-bottom: 4px;">SLIDE ${i}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-primary); line-height: 1.3;">Slide ${i}</div>
+                </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function toggleSlideGrid() {
+            const modal = document.getElementById('slideGridModal');
+            modal.style.display = (modal.style.display === 'none' || !modal.style.display) ? 'flex' : 'none';
+        }
+
+        function jumpToSlide(n) {
+            currentSlide = n;
+            updateSlide();
+            toggleSlideGrid();
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {});
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+            }
+        }
+
+        function updateSlide() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const s = document.getElementById(`slide-${i}`);
+                if (i === currentSlide) s.classList.add('active');
+                else s.classList.remove('active');
+            }
+            document.getElementById('slideNum').innerText = `Slide ${currentSlide} / ${totalSlides}`;
+            const pct = Math.round((currentSlide / totalSlides) * 100);
+            document.getElementById('progressFill').style.width = pct + '%';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) { currentSlide++; updateSlide(); }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) { currentSlide--; updateSlide(); }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            else if (e.key === 'ArrowLeft') prevSlide();
+            else if (e.key === 'g' || e.key === 'G' || e.key === 'm' || e.key === 'M') toggleSlideGrid();
+            else if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+            else if (e.key === 'Escape') document.getElementById('slideGridModal').style.display = 'none';
+        });
+
+        initGridModal();
+    </script>
+</body>
+</html>
