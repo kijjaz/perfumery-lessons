@@ -3491,7 +3491,10 @@ Q 23.0 28.5, 24.2 28.5
         
         <!-- Navigation Bar -->
         <div class="nav-controls">
-            <button class="btn-nav" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-nav" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+                <button class="btn-nav" onclick="toggleSlideGrid()" title="Jump to Slide (Grid)"><i class="fa-solid fa-table-cells-large"></i> Grid</button>
+            </div>
             
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div class="progress-bar-container">
@@ -3500,13 +3503,99 @@ Q 23.0 28.5, 24.2 28.5
                 <span class="slide-num-text" id="slideNum">Slide 1 / 24</span>
             </div>
             
-            <button class="btn-nav" onclick="nextSlide()">Next <i class="fa-solid fa-chevron-right"></i></button>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-nav" onclick="toggleFullscreen()" title="Fullscreen Mode [F]"><i class="fa-solid fa-expand"></i></button>
+                <button class="btn-nav" onclick="nextSlide()">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide Grid Modal Navigator -->
+    <div id="slideGridModal" style="display: none; position: fixed; inset: 0; background: rgba(5,5,8,0.92); backdrop-filter: blur(12px); z-index: 1000; justify-content: center; align-items: center; padding: 30px;">
+        <div style="background: var(--bg-slide); border: 1px solid var(--border-gold); border-radius: 20px; max-width: 950px; width: 100%; max-height: 85vh; padding: 25px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.9);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <h3 style="color: var(--gold-primary); font-size: 1.4rem; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-table-cells-large"></i> Jump to Presentation Slide
+                </h3>
+                <button class="btn-nav" onclick="toggleSlideGrid()"><i class="fa-solid fa-xmark"></i> Close</button>
+            </div>
+            
+            <div style="overflow-y: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-right: 5px;" id="slideGridItems">
+                <!-- Populated via JavaScript -->
+            </div>
         </div>
     </div>
 
     <script>
         let currentSlide = 1;
         const totalSlides = 24;
+
+        const slideTitles = [
+            "1. Title & Course Overview",
+            "2. Facet 1: Epicarp / Skin",
+            "3. Facet 2: Mesocarp / Pith",
+            "4. Facet 3: Fleshy Pulp",
+            "5. Facet 4: Aqueous Vacuole",
+            "6. Facet 5: Mucilage / Aril",
+            "7. Facet 6: Latex / Sap",
+            "8. Facet 7: Endocarp / Seed",
+            "9. Facet 8: Calyx / Stem",
+            "10. Facet 9: Fermentative State",
+            "11. Facet 10: Desiccated State",
+            "12. Master 10x10 Matrix Overview",
+            "13. Archetype 1: Stone Fruits",
+            "14. Archetype 2: Red Berries",
+            "15. Archetype 3: Tropical & Exotic",
+            "16. Archetype 4: Pome Fruits",
+            "17. Archetype 5: The Fig Illusion",
+            "18. Archetype 6: Cassis & Dark",
+            "19. Archetype 7: Aqueous Fruits",
+            "20. Archetype 8: Grape & Wild",
+            "21. Archetype 9: Savory / Vegetal",
+            "22. Archetype 10: Desiccated State",
+            "23. Volatility Waterfall Model",
+            "24. Conclusion & Lab Exercise"
+        ];
+
+        function initGridModal() {
+            const container = document.getElementById('slideGridItems');
+            let html = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const title = slideTitles[i-1] || `Slide ${i}`;
+                html += `
+                <div onclick="jumpToSlide(${i})" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='none';">
+                    <div style="font-size: 0.72rem; color: var(--gold-bright); font-weight: 700; margin-bottom: 4px;">SLIDE ${i}</div>
+                    <div style="font-size: 0.8rem; color: var(--text-primary); line-height: 1.3;">${title}</div>
+                </div>
+                `;
+            }
+            container.innerHTML = html;
+        }
+
+        function toggleSlideGrid() {
+            const modal = document.getElementById('slideGridModal');
+            if (modal.style.display === 'none' || !modal.style.display) {
+                modal.style.display = 'flex';
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        function jumpToSlide(n) {
+            currentSlide = n;
+            updateSlide();
+            toggleSlideGrid();
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {});
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
 
         function updateSlide() {
             for (let i = 1; i <= totalSlides; i++) {
@@ -3542,8 +3631,16 @@ Q 23.0 28.5, 24.2 28.5
                 nextSlide();
             } else if (e.key === 'ArrowLeft') {
                 prevSlide();
+            } else if (e.key === 'g' || e.key === 'G' || e.key === 'm' || e.key === 'M') {
+                toggleSlideGrid();
+            } else if (e.key === 'f' || e.key === 'F') {
+                toggleFullscreen();
+            } else if (e.key === 'Escape') {
+                document.getElementById('slideGridModal').style.display = 'none';
             }
         });
+
+        initGridModal();
     </script>
 </body>
 </html>
