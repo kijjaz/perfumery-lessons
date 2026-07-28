@@ -35,6 +35,18 @@
 \definecolor{BlueAccent}{HTML}{1F618D}
 \definecolor{TextDark}{HTML}{1C2833}
 
+% --- 10 FACET COLOR FINGERPRINT PALETTE ---
+\definecolor{pF1}{HTML}{4BA6A6}
+\definecolor{pF2}{HTML}{8AC926}
+\definecolor{pF3}{HTML}{FFCA3A}
+\definecolor{pF4}{HTML}{1982C4}
+\definecolor{pF5}{HTML}{9B51E0}
+\definecolor{pF6}{HTML}{2A9D8F}
+\definecolor{pF7}{HTML}{E76F51}
+\definecolor{pF8}{HTML}{52B788}
+\definecolor{pF9}{HTML}{F77F00}
+\definecolor{pF10}{HTML}{D4AF37}
+
 % --- TCOLORBOX STYLES (SOLID HIGH-CONTRAST BANNERS) ---
 \tcbset{
     boxrule=1.0pt,
@@ -222,6 +234,105 @@ The dashed orange vectors illustrate non-linear post-harvest transformations:
 }
 \caption{Topological lifecycle flow map of the 10 fruit facets showing non-overlapping spatial tissue sequencing and thermal post-harvest decay.}
 \label{fig:lifecycle}
+\end{figure}
+
+\vspace{1em}
+
+% ==========================================
+% FIGURE 2: FACET RATIO DONUT FINGERPRINTS
+% ==========================================
+\begin{figure}[htbp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+
+% --- LEGEND BAR (TOP) ---
+\node at (0, 3.2) [anchor=center] {%
+  \begin{tabular}{ccccc}
+    \textcolor{pF1}{$\blacksquare$} F1: Skin & \textcolor{pF2}{$\blacksquare$} F2: Pith & \textcolor{pF3}{$\blacksquare$} F3: Pulp & \textcolor{pF4}{$\blacksquare$} F4: Water & \textcolor{pF5}{$\blacksquare$} F5: Aril \\
+    \textcolor{pF6}{$\blacksquare$} F6: Sap & \textcolor{pF7}{$\blacksquare$} F7: Seed & \textcolor{pF8}{$\blacksquare$} F8: Calyx & \textcolor{pF9}{$\blacksquare$} F9: Ferment & \textcolor{pF10}{$\blacksquare$} F10: Desiccated
+  \end{tabular}
+};
+
+% --- DONUT 1: PEACH (Stone Fruit Archetype 1) ---
+\begin{scope}[shift={(-6,0)}]
+    % Slices
+    \fill[pF1] (0,0) -- (90:1.3) arc (90:36:1.3) -- cycle;    % 15%
+    \fill[pF2] (0,0) -- (36:1.3) arc (36:18:1.3) -- cycle;    % 5%
+    \fill[pF3] (0,0) -- (18:1.3) arc (18:-126:1.3) -- cycle;  % 40%
+    \fill[pF7] (0,0) -- (-126:1.3) arc (-126:-180:1.3) -- cycle; % 15%
+    \fill[pF9] (0,0) -- (-180:1.3) arc (-180:-216:1.3) -- cycle; % 10%
+    \fill[pF10] (0,0) -- (-216:1.3) arc (-216:-270:1.3) -- cycle; % 15%
+    % Center Hole
+    \fill[white] (0,0) circle (0.7);
+    \draw[line width=1pt, GoldDark] (0,0) circle (1.3);
+    \draw[line width=0.8pt, GoldDark] (0,0) circle (0.7);
+    \node at (0,0.12) {\bfseries\small Peach};
+    \node at (0,-0.18) {\tiny (Archetype 1)};
+\end{scope}
+
+% --- DONUT 2: STRAWBERRY (Red Berries Archetype 2) ---
+\begin{scope}[shift={(-3,0)}]
+    \fill[pF1] (0,0) -- (90:1.3) arc (90:36:1.3) -- cycle;    % 15%
+    \fill[pF3] (0,0) -- (36:1.3) arc (36:-108:1.3) -- cycle;  % 40%
+    \fill[pF4] (0,0) -- (-108:1.3) arc (-108:-162:1.3) -- cycle; % 15%
+    \fill[pF7] (0,0) -- (-162:1.3) arc (-162:-180:1.3) -- cycle; % 5%
+    \fill[pF8] (0,0) -- (-180:1.3) arc (-180:-234:1.3) -- cycle; % 15%
+    \fill[pF10] (0,0) -- (-234:1.3) arc (-234:-270:1.3) -- cycle; % 10%
+    \fill[white] (0,0) circle (0.7);
+    \draw[line width=1pt, GoldDark] (0,0) circle (1.3);
+    \draw[line width=0.8pt, GoldDark] (0,0) circle (0.7);
+    \node at (0,0.12) {\bfseries\small Berry};
+    \node at (0,-0.18) {\tiny (Archetype 2)};
+\end{scope}
+
+% --- DONUT 3: PASSIONFRUIT (Tropical Archetype 3) ---
+\begin{scope}[shift={(0,0)}]
+    \fill[pF1] (0,0) -- (90:1.3) arc (90:54:1.3) -- cycle;    % 10%
+    \fill[pF2] (0,0) -- (54:1.3) arc (54:18:1.3) -- cycle;    % 10%
+    \fill[pF3] (0,0) -- (18:1.3) arc (18:-54:1.3) -- cycle;   % 20%
+    \fill[pF5] (0,0) -- (-54:1.3) arc (-54:-180:1.3) -- cycle; % 35%
+    \fill[pF6] (0,0) -- (-180:1.3) arc (-180:-198:1.3) -- cycle; % 5%
+    \fill[pF9] (0,0) -- (-198:1.3) arc (-198:-270:1.3) -- cycle; % 20%
+    \fill[white] (0,0) circle (0.7);
+    \draw[line width=1pt, GoldDark] (0,0) circle (1.3);
+    \draw[line width=0.8pt, GoldDark] (0,0) circle (0.7);
+    \node at (0,0.12) {\bfseries\small Tropical};
+    \node at (0,-0.18) {\tiny (Archetype 3)};
+\end{scope}
+
+% --- DONUT 4: GREEN APPLE (Pome Archetype 4) ---
+\begin{scope}[shift={(3,0)}]
+    \fill[pF1] (0,0) -- (90:1.3) arc (90:-36:1.3) -- cycle;   % 35%
+    \fill[pF2] (0,0) -- (-36:1.3) arc (-36:-90:1.3) -- cycle; % 15%
+    \fill[pF3] (0,0) -- (-90:1.3) arc (-90:-216:1.3) -- cycle; % 35%
+    \fill[pF7] (0,0) -- (-216:1.3) arc (-216:-234:1.3) -- cycle; % 5%
+    \fill[pF9] (0,0) -- (-234:1.3) arc (-234:-270:1.3) -- cycle; % 10%
+    \fill[white] (0,0) circle (0.7);
+    \draw[line width=1pt, GoldDark] (0,0) circle (1.3);
+    \draw[line width=0.8pt, GoldDark] (0,0) circle (0.7);
+    \node at (0,0.12) {\bfseries\small Pome};
+    \node at (0,-0.18) {\tiny (Archetype 4)};
+\end{scope}
+
+% --- DONUT 5: FIG ILLUSION (Green/Woody Archetype 5) ---
+\begin{scope}[shift={(6,0)}]
+    \fill[pF1] (0,0) -- (90:1.3) arc (90:54:1.3) -- cycle;    % 10%
+    \fill[pF2] (0,0) -- (54:1.3) arc (54:18:1.3) -- cycle;    % 10%
+    \fill[pF3] (0,0) -- (18:1.3) arc (18:-54:1.3) -- cycle;   % 20%
+    \fill[pF6] (0,0) -- (-54:1.3) arc (-54:-180:1.3) -- cycle; % 35%
+    \fill[pF10] (0,0) -- (-180:1.3) arc (-180:-270:1.3) -- cycle; % 25%
+    \fill[white] (0,0) circle (0.7);
+    \draw[line width=1pt, GoldDark] (0,0) circle (1.3);
+    \draw[line width=0.8pt, GoldDark] (0,0) circle (0.7);
+    \node at (0,0.12) {\bfseries\small Fig};
+    \node at (0,-0.18) {\tiny (Archetype 5)};
+\end{scope}
+
+\end{tikzpicture}%
+}
+\caption{Facet Olfactory Ratio Donut Charts (Visual Color Fingerprints) showing 3D anatomical volume distribution across representative Fruit Archetype families.}
+\label{fig:donuts}
 \end{figure}
 
 \newpage
