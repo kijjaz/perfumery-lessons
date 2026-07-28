@@ -89,6 +89,9 @@
     <div class="card">
         <h3 style="color: var(--gold-primary); margin-bottom: 10px;">1.1 The Olfactory Haiku Paradigm</h3>
         <p style="margin-bottom: 15px;">An <strong>Olfactory Haiku</strong> is a formula of only 2 to 3 molecules that interact to form a vivid, figurative illusion (e.g. green tea, bitter grapefruit, peach skin) using negative space.</p>
+        
+        <h3 style="color: var(--gold-primary); margin-top: 20px; margin-bottom: 10px;">1.2 The Trace Natural Bridge (&lt;1% Dosing)</h3>
+        <p style="margin-bottom: 15px;">Synthetic Haikus are architecturally sharp, but can sometimes feel sterile or 2-dimensional. Adding a micro-trace of a natural essential oil like <strong>Ylang Ylang Extra EO (0.1% to 0.5%)</strong> introduces hundreds of organic trace ester & sesquiterpene impurities. At &lt;1%, it does NOT turn the blend heavy floral; instead, it rounds off synthetic edges and breathes living botanical warmth into the minimalist skeleton.</p>
     </div>
 
     <!-- Interactive Haiku Builder -->
@@ -98,8 +101,9 @@
         <select id="haikuSelect" style="width:100%; background:var(--bg-input); border:1px solid var(--border-gold); color:var(--text-primary); padding:12px; border-radius:8px; font-size:1rem; font-family:'Space Mono';" onchange="updateHaiku()">
             <option value="tea">Option A: The Green Tea (Hedione 70% + Beta-Ionone 30%)</option>
             <option value="grapefruit">Option B: The Bitter Grapefruit (Methyl Pamplemousse 60% + Rhubofix 40%)</option>
-            <option value="peach">Option C: The Peach Skin (Aldehyde C14 40% + Velvione 60%)</option>
+            <option value="peach">Option C: The Tactile Peach Skin (Aldehyde C14 40% + Velvione 60%)</option>
             <option value="freesia">Option D: The Dewy Freesia (Hedione 80% + Linalool 20%)</option>
+            <option value="living_freesia">Option E: The Living Freesia (Hedione 79.7% + Linalool 20% + Ylang Ylang EO 0.3%)</option>
         </select>
 
         <div id="haikuResult" style="background:rgba(10,10,12,0.9); border:1px solid var(--border-gold); border-radius:12px; padding:20px; margin-top:20px;">
@@ -128,6 +132,11 @@
                 title: "Option D: The Dewy Freesia Nectar",
                 materials: "Hedione (80%) + Linalool (20%)",
                 desc: "Combining airy radiant Hedione with fresh woody-floral Linalool generates an ultra-clean, dewy freesia flower petal sillage."
+            },
+            living_freesia: {
+                title: "Option E: The Living Freesia (Trace Natural Bridge)",
+                materials: "Hedione (79.7%) + Linalool (20%) + Ylang Ylang Extra EO (0.3%)",
+                desc: "Demonstrates the power of trace naturals (<1%). Adding just 0.3% Ylang Ylang Extra EO introduces organic micro-esters (Methyl Benzoate, Benzyl Acetate) that round off Hedione/Linalool synthetic lines, transforming a 2D Haiku into a living 3D flower bloom!"
             }
         };
 
