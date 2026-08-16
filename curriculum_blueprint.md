@@ -1,5 +1,5 @@
 # The Architecture of Scent: Course Curriculum
-**Subtitle:** Structural Engineering Disguised as Art (An Ellena-Inspired Paradigm)
+**Subtitle:** Structural Engineering Disguised as Art
 
 ---
 
@@ -9,7 +9,7 @@ Traditional perfumery education forces a choice between dry, uninspiring organic
 
 This course represents a third path: **Structural Engineering Disguised as Art**.
 
-Using the minimalist, illusionary aesthetic philosophy of Jean-Claude Ellena as our creative lens, we discard the rigid, outdated "Olfactory Pyramid" (Top/Middle/Base) and replace it with a **Functional, Architectural Hierarchy**. Students learn to treat aroma chemicals as physical building blocks characterized by vapor pressure, threshold, and molecular geometry, using digital visualization tools to master the mechanics of scent.
+Using a modern, illusion-driven aesthetic framework as our creative lens, we discard the rigid, outdated "Olfactory Pyramid" (Top/Middle/Base) and replace it with a **Functional, Architectural Hierarchy**. Students learn to treat aroma chemicals as physical building blocks characterized by vapor pressure, threshold, and molecular geometry, using digital visualization tools to master the mechanics of scent.
 
 ---
 
@@ -23,11 +23,11 @@ Throughout this course, students do not formulate in the dark. They actively use
 
 ## Module 1: The Olfactory Haiku & The Lexicon of Form
 
-Before teaching complex structures, students must understand that **perfumery is the art of illusion, not replication**. Jean-Claude Ellena's genius lies in using a minimalist vocabulary to suggest complex natural realities. This module focuses on decoding scent aesthetics and executing immediate, high-impact "Olfactory Haikus."
+Before teaching complex structures, students must understand that **perfumery is the art of illusion, not replication**. The power of modern formulation lies in using a disciplined, minimalist vocabulary to suggest complex natural realities. This module focuses on decoding scent aesthetics and executing immediate, high-impact "Olfactory Haikus."
 
 ### Theory
 * **The Death of the Pyramid:** Why the Top/Middle/Base classification fails in modern chemistry.
-* **The Ellena Framework:** Classifying scents into *Classicals* (archetypal geometry), *Baroques* (tension and spatial volume), *Minimalists* (transparent aura), and *Abstracts* (synthetic blocks).
+* **Structural Aesthetic Archetypes:** Classifying scents into *Classicals* (archetypal geometry), *Baroques* (tension and spatial volume), *Minimalists* (transparent aura), and *Abstracts* (synthetic blocks).
 * **The Art of the Shortcut:** Understanding how the human brain fills in olfactory gaps.
 
 ### Lab Exercises
@@ -109,4 +109,4 @@ Students must submit:
    * The functional role of each ingredient.
    * Real-time cost calculations (adhering to a maximum budget of $80/kg).
    * A screenshot of the formula's topology mapped in the **3D Molecular Space** to prove structural balance.
-3. **The Aesthetic Statement:** A short, written critique of their own work through the lens of Ellena's philosophy.
+3. **The Aesthetic Statement:** A short, written critique of their own work through the lens of modern functional aesthetics.

@@ -7,7 +7,7 @@
 [![RDKit Chemistry](https://img.shields.io/badge/Chemistry-RDKit%20Vector%20SVGs-4ba6a6?style=for-the-badge)](https://kijjaz.github.io/perfumery-lessons/lessons/lesson_4_4_10_facet_botanical_lifecycle_map.html)
 
 > **"Structural Engineering Disguised as Art."**  
-> An open-access, non-commercial curriculum for modern fragrance design, combining physical chemistry, evaporation kinetics, 3D botanical mapping, and Jean-Claude Ellena's minimalist aesthetics.
+> An open-access, non-commercial curriculum for modern fragrance design, combining physical chemistry, evaporation kinetics, 3D botanical mapping, and minimalist formulation principles.
 
 ---
 
@@ -22,7 +22,7 @@ Access the live, interactive web curriculum directly on **GitHub Pages**:
 ## 📚 Curriculum Breakdown & Interactive Web Apps
 
 ### 🟢 Module 1: The Olfactory Haiku & Lexicon of Form
-Deconstructing traditional marketing pyramids, mastering the Ellena Framework, and formulating 2-part synthetic synergies using negative space.
+Deconstructing traditional marketing pyramids, mastering structural aesthetic archetypes, and formulating 2-part synthetic synergies using negative space.
 * 📖 **[Lesson 1.1: Scent Language & Olfactory Training](https://kijjaz.github.io/perfumery-lessons/lessons/lesson_1_1_scent_language.html)** — Master mouillette techniques, ORN nasal pathways, and objective sensory descriptors.
 * 🪶 **[Lesson 1.2: The Olfactory Haiku & Scent Aesthetics](https://kijjaz.github.io/perfumery-lessons/lessons/lesson_1_2_olfactory_haiku.html)** — Includes the interactive **Olfactory Haiku Formula Builder Widget**.
 
