@@ -7,7 +7,7 @@
 [![RDKit Chemistry](https://img.shields.io/badge/Chemistry-RDKit%20Vector%20SVGs-4ba6a6?style=for-the-badge)](https://kijjaz.github.io/perfumery-lessons/lessons/lesson_4_4_10_facet_botanical_lifecycle_map.html)
 
 > **"Structural Engineering Disguised as Art."**  
-> An open-access, rigorous curriculum for modern fragrance design, combining physical chemistry, evaporation kinetics, 3D anatomical fruit mapping, and Jean-Claude Ellena's minimalist aesthetics.
+> An open-access, non-commercial curriculum for modern fragrance design, combining physical chemistry, evaporation kinetics, 3D botanical mapping, and Jean-Claude Ellena's minimalist aesthetics.
 
 ---
 
