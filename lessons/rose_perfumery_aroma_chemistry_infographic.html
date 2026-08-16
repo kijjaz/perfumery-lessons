@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Perfumer's Palette: Aroma Chemistry of Rose</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            roseTheme: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              300: '#fda4af',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              800: '#9f1239',
+              900: '#881337',
+              950: '#4c0519',
+            },
+            botanical: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              200: '#bbf7d0',
+              300: '#86efac',
+              500: '#22c55e',
+              700: '#15803d',
+              900: '#14532d'
+            },
+            goldTheme: {
+              primary: '#d4af37',
+              bright: '#f9d71c',
+              glow: 'rgba(212, 175, 55, 0.15)',
+              border: 'rgba(212, 175, 55, 0.3)'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #faf6f0;
+      color: #27211e;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .serif-title {
+      font-family: 'Cinzel', serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f3ece1;
+      border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #f43f5e;
+      border-radius: 10px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(244, 63, 94, 0.18);
+    }
+    .tab-btn.active {
+      border-color: #e11d48;
+      background-color: #ffffff;
+      color: #881337;
+      box-shadow: 0 4px 14px rgba(225, 29, 72, 0.14);
+    }
+    .extract-tab.active {
+      background-color: #881337;
+      color: #ffffff;
+      border-color: #881337;
+    }
+  </style>
+</head>
+<body class="p-2 sm:p-4 md:p-8 min-h-screen">
+
+  <!-- Portal Navigation Bar -->
+  <div class="max-w-7xl mx-auto w-full mb-3 px-2 flex items-center justify-between">
+    <a href="../index.html" class="inline-flex items-center gap-2 text-roseTheme-900 hover:text-roseTheme-950 bg-white/90 hover:bg-white px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 border border-roseTheme-200 shadow-sm backdrop-blur-sm">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Course Portal
+    </a>
+    <span class="text-xs text-roseTheme-800/80 font-medium hidden sm:inline-block">The Architecture of Scent • Botanical Atlas</span>
+  </div>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto w-full overflow-hidden bg-white/75 rounded-3xl shadow-xl border border-roseTheme-200 p-4 sm:p-6 md:p-10 my-4">
+
+    <!-- Header & Intro -->
+    <header class="text-center max-w-4xl mx-auto mb-12 px-2">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-roseTheme-100 text-roseTheme-800 text-xs font-semibold uppercase tracking-wider mb-4 border border-roseTheme-300">
+        <i data-lucide="sparkles" class="w-4 h-4 text-roseTheme-600"></i> Perfumer's Olfactory Atlas • Botanical Case Study
+      </div>
+      <h1 class="serif-title text-3xl md:text-5xl font-bold text-roseTheme-950 mb-4 tracking-tight break-words">
+        The Aroma Chemistry of Rose
+      </h1>
+      <p class="text-roseTheme-900 text-base md:text-lg leading-relaxed font-light">
+        Deconstructing the Queen of Perfumery (<em class="font-serif">Rosa damascena & Rosa centifolia</em>). Explore how bulk monoterpene alcohols, picogram carotenoid ketones, and trace sulfur molecules govern the transition from dewy white petals to opulent crimson velvet and smoky gothic woods.
+      </p>
+
+      <!-- Key Paradox Callout -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+        <div class="bg-roseTheme-50/70 p-4 rounded-2xl border border-roseTheme-200">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="p-2 bg-roseTheme-100 text-roseTheme-700 rounded-lg text-lg">🧪</span>
+            <h4 class="font-bold text-roseTheme-950 text-sm">The 85% Volume Engine</h4>
+          </div>
+          <p class="text-xs text-roseTheme-800 leading-relaxed">
+            <strong>PEA, Citronellol, Geraniol & Nerol</strong> make up the physical body, evaporation curve, and petal texture.
+          </p>
+        </div>
+
+        <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="p-2 bg-amber-100 text-amber-700 rounded-lg text-lg">⚡</span>
+            <h4 class="font-bold text-amber-950 text-sm">The 0.1% Nuclear Key</h4>
+          </div>
+          <p class="text-xs text-amber-900 leading-relaxed">
+            <strong>$\beta$-Damascenone</strong> (threshold: 0.009 ng/L) delivers >70% of natural perceived radiance and jammy fruit vibrancy.
+          </p>
+        </div>
+
+        <div class="bg-botanical-50/70 p-4 rounded-2xl border border-botanical-200">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="p-2 bg-botanical-100 text-botanical-700 rounded-lg text-lg">🌿</span>
+            <h4 class="font-bold text-botanical-950 text-sm">The Sparkle & Thorns</h4>
+          </div>
+          <p class="text-xs text-botanical-900 leading-relaxed">
+            <strong>cis-Rose Oxide</strong> provides the cold, metallic lychee lift, while <strong>cis-3-Hexenyl acetate</strong> builds stem realism.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Extraction Physics & GC-MS Partition Mechanics -->
+    <section class="mb-14">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-roseTheme-800 text-white font-bold text-sm">1</span>
+        <h2 class="serif-title text-2xl md:text-3xl font-bold text-roseTheme-950">
+          The Extraction Dilemma: Otto vs. Absolute vs. Living Petals
+        </h2>
+      </div>
+      <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
+        Why does pure steam-distilled Rose Otto smell sharp, crisp, and fresh, while Rose Absolute smells heavy, waxy, and rich? The secret is <strong>aqueous partition physics</strong> during hydro-distillation.
+      </p>
+
+      <!-- Interactive Extraction Viewer -->
+      <div class="glass-card rounded-2xl p-4 sm:p-6 border border-roseTheme-200 shadow-sm">
+        <div class="flex items-center justify-center gap-2 mb-6 flex-wrap">
+          <button onclick="setExtractionMode('headspace')" id="ext-headspace" class="extract-tab active px-4 py-2 rounded-xl text-xs md:text-sm font-semibold border border-roseTheme-300 transition-all">
+            🌸 Living Rose Headspace (SPME)
+          </button>
+          <button onclick="setExtractionMode('otto')" id="ext-otto" class="extract-tab px-4 py-2 rounded-xl text-xs md:text-sm font-semibold border border-roseTheme-300 transition-all">
+            💧 Rose Otto (Steam Distillation)
+          </button>
+          <button onclick="setExtractionMode('absolute')" id="ext-absolute" class="extract-tab px-4 py-2 rounded-xl text-xs md:text-sm font-semibold border border-roseTheme-300 transition-all">
+            🍯 Rose Absolute (Solvent Extraction)
+          </button>
+        </div>
+
+        <div id="extraction-display" class="space-y-4">
+          <!-- Dynamically Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: The Color-Synesthetic Rose Spectrum in Fashion & Perfumery -->
+    <section class="mb-14">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-roseTheme-800 text-white font-bold text-sm">2</span>
+        <h2 class="serif-title text-2xl md:text-3xl font-bold text-roseTheme-950">
+          The Color-Synesthetic Rose Spectrum in Perfumery
+        </h2>
+      </div>
+      <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
+        In fine fragrance history, rose colors are not merely decorative—they evoke distinct <strong>chemical architectures</strong>, evocative moods, and fashion aesthetics. Select an archetype below to explore its aroma molecules and formulation blueprint:
+      </p>
+
+      <!-- Color Archetype Tabs -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
+        <button onclick="selectRose('white')" id="tab-white" class="tab-btn active p-3 rounded-2xl border border-gray-200 bg-white/70 flex flex-col items-center gap-1.5 transition text-center hover:bg-white">
+          <span class="text-2xl">🤍</span>
+          <span class="text-xs font-bold text-gray-800">White Rose</span>
+          <span class="text-[10px] text-gray-500 font-medium">Dewy • Crystalline</span>
+        </button>
+
+        <button onclick="selectRose('pink')" id="tab-pink" class="tab-btn p-3 rounded-2xl border border-roseTheme-200 bg-white/70 flex flex-col items-center gap-1.5 transition text-center hover:bg-white">
+          <span class="text-2xl">🌸</span>
+          <span class="text-xs font-bold text-roseTheme-900">Pink Rose de Mai</span>
+          <span class="text-[10px] text-roseTheme-600 font-medium">Romantic • Honeyed</span>
+        </button>
+
+        <button onclick="selectRose('crimson')" id="tab-crimson" class="tab-btn p-3 rounded-2xl border border-red-200 bg-white/70 flex flex-col items-center gap-1.5 transition text-center hover:bg-white">
+          <span class="text-2xl">🌹</span>
+          <span class="text-xs font-bold text-red-950">Crimson Velvet</span>
+          <span class="text-[10px] text-red-700 font-medium">Opulent • Wine</span>
+        </button>
+
+        <button onclick="selectRose('yellow')" id="tab-yellow" class="tab-btn p-3 rounded-2xl border border-amber-200 bg-white/70 flex flex-col items-center gap-1.5 transition text-center hover:bg-white">
+          <span class="text-2xl">💛</span>
+          <span class="text-xs font-bold text-amber-950">Yellow Tea Rose</span>
+          <span class="text-[10px] text-amber-700 font-medium">Solar • Apricot</span>
+        </button>
+
+        <button onclick="selectRose('green')" id="tab-green" class="tab-btn p-3 rounded-2xl border border-botanical-200 bg-white/70 flex flex-col items-center gap-1.5 transition text-center hover:bg-white">
+          <span class="text-2xl">🌿</span>
+          <span class="text-xs font-bold text-botanical-900">Green & Thorny</span>
+          <span class="text-[10px] text-botanical-700 font-medium">Stem • Crushed Sap</span>
+        </button>
+
+        <button onclick="selectRose('black')" id="tab-black" class="tab-btn p-3 rounded-2xl border border-stone-300 bg-white/70 flex flex-col items-center gap-1.5 transition text-center hover:bg-white">
+          <span class="text-2xl">🖤</span>
+          <span class="text-xs font-bold text-stone-950">Black Gothic Rose</span>
+          <span class="text-[10px] text-stone-600 font-medium">Midnight • Oud & Smoke</span>
+        </button>
+      </div>
+
+      <!-- Dynamic Archetype Viewport -->
+      <div id="rose-content-display" class="glass-card rounded-3xl p-5 sm:p-8 border border-roseTheme-200 shadow-md">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: The Master Chemical Matrix -->
+    <section class="mb-14">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-roseTheme-800 text-white font-bold text-sm">3</span>
+        <h2 class="serif-title text-2xl md:text-3xl font-bold text-roseTheme-950">
+          The Perfumer's Master Chemical Comparison Matrix
+        </h2>
+      </div>
+      <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-6">
+        Analytical reference table of key rose aroma chemicals, their Odor Detection Thresholds (ODT), chemical pathways, and modern IFRA compliance guidance.
+      </p>
+
+      <div class="overflow-x-auto rounded-2xl border border-roseTheme-200 shadow-sm bg-white/80 custom-scrollbar">
+        <table class="w-full text-left text-sm border-collapse">
+          <thead>
+            <tr class="bg-roseTheme-900 text-white font-serif text-xs uppercase tracking-wider">
+              <th class="p-4">Molecule Name</th>
+              <th class="p-4">CAS Number</th>
+              <th class="p-4">Odor Threshold (Air/Water)</th>
+              <th class="p-4">Key Sensory Facet</th>
+              <th class="p-4">IFRA / Regulatory Status</th>
+              <th class="p-4">Natural Origin vs. Perfumer Technique</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-roseTheme-100 text-gray-800 text-xs md:text-sm">
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Phenyl Ethyl Alcohol (PEA)</td>
+              <td class="p-4 font-mono text-xs">60-12-8</td>
+              <td class="p-4 font-mono text-xs text-amber-700">1 – 10 ppb</td>
+              <td class="p-4">Fresh rosewater, clean petal stem, honeyed drydown</td>
+              <td class="p-4 text-emerald-700 font-semibold">Unrestricted</td>
+              <td class="p-4">Abundant in fresh petals & Absolute; lost during steam distillation into rose hydrosol.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Citronellol</td>
+              <td class="p-4 font-mono text-xs">106-22-9</td>
+              <td class="p-4 font-mono text-xs text-amber-700">10 – 50 ppb</td>
+              <td class="p-4">Bright, clean, fresh rosy petal top-to-heart with subtle citrus lift</td>
+              <td class="p-4 text-amber-700 font-semibold">Allergen (EU Label)</td>
+              <td class="p-4">Dominant alcohol in Rose Otto (35–45%). Forms the core backbone of all modern rose accords.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Geraniol</td>
+              <td class="p-4 font-mono text-xs">106-24-1</td>
+              <td class="p-4 font-mono text-xs text-amber-700">4 – 10 ppb</td>
+              <td class="p-4">Warm, rich, deep floral-geranium rose heart with sweet undertones</td>
+              <td class="p-4 text-amber-700 font-semibold">Allergen (EU Label)</td>
+              <td class="p-4">Key natural isomer; pairs with Citronellol in a classic 1:2 ratio for realistic petal body.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Nerol</td>
+              <td class="p-4 font-mono text-xs">106-25-2</td>
+              <td class="p-4 font-mono text-xs text-amber-700">20 – 50 ppb</td>
+              <td class="p-4">Crisp, sea-breeze marine-rosy, greener and fresher than Geraniol</td>
+              <td class="p-4 text-emerald-700 font-semibold">Unrestricted</td>
+              <td class="p-4">Natural geometric (Z)-isomer of Geraniol. Essential for crisp dewy morning rose facets.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">cis-Rose Oxide</td>
+              <td class="p-4 font-mono text-xs">16409-43-1</td>
+              <td class="p-4 font-mono text-xs text-roseTheme-700 font-bold">0.5 ppb</td>
+              <td class="p-4">Cold metallic sparkle, lychee rind, crushed green leaf radiance</td>
+              <td class="p-4 text-emerald-700 font-semibold">Safe at typical trace levels</td>
+              <td class="p-4">Potent top note impact molecule. Discovered by Firmenich in 1959. Dosed at 0.1%–1% dilutions.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">$\beta$-Damascenone</td>
+              <td class="p-4 font-mono text-xs">23696-85-7</td>
+              <td class="p-4 font-mono text-xs text-roseTheme-700 font-bold">0.009 ng/L (0.009 ppb)</td>
+              <td class="p-4">Nuclear jammy stewed apple, prune, blackcurrant, and dark red wine radiance</td>
+              <td class="p-4 text-roseTheme-700 font-semibold">IFRA Restricted (~0.043% in Cat 4)</td>
+              <td class="p-4">Carotenoid degradation product (Demole & Kovats, 1970). Single most powerful natural rose impact key.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">$\beta$-Damascone</td>
+              <td class="p-4 font-mono text-xs">23726-91-2</td>
+              <td class="p-4 font-mono text-xs text-roseTheme-700 font-bold">0.1 ppb</td>
+              <td class="p-4">Rich plum, dried apricot, warm tobacco, and dark fruitiness</td>
+              <td class="p-4 text-roseTheme-700 font-semibold">IFRA Restricted (~0.043% in Cat 4)</td>
+              <td class="p-4">Powerful synthetic and natural rose ketone. Used in Guerlain Nahéma and Dior Poison.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Eugenol & Isoeugenol</td>
+              <td class="p-4 font-mono text-xs">97-53-0 / 97-54-1</td>
+              <td class="p-4 font-mono text-xs text-amber-700">10 ppb</td>
+              <td class="p-4">Spicy clove, warm carnation, vintage oriental velvet warmth</td>
+              <td class="p-4 text-amber-700 font-semibold">IFRA Restricted (Sensitizer)</td>
+              <td class="p-4">Natural phenolic trace in Rose Absolute. Anchors red velvet and oriental rose accords.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Methyl Eugenol</td>
+              <td class="p-4 font-mono text-xs">93-15-2</td>
+              <td class="p-4 font-mono text-xs text-amber-700">60 ppb</td>
+              <td class="p-4">Spicy-herbal, sweet ethereal carnation petal clarity</td>
+              <td class="p-4 text-red-700 font-bold">Strictly Restricted (&lt;0.0004% final)</td>
+              <td class="p-4">🧪 Synthetic Organ Alternative: Perfumers replace with Methyl Diantilis or safe eugenol derivatives.</td>
+            </tr>
+            <tr class="hover:bg-roseTheme-50/60 transition">
+              <td class="p-4 font-bold text-roseTheme-950 whitespace-nowrap">Phenylacetic Acid</td>
+              <td class="p-4 font-mono text-xs">103-82-2</td>
+              <td class="p-4 font-mono text-xs text-roseTheme-700 font-bold">1 ppb</td>
+              <td class="p-4">Animalic wild honey, beeswax, warm sensual petal undertone</td>
+              <td class="p-4 text-emerald-700 font-semibold">Unrestricted at low levels</td>
+              <td class="p-4">Natural constituent giving natural Rose de Mai its warm, living, honeyed breath (use at 1% dilution).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Perfumer's Compounding Rules & Takeaway -->
+    <footer class="bg-roseTheme-950 text-roseTheme-100 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-roseTheme-900 shadow-xl">
+      <div class="space-y-3">
+        <h3 class="serif-title text-xl font-bold text-white flex items-center gap-2">
+          <span>🌹</span> The Perfumer's Architectural Takeaway
+        </h3>
+        <p class="text-sm text-roseTheme-200 max-w-3xl leading-relaxed">
+          Formulating a convincing rose is an exercise in structural contrast. A flat synthetic blend smells like soap because it lacks the <strong>tension</strong> between the high-volume alcohols (Citronellol + Geraniol + PEA) and the micro-dose impact keys ($\beta$-Damascenone at $0.05\%$, *cis*-Rose Oxide at $0.1\%$, and trace Eugenol). By manipulating these ratios, you can command the entire spectrum from fresh dewy white buds to intoxicating oriental rose-oud masterpieces.
+        </p>
+      </div>
+      <div class="shrink-0 bg-roseTheme-900/80 px-5 py-3 rounded-2xl border border-roseTheme-800 text-center">
+        <span class="text-xs text-roseTheme-300 uppercase block tracking-wider font-semibold">Botanical Genus</span>
+        <span class="font-serif italic text-lg text-white">Rosa damascena / centifolia</span>
+      </div>
+    </footer>
+
+    <!-- Footer / License -->
+    <div class="mt-8 pt-6 border-t border-roseTheme-200 text-center text-xs text-roseTheme-900/80 leading-relaxed">
+      <p class="font-medium text-roseTheme-950 mb-1">The Perfumer's Palette: Aroma Chemistry of Rose</p>
+      <p>Part of <em>The Architecture of Scent</em> curriculum series by Kijjaz.</p>
+      <p class="mt-2 text-[11px] text-roseTheme-700">
+        Interactive tools under <a href="https://opensource.org/licenses/MIT" target="_blank" class="underline hover:text-roseTheme-950">MIT License</a> • 
+        Educational text & infographics under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="underline hover:text-roseTheme-950">CC BY-NC 4.0</a> (Attribution-NonCommercial).
+      </p>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Extraction Profiles Data
+    const extractionData = {
+      headspace: {
+        title: "Living Rose Petal Headspace (SPME / In-Vivo Trapping)",
+        subtitle: "Captured from living blossoms at 06:00 AM on the Kazanlak / Grasse bush.",
+        keyFeatures: [
+          "Preserves volatile top notes: trans-2-hexenal, hexanal, and cis-3-hexenyl acetate (fresh snapped petal crispness).",
+          "Highest concentration of natural cis-Rose Oxide and beta-Ionone before thermal degradation.",
+          "Balanced natural Phenyl Ethyl Alcohol (~20%) without the solvent artifacts of concrete processing."
+        ],
+        gcmsSummary: "PEA (20%) • Citronellol (15%) • Geraniol (10%) • cis-Rose Oxide (0.8%) • cis-3-Hexenyl Acetate (2.5%) • beta-Ionone (1.2%)",
+        colorBadge: "bg-emerald-100 text-emerald-800 border-emerald-300"
+      },
+      otto: {
+        title: "Rose Otto (Hydro-Steam Distillation of Rosa damascena)",
+        subtitle: "The precious golden oil distilled from copper alembics in Bulgaria and Turkey.",
+        keyFeatures: [
+          "The Hydrosol Trap: Phenyl Ethyl Alcohol (PEA) is water-soluble (~20 g/L) and mostly lost to the rose water, leaving only 1–3% in the essential oil.",
+          "Monoterpenols concentrate dramatically: Citronellol rises to 35–45% and Geraniol to 18–25%, giving Otto its crisp, diffusive, top-heavy lift.",
+          "High Paraffin Waxes (Stearoptenes: Nonadecane, Heneicosane 8–15%): Solidifies in cool room temperatures; acts as a natural physical fixative."
+        ],
+        gcmsSummary: "Citronellol (40%) • Geraniol (22%) • Nerol (8%) • Paraffin Waxes (12%) • PEA (2%) • beta-Damascenone (0.25%) • Rose Oxide (0.6%)",
+        colorBadge: "bg-amber-100 text-amber-800 border-amber-300"
+      },
+      absolute: {
+        title: "Rose Absolute (Hexane / Alcohol Extraction of Rosa centifolia & damascena)",
+        subtitle: "Dense, waxy, ruby-amber extraction retaining the complete heavy molecular soul of the blossom.",
+        keyFeatures: [
+          "The PEA Monolith: Solvent extraction fully captures Phenyl Ethyl Alcohol, which dominates 65% to 75% of the absolute.",
+          "Warm, honeyed, phenolic depth: Retains natural Eugenol, Methyl Eugenol, and trace Phenylacetic Acid.",
+          "Stearoptene-free: The waxes are eliminated during the alcohol washing phase, leaving a rich, velvety liquid that anchors oriental & chypre bases."
+        ],
+        gcmsSummary: "PEA (70%) • Citronellol (12%) • Geraniol (8%) • Eugenol (2%) • Phenylacetic Acid (0.5%) • beta-Damascone (0.1%)",
+        colorBadge: "bg-roseTheme-100 text-roseTheme-800 border-roseTheme-300"
+      }
+    };
+
+    // Color Archetype Data
+    const roseData = {
+      white: {
+        title: "White Rose (Rosa alba / Ethereal Dewy)",
+        color: "from-gray-50 to-rose-50",
+        badgeBg: "bg-gray-100 text-gray-800 border-gray-300",
+        vibe: "Crystalline morning dew, bridal silk, dewy green melon rind, translucent transparency, crisp clean air.",
+        perfumeRefs: "Byredo Rose of No Man's Land, Frederic Malle Rose Tonnerre (watery facets), Cartier Goutte de Rose.",
+        molecules: [
+          {
+            name: "cis-Rose Oxide (1% Dilution)",
+            cas: "16409-43-1",
+            isNatural: true,
+            note: "Metallic, cold, green lychee rind sparkle.",
+            perfumerTip: "Natural top-note spark. Essential for lifting dense rose alcohols into dewy morning air."
+          },
+          {
+            name: "Florol (Florosa / Pyranol)",
+            cas: "63500-71-0",
+            isNatural: false,
+            note: "Soft, petal-fresh, transparent muguet-rose with airy watercolor diffusion.",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Provides seamless white floral negative space without adding heaviness."
+          },
+          {
+            name: "cis-3-Hexenol (Leaf Alcohol)",
+            cas: "928-96-1",
+            isNatural: true,
+            note: "Freshly snapped green stems, wet morning lawn.",
+            perfumerTip: "Use at < 0.5% to create the illusion of cold water droplets clinging to raw petals."
+          },
+          {
+            name: "Habanolide & Ambrettolide",
+            cas: "111879-80-2 / 28645-51-4",
+            isNatural: false,
+            note: "Macrocyclic transparent musks with waxy, radiant silk undertones.",
+            perfumerTip: "🧪 Synthetic Organ Anchor: Creates a soft, white-linen diffusion that extends the life of delicate white roses."
+          }
+        ],
+        accordFormula: "Phenyl Ethyl Alcohol (PEA) (45) + Citronellol (15) + Florol (15) + Hedione (15) + cis-3-Hexenyl Salicylate (5) + Habanolide (3) + cis-Rose Oxide 1% (2)"
+      },
+      pink: {
+        title: "Pink Rose / Rose de Mai (Rosa centifolia)",
+        color: "from-rose-50 to-pink-100",
+        badgeBg: "bg-pink-100 text-pink-800 border-pink-300",
+        vibe: "Romantic Grasse heritage, honeyed pastel chiffon, velvety petal texture, delicate fruity sweetness.",
+        perfumeRefs: "Chanel No. 5 (Rose Heart), Dior Rose Gipsy, Guerlain Rose Chérie, Annick Goutal Ce Soir ou Jamais.",
+        molecules: [
+          {
+            name: "Phenyl Ethyl Alcohol (PEA)",
+            cas: "60-12-8",
+            isNatural: true,
+            note: "Classic rosewater, honeyed floral clarity with soft herbaceous stem.",
+            perfumerTip: "Forms the 55–65% structural body of classic Rose de Mai recreations."
+          },
+          {
+            name: "Phenyl Ethyl Acetate",
+            cas: "103-45-7",
+            isNatural: true,
+            note: "Sweet, honeyed, fruity-rosy top note reminiscent of peach and rose petals.",
+            perfumerTip: "Natural ester bridging PEA with fresh fruit notes in pink garden roses."
+          },
+          {
+            name: "Beta-Ionone",
+            cas: "14901-07-6",
+            isNatural: true,
+            note: "Velvety violet-petal powdery floralness with dried fruit nuance.",
+            perfumerTip: "Adds the tactile sensation of downy petal skin and classic cosmetic elegance."
+          },
+          {
+            name: "Phenylacetic Acid (1% Dilution)",
+            cas: "103-82-2",
+            isNatural: true,
+            note: "Sensual wild honey, beeswax, warm living blossom breath.",
+            perfumerTip: "Micro-dose trace material that prevents pink rose accords from smelling like synthetic soap."
+          }
+        ],
+        accordFormula: "Phenyl Ethyl Alcohol (PEA) (55) + Citronellol (20) + Geraniol (10) + Phenyl Ethyl Acetate (6) + Beta-Ionone (3) + Hedione (2) + Eugenol 10% (2) + Phenylacetic Acid 1% (1) + Beta-Damascenone 1% (1)"
+      },
+      crimson: {
+        title: "Crimson / Red Velvet Rose (Rosa damascena Mill.)",
+        color: "from-rose-100 to-red-100",
+        badgeBg: "bg-red-100 text-red-900 border-red-300",
+        vibe: "Opulent, dramatic theatricality, dark red wine, spicy carnation warmth, heavy baroque velvet.",
+        perfumeRefs: "Frederic Malle Portrait of a Lady, Guerlain Nahéma, Serge Lutens La Fille de Berlin, L'Artisan Voleur de Roses.",
+        molecules: [
+          {
+            name: "Beta-Damascenone (10% Dilution)",
+            cas: "23696-85-7",
+            isNatural: true,
+            note: "Dense jammy stewed apple, blackcurrant preserve, dark red wine.",
+            perfumerTip: "The nuclear heart of red velvet roses. Overdosing Damascenone creates the famous Nahéma / POAL wine-rose engine."
+          },
+          {
+            name: "Geraniol",
+            cas: "106-24-1",
+            isNatural: true,
+            note: "Deep, rich, warm floral-geranium heart.",
+            perfumerTip: "High geraniol content deepens the color perception from pastel pink to heavy crimson."
+          },
+          {
+            name: "Eugenol",
+            cas: "97-53-0",
+            isNatural: true,
+            note: "Spicy clove warmth, piquant vintage carnation facet.",
+            perfumerTip: "Natural phenolic trace in Bulgarian rose. Provides the spicy bite essential to red velvet petals."
+          },
+          {
+            name: "Clearwood / Patchoulol",
+            cas: "84650-60-2",
+            isNatural: false,
+            note: "Clean, transparent, non-earthy synthetic patchouli terpene alcohol.",
+            perfumerTip: "🧪 Modern Organ Anchor: Classic chypre pairing that extends crimson rose into dark, sophisticated woodiness."
+          }
+        ],
+        accordFormula: "Citronellol (30) + Geraniol (25) + Phenyl Ethyl Alcohol (20) + Clearwood (10) + Geranyl Acetate (8) + Eugenol (4) + Beta-Damascenone 10% (3)"
+      },
+      yellow: {
+        title: "Yellow & Tea Rose (Rosa odorata / Solar Fruity)",
+        color: "from-amber-50 to-yellow-100",
+        badgeBg: "bg-yellow-100 text-yellow-900 border-yellow-300",
+        vibe: "Golden sunlight, ripe apricot nectar, peach skin, dry tea leaves, sparkling citrus-linalool lift.",
+        perfumeRefs: "Hermès Rose Ikebana, Byredo Pulp, Jo Malone Red Roses (fresh tea facets), L'Occitane Rose 4 Reines.",
+        molecules: [
+          {
+            name: "Theaspiro-compounds & Dihydro-beta-ionone",
+            cas: "36431-72-8 / 17283-81-7",
+            isNatural: true,
+            note: "Dried black tea leaves, warm woody-apricot floral facets.",
+            perfumerTip: "Key natural markers of Yellow Tea Roses inherited from Chinese Camellia ancestry."
+          },
+          {
+            name: "Gamma-Undecalactone (Aldehyde C-14)",
+            cas: "104-67-6",
+            isNatural: false,
+            note: "Velvety ripe peach skin, creamy apricot warmth.",
+            perfumerTip: "🧪 Synthetic Organ Staple: Synthesized in 1908 (Mitsouko). Blends with Damascones to create golden solar rose petals."
+          },
+          {
+            name: "Ethyl Linalool",
+            cas: "10339-55-6",
+            isNatural: false,
+            note: "Smooth, sparkling, non-allergenic citrus-floral modifier.",
+            perfumerTip: "🧪 Modern Replacement: Imparts sunny radiance without the rough, terpene oxidation of natural linalool."
+          },
+          {
+            name: "Alpha-Damascone (1% Dilution)",
+            cas: "24720-09-0",
+            isNatural: true,
+            note: "Crisp green apple skin, bright floral-fruity radiance.",
+            perfumerTip: "Lighter and greener than beta-damascone; elevates the solar, sparkling character of yellow roses."
+          }
+        ],
+        accordFormula: "Citronellol (25) + Phenyl Ethyl Alcohol (25) + Ethyl Linalool (18) + Bergamot FCF (12) + Beta-Ionone (10) + Gamma-Undecalactone (5) + Theaspirone 10% (3) + Alpha-Damascone 1% (2)"
+      },
+      green: {
+        title: "Green & Thorny Rose (Wild Briar / Rosa canina)",
+        color: "from-green-50 to-emerald-100",
+        badgeBg: "bg-emerald-100 text-emerald-900 border-emerald-300",
+        vibe: "Unbroken thorny branches, crushed wild leaves, bitter green sap, blackcurrant leaves, raw botanical realism.",
+        perfumeRefs: "Diptyque L'Ombre dans l'Eau, Paul Smith Rose, Maison Martin Margiela From the Garden, Creed Fleur de Thé Rose Bulgare.",
+        molecules: [
+          {
+            name: "cis-3-Hexenyl Acetate",
+            cas: "3681-71-8",
+            isNatural: true,
+            note: "Snappy, green crushed leaf, fresh fruity-pear top note.",
+            perfumerTip: "The benchmark green ester for botanical stems; evaporates quickly to reveal the floral heart."
+          },
+          {
+            name: "Triplal / Ligustral (10% Dilution)",
+            cas: "68039-49-6",
+            isNatural: false,
+            note: "High-impact bitter green sap, stinging nettle, snappy foliage.",
+            perfumerTip: "🧪 Perfumer's Organ Impact Tool: Use at low doses (0.1–0.3%) for thorny hyper-realism."
+          },
+          {
+            name: "Stemone (10% Dilution)",
+            cas: "22457-23-4",
+            isNatural: false,
+            note: "Green fig leaf, crushed blackcurrant foliage, cool minty sap.",
+            perfumerTip: "🧪 Synergistic Bridge: Bridges green aldehydes with rose petals, creating the signature L'Ombre dans l'Eau foliage accord."
+          },
+          {
+            name: "Geranium Essential Oil (Bourbon)",
+            cas: "8000-46-2",
+            isNatural: true,
+            note: "Earthy, minty-rosy, leafy green floral body.",
+            perfumerTip: "Rich in natural isomenthone and geraniol; anchors wild, thorny briar rose accords."
+          }
+        ],
+        accordFormula: "Phenyl Ethyl Alcohol (35) + Citronellol (25) + Geranium Bourbon EO (15) + Hedione (11) + cis-3-Hexenyl Acetate (5) + cis-Rose Oxide 1% (4) + Triplal 10% (3) + Stemone 10% (2)"
+      },
+      black: {
+        title: "Black Gothic Rose (Midnight Oud & Smoke)",
+        color: "from-stone-100 to-rose-950",
+        badgeBg: "bg-stone-900 text-white border-stone-700",
+        vibe: "Nocturnal shadows, dark leather gloves, smoking cypriol, aged dry woods, opulent animalic allure.",
+        perfumeRefs: "Tom Ford Noir de Noir, MFK Oud Satin Mood, Byredo Black Saffron, Le Labo Rose 31.",
+        molecules: [
+          {
+            name: "Beta-Damascone (10% Dilution)",
+            cas: "23726-91-2",
+            isNatural: true,
+            note: "Dark plum, fermented black cherry, rich aromatic tobacco.",
+            perfumerTip: "Provides the luscious, dark fruit backbone that prevents heavy oud and leather from smelling dry or dusty."
+          },
+          {
+            name: "Isobutyl Quinoline (IBQ / Pyralone 10%)",
+            cas: "65442-31-1",
+            isNatural: false,
+            note: "Tough black leather, vetiver root, bitter earthy moss.",
+            perfumerTip: "🧪 Legendary Perfumer Tool (Bandit/Cabochard): Anchors black rose petals to smoky leather."
+          },
+          {
+            name: "Cypriol / Nagarmotha Essential Oil",
+            cas: "68916-60-9",
+            isNatural: true,
+            note: "Smoky, leathery, woody-earthy Indian papyrus root.",
+            perfumerTip: "Natural bridge between heavy rose ketones and rich Middle Eastern oud accords."
+          },
+          {
+            name: "Ambrocenide (1% Dilution)",
+            cas: "211299-54-6",
+            isNatural: false,
+            note: "Nuclear dry amber, vibrating metallic woody radiance.",
+            perfumerTip: "🧪 Super-Amber Engine: Forces heavy rose absolute to project across entire rooms."
+          }
+        ],
+        accordFormula: "Rose Absolute / Blend (40) + Clearwood (20) + Cashmeran (17) + Beta-Damascone 10% (5) + Cypriol EO (5) + Vanillin (5) + Isobutyl Quinoline 10% (4) + Ambrocenide 1% (2) + Guaiacol 1% (2)"
+      }
+    };
+
+    function setExtractionMode(mode) {
+      document.querySelectorAll('.extract-tab').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`ext-${mode}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const data = extractionData[mode];
+      const container = document.getElementById('extraction-display');
+      container.innerHTML = `
+        <div class="bg-white/80 p-5 rounded-2xl border border-roseTheme-200">
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+            <h3 class="serif-title text-lg font-bold text-roseTheme-950">${data.title}</h3>
+            <span class="text-xs px-3 py-1 rounded-full font-semibold border ${data.colorBadge}">Extraction Profile</span>
+          </div>
+          <p class="text-xs md:text-sm text-gray-600 mb-4 italic">${data.subtitle}</p>
+          
+          <div class="space-y-2 mb-4">
+            ${data.keyFeatures.map(f => `
+              <div class="flex items-start gap-2 text-xs md:text-sm text-gray-800">
+                <span class="text-roseTheme-600 font-bold shrink-0">✦</span>
+                <span>${f}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="bg-roseTheme-50/70 p-3 rounded-xl border border-roseTheme-100 text-xs font-mono text-roseTheme-950">
+            <span class="font-bold uppercase tracking-wider text-[11px] text-roseTheme-700 block mb-1">📊 GC-MS Analytical Volatile Distribution:</span>
+            ${data.gcmsSummary}
+          </div>
+        </div>
+      `;
+    }
+
+    function selectRose(type) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const activeTab = document.getElementById(`tab-${type}`);
+      if (activeTab) activeTab.classList.add('active');
+
+      const data = roseData[type];
+      const display = document.getElementById('rose-content-display');
+
+      display.innerHTML = `
+        <div class="space-y-6">
+          <!-- Header of Archetype -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-roseTheme-200">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 border ${data.badgeBg}">
+                Rose Archetype
+              </div>
+              <h3 class="serif-title text-2xl md:text-3xl font-bold text-roseTheme-950">${data.title}</h3>
+              <p class="text-xs md:text-sm text-gray-500 mt-1"><strong>Notable Fragrances:</strong> ${data.perfumeRefs}</p>
+            </div>
+            <div class="bg-roseTheme-50 p-3 rounded-2xl border border-roseTheme-100 max-w-sm">
+              <span class="text-[11px] uppercase tracking-wider font-bold text-roseTheme-700 block mb-1">Aesthetic & Fashion Vibe</span>
+              <span class="text-xs font-medium text-roseTheme-900 leading-relaxed">${data.vibe}</span>
+            </div>
+          </div>
+
+          <!-- Key Molecules Grid -->
+          <div>
+            <h4 class="serif-title text-lg font-bold text-roseTheme-950 mb-3">Key Impact Molecules & Perfumer Organ Tools</h4>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              ${data.molecules.map(m => `
+                <div class="bg-white border border-roseTheme-200 p-4 rounded-2xl shadow-sm hover:border-roseTheme-400 transition break-words">
+                  <div class="flex items-center justify-between mb-2 flex-wrap gap-1.5">
+                    <span class="font-bold text-roseTheme-950 text-sm md:text-base">${m.name}</span>
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                      ${m.isNatural 
+                        ? `<span class="text-[10px] font-semibold bg-botanical-100 text-botanical-800 border border-botanical-300 px-2 py-0.5 rounded-full shrink-0">🌿 Natural in Rose</span>`
+                        : `<span class="text-[10px] font-semibold bg-purple-100 text-purple-800 border border-purple-300 px-2 py-0.5 rounded-full shrink-0">🧪 Perfumer's Synthetic Tool</span>`
+                      }
+                      <span class="text-[11px] font-mono bg-roseTheme-100 text-roseTheme-900 px-2 py-0.5 rounded shrink-0">CAS ${m.cas}</span>
+                    </div>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2 leading-relaxed">${m.note}</p>
+                  <div class="bg-roseTheme-50/80 p-2.5 rounded-lg text-xs text-roseTheme-900 flex items-start gap-2 border border-roseTheme-100">
+                    <span class="shrink-0 text-amber-600 font-bold">💡</span>
+                    <span><strong>Perfumer Tip:</strong> ${m.perfumerTip}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Wear-Tested Accord Blueprint -->
+          <div class="bg-roseTheme-950 text-white p-5 rounded-2xl flex flex-col justify-between gap-3 border border-roseTheme-900 shadow-md">
+            <div>
+              <div class="flex items-center justify-between mb-1 flex-wrap gap-2">
+                <span class="text-xs uppercase tracking-wider text-roseTheme-300 font-bold">🌿 Perfumer's Formulation Blueprint (Parts / 100)</span>
+                <span class="text-[11px] font-mono bg-roseTheme-900 text-roseTheme-200 px-2 py-0.5 rounded">Wear-Tested Baseline</span>
+              </div>
+              <span class="font-mono text-xs md:text-sm text-roseTheme-100 font-medium leading-relaxed block break-words mt-1">${data.accordFormula}</span>
+            </div>
+            <div class="pt-3 border-t border-roseTheme-900 text-xs text-roseTheme-200/90 leading-relaxed flex items-start gap-2">
+              <span class="shrink-0 text-amber-300">💡</span>
+              <span><strong>Compounding Recommendation:</strong> Always prepare high-potency ketones ($\beta$-Damascenone, $\beta$-Damascone, *cis*-Rose Oxide) at 1% or 0.1% dilutions in DPG/TEC prior to compounding. Dosing pure Damascenones at full strength will easily overpower an entire 100g trial blend.</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize Default View
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      setExtractionMode('headspace');
+      selectRose('pink');
+    });
+  </script>
+
+</body>
+</html>

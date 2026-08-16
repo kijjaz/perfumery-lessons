@@ -39,6 +39,7 @@ Deconstructing natural fruit profiles into 3D botanical facets and engineering t
 
 ### 🍵 Supplementary Readings & Botanical Atlases
 * 🍃 **[The Aroma Chemistry of Tea: An Olfactory Atlas](https://kijjaz.github.io/perfumery-lessons/lessons/tea_perfumery_aroma_chemistry_infographic.html)** — Comprehensive interactive atlas covering the 4 scent-creation chemical pathways of *Camellia sinensis* (lipid oxidation, carotenoid degradation, glycosides, and Maillard roasting) across 9 tea categories with perfumer reconstitution formulas.
+* 🌹 **[The Aroma Chemistry of Rose: An Olfactory Atlas](https://kijjaz.github.io/perfumery-lessons/lessons/rose_perfumery_aroma_chemistry_infographic.html)** — Deconstructing *Rosa damascena & centifolia* across 6 color-synesthetic archetypes (White, Pink de Mai, Crimson Velvet, Yellow Tea, Green Thorny, Black Gothic), GC-MS extraction physics (Otto vs. Absolute vs. Living Headspace), and wear-tested baseline formulas.
 
 ---
 
