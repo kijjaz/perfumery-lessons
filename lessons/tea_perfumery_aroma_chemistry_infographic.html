@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Perfumer's Palette: Aroma Chemistry of Tea</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tea: {
+              50: '#fbfaf5',
+              100: '#f5f2e6',
+              200: '#e7dec2',
+              300: '#d5c496',
+              400: '#be9e5f',
+              500: '#a37e3d',
+              600: '#866130',
+              700: '#694928',
+              800: '#533923',
+              900: '#452e1f',
+            },
+            leaf: {
+              50: '#f2f9f1',
+              100: '#e1f2df',
+              300: '#a1db9c',
+              500: '#53b14c',
+              700: '#2f6d2b',
+              900: '#1b3b19'
+            },
+            amber: {
+               roasted: '#b85c14',
+               fermented: '#7a2014'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #faf8f5;
+      color: #2c2825;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .serif-title {
+      font-family: 'Cinzel', serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1ebd9;
+      border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #be9e5f;
+      border-radius: 10px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(220, 205, 175, 0.4);
+    }
+    .tab-btn.active {
+      border-color: #a37e3d;
+      background-color: #ffffff;
+      color: #694928;
+      box-shadow: 0 4px 12px rgba(163, 126, 61, 0.12);
+    }
+  </style>
+</head>
+<body class="p-2 sm:p-4 md:p-8 min-h-screen">
+
+  <!-- Portal Navigation Bar -->
+  <div class="max-w-7xl mx-auto w-full mb-3 px-2 flex items-center justify-between">
+    <a href="../index.html" class="inline-flex items-center gap-2 text-tea-800 hover:text-tea-950 bg-white/80 hover:bg-white px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 border border-tea-200 shadow-sm backdrop-blur-sm">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Course Portal
+    </a>
+    <span class="text-xs text-tea-700/70 font-medium hidden sm:inline-block">The Architecture of Scent • Supplementary Atlas</span>
+  </div>
+
+  <!-- Main Container -->
+  <div class="max-w-7xl mx-auto w-full overflow-hidden bg-white/70 rounded-3xl shadow-xl border border-tea-200 p-4 sm:p-6 md:p-10 my-4">
+
+    <!-- Header & Intro -->
+    <header class="text-center max-w-4xl mx-auto mb-12 px-2">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-leaf-100 text-leaf-700 text-xs font-semibold uppercase tracking-wider mb-4 border border-leaf-300">
+        <i data-lucide="sparkles" class="w-4 h-4"></i> Perfumer's Olfactory Atlas
+      </div>
+      <h1 class="serif-title text-3xl md:text-5xl font-bold text-tea-900 mb-4 tracking-tight break-words">
+        The Aroma Chemistry of Tea
+      </h1>
+      <p class="text-tea-700 text-base md:text-lg leading-relaxed font-light">
+        Transforming a single leaf (<em class="font-serif">Camellia sinensis</em>) into a symphony of fragrance. Discover how oxidation, enzymes, heat, and microbes unlock lush green top notes, narcotic florals, rich jammy fruits, and velvety aged woods.
+      </p>
+
+      <!-- Concentration Callout Bar -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 bg-tea-50 p-4 rounded-2xl border border-tea-200">
+        <div class="flex items-center gap-4 p-3 bg-white rounded-xl border border-leaf-100 min-w-0">
+          <div class="w-12 h-12 rounded-full bg-leaf-100 text-leaf-700 flex items-center justify-center font-bold text-lg shrink-0">
+            🌱
+          </div>
+          <div class="text-left min-w-0 flex-1">
+            <span class="text-xs uppercase tracking-wider text-gray-500 font-semibold block truncate">Fresh Green Leaf Volatiles</span>
+            <div class="text-xl font-bold text-leaf-700">~20 µg/g</div>
+            <p class="text-xs text-gray-500 truncate">Delicate, raw, high green moisture</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-3 bg-white rounded-xl border border-amber-100 min-w-0">
+          <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-lg shrink-0">
+            🍂
+          </div>
+          <div class="text-left min-w-0 flex-1">
+            <span class="text-xs uppercase tracking-wider text-gray-500 font-semibold block truncate">Oxidized & Aged Volatiles</span>
+            <div class="text-xl font-bold text-amber-800">>700 µg/g</div>
+            <p class="text-xs text-gray-500 truncate">Over 35x concentration boost!</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Perfumer's Special Ingredient Spotlights -->
+    <section class="mb-14 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <!-- Pyrazines Spotlight -->
+      <div class="bg-gradient-to-br from-amber-900 to-tea-900 text-amber-50 p-5 md:p-6 rounded-3xl border border-amber-700 shadow-md break-words">
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🔥</span>
+            <h3 class="serif-title text-base md:text-lg font-bold text-amber-200">Pyrazines in Tea & Perfumery</h3>
+          </div>
+          <span class="text-[10px] font-mono bg-amber-800 text-amber-200 px-2 py-0.5 rounded-full shrink-0">Dilute to 0.1–1%</span>
+        </div>
+        <p class="text-xs text-amber-100 leading-relaxed mb-4">
+          Nitrogen heterocycles generated during roasting. Perfumers mix real tea pyrazines with synthetic organ tools to control toastiness.
+        </p>
+        <div class="space-y-2 text-xs">
+          <div class="bg-black/25 p-2 rounded-xl border border-amber-800/50 break-words">
+            <span class="inline-block text-[10px] font-bold text-leaf-300 bg-leaf-950 px-1.5 py-0.5 rounded mr-1">🌿 Natural</span>
+            <strong class="text-amber-300 font-mono break-all">2-Acetyl Pyrazine:</strong> Popcorn & roasted barley in <em>Genmaicha/Hojicha</em>.
+          </div>
+          <div class="bg-black/25 p-2 rounded-xl border border-amber-800/50 break-words">
+            <span class="inline-block text-[10px] font-bold text-purple-300 bg-purple-950 px-1.5 py-0.5 rounded mr-1">🧪 Perfumer Synth</span>
+            <strong class="text-amber-300 font-mono break-all">Pyralone (IBQ) & Filbertone:</strong> Leather-green astringency and roasted nut facets.
+          </div>
+        </div>
+      </div>
+
+      <!-- Trimethoxybenzene Spotlight -->
+      <div class="bg-gradient-to-br from-stone-900 to-tea-900 text-stone-50 p-5 md:p-6 rounded-3xl border border-stone-700 shadow-md break-words">
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🪵</span>
+            <h3 class="serif-title text-base md:text-lg font-bold text-stone-200">Trimethoxybenzene & Relatives</h3>
+          </div>
+          <span class="text-[10px] font-mono bg-stone-800 text-stone-200 px-2 py-0.5 rounded-full shrink-0">Vintage Earth</span>
+        </div>
+        <p class="text-xs text-stone-200 leading-relaxed mb-4">
+          <strong class="text-amber-200">1,2,3-Trimethoxybenzene</strong> is a natural marker of microbial Pu-erh. Perfumers replicate it using close organ relatives.
+        </p>
+        <div class="space-y-2 text-xs">
+          <div class="bg-black/25 p-2 rounded-xl border border-stone-800/50 break-words">
+            <span class="inline-block text-[10px] font-bold text-leaf-300 bg-leaf-950 px-1.5 py-0.5 rounded mr-1">🌿 Natural</span>
+            <strong class="text-amber-300 font-mono break-all">Veratrole (1,2-Dimethoxybenzene):</strong> Antique wood & dry cedar found in natural Pu-erh headspace.
+          </div>
+          <div class="bg-black/25 p-2 rounded-xl border border-stone-800/50 break-words">
+            <span class="inline-block text-[10px] font-bold text-purple-300 bg-purple-950 px-1.5 py-0.5 rounded mr-1">🧪 Perfumer Synth</span>
+            <strong class="text-amber-300 font-mono break-all">Clearwood & Evernyl:</strong> Biotech patchouli heart & oakmoss synth for clean damp cellar notes.
+          </div>
+        </div>
+      </div>
+
+      <!-- Beta-Damascenone vs Synthetic Alternatives Spotlight -->
+      <div class="bg-gradient-to-br from-rose-950 to-tea-900 text-rose-50 p-5 md:p-6 rounded-3xl border border-rose-800 shadow-md break-words">
+        <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🍎</span>
+            <h3 class="serif-title text-base md:text-lg font-bold text-rose-200">Damascenone & Organ Substitutes</h3>
+          </div>
+          <span class="text-[10px] font-mono bg-rose-900 text-rose-200 px-2 py-0.5 rounded-full shrink-0">IFRA Facet Boosters</span>
+        </div>
+        <p class="text-xs text-rose-100 leading-relaxed mb-4">
+          Natural <strong class="text-rose-200">β-Damascenone</strong> gives black tea its jammy stewed-apple note, but has strict IFRA restrictions. Perfumers use synthetic organ relatives.
+        </p>
+        <div class="space-y-2 text-xs">
+          <div class="bg-black/25 p-2 rounded-xl border border-rose-800/50 break-words">
+            <span class="inline-block text-[10px] font-bold text-leaf-300 bg-leaf-950 px-1.5 py-0.5 rounded mr-1">🌿 Natural</span>
+            <strong class="text-rose-300 font-mono break-all">β-Damascenone:</strong> Ultra-potent natural norisoprenoid in black tea (0.002 ppb threshold).
+          </div>
+          <div class="bg-black/25 p-2 rounded-xl border border-rose-800/50 break-words">
+            <span class="inline-block text-[10px] font-bold text-purple-300 bg-purple-950 px-1.5 py-0.5 rounded mr-1">🧪 Perfumer Synth</span>
+            <strong class="text-rose-300 font-mono break-all">Givescone & Ethyl Safranate:</strong> Synthetic materials that provide damascone fruit-rose-saffron facets without IFRA limit issues.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section: The Structural Backbone of Tea Perfumery -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-2">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-tea-800 text-amber-200 flex items-center justify-center font-serif font-bold shrink-0">✨</div>
+          <h2 class="serif-title text-xl md:text-2xl text-tea-900 font-semibold">The Perfumer's Structural Backbone</h2>
+        </div>
+        <span class="text-xs text-tea-700 bg-tea-100 px-3 py-1 rounded-full font-medium border border-tea-200">How Hedione & Iso E Super Power Tea Fragrances</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Hedione & The Jasmonate Trio -->
+        <div class="bg-gradient-to-br from-emerald-950 via-teal-900 to-tea-900 text-emerald-50 p-6 rounded-3xl border border-emerald-800 shadow-md break-words flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-3xl">🌸</span>
+                <div>
+                  <h3 class="serif-title text-lg font-bold text-emerald-200">Hedione & The Jasmonates</h3>
+                  <span class="text-xs text-emerald-300 font-medium">Radiant Air, Dewy Steam & Floral Humidity</span>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono bg-emerald-900 text-emerald-200 px-2.5 py-1 rounded-full shrink-0 border border-emerald-700">30–50% of Tea Base</span>
+            </div>
+
+            <p class="text-xs text-emerald-100 leading-relaxed mb-4">
+              <strong class="text-emerald-300">Hedione (Methyl Dihydrojasmonate)</strong> is the undisputed invisible canvas of tea perfumery (pioneered by Jean-Claude Ellena in Bvlgari’s <em>Eau de Thé Vert</em>). It creates a transparent, radiant, vaporous lift that mimics hot tea steam without adding heavy, sweet floral weight.
+            </p>
+
+            <div class="space-y-3 text-xs">
+              <div class="bg-black/30 p-3 rounded-xl border border-emerald-800/60 break-words">
+                <div class="flex items-center justify-between mb-1">
+                  <strong class="text-emerald-300 font-bold">cis-Jasmone (Use diluted at 10%)</strong>
+                  <span class="text-[10px] text-leaf-300 bg-leaf-950 px-1.5 py-0.5 rounded font-mono">🌿 Natural in Tea</span>
+                </div>
+                <p class="text-emerald-100 text-[11px] leading-relaxed">
+                  The natural oxylipin found in bruised tea leaves. Acts as Hedione's booster—adding warm, green, waxy petal texture and authentic tea-leaf radiance.
+                </p>
+              </div>
+
+              <div class="bg-black/30 p-3 rounded-xl border border-emerald-800/60 break-words">
+                <div class="flex items-center justify-between mb-1">
+                  <strong class="text-emerald-300 font-bold">Methyl Jasmonate (Less common / Natural)</strong>
+                  <span class="text-[10px] text-leaf-300 bg-leaf-950 px-1.5 py-0.5 rounded font-mono">🌿 Natural in Tea</span>
+                </div>
+                <p class="text-emerald-100 text-[11px] leading-relaxed">
+                  The natural parent ester directly in fresh tea leaves & jasmine petals. Higher cost than synthetic Hedione, but imparts an uncommonly rich, humid, live-flower tea depth.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-emerald-800/60 text-[11px] text-emerald-200 flex items-start gap-2">
+            <span class="shrink-0 text-amber-300">💡</span>
+            <span><strong>Perfumer Rule:</strong> Build your tea base around 30-40% Hedione + 0.3-0.5% cis-Jasmone (10%) to instantly transform flat green molecules into floating tea steam!</span>
+          </div>
+        </div>
+
+        <!-- Iso E Super & The Ionone Link -->
+        <div class="bg-gradient-to-br from-amber-950 via-stone-900 to-tea-950 text-amber-50 p-6 rounded-3xl border border-amber-800 shadow-md break-words flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-3xl">🪵</span>
+                <div>
+                  <h3 class="serif-title text-lg font-bold text-amber-200">Iso E Super & The Ionone Link</h3>
+                  <span class="text-xs text-amber-300 font-medium">The Woody-Powdery Velvet Spine</span>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono bg-amber-900 text-amber-200 px-2.5 py-1 rounded-full shrink-0 border border-amber-700">0–35% (Optional)</span>
+            </div>
+
+            <p class="text-xs text-amber-100 leading-relaxed mb-4">
+              Tea leaves naturally release <strong class="text-amber-300">β-Ionone & α-Ionone</strong> during withering via carotenoid breakdown. Ionones supply the signature powdery-violet, soft dried-apricot, and dry woody facets essential to white, green, and black tea.
+            </p>
+
+            <div class="space-y-3 text-xs">
+              <div class="bg-black/40 p-3 rounded-xl border border-amber-800/60 break-words">
+                <div class="flex items-center justify-between mb-1">
+                  <strong class="text-amber-200 font-bold">The Iso E Super Chemical Synergy (Optional: 0-35%)</strong>
+                  <span class="text-[10px] text-purple-200 bg-purple-950 px-1.5 py-0.5 rounded font-mono border border-purple-800">🧪 Perfumer Synth</span>
+                </div>
+                <p class="text-amber-100 text-[11px] leading-relaxed">
+                  Iso E Super provides a smooth, transparent, velvety cedarwood-amber texture. It can be omitted (0%) for pure, crystalline tea bases, or used up to 35% to lock the dry, powdery violet-wood facets of <strong>β-Ionone</strong> onto a subtle cedar skeleton.
+                </p>
+              </div>
+
+              <div class="bg-black/40 p-3 rounded-xl border border-amber-800/60 break-words">
+                <div class="flex items-center justify-between mb-1">
+                  <strong class="text-amber-200 font-bold">Fixing Volatile Top Notes to Skin</strong>
+                  <span class="text-[10px] text-amber-200 bg-amber-950 px-1.5 py-0.5 rounded font-mono border border-amber-800">✨ 3D Volume</span>
+                </div>
+                <p class="text-amber-100 text-[11px] leading-relaxed">
+                  Green top notes like <em>cis-3-hexenol</em> evaporate rapidly. When included, Iso E Super + Ionones catch these fugitive green notes, grounding them into a persistent, cozy, suede-like drydown.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-amber-800/60 text-[11px] text-amber-100 flex items-start gap-2">
+            <span class="shrink-0 text-amber-300">💡</span>
+            <span><strong>Perfumer Blueprint:</strong> Combining <strong>Hedione + (0–35% Iso E Super) + β-Ionone</strong> creates the flexible 3D "floral-woody tea base matrix" used across niche tea formulations.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 1: The 4 Botanical Aroma Pathways -->
+    <section class="mb-14">
+      <div class="flex items-center gap-3 mb-6 flex-wrap">
+        <div class="w-8 h-8 rounded-lg bg-tea-100 text-tea-800 flex items-center justify-center font-serif font-bold shrink-0">1</div>
+        <h2 class="serif-title text-xl md:text-2xl text-tea-900 font-semibold">The 4 Scent-Creation Pathways</h2>
+        <span class="text-xs text-tea-600 bg-tea-100 px-2.5 py-1 rounded-full font-medium">Where tea molecules originate</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Pathway 1 -->
+        <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition break-words">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-leaf-100/50 rounded-bl-full -z-10 group-hover:scale-110 transition"></div>
+          <div class="text-2xl mb-3">🌿</div>
+          <h3 class="font-bold text-leaf-900 mb-1">1. Lipid & Oxylipin Pathway</h3>
+          <p class="text-xs text-leaf-700 font-medium mb-3">Lipoxygenase (LOX) Dual Cascades</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Breaks leaf lipids into two key facets:<br>
+            • <strong>HPL Branch:</strong> Snapped <span class="text-gray-800 font-semibold">C6 leaf greens</span>.<br>
+            • <strong>AOS Branch (Oxylipins):</strong> <span class="text-gray-800 font-semibold">Jasmonates</span> synthesized during leaf bruising/stress.
+          </p>
+          <div class="bg-white/80 rounded-lg p-2.5 border border-leaf-100 text-xs break-words">
+            <span class="font-semibold text-leaf-800 block mb-1 font-mono">Key Accord Molecules:</span>
+            <span class="text-gray-700 font-medium block mb-1">🌿 <strong>Greens:</strong> cis-3-hexenol, Hexanal, cis-3-hexenyl acetate</span>
+            <span class="text-gray-700 font-medium block mb-1">🌿 <strong>Jasmonates:</strong> cis-Jasmone, Methyl Jasmonate</span>
+            <span class="text-purple-700 font-medium block text-[11px]">🧪 <strong>Perfumer Synth:</strong> Hedione (inspired by Methyl Jasmonate)</span>
+          </div>
+        </div>
+
+        <!-- Pathway 2 -->
+        <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition break-words">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-purple-100/50 rounded-bl-full -z-10 group-hover:scale-110 transition"></div>
+          <div class="text-2xl mb-3">🍑</div>
+          <h3 class="font-bold text-purple-900 mb-1">2. Violet & Fruit Magic</h3>
+          <p class="text-xs text-purple-700 font-medium mb-3">Carotenoid Cleavage</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Sunlight and oxidation chop leaf pigments into rich <strong class="text-gray-800">C13 norisoprenoids</strong>.
+          </p>
+          <div class="bg-white/80 rounded-lg p-2.5 border border-purple-100 text-xs break-words">
+            <span class="font-semibold text-purple-800 block mb-1 font-mono">Key Accord Molecules:</span>
+            <span class="text-gray-700 font-medium">β-Ionone, β-Damascenone, Theaspiranes</span>
+          </div>
+        </div>
+
+        <!-- Pathway 3 -->
+        <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition break-words">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-pink-100/50 rounded-bl-full -z-10 group-hover:scale-110 transition"></div>
+          <div class="text-2xl mb-3">🌹</div>
+          <h3 class="font-bold text-pink-900 mb-1">3. Unlocked Floral Gems</h3>
+          <p class="text-xs text-pink-700 font-medium mb-3">Glycoside Hydrolysis</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            Enzymes break sugar bonds, releasing trapped floral terpenes & aromas.
+          </p>
+          <div class="bg-white/80 rounded-lg p-2.5 border border-pink-100 text-xs break-words">
+            <span class="font-semibold text-pink-800 block mb-1 font-mono">Key Accord Molecules:</span>
+            <span class="text-gray-700 font-medium">Linalool, Geraniol, Phenyl Ethyl Alcohol (PEA), Methyl Salicylate</span>
+          </div>
+        </div>
+
+        <!-- Pathway 4 -->
+        <div class="glass-card p-5 rounded-2xl relative overflow-hidden group hover:shadow-md transition break-words">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-amber-100/50 rounded-bl-full -z-10 group-hover:scale-110 transition"></div>
+          <div class="text-2xl mb-3">🔥</div>
+          <h3 class="font-bold text-amber-900 mb-1">4. Toast & Microbial Aging</h3>
+          <p class="text-xs text-amber-700 font-medium mb-3">Maillard Pyrolysis & Microbes</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-4">
+            <strong>Thermal Heat:</strong> High roasting forms toasted pyrazines, pyrroles & furans.<br>
+            <strong>Microbial Aging:</strong> Fungi enzymatic methylation converts polyphenols into aged wood trimethoxybenzenes & linalool oxides.
+          </p>
+          <div class="bg-white/80 rounded-lg p-2.5 border border-amber-100 text-xs break-words">
+            <span class="font-semibold text-amber-800 block mb-1 font-mono">Key Accord Molecules:</span>
+            <span class="text-gray-700 font-medium">2-Acetyl Pyrazine, 1,2,3-Trimethoxybenzene, Veratrole, Linalool Oxides</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Interactive Tea Processing & Scent Spectrum -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-2">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-tea-100 text-tea-800 flex items-center justify-center font-serif font-bold shrink-0">2</div>
+          <h2 class="serif-title text-xl md:text-2xl text-tea-900 font-semibold">The Perfumer's Oxidation & Processing Spectrum</h2>
+        </div>
+        <p class="text-xs text-tea-600 font-medium">Click a tea style to view processing, trade materials, and wear-tested base blueprints</p>
+      </div>
+
+      <!-- Spectrum Bar / Navigation Tabs -->
+      <div class="flex gap-2 overflow-x-auto pb-3 custom-scrollbar mb-6 border-b border-tea-200">
+        <button onclick="selectTea('steamedGreen')" id="tab-steamedGreen" class="tab-btn active min-w-[130px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-leaf-700 font-semibold uppercase">0% Steamed</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🍵 Steamed Green</span>
+        </button>
+        <button onclick="selectTea('panGreen')" id="tab-panGreen" class="tab-btn min-w-[130px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-leaf-800 font-semibold uppercase">0% Pan-Fired</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🍃 Pan-Fired Green</span>
+        </button>
+        <button onclick="selectTea('white')" id="tab-white" class="tab-btn min-w-[110px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-amber-600 font-semibold uppercase">5 - 15%</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🤍 White Tea</span>
+        </button>
+        <button onclick="selectTea('yellow')" id="tab-yellow" class="tab-btn min-w-[110px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-yellow-600 font-semibold uppercase">10 - 20%</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">💛 Yellow Tea</span>
+        </button>
+        <button onclick="selectTea('oolong')" id="tab-oolong" class="tab-btn min-w-[110px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-pink-700 font-semibold uppercase">20 - 70%</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🌸 Oolong</span>
+        </button>
+        <button onclick="selectTea('black')" id="tab-black" class="tab-btn min-w-[120px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-red-700 font-semibold uppercase">80 - 100%</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🍂 Black Tea</span>
+        </button>
+        <button onclick="selectTea('assam')" id="tab-assam" class="tab-btn min-w-[130px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-amber-800 font-semibold uppercase">Var. Assamica</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🌿 Assam (Green/Black)</span>
+        </button>
+        <button onclick="selectTea('puerh')" id="tab-puerh" class="tab-btn min-w-[120px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-stone-700 font-semibold uppercase">Microbial</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🪵 Dark / Pu-erh</span>
+        </button>
+        <button onclick="selectTea('hojicha')" id="tab-hojicha" class="tab-btn min-w-[120px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-orange-700 font-semibold uppercase">High Roasted</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🔥 Hojicha</span>
+        </button>
+        <button onclick="selectTea('specialty')" id="tab-specialty" class="tab-btn min-w-[130px] shrink-0 flex-1 py-3 px-3 rounded-xl border border-tea-200 text-center transition flex flex-col items-center">
+          <span class="text-xs text-teal-700 font-semibold uppercase">Infused/Blended</span>
+          <span class="font-bold text-xs md:text-sm text-gray-800 whitespace-nowrap">🌾 Genmaicha & Jasmine</span>
+        </button>
+      </div>
+
+      <!-- Interactive Display Card -->
+      <div id="tea-display-card" class="bg-white rounded-3xl border border-tea-200 p-4 sm:p-6 md:p-8 shadow-sm break-words">
+        <!-- Content inserted dynamically via Javascript -->
+      </div>
+    </section>
+
+    <!-- Section 3: Comparative Perfumer Matrix -->
+    <section class="mb-10">
+      <div class="flex items-center gap-3 mb-6 flex-wrap">
+        <div class="w-8 h-8 rounded-lg bg-tea-100 text-tea-800 flex items-center justify-center font-serif font-bold shrink-0">3</div>
+        <h2 class="serif-title text-xl md:text-2xl text-tea-900 font-semibold">Perfumer's Master Comparison Matrix</h2>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-tea-200 shadow-sm w-full">
+        <table class="w-full text-left border-collapse bg-white text-sm min-w-[650px]">
+          <thead>
+            <tr class="bg-tea-100/70 text-tea-900 border-b border-tea-200 font-serif">
+              <th class="p-4 whitespace-nowrap">Tea Style</th>
+              <th class="p-4">Processing Hallmark</th>
+              <th class="p-4">Primary Scent Vibe</th>
+              <th class="p-4">Key Perfumery Raw Materials</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-tea-100 text-gray-700">
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-leaf-800 whitespace-nowrap">🍵 Steamed Green (Sencha/Gyokuro)</td>
+              <td class="p-4">High-pressure steam deactivation (<em class="text-xs text-gray-500 font-mono">Sha Qing</em>)</td>
+              <td class="p-4">Ultra-fresh snapped leaf, wet lawn, marine umami (ooika), dewy lift</td>
+              <td class="p-4 font-mono text-xs break-words">cis-3-hexenol, cis-3-hexenyl acetate, Dimethyl sulfide (0.01% soln), Hedione, Ethyl Linalool</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-leaf-900 whitespace-nowrap">🍃 Pan-Fired Green (Longjing)</td>
+              <td class="p-4">Dry wok pan-roasting (<em class="text-xs text-gray-500 font-mono">Sha Qing</em>)</td>
+              <td class="p-4">Toasted chestnut, dry green leaf, warm floral air, subtle bean note</td>
+              <td class="p-4 font-mono text-xs break-words">Hexanal, Ethyl Linalool, cis-3-hexenyl benzoate, Stemone 10%, Methyl Anthranilate</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-amber-700 whitespace-nowrap">🤍 White Tea (Silver Needle)</td>
+              <td class="p-4">Gentle withering & drying (<em class="text-xs text-gray-500 font-mono">Wei Diao</em>)</td>
+              <td class="p-4">Velvety downy bud, dried hay, sweet honeyed apricot, melon rind</td>
+              <td class="p-4 font-mono text-xs break-words">Beta-Ionone, Phenyl Ethyl Alcohol (PEA), Hexanal, Methyl Salicylate, Ethyl Linalool (perfumery technique)</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-yellow-700 whitespace-nowrap">💛 Yellow Tea</td>
+              <td class="p-4">Sealed damp smothering (<em class="text-xs text-gray-500 font-mono">Men Huang</em>)</td>
+              <td class="p-4">Toasted corn, warm cereal, sweet steamed grain, soft dried grass</td>
+              <td class="p-4 font-mono text-xs break-words">2,5-Dimethylpyrazine, 2-Acetyl Pyrazine, Maltol, Furfural derivatives, Polysantol (perfumery technique)</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-pink-800 whitespace-nowrap">🌸 Oolong Tea</td>
+              <td class="p-4">Solar withering & leaf bruising (<em class="text-xs text-gray-500 font-mono">Yao Qing</em>)</td>
+              <td class="p-4">Narcotic orchid blossom, peach skin, ripe jasmine, honeyed wood</td>
+              <td class="p-4 font-mono text-xs break-words">trans-Nerolidol, Indole 1%, cis-Jasmone 10%, Jasmine Lactone, Hedione, Methyl Jasmonate</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-red-800 whitespace-nowrap">🍂 Black Tea (Keemun/Ceylon)</td>
+              <td class="p-4">Rolling & enzymatic oxidation</td>
+              <td class="p-4">Jammy prune, sweet rose-honey, malty warm tobacco, citrus lift</td>
+              <td class="p-4 font-mono text-xs break-words">Geraniol, Phenyl Ethyl Alcohol (PEA), Mefrosol (perfumery technique), Beta-Damascenone, Black Tea Abs</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-amber-900 whitespace-nowrap">🌿 Assam (Green vs. Black)</td>
+              <td class="p-4">Tannic <em>var. assamica</em> processing</td>
+              <td class="p-4">Pungent vegetal astringency (Green) vs. Heavy dark malt & jammy prune (Black)</td>
+              <td class="p-4 font-mono text-xs break-words">cis-3-hexenol + Isobutyl Quinoline (perfumery technique) (Green) | PEA + Mefrosol (perfumery technique) + Beta-Damascenone (Black)</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-stone-800 whitespace-nowrap">🪵 Dark Tea / Pu-erh</td>
+              <td class="p-4">Microbial wet piling (<em class="text-xs text-gray-500 font-mono">Wo Dui</em>)</td>
+              <td class="p-4">Aged wood, antique paper, damp cellar, cedarwood, sweet herbal balm</td>
+              <td class="p-4 font-mono text-xs break-words">1,2,3-Trimethoxybenzene, Veratrole, Linalool Oxides, Clearwood & Evernyl (perfumery techniques), Cedrol</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-orange-800 whitespace-nowrap">🔥 Hojicha</td>
+              <td class="p-4">High-heat charcoal roasting</td>
+              <td class="p-4">Toasted barley, roasted grain, smoky nuttiness, warm cozy embers</td>
+              <td class="p-4 font-mono text-xs break-words">2-Acetyl Pyrazine, Guaiacol, 2-Acetylpyrrole, Isobutavan (perfumery technique), Filbertone</td>
+            </tr>
+            <tr class="hover:bg-tea-50/50 transition">
+              <td class="p-4 font-bold text-teal-800 whitespace-nowrap">🌾 Genmaicha & Jasmine</td>
+              <td class="p-4">Rice roasting / Fresh flower infusion</td>
+              <td class="p-4">Popped corn & toasted rice (Genmaicha) / Radiant blooming jasmine (Mo Li Hua)</td>
+              <td class="p-4 font-mono text-xs break-words">2-Acetyl-1-pyrroline (2AP), Benzyl Acetate, Indole, Hedione (perfumery technique), cis-Jasmone</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer / Perfumer's Takeaway -->
+    <footer class="bg-tea-900 text-tea-100 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2">
+        <h3 class="serif-title text-xl font-bold text-white flex items-center gap-2">
+          <span>🎨</span> The Perfumer's Takeaway
+        </h3>
+        <p class="text-sm text-tea-200 max-w-2xl leading-relaxed">
+          The spectrum of tea in perfumery is endless. By balancing Bergamot FCF, Leaf Alcohol (cis-3-hexenol), Floral Hedione, Beta-Ionone, and Rose Alcohols (PEA / Mefrosol / Geraniol) with trace pyrazines or wood ethers (veratrole/trimethoxybenzene), you can build any tea base from a misty Sencha to a dark Assam or aged Pu-erh.
+        </p>
+      </div>
+      <div class="shrink-0 bg-tea-800/80 px-4 py-3 rounded-xl border border-tea-700 text-center">
+        <span class="text-xs text-tea-300 uppercase block tracking-wider font-semibold">Botanical Origin</span>
+        <span class="font-serif italic text-lg text-white">Camellia sinensis</span>
+      </div>
+    </footer>
+
+    <!-- Footer / License -->
+    <div class="mt-8 pt-6 border-t border-tea-200 text-center text-xs text-tea-700/80 leading-relaxed">
+      <p class="font-medium text-tea-900 mb-1">The Perfumer's Palette: Aroma Chemistry of Tea</p>
+      <p>Part of <em>The Architecture of Scent</em> curriculum series by Kijjaz.</p>
+      <p class="mt-2 text-[11px] text-tea-600">
+        Interactive tools under <a href="https://opensource.org/licenses/MIT" target="_blank" class="underline hover:text-tea-900">MIT License</a> • 
+        Educational text & infographics under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" class="underline hover:text-tea-900">CC BY-NC 4.0</a> (Attribution-NonCommercial).
+      </p>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Data Object for Tea Categories & Practical Perfumery Raw Materials
+    const teaData = {
+      steamedGreen: {
+        title: "Steamed Green Tea (Sencha & Gyokuro)",
+        oxidation: "0% Oxidation (Steamed Sha Qing)",
+        badgeBg: "bg-leaf-100 text-leaf-800 border-leaf-300",
+        processText: "Fresh Leaves ➔ High-Pressure Steam Fixing ➔ Preserves Vibrant Chlorophyll & Leaf Volatiles",
+        vibe: "Ultra-fresh snapped leaf, wet lawn, sea-breeze umami (ooika), bright floral-citrus lift.",
+        molecules: [
+          {
+            name: "cis-3-hexenol (Leaf Alcohol)",
+            cas: "928-96-1",
+            isNatural: true,
+            note: "The benchmark green top note. Crisp, freshly cut grass and snapped green stems.",
+            perfumerTip: "Primary green top note naturally abundant in fresh tea leaf."
+          },
+          {
+            name: "cis-3-hexenyl acetate (Leaf Acetate)",
+            cas: "3681-71-8",
+            isNatural: true,
+            note: "Fruity-green, crisp banana/apple skin greenness. Softer and sweeter than Leaf Alcohol.",
+            perfumerTip: "Natural ester in tea; blends with Hedione to smooth sharp green edges. Also pairs wonderfully with Cashmeran for a velvety green-musky heart!"
+          },
+          {
+            name: "Dimethyl Sulfide (DMS)",
+            cas: "75-18-3",
+            isNatural: true,
+            note: "Marine, savory umami aroma (ooika). Defines shade-grown Gyokuro & high-grade Matcha.",
+            perfumerTip: "⚠️ Extremely potent natural trace chemical! Dilute down to 0.01% – 0.1% in DPG or Ethanol for easy blending to capture Gyokuro marine umami without overpowering the base."
+          },
+          {
+            name: "Stemone & Florol",
+            cas: "22457-23-4 / 63500-71-0",
+            isNatural: false,
+            note: "Commercial synthetic materials (Givaudan/Firmenich) providing top-to-heart watery fig-leaf and soft dewy lily petals.",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Not found in tea leaves; used in compounding as top-to-heart green floral bridges that extend leaf freshness into the heart note."
+          }
+        ],
+        accordFormula: "Bergamot Oil FCF (20) + Hedione (35) + Ethyl Linalool (15) + cis-3-hexenol 10% (2) + cis-3-hexenyl acetate 10% (3) + Beta-Ionone (5) + Indole 1% (2) + Stemone 10% (2) + cis-Jasmone 10% (3) + Iso E Super (0-35% optional)"
+      },
+      panGreen: {
+        title: "Pan-Fired Green Tea (Longjing / Dragon Well)",
+        oxidation: "0% Oxidation (Dry Wok Pan-Firing)",
+        badgeBg: "bg-emerald-100 text-emerald-800 border-emerald-300",
+        processText: "Fresh Leaves ➔ High Heat Wok Pan-Firing (Sha Qing) ➔ Subtle Maillard & Nutty Leaf Roasting",
+        vibe: "Toasted chestnut, dry green leaf, warm floral air, subtle baked bean nuance.",
+        molecules: [
+          {
+            name: "Hexanal & (E)-2-Hexenal",
+            cas: "66-25-1",
+            isNatural: true,
+            note: "Dry green apple rind and warm lawn grass aldehydes.",
+            perfumerTip: "Natural leaf aldehydes giving a drier green note than steamed green tea."
+          },
+          {
+            name: "cis-3-hexenyl benzoate",
+            cas: "25152-85-6",
+            isNatural: true,
+            note: "Deep, balsamic-green floral with smooth herbal tenure.",
+            perfumerTip: "Natural ester that fixes green notes into the drydown without sharp spikes."
+          },
+          {
+            name: "Methyl Anthranilate",
+            cas: "134-20-3",
+            isNatural: true,
+            note: "Sweet grape-orange blossom facet found in high-grade Chinese green teas.",
+            perfumerTip: "Natural chemical in green tea; keep under 0.2% for solar floral radiance."
+          },
+          {
+            name: "Mayol (cis-7-P-Menthanol)",
+            cas: "13828-37-0",
+            isNatural: false,
+            note: "Clean, crystalline lily-of-the-valley monoterpene alcohol.",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Synthetic floral material used in modern perfumery to complement natural Ethyl Linalool and create a clean green tea floral heart."
+          }
+        ],
+        accordFormula: "Hedione (40) + Bergamot Oil FCF (15) + Ethyl Linalool (15) + cis-3-hexenyl acetate 10% (5) + cis-3-hexenyl benzoate (10) + Beta-Ionone (4) + Methyl Anthranilate 10% (1) + Pyrazine 2-Acetyl 1% (1) + Iso E Super (0-35% optional)"
+      },
+      white: {
+        title: "White Tea (Silver Needle & Pai Mu Tan)",
+        oxidation: "5 - 15% (Micro-Oxidized)",
+        badgeBg: "bg-amber-50 text-amber-800 border-amber-200",
+        processText: "Downy Leaf Buds ➔ Extended Sun/Indoor Withering (Wei Diao) ➔ Gentle Drying",
+        vibe: "Velvety downy bud, dried meadow hay, sweet honeyed apricot, melon rind.",
+        molecules: [
+          {
+            name: "Beta-Ionone",
+            cas: "14901-07-6",
+            isNatural: true,
+            note: "Soft powdery violet, woody-floral with sweet dried fruit nuances.",
+            perfumerTip: "Natural carotenoid breakdown product in tea; captures downy bud velvety texture."
+          },
+          {
+            name: "Phenyl Ethyl Alcohol (PEA)",
+            cas: "60-12-8",
+            isNatural: true,
+            note: "Fresh rosewater, sweet honeyed floral clarity.",
+            perfumerTip: "Natural rose alcohol present in white tea headspace during slow withering."
+          },
+          {
+            name: "Methyl Salicylate",
+            cas: "119-36-8",
+            isNatural: true,
+            note: "Delicate wintergreen, sweet medicinal-herbaceous clarity.",
+            perfumerTip: "Natural constituent in tea; use at < 0.1% for a crisp herbal sparkle."
+          },
+          {
+            name: "Ethyl Linalool",
+            cas: "10339-55-6",
+            isNatural: false,
+            note: "Softer, smoother monoterpene alcohol substitute for natural Linalool.",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Preferred over Linalool as it does not require EU allergen declaration while adding a refined, silky floral-citrus lift to delicate white tea bases."
+          }
+        ],
+        accordFormula: "Hedione (40) + Phenyl Ethyl Alcohol (PEA) (15) + Beta-Ionone (12) + Apricot Lactone (5) + Ethyl Linalool (15) + Methyl Salicylate 10% (1) + Iso E Super (0-35% optional)"
+      },
+      yellow: {
+        title: "Yellow Tea (Junshan Yinzhen)",
+        oxidation: "10 - 20% (Sealed Mellowing)",
+        badgeBg: "bg-yellow-100 text-yellow-800 border-yellow-300",
+        processText: "Pan-Fired Leaves ➔ Sealed Damp-Heat Piling (Men Huang) ➔ Non-Enzymatic Thermal Oxidation",
+        vibe: "Toasted chestnut, sweet steamed corn, warm cereal, soft dried hay finish.",
+        molecules: [
+          {
+            name: "2,5-Dimethylpyrazine & 2-Acetyl Pyrazine",
+            cas: "123-32-0 / 22047-25-2",
+            isNatural: true,
+            note: "Toasted popcorn, roasted barley, and cereal aroma.",
+            perfumerTip: "Naturally formed during Men Huang piling via non-enzymatic thermal reaction."
+          },
+          {
+            name: "Maltol & Ethyl Maltol",
+            cas: "118-71-8 / 4940-11-8",
+            isNatural: true,
+            note: "Maltol is natural in roasted tea; Ethyl Maltol is a 6x stronger synthetic organ booster.",
+            perfumerTip: "🧪 Ethyl Maltol is a synthetic perfumer tool used to boost baked warm cereal gourmand facets."
+          },
+          {
+            name: "Linalool Oxides (Furanoid)",
+            cas: "5989-33-3",
+            isNatural: true,
+            note: "Muted woody-floral notes formed during warm smothering of tea leaves.",
+            perfumerTip: "Natural oxidation derivative that smooths pyrazines into a silky tea finish."
+          },
+          {
+            name: "Polysantol",
+            cas: "107898-54-4",
+            isNatural: false,
+            note: "Rich, creamy, high-impact synthetic sandalwood molecule (Firmenich).",
+            perfumerTip: "🧪 Perfumer's Organ Technique: NOT found in yellow tea leaves! Perfumers use Polysantol as a creative technique to give warm, creamy sandalwood structure under toasted cereal notes."
+          }
+        ],
+        accordFormula: "Hedione (30) + Ethyl Linalool (15) + Beta-Ionone (10) + Polysantol (15) + Maltol (3) + 2-Acetyl Pyrazine 1% (2) + Cedarwood / Iso E Super (15)"
+      },
+      oolong: {
+        title: "Oolong Tea (Tieguanyin & Da Hong Pao)",
+        oxidation: "20 - 70% (Semi-Fermented)",
+        badgeBg: "bg-pink-100 text-pink-800 border-pink-300",
+        processText: "Sun Withering ➔ Leaf Tossing & Bruising (Yao Qing) ➔ Defense Cascade ➔ Fixation",
+        vibe: "Narcotic orchid, ripe peach skin, blooming jasmine, sweet indolic leaf, honeyed wood.",
+        molecules: [
+          {
+            name: "trans-Nerolidol",
+            cas: "40716-66-3",
+            isNatural: true,
+            note: "Character-defining sesquiterpene alcohol in High Mountain Oolongs. Soft orchid-blossom and apple-wood floralness.",
+            perfumerTip: "Natural key marker of Tieguanyin and High Mountain Oolong."
+          },
+          {
+            name: "Indole",
+            cas: "120-72-9",
+            isNatural: true,
+            note: "Intoxicating, narcotic floral depth naturally synthesized by bruised tea leaves.",
+            perfumerTip: "Natural stress-response chemical in tea; bring wild blooming flower life (use diluted at 1%)."
+          },
+          {
+            name: "cis-Jasmone & Jasmine Lactone",
+            cas: "488-10-8 / 25524-95-2",
+            isNatural: true,
+            note: "Herbaceous green floral with velvety peach skin fruitiness.",
+            perfumerTip: "Natural oxylipins in oolong providing creamy-fruity mouthfeel (cis-Jasmone is potent, use diluted at 10%)."
+          },
+          {
+            name: "Hedione (Methyl Dihydrojasmonate)",
+            cas: "24851-98-7",
+            isNatural: false,
+            note: "Luminous, transparent synthetic floral ester (Firmenich staple).",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Synthetic derivative inspired by natural methyl jasmonate; used for radiant projection in tea bases."
+          }
+        ],
+        accordFormula: "Hedione / Methyl Jasmonate (40) + trans-Nerolidol (15) + Jasmine Lactone (8) + Gamma-Decalactone (4) + Indole 1% (3) + cis-Jasmone 10% (4) + Iso E Super (0-25% optional)"
+      },
+      black: {
+        title: "Black Tea (Keemun & Ceylon)",
+        oxidation: "80 - 100% (Fully Fermented)",
+        badgeBg: "bg-red-100 text-red-800 border-red-300",
+        processText: "Complete Rolling (Rouxie) ➔ PPO Enzymatic Cascade ➔ Rich Catechin Condensation ➔ Firing",
+        vibe: "Cooked jammy prune, sweet rose-honey, malty warm tobacco leaf, citrus lift.",
+        molecules: [
+          {
+            name: "Phenyl Ethyl Alcohol (PEA) & Mefrosol",
+            cas: "60-12-8 / 55066-48-3",
+            isNatural: true,
+            note: "PEA is natural in black tea. Mefrosol is a synthetic rose alcohol organ substitute.",
+            perfumerTip: "🧪 Perfumer's Organ Technique: Mefrosol is NOT in tea leaves; it is a synthetic perfumery tool used to complement/replace PEA for smooth, non-phenolic rose-tea longevity."
+          },
+          {
+            name: "Geraniol & Rosaphen",
+            cas: "106-24-1 / 25637-40-5",
+            isNatural: true,
+            note: "Geraniol is a natural tea terpene; Rosaphen is a synthetic substituted rose alcohol.",
+            perfumerTip: "🧪 Rosaphen fixes rose character softly into dark woody tea bases without harshness."
+          },
+          {
+            name: "Beta-Damascenone & Givescone",
+            cas: "23696-85-7 / 57934-92-6",
+            isNatural: true,
+            note: "Beta-Damascenone is natural in black tea (stewed apple/prune). Givescone & Ethyl Safranate are synthetic perfumer substitutes.",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Givescone and Ethyl Safranate build the fruity-rose damascone facet while staying safely within strict IFRA limit restrictions."
+          },
+          {
+            name: "Black Tea Extract / Absolute",
+            cas: "84650-60-2",
+            isNatural: true,
+            note: "Natural extract providing authentic tannic, dry, woody tea leaf body.",
+            perfumerTip: "Grounds synthetic aroma chemicals with true botanical depth."
+          }
+        ],
+        accordFormula: "Bergamot Oil FCF (15) + Phenyl Ethyl Alcohol (PEA) / Mefrosol (20) + Geraniol (10) + Black Tea Absolute (5) + Givescone / Beta-Damascenone 1% (2) + Tobacco Absolute 10% (3) + Iso E Super / Cedar (0-35% optional)"
+      },
+      assam: {
+        title: "Assam Tea (Camellia sinensis var. assamica)",
+        oxidation: "Green (0%) vs. Black (100%)",
+        badgeBg: "bg-amber-100 text-amber-900 border-amber-300",
+        processText: "Large-Leaf Variety ➔ High Polyphenol & Tannin Content ➔ Bold, Pungent Profile",
+        vibe: "Assam Green: Pungent, vegetal, highly tannic, astringent | Assam Black: Heavy malt, jammy prune, rich dark honey.",
+        molecules: [
+          {
+            name: "Mefrosol & PEA (Black Assam)",
+            cas: "55066-48-3 / 60-12-8",
+            isNatural: true,
+            note: "Natural PEA paired with synthetic Mefrosol for velvety rose petal depth.",
+            perfumerTip: "Mefrosol holds up against heavy malt and leather notes."
+          },
+          {
+            name: "Pyralone / Isobutyl Quinoline (Green Assam)",
+            cas: "1333-53-5",
+            isNatural: false,
+            note: "Pungent leather-green synthetic material created for classic perfumery.",
+            perfumerTip: "🧪 Perfumer's Organ Tool: Not in tea; used at 0.05% by perfumers to recreate raw, tannic green tea leaf grip."
+          },
+          {
+            name: "2-Acetyl Pyrazine (Black Assam)",
+            cas: "22047-25-2",
+            isNatural: true,
+            note: "Malty, roasted barley facet created during heavy Assam black tea firing.",
+            perfumerTip: "Natural Maillard product delivering British breakfast tea maltiness."
+          },
+          {
+            name: "Beta-Damascenone / Ethyl Safranate",
+            cas: "23696-85-7 / 106064-85-7",
+            isNatural: true,
+            note: "Natural Beta-Damascenone paired with synthetic Ethyl Safranate.",
+            perfumerTip: "🧪 Ethyl Safranate adds a saffron-spicy dried fruit note to support natural damascenone."
+          }
+        ],
+        accordFormula: "Black Assam Base: Bergamot Oil FCF (10) + Mefrosol (15) + Phenyl Ethyl Alcohol (PEA) (10) + Black Tea Abs (8) + 2-Acetyl Pyrazine 1% (3) + Ethyl Safranate (2) + Guaiacol 10% (1) + Sandalwood / Amber / Iso E Super (0-35%)"
+      },
+      puerh: {
+        title: "Dark Tea & Ripened Pu-erh",
+        oxidation: "Microbial Solid-State Post-Fermentation",
+        badgeBg: "bg-stone-200 text-stone-800 border-stone-400",
+        processText: "Sun-Dried Maocha ➔ Wet Piling (Wo Dui) ➔ Fungal Colonization (Aspergillus luchuensis)",
+        vibe: "Aged damp wood, antique cedar box, damp cellar, dried jujube, sweet soothing balsamic.",
+        molecules: [
+          {
+            name: "1,2,3-Trimethoxybenzene & Veratrole",
+            cas: "634-36-6 / 91-16-7",
+            isNatural: true,
+            note: "1,2,3-Trimethoxybenzene makes up 33% of natural aged Pu-erh volatile headspace! Veratrole (1,2-Dimethoxybenzene) adds antique wood and dried cedar facets.",
+            perfumerTip: "Natural microbial methylation markers of post-fermented Pu-erh tea leaves."
+          },
+          {
+            name: "Linalool Oxides (Isomers I–IV) & α-Terpineol",
+            cas: "5989-33-3 / 98-55-5",
+            isNatural: true,
+            note: "Furanoid & pyranoid linalool oxides formed by fungal oxidation, bringing earthy woody-floral depth paired with piney α-Terpineol.",
+            perfumerTip: "Key natural volatile markers created during Wo Dui wet piling."
+          },
+          {
+            name: "Clearwood / Patchouli Heart",
+            cas: "84650-60-2",
+            isNatural: false,
+            note: "Biotech fractionated patchouli material providing clean damp cellar and soil.",
+            perfumerTip: "🧪 Perfumer's Organ Technique: Used by perfumers to recreate damp Pu-erh piling without dirty herbal top notes."
+          },
+          {
+            name: "Evernyl (Veramoss) & Cedrol",
+            cas: "4707-47-5 / 77-53-2",
+            isNatural: false,
+            note: "Evernyl is a synthetic oakmoss-like phenol ester; Cedrol is a natural cedarwood sesquiterpene alcohol.",
+            perfumerTip: "🧪 Perfumer's Organ Technique: Evernyl provides clean damp forest-floor mossiness without IFRA oakmoss limits."
+          }
+        ],
+        accordFormula: "Patchouli Heart / Clearwood (25) + Veratrole (10) + Methyl Isoeugenol (5) + Cedrol (15) + Linalool Oxide (5) + Evernyl (3) + Terranol / Geosmin 1% (1) + Vetiverol / Iso E Super (0-35%)"
+      },
+      hojicha: {
+        title: "Hojicha (Roasted Green Tea)",
+        oxidation: "High-Heat Charcoal Pyrolysis",
+        badgeBg: "bg-orange-100 text-orange-800 border-orange-300",
+        processText: "Bancha/Sencha Green Tea ➔ High-Heat Charcoal Roasting (200°C) ➔ Catechin Pyrolysis",
+        vibe: "Toasted barley, roasted nut, warm cereal, sweet smoky embers, cozy toast.",
+        molecules: [
+          {
+            name: "2-Acetyl Pyrazine & Pyrazines",
+            cas: "22047-25-2",
+            isNatural: true,
+            note: "Nutty toast, roasted cereal, popcorn, and roasted barley.",
+            perfumerTip: "Naturally formed by high heat roasting of tea leaves."
+          },
+          {
+            name: "Guaiacol & Methyl Guaiacol",
+            cas: "90-05-1 / 93-51-6",
+            isNatural: true,
+            note: "Sweet smoky, woody, burnt toast phenol.",
+            perfumerTip: "Natural pyrolytic product; recreate charcoal pan roasting aromas (use diluted at 10%)."
+          },
+          {
+            name: "2-Acetylpyrrole",
+            cas: "1072-83-9",
+            isNatural: true,
+            note: "Nutty, sweet roasted grain, bread crust.",
+            perfumerTip: "Natural Maillard product adding round roasted warmth."
+          },
+          {
+            name: "Isobutavan",
+            cas: "20665-85-4",
+            isNatural: false,
+            note: "Synthetic creamy vanilla-isobutyrate molecule (Givaudan).",
+            perfumerTip: "🧪 Perfumer's Organ Technique: NOT in tea leaves! Used by perfumers as a technique to smooth smoky pyrazines into a cozy roasted tea latte base."
+          }
+        ],
+        accordFormula: "2-Acetyl Pyrazine 1% (5) + Guaiacol 10% (2) + Isobutavan (8) + Cedarwood (25) + Ethyl Linalool (15) + Hedione (25) + Polysantol / Iso E Super (0-20%)"
+      },
+      specialty: {
+        title: "Genmaicha & Jasmine Green Tea",
+        oxidation: "Inclusion Blending & Infusion",
+        badgeBg: "bg-teal-100 text-teal-800 border-teal-300",
+        processText: "Green Tea Base + Toasted Roasted Rice (Genmaicha) OR Sambac Jasmine Layering (Mo Li Hua)",
+        vibe: "Popped corn & toasted rice (Genmaicha) | Radiant blooming jasmine petals over green leaf (Jasmine Tea).",
+        molecules: [
+          {
+            name: "2-Acetyl-1-pyrroline (2AP)",
+            cas: "85213-22-5",
+            isNatural: true,
+            note: "Genmaicha star molecule. Fresh popcorn and toasted jasmine rice.",
+            perfumerTip: "Natural molecule in puffed rice; perfumers use 2-Acetyl Pyrazine as a stable organ substitute because 2AP degrades quickly in alcoholic perfumery."
+          },
+          {
+            name: "Benzyl Acetate",
+            cas: "140-11-4",
+            isNatural: true,
+            note: "Fresh, radiant, sweet fruity jasmine blossom top note.",
+            perfumerTip: "Naturally abundant in jasmine flower tea infusions."
+          },
+          {
+            name: "Indole & Hedione",
+            cas: "120-72-9 / 24851-98-7",
+            isNatural: true,
+            note: "Indole is natural floral depth; Hedione is a synthetic organ luminous projector.",
+            perfumerTip: "🧪 Perfumer's Organ Technique: Hedione is NOT in tea leaves; it is used by perfumers to transparently project natural jasmine indole into the air."
+          }
+        ],
+        accordFormula: "Jasmine Tea Base: Hedione (45) + Benzyl Acetate (15) + Ethyl Linalool (15) + cis-3-hexenol 10% (1) + Indole 1% (3) + Methyl Jasmonate (8) + Iso E Super (0-15% optional)"
+      }
+    };
+
+    function selectTea(teaKey) {
+      // Toggle active buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeTab = document.getElementById(`tab-${teaKey}`);
+      if (activeTab) activeTab.classList.add('active');
+
+      const data = teaData[teaKey];
+      const card = document.getElementById('tea-display-card');
+
+      card.innerHTML = `
+        <div class="space-y-6">
+          <!-- Header info -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-tea-100 pb-4">
+            <div>
+              <span class="inline-block text-xs font-bold px-3 py-1 rounded-full border mb-2 ${data.badgeBg}">
+                ${data.oxidation}
+              </span>
+              <h3 class="serif-title text-2xl md:text-3xl font-bold text-tea-900 break-words">${data.title}</h3>
+            </div>
+            <div class="bg-tea-50 p-3 rounded-xl border border-tea-200 text-left md:text-right max-w-full">
+              <span class="text-xs uppercase font-semibold text-tea-600 block">Sensory Profile</span>
+              <span class="text-sm font-medium text-tea-900 break-words">${data.vibe}</span>
+            </div>
+          </div>
+
+          <!-- Process Flow -->
+          <div class="bg-leaf-50/60 p-4 rounded-xl border border-leaf-100 flex items-center gap-3 text-xs md:text-sm text-leaf-900 font-medium break-words">
+            <span class="text-lg shrink-0">⚙️</span>
+            <div><strong class="text-leaf-800">Processing Hallmark:</strong> ${data.processText}</div>
+          </div>
+
+          <!-- Key Molecules Grid -->
+          <div>
+            <h4 class="serif-title text-lg font-bold text-tea-900 mb-3">Key Molecules & Perfumer Organ Materials</h4>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              ${data.molecules.map(m => `
+                <div class="bg-white border border-tea-200 p-4 rounded-2xl shadow-sm hover:border-tea-400 transition break-words">
+                  <div class="flex items-center justify-between mb-2 flex-wrap gap-1.5">
+                    <span class="font-bold text-tea-900 text-sm md:text-base break-words">${m.name}</span>
+                    <div class="flex items-center gap-1.5 flex-wrap">
+                      ${m.isNatural 
+                        ? `<span class="text-[10px] font-semibold bg-leaf-100 text-leaf-800 border border-leaf-300 px-2 py-0.5 rounded-full shrink-0">🌿 Natural in Tea / Nature</span>`
+                        : `<span class="text-[10px] font-semibold bg-purple-100 text-purple-800 border border-purple-300 px-2 py-0.5 rounded-full shrink-0">🧪 Perfumer's Synthetic Tool</span>`
+                      }
+                      <span class="text-[11px] font-mono bg-tea-100 text-tea-800 px-2 py-0.5 rounded shrink-0">CAS ${m.cas}</span>
+                    </div>
+                  </div>
+                  <p class="text-xs text-gray-600 mb-2 leading-relaxed break-words">${m.note}</p>
+                  <div class="bg-tea-50/80 p-2 rounded-lg text-xs text-tea-800 flex items-start gap-1.5 border border-tea-100 break-words">
+                    <span class="shrink-0 text-amber-600">💡</span>
+                    <span><strong>Perfumer Tip:</strong> ${m.perfumerTip}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Wear-Tested Perfumer Tea Base Blueprint -->
+          <div class="bg-amber-950 text-white p-4 md:p-5 rounded-2xl flex flex-col justify-between gap-3 border border-amber-800 shadow-md break-words">
+            <div>
+              <span class="text-xs uppercase tracking-wider text-amber-300 font-semibold block mb-1">🌿 Perfumer's Tea Base Blueprint (Ratios)</span>
+              <span class="font-mono text-xs md:text-sm text-amber-100 font-medium leading-relaxed block break-words">${data.accordFormula}</span>
+            </div>
+            <div class="pt-3 border-t border-amber-800/80 text-xs text-amber-200/90 leading-relaxed flex items-start gap-2">
+              <span class="shrink-0 text-amber-300">💡</span>
+              <span><strong>Why Bergamot FCF is Essential in Tea Bases:</strong> Even though Bergamot EO (FCF) naturally triggers an "Earl Grey" olfactory association, perfumers use it across almost <em>all</em> tea bases (green, white, oolong, and black). Its high concentration of natural <strong>linalyl acetate + linalool</strong> creates a soft, sparkling citrus-terpene top note that lifts dense green, floral, or tannic tea molecules into floating steam—creating the sensory illusion of hot brewed tea without adding sharp, sour lemon notes.</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize Lucide Icons & Default View
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      selectTea('steamedGreen');
+    });
+  </script>
+
+</body>
+</html>

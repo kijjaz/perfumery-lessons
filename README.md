@@ -1,6 +1,8 @@
 # 🧪 The Architecture of Scent: Perfumery Course & Interactive Web Portal
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Portal-d4af37?style=for-the-badge&logo=github)](https://kijjaz.github.io/perfumery-lessons/)
+[![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-yellow.svg?style=for-the-badge&logo=opensourceinitiative)](https://opensource.org/licenses/MIT)
+[![Content License: CC BY-NC 4.0](https://img.shields.io/badge/Content_License-CC_BY--NC_4.0-lightgrey.svg?style=for-the-badge&logo=creativecommons)](https://creativecommons.org/licenses/by-nc/4.0/)
 [![Design System](https://img.shields.io/badge/Design%20System-Carbon%20%26%20Gold-070708?style=for-the-badge)](https://kijjaz.github.io/perfumery-lessons/index.html)
 [![RDKit Chemistry](https://img.shields.io/badge/Chemistry-RDKit%20Vector%20SVGs-4ba6a6?style=for-the-badge)](https://kijjaz.github.io/perfumery-lessons/lessons/lesson_4_4_10_facet_botanical_lifecycle_map.html)
 
@@ -35,6 +37,9 @@ Deconstructing natural fruit profiles into 3D botanical facets and engineering t
 * 🧊 **[Lesson 4.4: The 10-Facet Botanical & Lifecycle Map](https://kijjaz.github.io/perfumery-lessons/lessons/lesson_4_4_10_facet_botanical_lifecycle_map.html)** — 8 Anatomical/Spatial + 2 Temporal/Thermal transformation facets. Features the live **Evaporative Volatility Waterfall Calculator**.
 * 📺 **[Presentation Deck: 10-Facet Fruit Architecture](https://kijjaz.github.io/perfumery-lessons/lessons/slides_lesson_4_4_10_facet_map.html)** — Fullscreen interactive 13-slide presentation deck with photorealistic AI imagery.
 
+### 🍵 Supplementary Readings & Botanical Atlases
+* 🍃 **[The Aroma Chemistry of Tea: An Olfactory Atlas](https://kijjaz.github.io/perfumery-lessons/lessons/tea_perfumery_aroma_chemistry_infographic.html)** — Comprehensive interactive atlas covering the 4 scent-creation chemical pathways of *Camellia sinensis* (lipid oxidation, carotenoid degradation, glycosides, and Maillard roasting) across 9 tea categories with perfumer reconstitution formulas.
+
 ---
 
 ## 🎨 Key Features
@@ -60,4 +65,20 @@ To host this course live on your own GitHub Pages:
 
 ## 📜 License & Citation
 
-Curriculum content and web tools created for the **Building Perfumery Student Organ** course series. Released under the open MIT License.
+This project is dual-licensed to support open-source educational tooling while protecting the written curriculum and creative content:
+
+* **Interactive Code & Web Tools** (`.js`, `.html` simulators, widget engines): Licensed under the [MIT License](LICENSE.md).
+* **Curriculum, Theory, Infographics & Formulations** (Written lessons, `.md` blueprints, diagrams, accords): Licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+
+### 📖 Citation
+
+```bibtex
+@misc{kijjaz_perfumery_lessons_2026,
+  author = {Kijjaz},
+  title = {The Architecture of Scent: Perfumery Course & Interactive Web Portal},
+  year = {2026},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/kijjaz/perfumery-lessons}}
+}
+```
