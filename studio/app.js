@@ -56,13 +56,15 @@ async function initApp() {
   try {
     let data = window.ORGAN_MATERIALS || window.TGSC_DATA;
     if (!data || !data.materials || data.materials.length === 0) {
-      if (feedbackEl) feedbackEl.textContent = 'Loading materials from Olfactory Database...';
-      const res = await fetch('organ_materials_data.js');
-      if (!res.ok) {
-        const res2 = await fetch('tgsc_student_payload.json');
-        if (res2.ok) data = await res2.json();
-        else throw new Error('Data payload not found');
-      }
+      if (feedbackEl) feedbackEl.textContent = 'Initializing Olfactory Database...';
+      try {
+        const res = await fetch('tgsc_student_payload.json');
+        if (res.ok) data = await res.json();
+      } catch (e) {}
+    }
+
+    if (!data || !data.materials || data.materials.length === 0) {
+      throw new Error('Olfactory dataset not loaded. Please refresh the page.');
     }
 
     state.materials = data.materials || [];
