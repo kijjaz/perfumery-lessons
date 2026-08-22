@@ -213,48 +213,99 @@ function populateSelectDropdowns() {
   state.activeBridgeMat2 = m2;
 }
 
-// Filtering & Searching Logic
+// Helper for smart query normalization (Greek letters, punctuation, spaces)
+function normalizeQuery(s) {
+  if (!s) return '';
+  return s
+    .toLowerCase()
+    .replace(/β/g, 'beta')
+    .replace(/α/g, 'alpha')
+    .replace(/γ/g, 'gamma')
+    .replace(/δ/g, 'delta')
+    .replace(/[-_.,/\\()]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// Filtering & Searching Logic with Smart Relevance Scoring
 function filterMaterials() {
-  const q = state.filters.search.toLowerCase().trim();
+  const rawQ = (state.filters.search || '').trim();
+  const qNorm = normalizeQuery(rawQ);
+  const tokens = qNorm.split(' ').filter(Boolean);
   const fam = state.filters.family;
   const vol = state.filters.volatility;
   const str = state.filters.strength;
 
-  state.filteredMaterials = state.materials.filter(m => {
-    // Search match
-    if (q) {
-      const nameMatch = (m.name || '').toLowerCase().includes(q);
-      const casMatch = (m.cas || '').includes(q);
-      const femaMatch = (m.fema || '').includes(q);
-      const famMatch = (m.family || '').toLowerCase().includes(q);
-      const facetMatch = (m.facets || []).some(f => f.toLowerCase().includes(q));
-      const descMatch = (m.desc || []).some(d => d.toLowerCase().includes(q));
-      if (!nameMatch && !casMatch && !femaMatch && !famMatch && !facetMatch && !descMatch) return false;
-    }
+  const scored = [];
 
-    // Family match
+  for (const m of state.materials) {
+    // 1. Family match
     if (fam !== 'all' && (m.family || '').toLowerCase() !== fam.toLowerCase()) {
-      return false;
+      continue;
     }
 
-    // Volatility tier match
+    // 2. Volatility tier match
     if (vol !== 'all' && m.tier !== vol) {
-      return false;
+      continue;
     }
 
-    // Strength match
+    // 3. Strength match
     if (str !== 'all') {
       const s = (m.strength || '').toLowerCase();
-      if (str === 'high' && !s.includes('high') && !s.includes('powerful') && !s.includes('strong')) return false;
-      if (str === 'medium' && !s.includes('medium')) return false;
-      if (str === 'low' && !s.includes('low') && !s.includes('weak') && !s.includes('mild')) return false;
+      if (str === 'high' && !s.includes('high') && !s.includes('powerful') && !s.includes('strong')) continue;
+      if (str === 'medium' && !s.includes('medium')) continue;
+      if (str === 'low' && !s.includes('low') && !s.includes('weak') && !s.includes('mild')) continue;
     }
 
-    return true;
-  });
+    // 4. Search Query Match & Scoring
+    let score = 0;
+    if (tokens.length > 0) {
+      const normName = normalizeQuery(m.name || '');
+      const normCas = (m.cas || '').replace(/[^0-9-]/g, '');
+      const normFam = normalizeQuery(m.family || '');
+      const normFacets = (m.facets || []).map(normalizeQuery);
+      const normDesc = (m.desc || []).map(normalizeQuery).join(' ');
+
+      // Check if ALL tokens match somewhere
+      const allTokensMatch = tokens.every(t => 
+        normName.includes(t) ||
+        normCas.includes(t) ||
+        normFam.includes(t) ||
+        normFacets.some(f => f.includes(t)) ||
+        normDesc.includes(t)
+      );
+
+      if (!allTokensMatch) continue;
+
+      // Calculate Relevance Score
+      if (normName === qNorm) score += 1000;
+      else if (normName.startsWith(qNorm)) score += 500;
+      else if (normName.includes(qNorm)) score += 300;
+      else if (tokens.every(t => normName.includes(t))) score += 200;
+      else if (normFacets.some(f => f.includes(qNorm))) score += 80;
+      else if (normFam.includes(qNorm)) score += 50;
+      else score += 10;
+    }
+
+    scored.push({ material: m, score });
+  }
+
+  // Sort by score descending, then alphabetically by name
+  if (tokens.length > 0) {
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.material.name.localeCompare(b.material.name);
+    });
+  } else {
+    scored.sort((a, b) => a.material.name.localeCompare(b.material.name));
+  }
+
+  state.filteredMaterials = scored.map(s => s.material);
 
   const feedbackEl = document.getElementById('search-feedback');
-  feedbackEl.textContent = `Showing ${state.filteredMaterials.length} of ${state.materials.length} materials`;
+  if (feedbackEl) {
+    feedbackEl.textContent = `Showing ${state.filteredMaterials.length} of ${state.materials.length} materials`;
+  }
 
   renderOrganGrid();
 }
@@ -1183,24 +1234,58 @@ function startApp() {
   }
 }
 
-// Fragrance Filtering & Grid Rendering
+// Fragrance Filtering & Grid Rendering with Smart Relevance Scoring
 function filterFragrances() {
   const { search, family, type } = state.fragranceFilters;
-  const q = search.trim().toLowerCase();
+  const rawQ = (search || '').trim();
+  const qNorm = normalizeQuery(rawQ);
+  const tokens = qNorm.split(' ').filter(Boolean);
 
-  state.filteredFragrances = state.fragrances.filter(f => {
-    if (family !== 'all' && f.family !== family) return false;
-    if (type !== 'all' && f.type !== type) return false;
-    if (q) {
-      const matchName = (f.name || '').toLowerCase().includes(q);
-      const matchFam = (f.family || '').toLowerCase().includes(q);
-      const matchDesc = (f.desc || []).some(d => d.toLowerCase().includes(q));
-      const matchFacets = (f.facets || []).some(fac => fac.toLowerCase().includes(q));
-      const matchIng = (f.ingredients || []).some(i => i.name.toLowerCase().includes(q));
-      if (!matchName && !matchFam && !matchDesc && !matchFacets && !matchIng) return false;
+  const scored = [];
+
+  for (const f of state.fragrances) {
+    if (family !== 'all' && (f.family || '').toLowerCase() !== family.toLowerCase()) continue;
+    if (type !== 'all' && f.type !== type) continue;
+
+    let score = 0;
+    if (tokens.length > 0) {
+      const normName = normalizeQuery(f.name || '');
+      const normFam = normalizeQuery(f.family || '');
+      const normDesc = (f.desc || []).map(normalizeQuery).join(' ');
+      const normFacets = (f.facets || []).map(normalizeQuery);
+      const normIng = (f.ingredients || []).map(i => normalizeQuery(i.name || '')).join(' ');
+
+      const allTokensMatch = tokens.every(t =>
+        normName.includes(t) ||
+        normFam.includes(t) ||
+        normDesc.includes(t) ||
+        normFacets.some(fac => fac.includes(t)) ||
+        normIng.includes(t)
+      );
+
+      if (!allTokensMatch) continue;
+
+      if (normName === qNorm) score += 1000;
+      else if (normName.startsWith(qNorm)) score += 500;
+      else if (normName.includes(qNorm)) score += 300;
+      else if (tokens.every(t => normName.includes(t))) score += 200;
+      else if (normFacets.some(fac => fac.includes(qNorm))) score += 80;
+      else score += 10;
     }
-    return true;
-  });
+
+    scored.push({ frag: f, score });
+  }
+
+  if (tokens.length > 0) {
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.frag.name.localeCompare(b.frag.name);
+    });
+  } else {
+    scored.sort((a, b) => a.frag.name.localeCompare(b.frag.name));
+  }
+
+  state.filteredFragrances = scored.map(s => s.frag);
 
   const fb = document.getElementById('fragrance-feedback');
   if (fb) fb.textContent = `Displaying ${state.filteredFragrances.length} of ${state.fragrances.length} fragrance accords & bases`;
