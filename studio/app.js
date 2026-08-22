@@ -1493,4 +1493,21 @@ function loadAccordToSandbox(id) {
   }
 
   renderFormulaTable();
-  
+  updateFormulaMetrics();
+  closeMaterialModal();
+  switchTab('sandbox');
+}
+
+function safeStart() {
+  if (window._appStarted) return;
+  window._appStarted = true;
+  startApp();
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  safeStart();
+} else {
+  document.addEventListener('DOMContentLoaded', safeStart);
+  window.addEventListener('load', safeStart);
+  setTimeout(safeStart, 100);
+}
