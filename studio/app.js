@@ -235,21 +235,28 @@ function filterMaterials() {
   const fam = state.filters.family;
   const vol = state.filters.volatility;
   const str = state.filters.strength;
+  const sup = state.filters.supplier || 'all';
 
   const scored = [];
 
   for (const m of state.materials) {
-    // 1. Family match
+    // 1. Supplier match (PerfumersWorld / SimpleScentsDIY / MySkinRecipes)
+    if (sup !== 'all') {
+      const sups = (m.suppliers || []).map(s => s.toLowerCase());
+      if (!sups.includes(sup.toLowerCase())) continue;
+    }
+
+    // 2. Family match
     if (fam !== 'all' && (m.family || '').toLowerCase() !== fam.toLowerCase()) {
       continue;
     }
 
-    // 2. Volatility tier match
+    // 3. Volatility tier match
     if (vol !== 'all' && m.tier !== vol) {
       continue;
     }
 
-    // 3. Strength match
+    // 4. Strength match
     if (str !== 'all') {
       const s = (m.strength || '').toLowerCase();
       if (str === 'high' && !s.includes('high') && !s.includes('powerful') && !s.includes('strong')) continue;
@@ -337,7 +344,8 @@ function renderOrganGrid() {
     const tierClass = m.tier === 'Top Note' ? 'tier-top' : m.tier === 'Heart Note' ? 'tier-heart' : 'tier-base';
 
     const descPreview = m.desc && m.desc.length > 0 ? m.desc[0] : `${m.name} is a key ${m.family || 'aromatic'} building block exhibiting classic ${m.tier || 'substantive'} characteristics.`;
-    const facetsHtml = (m.facets || []).slice(0, 5).map(f => `<span class="facet-chip">${f}</span>`).join('');
+    const facetsHtml = (m.facets || []).slice(0, 4).map(f => `<span class="facet-chip">${f}</span>`).join('');
+    const supplierBadges = (m.suppliers || []).map(s => `<span class="facet-chip" style="color: var(--accent-gold); border-color: rgba(245,158,11,0.25); font-size: 0.68rem;">🏷️ ${s}</span>`).join('');
     
     const badgeCode = m.sku || (m.id.startsWith('rw') || m.id.startsWith('es') || m.id.startsWith('pb') || m.id.startsWith('fr')
       ? m.id.toUpperCase()
@@ -366,6 +374,7 @@ function renderOrganGrid() {
       </div>
 
       <div class="facets-list">
+        ${supplierBadges}
         ${facetsHtml}
       </div>
 
@@ -1133,6 +1142,15 @@ function startApp() {
   if (famFilter) {
     famFilter.addEventListener('change', (e) => {
       state.filters.family = e.target.value;
+      filterMaterials();
+    });
+  }
+
+  // Supplier filter (PerfumersWorld / SimpleScentsDIY / MySkinRecipes)
+  const supFilter = document.getElementById('supplier-filter');
+  if (supFilter) {
+    supFilter.addEventListener('change', (e) => {
+      state.filters.supplier = e.target.value;
       filterMaterials();
     });
   }
