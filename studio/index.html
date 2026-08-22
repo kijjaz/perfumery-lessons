@@ -41,9 +41,6 @@
         <button class="nav-tab" data-tab="sandbox">
           <span>🧪</span> Formulation Sandbox
         </button>
-        <a href="../index.html" class="nav-tab" style="text-decoration: none; border-color: rgba(245, 158, 11, 0.4); color: #fbbf24; margin-left: 0.5rem;">
-          <span>📚</span> Lessons Portal
-        </a>
       </nav>
 
       <div class="header-stats">
@@ -246,29 +243,25 @@
       </div>
 
       <div id="faceoff-matrix-container" style="margin-top: 1.5rem;">
-        <!-- Faceoff columns rendered by app.js -->
-      </div>
-    </section>
-
-    <!-- TAB 4: Formulation Sandbox -->
+        <!-- Faceoff columns ren    <!-- TAB 4: Formulation Sandbox -->
     <section id="view-sandbox" class="view-panel">
       <div class="sandbox-grid">
         
         <!-- Compounding Beaker Table -->
         <div class="formula-table-card">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
             <div>
               <h2 style="font-size: 1.25rem; color: #fff;">Formula Compounding Beaker</h2>
-              <span style="font-size: 0.8rem; color: var(--text-secondary);">Build an accord and observe real-time volatility & note balance</span>
+              <span style="font-size: 0.8rem; color: var(--text-secondary);">Build an accord, balance parts-per-thousand (PPT), and observe real-time volatility balance</span>
             </div>
-            <button id="btn-clear-formula" class="btn-icon" style="color: var(--accent-rose);">Clear Formula</button>
+            <button id="btn-clear-formula" class="btn-icon" style="color: var(--accent-rose);">🗑️ Clear Formula</button>
           </div>
 
           <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
             <select id="sandbox-add-select" class="select-filter" style="flex: 1;">
               <option value="">Search material to add to beaker...</option>
             </select>
-            <input type="number" id="sandbox-add-ppt" class="select-filter" style="width: 120px;" placeholder="Parts (ppt)" value="100" min="1" max="1000">
+            <input type="number" id="sandbox-add-ppt" class="select-filter" style="width: 130px;" placeholder="Parts (ppt)" value="100" min="1" max="1000">
             <button id="btn-add-to-formula" class="btn-primary">+ Add</button>
           </div>
 
@@ -280,43 +273,24 @@
                 <th style="padding: 0.6rem;">Family</th>
                 <th style="padding: 0.6rem;">Note Tier</th>
                 <th style="padding: 0.6rem;">Parts (ppt)</th>
-              <h2 style="font-size: 1.3rem; color: #fff;">Interactive Formulation Beaker</h2>
-              <p style="font-size: 0.8rem; color: var(--text-secondary);">Add materials, balance parts-per-thousand (PPT), and monitor evaporation curve.</p>
-            </div>
-            <button id="btn-clear-formula" class="btn btn-secondary" style="color: var(--accent-rose);">🗑️ Clear Formula</button>
-          </div>
-
-          <div class="formula-table-card">
-            <table class="formula-table">
-              <thead>
-                <tr>
-                  <th style="width: 40%;">Material</th>
-                  <th style="width: 20%;">Tier</th>
-                  <th style="width: 25%;">Parts (PPT)</th>
-                  <th style="width: 15%; text-align: right;">Action</th>
-                </tr>
-              </thead>
-              <tbody id="formula-tbody">
-                <!-- Injected dynamically -->
-              </tbody>
-            </table>
-
-            <div class="add-material-bar">
-              <select id="sandbox-add-select" class="select-filter" style="flex: 2;">
-                <option value="">Select a material to add...</option>
-              </select>
-              <input type="number" id="sandbox-add-ppt" class="search-input" value="100" min="1" max="1000" style="flex: 0.8;" placeholder="PPT">
-              <button id="btn-add-to-formula" class="btn btn-primary">➕ Add to Beaker</button>
-            </div>
-          </div>
+                <th style="padding: 0.6rem;">Weight %</th>
+                <th style="padding: 0.6rem; text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="formula-tbody">
+              <!-- Rendered items -->
+            </tbody>
+          </table>
         </div>
 
-        <!-- Right: Real-time Pyramid Analytics -->
-        <div class="sandbox-sidebar">
-          <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">📊 Evaporation Pyramid Balance</h3>
-          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">Live recalculation based on physical chemical tenacity.</p>
+        <!-- Evaporation Pyramid & Accord Metrics -->
+        <div class="formula-metrics-card">
+          <h3 style="font-size: 1.1rem; color: #fff;">Evaporation Pyramid Balance</h3>
+          <p style="font-size: 0.78rem; color: var(--text-secondary);">
+            Classical perfumery targets: Top ~15-25%, Heart ~30-40%, Base ~40-55%.
+          </p>
 
-          <div class="pyramid-visual-card">
+          <div class="pyramid-vis">
             <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
               <span style="color: #38bdf8; font-weight: 600;">Top Notes (<6h)</span>
               <span id="pyramid-top-pct" style="color: #38bdf8; font-family: var(--font-mono);">0.0%</span>
@@ -335,6 +309,21 @@
             </div>
             <div id="bar-base" class="pyramid-bar bar-base" style="width: 0%;">0%</div>
           </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.5rem;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span style="color: var(--text-muted);">Total Parts:</span>
+              <span id="formula-total-ppt" style="font-family: var(--font-mono); font-weight: 700; color: #fff;">0 ppt</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span style="color: var(--text-muted);">Synergy Chords Detected:</span>
+              <span id="formula-synergy-count" style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-green);">0 pairs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>         </div>
         </div>
 
       </div>

@@ -55,17 +55,17 @@ async function initApp() {
   const feedbackEl = document.getElementById('search-feedback');
   try {
     let data;
-    if (window.ORGAN_MATERIALS && window.ORGAN_MATERIALS.materials && window.ORGAN_MATERIALS.materials.length > 0) {
-      data = window.ORGAN_MATERIALS;
-    } else if (window.TGSC_DATA && window.TGSC_DATA.materials && window.TGSC_DATA.materials.length > 0) {
+    if (window.TGSC_DATA && window.TGSC_DATA.materials && window.TGSC_DATA.materials.length > 0) {
       data = window.TGSC_DATA;
     } else {
-      if (feedbackEl) feedbackEl.textContent = 'Loading aroma materials from Olfactory Database...';
-      const res = await fetch('organ_materials_data.json');
-      if (res.ok) {
-        data = await res.json();
+      if (feedbackEl) feedbackEl.textContent = 'Loading 674 materials from Olfactory Database...';
+      const res = await fetch('tgsc_student_payload.json?v=20260822_07');
+      if (!res.ok) {
+        const resFallback = await fetch('../data/processed/tgsc_student_payload.json');
+        if (!resFallback.ok) throw new Error('Data payload not found');
+        data = await resFallback.json();
       } else {
-        throw new Error('Data payload not found');
+        data = await res.json();
       }
     }
 
@@ -73,17 +73,8 @@ async function initApp() {
     state.materials.forEach(m => state.materialsMap.set(m.id, m));
     state.filteredMaterials = [...state.materials];
 
-    // Seed default formula if empty
-    if (state.formula.length === 0 && state.materials.length >= 3) {
-      const topNote = state.materials.find(m => m.tier === 'Top Note') || state.materials[0];
-      const heartNote = state.materials.find(m => m.tier === 'Heart Note' && m.id !== topNote.id) || state.materials[1];
-      const baseNote = state.materials.find(m => m.tier === 'Base Note' && m.id !== topNote.id && m.id !== heartNote.id) || state.materials[2];
-      state.formula = [
-        { id: topNote.id, ppt: 150 },
-        { id: heartNote.id, ppt: 350 },
-        { id: baseNote.id, ppt: 500 }
-      ];
-    }
+    // Initialize empty formulation beaker
+    state.formula = [];
 
     // Update Header Stats
     const matStatEl = document.getElementById('stat-materials-count');
@@ -105,10 +96,13 @@ async function initApp() {
 
     // Fetch Fragrance Accords & Specialty Bases
     try {
-      if (window.FRAGRANCES_ACCORDS && window.FRAGRANCES_ACCORDS.length > 0) {
-        state.fragrances = window.FRAGRANCES_ACCORDS;
-      } else if (window.TGSC_FRAGRANCES && window.TGSC_FRAGRANCES.length > 0) {
+      if (window.TGSC_FRAGRANCES && window.TGSC_FRAGRANCES.length > 0) {
         state.fragrances = window.TGSC_FRAGRANCES;
+      } else {
+        const fragRes = await fetch('tgsc_fragrances.json?v=20260822_07');
+        if (fragRes.ok) {
+          state.fragrances = await fragRes.json();
+        }
       }
       
       if (state.fragrances && state.fragrances.length > 0) {
@@ -1453,34 +1447,55 @@ function loadAccordToSandbox(id) {
   const f = state.fragrancesMap.get(id);
   if (!f) return;
 
+  state.formula = []; // Always clear old formula first
+
   let addedCount = 0;
 
-  // 1. If formula has exact recipe
+  // 1. If formula has exact recipe with parts
   if (f.recipe && f.recipe.length > 0) {
     f.recipe.forEach(r => {
-      const matchMat = state.materials.find(m => m.name.toLowerCase().includes(r.name.toLowerCase()) || r.name.toLowerCase().includes(m.name.toLowerCase()));
-      if (matchMat) {
-        addToSandbox(matchMat.id, Math.round(r.parts));
-        addedCount++;
+      let matchMat = state.materials.find(m => m.name.toLowerCase() === r.name.toLowerCase() || m.name.toLowerCase().includes(r.name.toLowerCase()) || r.name.toLowerCase().includes(m.name.toLowerCase()));
+      const matId = matchMat ? matchMat.id : ('rec_' + r.name.toLowerCase().replace(/[^a-z0-9]/g, '_'));
+      if (!matchMat) {
+        state.materialsMap.set(matId, {
+          id: matId,
+          name: r.name,
+          family: 'aromatic',
+          tier: r.parts > 200 ? 'Heart Note' : 'Top Note',
+          desc: ['Formula constituent ingredient'],
+          blenders_by_group: {},
+          blenders_count: 0
+        });
       }
+      state.formula.push({ id: matId, ppt: Math.max(5, Math.round(r.parts)) });
+      addedCount++;
     });
-  }
-
-  // 2. If no exact recipe or ingredients list
-  if (addedCount === 0 && f.ingredients && f.ingredients.length > 0) {
+  } else if (f.ingredients && f.ingredients.length > 0) {
+    // 2. If ingredient list
     const partsPerItem = Math.max(25, Math.floor(1000 / f.ingredients.length));
-    f.ingredients.slice(0, 6).forEach(ing => {
-      const matchMat = state.materials.find(m => m.name.toLowerCase().includes(ing.name.toLowerCase()) || ing.name.toLowerCase().includes(m.name.toLowerCase()));
-      if (matchMat) {
-        addToSandbox(matchMat.id, partsPerItem);
-        addedCount++;
+    f.ingredients.forEach(ing => {
+      let matchMat = state.materials.find(m => m.name.toLowerCase() === ing.name.toLowerCase() || m.name.toLowerCase().includes(ing.name.toLowerCase()) || ing.name.toLowerCase().includes(m.name.toLowerCase()));
+      const matId = matchMat ? matchMat.id : ('ing_' + ing.name.toLowerCase().replace(/[^a-z0-9]/g, '_'));
+      if (!matchMat) {
+        state.materialsMap.set(matId, {
+          id: matId,
+          name: ing.name,
+          family: 'aromatic',
+          tier: 'Heart Note',
+          desc: ['Formula constituent ingredient'],
+          blenders_by_group: {},
+          blenders_count: 0
+        });
       }
+      state.formula.push({ id: matId, ppt: partsPerItem });
+      addedCount++;
     });
   }
 
+  renderFormulaTable();
+  updateFormulaMetrics();
   closeMaterialModal();
   switchTab('sandbox');
-  alert(`✨ Loaded ${addedCount > 0 ? addedCount : 'organ'} ingredients from "${f.name}" into your Formulation Beaker!`);
 }
 
 function safeStart() {
