@@ -54,18 +54,14 @@ function getFamilyStyle(family) {
 async function initApp() {
   const feedbackEl = document.getElementById('search-feedback');
   try {
-    let data;
-    if (window.TGSC_DATA && window.TGSC_DATA.materials && window.TGSC_DATA.materials.length > 0) {
-      data = window.TGSC_DATA;
-    } else {
-      if (feedbackEl) feedbackEl.textContent = 'Loading 674 materials from Olfactory Database...';
-      const res = await fetch('tgsc_student_payload.json?v=20260822_07');
+    let data = window.ORGAN_MATERIALS || window.TGSC_DATA;
+    if (!data || !data.materials || data.materials.length === 0) {
+      if (feedbackEl) feedbackEl.textContent = 'Loading materials from Olfactory Database...';
+      const res = await fetch('organ_materials_data.js');
       if (!res.ok) {
-        const resFallback = await fetch('../data/processed/tgsc_student_payload.json');
-        if (!resFallback.ok) throw new Error('Data payload not found');
-        data = await resFallback.json();
-      } else {
-        data = await res.json();
+        const res2 = await fetch('tgsc_student_payload.json');
+        if (res2.ok) data = await res2.json();
+        else throw new Error('Data payload not found');
       }
     }
 
@@ -96,10 +92,12 @@ async function initApp() {
 
     // Fetch Fragrance Accords & Specialty Bases
     try {
-      if (window.TGSC_FRAGRANCES && window.TGSC_FRAGRANCES.length > 0) {
+      if (window.FRAGRANCES_ACCORDS && window.FRAGRANCES_ACCORDS.length > 0) {
+        state.fragrances = window.FRAGRANCES_ACCORDS;
+      } else if (window.TGSC_FRAGRANCES && window.TGSC_FRAGRANCES.length > 0) {
         state.fragrances = window.TGSC_FRAGRANCES;
       } else {
-        const fragRes = await fetch('tgsc_fragrances.json?v=20260822_07');
+        const fragRes = await fetch('tgsc_fragrances.json');
         if (fragRes.ok) {
           state.fragrances = await fragRes.json();
         }
