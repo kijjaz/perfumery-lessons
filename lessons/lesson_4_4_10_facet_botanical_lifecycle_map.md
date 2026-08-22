@@ -233,23 +233,23 @@ Perfumery Raw Material | Target Botanical Facet  | CAS Number | MW (g/mol) | VP 
 ───────────────────────┼─────────────────────────┼────────────┼────────────┼─────────────────┼───────┼──────────────────
 Hexanal                | Facet 1: Epicarp/Skin   | 66-25-1    | 100.16     | 1200.00         | 1.78  | 5.0 ppb / PubChem
 (E)-2-Hexenal          | Facet 1: Epicarp/Skin   | 6728-26-3  | 98.14      | 480.00          | 1.58  | 17.0 ppb / JAFC
-d-Limonene             | Facet 1: Epicarp/Skin   | 5989-27-5  | 136.23     | 190.00          | 4.38  | 200.0 ppb / TGSC
+d-Limonene             | Facet 1: Epicarp/Skin   | 5989-27-5  | 136.23     | 190.00          | 4.38  | 200.0 ppb / ref_url
 Isobutyl Methoxypyraz. | Facet 2: Mesocarp/Pith  | 24683-00-9 | 166.22     | 12.00           | 2.24  | 0.002 ppb / JFS
-1-Hexanol              | Facet 2: Mesocarp/Pith  | 111-27-3   | 102.17     | 124.00          | 2.03  | 500.0 ppb / TGSC
+1-Hexanol              | Facet 2: Mesocarp/Pith  | 111-27-3   | 102.17     | 124.00          | 2.03  | 500.0 ppb / ref_url
 Stemone                | Facet 2 & 6: Pith/Latex | 22457-23-4 | 141.21     | 28.00           | 2.14  | 10.0 ppb / Givaudan
-Ethyl Butanoate        | Facet 3: Fleshy Pulp    | 105-54-4   | 116.16     | 1700.00         | 1.85  | 0.15 ppb / TGSC
-Ethyl 2-Methylbutano.  | Facet 3: Fleshy Pulp    | 7452-79-1  | 130.18     | 320.00          | 2.05  | 0.01 ppb / TGSC
-gamma-Decalactone      | Facet 3: Fleshy Pulp    | 706-14-9   | 170.25     | 0.12            | 2.72  | 11.0 ppb / TGSC
-cis-3-Hexenol          | Facet 4: Aqueous Vacuo  | 928-96-1   | 100.16     | 200.00          | 1.61  | 70.0 ppb / TGSC
-Calone 1951            | Facet 4: Aqueous Vacuo  | 28940-11-6 | 178.23     | 0.05            | 1.80  | 0.03 ppb / TGSC
+Ethyl Butanoate        | Facet 3: Fleshy Pulp    | 105-54-4   | 116.16     | 1700.00         | 1.85  | 0.15 ppb / ref_url
+Ethyl 2-Methylbutano.  | Facet 3: Fleshy Pulp    | 7452-79-1  | 130.18     | 320.00          | 2.05  | 0.01 ppb / ref_url
+gamma-Decalactone      | Facet 3: Fleshy Pulp    | 706-14-9   | 170.25     | 0.12            | 2.72  | 11.0 ppb / ref_url
+cis-3-Hexenol          | Facet 4: Aqueous Vacuo  | 928-96-1   | 100.16     | 200.00          | 1.61  | 70.0 ppb / ref_url
+Calone 1951            | Facet 4: Aqueous Vacuo  | 28940-11-6 | 178.23     | 0.05            | 1.80  | 0.03 ppb / ref_url
 3-M-3-Sulfanylbutyl A. | Facet 5: Mucilage/Aril  | 5287-43-4  | 162.25     | 18.00           | 2.10  | 0.05 ppb / PMC
-delta-Decalactone      | Facet 5: Mucilage/Aril  | 705-86-2   | 170.25     | 0.08            | 2.56  | 100.0 ppb / TGSC
-Benzaldehyde           | Facet 7: Endocarp/Seed  | 100-52-7   | 106.12     | 127.00          | 1.48  | 350.0 ppb / TGSC
-2,3,5-Trimethylpyraz.  | Facet 7: Endocarp/Seed  | 14667-55-1 | 122.17     | 110.00          | 1.32  | 1000.0 ppb / TGSC
-cis-3-Hexenyl Acetate  | Facet 8: Calyx/Stem     | 3681-71-8  | 142.20     | 180.00          | 2.34  | 25.0 ppb / TGSC
+delta-Decalactone      | Facet 5: Mucilage/Aril  | 705-86-2   | 170.25     | 0.08            | 2.56  | 100.0 ppb / ref_url
+Benzaldehyde           | Facet 7: Endocarp/Seed  | 100-52-7   | 106.12     | 127.00          | 1.48  | 350.0 ppb / ref_url
+2,3,5-Trimethylpyraz.  | Facet 7: Endocarp/Seed  | 14667-55-1 | 122.17     | 110.00          | 1.32  | 1000.0 ppb / ref_url
+cis-3-Hexenyl Acetate  | Facet 8: Calyx/Stem     | 3681-71-8  | 142.20     | 180.00          | 2.34  | 25.0 ppb / ref_url
 Ethyl Acetate          | Facet 9: Fermentative   | 141-78-6   | 88.11      | 9700.00         | 0.73  | 5000.0 ppb / PubChem
-(E)-beta-Damascenone   | Facet 10: Desiccated    | 23696-85-7 | 190.28     | 0.25            | 3.80  | 0.002 ppb / TGSC
-Furaneol (DMHF)        | Facet 10: Desiccated    | 3658-77-3  | 128.13     | 0.08            | 0.82  | 0.05 ppb / TGSC
+(E)-beta-Damascenone   | Facet 10: Desiccated    | 23696-85-7 | 190.28     | 0.25            | 3.80  | 0.002 ppb / ref_url
+Furaneol (DMHF)        | Facet 10: Desiccated    | 3658-77-3  | 128.13     | 0.08            | 0.82  | 0.05 ppb / ref_url
 ========================================================================================================================
 ```
 
