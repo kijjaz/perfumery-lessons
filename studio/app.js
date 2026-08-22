@@ -291,7 +291,7 @@ function renderOrganGrid() {
     const famStyle = getFamilyStyle(m.family);
     const tierClass = m.tier === 'Top Note' ? 'tier-top' : m.tier === 'Heart Note' ? 'tier-heart' : 'tier-base';
 
-    const descPreview = m.desc && m.desc.length > 0 ? m.desc[0] : 'Classic olfactory profile curated from TGSC.';
+    const descPreview = m.desc && m.desc.length > 0 ? m.desc[0] : `${m.name} is a key ${m.family || 'aromatic'} building block exhibiting classic ${m.tier || 'substantive'} characteristics.`;
     const facetsHtml = (m.facets || []).slice(0, 5).map(f => `<span class="facet-chip">${f}</span>`).join('');
     
     const badgeCode = m.sku || (m.id.startsWith('rw') || m.id.startsWith('es') || m.id.startsWith('pb') || m.id.startsWith('fr')
