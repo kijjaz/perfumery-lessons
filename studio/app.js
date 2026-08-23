@@ -1368,7 +1368,7 @@ function renderFragranceGrid() {
 
     const descPreview = f.desc && f.desc.length > 0 ? f.desc[0] : `${f.name} curated fragrance composition.`;
     const facetsHtml = (f.facets || []).slice(0, 5).map(fac => `<span class="facet-chip">${fac}</span>`).join('');
-    const supplierText = (f.suppliers && f.suppliers.length > 0) ? f.suppliers.join(', ') : 'TGSC Evaluator Classic';
+    const supplierText = (f.suppliers && f.suppliers.length > 0) ? f.suppliers.join(', ') : 'Classic Formulation Archive';
 
     card.innerHTML = `
       <div class="card-top">
