@@ -366,6 +366,7 @@ class ScentTopography3D {
       <button class="topography-btn" id="topo-btn-2d" title="Top-Down 20-Pole Scent Floor" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🧭 20-Pole Wheel</button>
       <button class="topography-btn" id="topo-btn-constellation" title="2D Volatility × Hue Constellation Grid" style="background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent-purple, #c084fc); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">✨ Constellation Grid</button>
       <button class="topography-btn" id="topo-btn-atlas" title="Open Full 20-Pole Scent Map Atlas" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); color: var(--accent-blue, #38bdf8); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">🗺️ Full Scent Map</button>
+      <button class="topography-btn" id="topo-btn-fullscreen" title="Maximize in Tab (Cinema View)" style="background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.35); color: var(--accent-gold, #fbbf24); padding: 4px 9px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">⛶ Maximize</button>
       <button class="topography-btn" id="topo-btn-reset" title="Reset Camera" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">↺ Reset</button>
     `;
 
@@ -452,6 +453,7 @@ class ScentTopography3D {
     const btn2D = this.wrapper.querySelector('#topo-btn-2d');
     const btnConst = this.wrapper.querySelector('#topo-btn-constellation');
     const btnAtlas = this.wrapper.querySelector('#topo-btn-atlas');
+    const btnFullscreen = this.wrapper.querySelector('#topo-btn-fullscreen');
     const btnReset = this.wrapper.querySelector('#topo-btn-reset');
 
     if (btn3D) btn3D.onclick = () => {
@@ -482,6 +484,10 @@ class ScentTopography3D {
       openScentAtlasModal();
     };
 
+    if (btnFullscreen) {
+      btnFullscreen.onclick = () => this.toggleFullscreen();
+    }
+
     if (btnReset) btnReset.onclick = () => {
       this.viewMode = '3d';
       this.pitch = 54 * (Math.PI / 180);
@@ -490,9 +496,17 @@ class ScentTopography3D {
       this.render();
     };
 
+    // ESC key listener to exit fullscreen
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isFullscreen) {
+        this.toggleFullscreen();
+      }
+    });
+
     if (window.ResizeObserver) {
       new ResizeObserver(() => {
         if (!this.container) return;
+        if (this.isFullscreen) return;
         const w = this.container.clientWidth;
         if (w > 50 && this.canvas.width !== w * (window.devicePixelRatio || 1)) {
           this.canvas.width = w * (window.devicePixelRatio || 1);
@@ -500,6 +514,59 @@ class ScentTopography3D {
         }
       }).observe(this.container);
     }
+  }
+
+  toggleFullscreen() {
+    this.isFullscreen = !this.isFullscreen;
+    const btnFullscreen = this.wrapper.querySelector('#topo-btn-fullscreen');
+    const dpr = window.devicePixelRatio || 1;
+
+    if (this.isFullscreen) {
+      this.wrapper.style.position = 'fixed';
+      this.wrapper.style.top = '0';
+      this.wrapper.style.left = '0';
+      this.wrapper.style.width = '100vw';
+      this.wrapper.style.height = '100vh';
+      this.wrapper.style.zIndex = '999999';
+      this.wrapper.style.borderRadius = '0';
+      this.wrapper.style.border = 'none';
+
+      this.canvas.width = window.innerWidth * dpr;
+      this.canvas.height = window.innerHeight * dpr;
+
+      if (btnFullscreen) {
+        btnFullscreen.innerHTML = '✕ Exit Fullscreen';
+        btnFullscreen.style.background = 'rgba(239,68,68,0.2)';
+        btnFullscreen.style.borderColor = 'rgba(239,68,68,0.4)';
+        btnFullscreen.style.color = '#f87171';
+      }
+
+      this.hud.innerHTML = `<strong>⛶ Cinema View Mode</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">Press ESC or click '✕ Exit Fullscreen' to return</span>`;
+    } else {
+      this.wrapper.style.position = 'relative';
+      this.wrapper.style.top = 'auto';
+      this.wrapper.style.left = 'auto';
+      this.wrapper.style.width = '100%';
+      this.wrapper.style.height = `${this.options.height}px`;
+      this.wrapper.style.zIndex = 'auto';
+      this.wrapper.style.borderRadius = 'var(--radius-md, 8px)';
+      this.wrapper.style.border = '1px solid rgba(255, 255, 255, 0.08)';
+
+      const w = (this.container.clientWidth > 50) ? this.container.clientWidth : (this.options.width || 750);
+      this.canvas.width = w * dpr;
+      this.canvas.height = this.options.height * dpr;
+
+      if (btnFullscreen) {
+        btnFullscreen.innerHTML = '⛶ Maximize';
+        btnFullscreen.style.background = 'rgba(251,191,36,0.15)';
+        btnFullscreen.style.borderColor = 'rgba(251,191,36,0.35)';
+        btnFullscreen.style.color = 'var(--accent-gold, #fbbf24)';
+      }
+
+      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">20-Pole Master Grid • Drag to Orbit</span>`;
+    }
+
+    this.render();
   }
 
   handleHover(e) {
