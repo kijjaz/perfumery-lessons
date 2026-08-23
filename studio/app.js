@@ -674,7 +674,38 @@ function solveHarmonicChord() {
   results.innerHTML = '';
 
   const selectedMats = [m1, m2, m3, m4].filter(Boolean);
-  const names = selectedMats.map(m => m.name).join(' ⟷ ');
+  const norm = s => (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  // Universal Mutual Blending Matcher
+  const materialsBlend = (a, b) => {
+    if (!a || !b || a.id === b.id) return false;
+    const aNames = [norm(a.name), norm(a.official_name)].filter(Boolean);
+    const bNames = [norm(b.name), norm(b.official_name)].filter(Boolean);
+
+    // 1. Check A's blenders for B
+    for (const blist of Object.values(a.blenders_by_group || {})) {
+      for (const item of blist) {
+        if (item.id === b.id) return true;
+        const inm = norm(item.name);
+        if (bNames.includes(inm)) return true;
+        if (b.cas && item.cas && b.cas === item.cas) return true;
+        if (bNames.some(bn => bn.length > 4 && (bn.includes(inm) || inm.includes(bn)))) return true;
+      }
+    }
+
+    // 2. Check B's blenders for A
+    for (const blist of Object.values(b.blenders_by_group || {})) {
+      for (const item of blist) {
+        if (item.id === a.id) return true;
+        const inm = norm(item.name);
+        if (aNames.includes(inm)) return true;
+        if (a.cas && item.cas && a.cas === item.cas) return true;
+        if (aNames.some(an => an.length > 4 && (an.includes(inm) || inm.includes(an)))) return true;
+      }
+    }
+
+    return false;
+  };
 
   // -------------------------------------------------------------
   // MODE 2: 2-Note Pair Bridge & 2-Hop Graph Walk
@@ -683,24 +714,15 @@ function solveHarmonicChord() {
     document.getElementById('chord-mat-title').textContent = `2-Note Bridge: ${m1.name} ⟷ ${m2.name}`;
     document.getElementById('chord-mat-sub').textContent = `Solving intermediate harmonic bridge molecules between ${m1.name} (${m1.family}) and ${m2.name} (${m2.family}).`;
 
-    const blenders1 = new Map();
-    Object.values(m1.blenders_by_group || {}).flat().forEach(b => blenders1.set(b.id, b));
-
-    const blenders2 = new Map();
-    Object.values(m2.blenders_by_group || {}).flat().forEach(b => blenders2.set(b.id, b));
-
-    const mutualBridges = [];
-    blenders1.forEach((val, key) => {
-      if (blenders2.has(key)) {
-        mutualBridges.push({ id: key, name: val.name, mat: state.materialsMap.get(key) });
-      }
+    const mutualBridges = state.materials.filter(c => {
+      if (c.id === m1.id || c.id === m2.id) return false;
+      return materialsBlend(c, m1) && materialsBlend(c, m2);
     });
 
     if (mutualBridges.length > 0) {
-      // Direct 1-hop bridges found!
-      const bridgeCardsHtml = mutualBridges.map(b => {
-        const fam = b.mat ? b.mat.family : 'misc';
-        const tier = b.mat ? b.mat.tier : 'Heart Note';
+      const bridgeCardsHtml = mutualBridges.slice(0, 32).map(b => {
+        const fam = b.family || 'misc';
+        const tier = b.tier || 'Heart Note';
         const famStyle = getFamilyStyle(fam);
         const subCode = (b.id.split('_').pop() || b.id).toUpperCase();
 
@@ -799,37 +821,48 @@ function solveHarmonicChord() {
     document.getElementById('chord-mat-title').textContent = `3-Note Triad Chord: ${m1.name} + ${m2.name} + ${m3.name}`;
     document.getElementById('chord-mat-sub').textContent = `Calculating universal harmonic center materials that bind all 3 notes simultaneously.`;
 
-    const b1 = new Set(Object.values(m1.blenders_by_group || {}).flat().map(b => b.id));
-    const b2 = new Set(Object.values(m2.blenders_by_group || {}).flat().map(b => b.id));
-    const b3 = new Set(Object.values(m3.blenders_by_group || {}).flat().map(b => b.id));
+    const scoredCenters = [];
+    state.materials.forEach(cand => {
+      if (cand.id === m1.id || cand.id === m2.id || cand.id === m3.id) return;
+      const b1 = materialsBlend(cand, m1);
+      const b2 = materialsBlend(cand, m2);
+      const b3 = materialsBlend(cand, m3);
+      const matched = (b1 ? 1 : 0) + (b2 ? 1 : 0) + (b3 ? 1 : 0);
 
-    // 3-way intersection
-    const centerBridges = [];
-    b1.forEach(id => {
-      if (b2.has(id) && b3.has(id)) {
-        centerBridges.push({ id, mat: state.materialsMap.get(id) });
+      if (matched >= 2) {
+        scoredCenters.push({
+          mat: cand,
+          matched,
+          b1, b2, b3,
+          isFullTriad: matched === 3
+        });
       }
     });
 
-    const centerCardsHtml = centerBridges.map(c => {
-      const name = c.mat ? c.mat.name : c.id;
-      const fam = c.mat ? c.mat.family : 'universal';
-      const tier = c.mat ? c.mat.tier : 'Heart Note';
+    scoredCenters.sort((a, b) => b.matched - a.matched);
+
+    const fullTriadsCount = scoredCenters.filter(c => c.isFullTriad).length;
+    const centerCardsHtml = scoredCenters.slice(0, 36).map(c => {
+      const name = c.mat.name;
+      const fam = c.mat.family || 'universal';
+      const tier = c.mat.tier || 'Heart Note';
       const famStyle = getFamilyStyle(fam);
+      const badgeText = c.isFullTriad ? '🌟 UNIVERSAL TRIAD CENTER (3/3)' : '🔗 HARMONIC ANCHOR (2/3)';
+      const badgeStyle = c.isFullTriad ? 'background: rgba(251,191,36,0.2); color: #fbbf24; border: 1px solid rgba(251,191,36,0.4);' : 'background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3);';
 
       return `
         <div style="background: rgba(0,0,0,0.4); padding: 1.1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.6rem;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem;">
             <h4 style="color: #fff; font-size: 0.95rem; font-weight: 600;">${name}</h4>
-            <span class="badge-frag-type badge-base" style="font-size: 0.65rem;">TRIAD CENTER</span>
+            <span style="font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; font-weight: 700; ${badgeStyle}">${badgeText}</span>
           </div>
           <div style="display: flex; gap: 0.4rem;">
             <span class="tag-family" style="background: ${famStyle.bg}; color: ${famStyle.text}; font-size: 0.7rem;">${fam}</span>
             <span class="tag-tier tier-heart" style="font-size: 0.7rem;">${tier}</span>
           </div>
           <div style="display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.5rem;">
-            <button class="btn-icon" onclick="openMaterialModal('${c.id}')" style="flex: 1;">🔍 Details</button>
-            <button class="btn-icon" onclick="loadChordToSandbox(['${m1.id}', '${m2.id}', '${m3.id}', '${c.id}'])" style="flex: 1.5; color: var(--accent-purple); font-weight: 600;">🧪 Load 4-Triad Chord</button>
+            <button class="btn-icon" onclick="openMaterialModal('${c.mat.id}')" style="flex: 1;">🔍 Details</button>
+            <button class="btn-icon" onclick="loadChordToSandbox(['${m1.id}', '${m2.id}', '${m3.id}', '${c.mat.id}'])" style="flex: 1.5; color: var(--accent-purple); font-weight: 600;">🧪 Load 4-Chord</button>
           </div>
         </div>
       `;
@@ -839,7 +872,7 @@ function solveHarmonicChord() {
       <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(245, 158, 11, 0.12) 100%); border: 1px solid rgba(168, 85, 247, 0.35); border-radius: var(--radius-lg); padding: 1.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
           <div>
-            <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.25rem;">🔺 Triad Harmonic Centers (${centerBridges.length} Found)</h3>
+            <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.25rem;">🔺 Triad Harmonic Centers (${scoredCenters.length} Found • ${fullTriadsCount} Full 3/3 Centers)</h3>
             <p style="font-size: 0.82rem; color: var(--text-secondary);">Molecules that share synergistic blending bonds with <strong>${m1.name}</strong>, <strong>${m2.name}</strong>, AND <strong>${m3.name}</strong>.</p>
           </div>
           <button class="btn btn-primary" onclick="loadChordToSandbox(['${m1.id}', '${m2.id}', '${m3.id}'])" style="font-size: 0.82rem;">
