@@ -714,23 +714,54 @@ function solveHarmonicChord() {
     document.getElementById('chord-mat-title').textContent = `2-Note Bridge: ${m1.name} ⟷ ${m2.name}`;
     document.getElementById('chord-mat-sub').textContent = `Solving intermediate harmonic bridge molecules between ${m1.name} (${m1.family}) and ${m2.name} (${m2.family}).`;
 
-    const mutualBridges = state.materials.filter(c => {
+    // Calculate Harmonic Synergy Score for Candidate Bridges
+    const scoreBridge = (c, targetMats) => {
+      let score = 0;
+      const cFam = (c.family || '').toLowerCase();
+      const targetFams = targetMats.map(t => (t.family || '').toLowerCase());
+
+      // 1. Olfactory Family Resonance
+      if (targetFams.includes(cFam)) score += 35;
+      if (['floral', 'green', 'woody', 'aromatic', 'herbal', 'powdery', 'aldehydic', 'amber', 'musk'].some(k => cFam.includes(k))) score += 15;
+
+      // 2. Volatility Bridging Bonus (e.g. Heart note bridging Top and Base)
+      const tiers = targetMats.map(t => t.tier);
+      if (tiers.includes('Top Note') && tiers.includes('Base Note') && c.tier === 'Heart Note') score += 20;
+
+      // 3. Centrality / Knowledge Graph Network Density
+      const bCnt = c.blenders_count || 0;
+      score += Math.min(bCnt, 600) * 0.08;
+
+      // 4. Prefer Pure/Neat Materials over duplicate dilutions
+      const nameL = c.name.toLowerCase();
+      if (nameL.includes('in dpg') || nameL.includes('in ipm') || nameL.includes('1%') || nameL.includes('10%')) {
+        score -= 30;
+      }
+
+      return score;
+    };
+
+    let mutualBridges = state.materials.filter(c => {
       if (c.id === m1.id || c.id === m2.id) return false;
       return materialsBlend(c, m1) && materialsBlend(c, m2);
     });
 
+    // Sort by Harmonic Synergy
+    mutualBridges.sort((a, b) => scoreBridge(b, [m1, m2]) - scoreBridge(a, [m1, m2]));
+
     if (mutualBridges.length > 0) {
-      const bridgeCardsHtml = mutualBridges.slice(0, 32).map(b => {
+      const bridgeCardsHtml = mutualBridges.slice(0, 36).map(b => {
         const fam = b.family || 'misc';
         const tier = b.tier || 'Heart Note';
         const famStyle = getFamilyStyle(fam);
         const subCode = (b.id.split('_').pop() || b.id).toUpperCase();
+        const score = Math.round(scoreBridge(b, [m1, m2]));
 
         return `
           <div style="background: rgba(0,0,0,0.4); padding: 1.1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.6rem;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;">
               <h4 style="color: #fff; font-size: 0.95rem; font-weight: 600;" title="${b.name}">${b.name}</h4>
-              <span class="mat-id-badge">${subCode}</span>
+              <span class="mat-id-badge" title="Harmonic Synergy Score">${score} pts</span>
             </div>
             <div style="display: flex; gap: 0.4rem;">
               <span class="tag-family" style="background: ${famStyle.bg}; color: ${famStyle.text}; font-size: 0.7rem;">${fam}</span>
@@ -746,10 +777,10 @@ function solveHarmonicChord() {
 
       results.innerHTML = `
         <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: var(--radius-lg); padding: 1.5rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.8rem;">
             <div>
               <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.25rem;">🌟 Found ${mutualBridges.length} Direct Harmonic Bridge Materials</h3>
-              <p style="font-size: 0.82rem; color: var(--text-secondary);">These materials directly blend with both <strong>${m1.name}</strong> and <strong>${m2.name}</strong>.</p>
+              <p style="font-size: 0.82rem; color: var(--text-secondary);">Ranked by <strong>Harmonic Synergy Score</strong> (Odor Family Resonance + Volatility + Knowledge Graph Centrality).</p>
             </div>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
@@ -821,25 +852,46 @@ function solveHarmonicChord() {
     document.getElementById('chord-mat-title').textContent = `3-Note Triad Chord: ${m1.name} + ${m2.name} + ${m3.name}`;
     document.getElementById('chord-mat-sub').textContent = `Calculating universal harmonic center materials that bind all 3 notes simultaneously.`;
 
+    const scoreCenter = (c) => {
+      let score = 0;
+      const b1 = materialsBlend(c, m1);
+      const b2 = materialsBlend(c, m2);
+      const b3 = materialsBlend(c, m3);
+      const matched = (b1 ? 1 : 0) + (b2 ? 1 : 0) + (b3 ? 1 : 0);
+
+      score += matched * 50; // 3/3 = 150 pts, 2/3 = 100 pts
+
+      const cFam = (c.family || '').toLowerCase();
+      const targetFams = [m1.family, m2.family, m3.family].map(f => (f || '').toLowerCase());
+      if (targetFams.includes(cFam)) score += 25;
+
+      const bCnt = c.blenders_count || 0;
+      score += Math.min(bCnt, 600) * 0.05;
+
+      const nameL = c.name.toLowerCase();
+      if (nameL.includes('in dpg') || nameL.includes('in ipm') || nameL.includes('1%') || nameL.includes('10%')) {
+        score -= 25;
+      }
+
+      return { score, matched, b1, b2, b3, isFullTriad: matched === 3 };
+    };
+
     const scoredCenters = [];
     state.materials.forEach(cand => {
       if (cand.id === m1.id || cand.id === m2.id || cand.id === m3.id) return;
-      const b1 = materialsBlend(cand, m1);
-      const b2 = materialsBlend(cand, m2);
-      const b3 = materialsBlend(cand, m3);
-      const matched = (b1 ? 1 : 0) + (b2 ? 1 : 0) + (b3 ? 1 : 0);
-
-      if (matched >= 2) {
+      const meta = scoreCenter(cand);
+      if (meta.matched >= 2) {
         scoredCenters.push({
           mat: cand,
-          matched,
-          b1, b2, b3,
-          isFullTriad: matched === 3
+          score: meta.score,
+          matched: meta.matched,
+          b1: meta.b1, b2: meta.b2, b3: meta.b3,
+          isFullTriad: meta.isFullTriad
         });
       }
     });
 
-    scoredCenters.sort((a, b) => b.matched - a.matched);
+    scoredCenters.sort((a, b) => b.score - a.score);
 
     const fullTriadsCount = scoredCenters.filter(c => c.isFullTriad).length;
     const centerCardsHtml = scoredCenters.slice(0, 36).map(c => {
@@ -847,7 +899,7 @@ function solveHarmonicChord() {
       const fam = c.mat.family || 'universal';
       const tier = c.mat.tier || 'Heart Note';
       const famStyle = getFamilyStyle(fam);
-      const badgeText = c.isFullTriad ? '🌟 UNIVERSAL TRIAD CENTER (3/3)' : '🔗 HARMONIC ANCHOR (2/3)';
+      const badgeText = c.isFullTriad ? '🌟 UNIVERSAL TRIAD (3/3)' : '🔗 HARMONIC ANCHOR (2/3)';
       const badgeStyle = c.isFullTriad ? 'background: rgba(251,191,36,0.2); color: #fbbf24; border: 1px solid rgba(251,191,36,0.4);' : 'background: rgba(168,85,247,0.15); color: #c084fc; border: 1px solid rgba(168,85,247,0.3);';
 
       return `
@@ -873,7 +925,7 @@ function solveHarmonicChord() {
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
           <div>
             <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.25rem;">🔺 Triad Harmonic Centers (${scoredCenters.length} Found • ${fullTriadsCount} Full 3/3 Centers)</h3>
-            <p style="font-size: 0.82rem; color: var(--text-secondary);">Molecules that share synergistic blending bonds with <strong>${m1.name}</strong>, <strong>${m2.name}</strong>, AND <strong>${m3.name}</strong>.</p>
+            <p style="font-size: 0.82rem; color: var(--text-secondary);">Ranked by <strong>Universal Harmonic Score</strong> (Full Triad Synergy + Family Resonance + Neat Aromachemical Priority).</p>
           </div>
           <button class="btn btn-primary" onclick="loadChordToSandbox(['${m1.id}', '${m2.id}', '${m3.id}'])" style="font-size: 0.82rem;">
             🧪 Load Base Triad (3 Notes)
