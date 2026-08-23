@@ -183,11 +183,13 @@ class ScentTopography3D {
     this.container = typeof containerEl === 'string' ? document.getElementById(containerEl) : containerEl;
     if (!this.container) return;
 
+    const initialW = (this.container && this.container.clientWidth > 50) ? this.container.clientWidth : 750;
+
     this.options = Object.assign({
-      width: this.container.clientWidth || 600,
-      height: 380,
-      gridRes: 26,
-      maxElevation: 130
+      width: initialW,
+      height: 320,
+      gridRes: 28,
+      maxElevation: 120
     }, options);
 
     this.pitch = 54 * (Math.PI / 180);
@@ -222,9 +224,12 @@ class ScentTopography3D {
     this.wrapper.style.border = '1px solid rgba(255, 255, 255, 0.08)';
     this.wrapper.style.overflow = 'hidden';
 
+    const w = (this.container.clientWidth > 50) ? this.container.clientWidth : (this.options.width || 750);
+    const dpr = window.devicePixelRatio || 1;
+
     this.canvas = document.createElement('canvas');
-    this.canvas.width = (this.container.clientWidth || this.options.width) * (window.devicePixelRatio || 1);
-    this.canvas.height = this.options.height * (window.devicePixelRatio || 1);
+    this.canvas.width = w * dpr;
+    this.canvas.height = this.options.height * dpr;
     this.canvas.style.width = '100%';
     this.canvas.style.height = '100%';
     this.canvas.style.display = 'block';
@@ -362,7 +367,7 @@ class ScentTopography3D {
       new ResizeObserver(() => {
         if (!this.container) return;
         const w = this.container.clientWidth;
-        if (w > 50) {
+        if (w > 50 && this.canvas.width !== w * (window.devicePixelRatio || 1)) {
           this.canvas.width = w * (window.devicePixelRatio || 1);
           this.render();
         }
@@ -381,7 +386,7 @@ class ScentTopography3D {
     const dy = my - cy;
     const dist = Math.sqrt(dx * dx + dy * dy);
 
-    if (dist < rect.height * 0.45 && dist > 15) {
+    if (dist < rect.height * 0.48 && dist > 12) {
       let angleRad = Math.atan2(dx, -dy);
       if (angleRad < 0) angleRad += Math.PI * 2;
       let angleDeg = angleRad * (180 / Math.PI);
@@ -401,13 +406,13 @@ class ScentTopography3D {
         this.hoverSector = closest.id;
         const count = this.sectorWeights[closest.id] || 0;
         const blenders = this.sectorBlenders[closest.id] || [];
-        const top3 = blenders.slice(0, 3).map(b => b.name).join(', ') || 'No direct blenders';
+        const top3 = blenders.slice(0, 3).map(b => b.name).join(', ') || 'Synergistic olfactory pole';
 
         this.hud.innerHTML = `
           <div style="display: flex; align-items: center; gap: 6px;">
             <span style="font-size: 1rem;">${closest.icon}</span>
             <strong style="color: ${closest.color};">${closest.name}</strong>
-            <span style="background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 0.72rem;">${count} Blenders</span>
+            <span style="background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 0.72rem;">${count} Density</span>
           </div>
           <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 2px;">Key Bridges: ${top3}</div>
         `;
@@ -439,7 +444,7 @@ class ScentTopography3D {
     const total = Object.values(this.sectorWeights).reduce((a, b) => a + b, 0);
     if (total === 0) {
       const primarySec = classifyScentSector(mat.family || mat.name, mat.family);
-      this.sectorWeights[primarySec] = 10;
+      this.sectorWeights[primarySec] = 12;
       (mat.facets || []).forEach(f => {
         const fSec = classifyScentSector(f, f);
         this.sectorWeights[fSec] = (this.sectorWeights[fSec] || 0) + 4;
@@ -449,18 +454,63 @@ class ScentTopography3D {
     this.render();
   }
 
-  loadAccord(accord, materialsMap) {
+  loadAccord(accord, materialsMap, materialsList) {
     SCENT_SECTORS.forEach(sec => {
       this.sectorWeights[sec.id] = 0;
       this.sectorBlenders[sec.id] = [];
     });
 
+    const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+    // 1. Accumulate constituents and their blenders
     (accord.ingredients || []).forEach(ing => {
-      const mat = materialsMap ? materialsMap.get(ing.id) : null;
-      const secId = classifyScentSector(ing.name, mat ? mat.family : accord.family);
-      this.sectorWeights[secId] = (this.sectorWeights[secId] || 0) + 1;
+      const ingNorm = norm(ing.name);
+      
+      // Find matching organ material
+      let matchMat = materialsMap ? materialsMap.get(ing.id) : null;
+      if (!matchMat && Array.isArray(materialsList)) {
+        matchMat = materialsList.find(m => {
+          const mNorm = norm(m.name);
+          return mNorm === ingNorm || mNorm.includes(ingNorm) || ingNorm.includes(mNorm);
+        });
+      }
+
+      const secId = classifyScentSector(ing.name, matchMat ? matchMat.family : accord.family);
+      this.sectorWeights[secId] = (this.sectorWeights[secId] || 0) + 4;
       this.sectorBlenders[secId].push(ing);
+
+      // If material has rich blenders, accumulate blender gravity
+      if (matchMat && matchMat.blenders_by_group) {
+        Object.entries(matchMat.blenders_by_group).forEach(([grp, list]) => {
+          list.forEach(b => {
+            const bSec = classifyScentSector(grp + ' ' + b.name, b.odor_group);
+            this.sectorWeights[bSec] = (this.sectorWeights[bSec] || 0) + 1;
+            if (!this.sectorBlenders[bSec].some(x => x.name === b.name)) {
+              this.sectorBlenders[bSec].push(b);
+            }
+          });
+        });
+      }
     });
+
+    // 2. Also incorporate accord's own facets, descriptions & family
+    (accord.facets || []).forEach(f => {
+      const fSec = classifyScentSector(f, f);
+      this.sectorWeights[fSec] = (this.sectorWeights[fSec] || 0) + 3;
+    });
+
+    (accord.desc || []).forEach(d => {
+      SCENT_SECTORS.forEach(sec => {
+        sec.subOdors.forEach(sub => {
+          if (d.toLowerCase().includes(sub)) {
+            this.sectorWeights[sec.id] = (this.sectorWeights[sec.id] || 0) + 2;
+          }
+        });
+      });
+    });
+
+    const famSec = classifyScentSector(accord.family || accord.name, accord.family);
+    this.sectorWeights[famSec] = (this.sectorWeights[famSec] || 0) + 6;
 
     this.render();
   }

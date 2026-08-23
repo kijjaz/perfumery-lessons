@@ -1731,9 +1731,9 @@ function openFragranceModal(id) {
   setTimeout(() => {
     if (window.ScentTopography3D) {
       const topo = new ScentTopography3D('accord-topography-3d', { height: 300 });
-      topo.loadAccord(f, state.materialsMap);
+      topo.loadAccord(f, state.materialsMap, state.materials);
     }
-  }, 40);
+  }, 60);
 }
 
 // Global Tag Search helper for Crawl Out
