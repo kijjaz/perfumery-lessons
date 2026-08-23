@@ -358,15 +358,18 @@ class ScentTopography3D {
     this.toolbar.style.top = '10px';
     this.toolbar.style.right = '10px';
     this.toolbar.style.display = 'flex';
-    this.toolbar.style.gap = '6px';
-    this.toolbar.style.zIndex = '10';
+    this.toolbar.style.flexWrap = 'wrap';
+    this.toolbar.style.maxWidth = 'calc(100% - 20px)';
+    this.toolbar.style.justifyContent = 'flex-end';
+    this.toolbar.style.gap = '5px';
+    this.toolbar.style.zIndex = '20';
 
     this.toolbar.innerHTML = `
+      <button class="topography-btn" id="topo-btn-fullscreen" title="Maximize in Tab (Cinema View)" style="background: rgba(251,191,36,0.2); border: 1px solid rgba(251,191,36,0.5); color: var(--accent-gold, #fbbf24); padding: 4px 10px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 700; box-shadow: 0 0 8px rgba(251,191,36,0.2);">⛶ Maximize</button>
       <button class="topography-btn" id="topo-btn-3d" title="3D Olfactory Mountain" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🏔️ 3D Mountain</button>
       <button class="topography-btn" id="topo-btn-2d" title="Top-Down 20-Pole Scent Floor" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🧭 20-Pole Wheel</button>
       <button class="topography-btn" id="topo-btn-constellation" title="2D Volatility × Hue Constellation Grid" style="background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent-purple, #c084fc); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">✨ Constellation Grid</button>
       <button class="topography-btn" id="topo-btn-atlas" title="Open Full 20-Pole Scent Map Atlas" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); color: var(--accent-blue, #38bdf8); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">🗺️ Full Scent Map</button>
-      <button class="topography-btn" id="topo-btn-fullscreen" title="Maximize in Tab (Cinema View)" style="background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.35); color: var(--accent-gold, #fbbf24); padding: 4px 9px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">⛶ Maximize</button>
       <button class="topography-btn" id="topo-btn-reset" title="Reset Camera" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">↺ Reset</button>
     `;
 
