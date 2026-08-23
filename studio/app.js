@@ -1469,10 +1469,9 @@ function openFragranceModal(id) {
 
   const famStyle = getFamilyStyle(f.family);
   const typeClass = f.type === 'fragrance' ? 'badge-fragrance' : f.type === 'base' ? 'badge-base' : 'badge-flavor';
-  const typeLabel = f.type === 'fragrance' ? 'Fragrance Accord' : f.type === 'base' ? 'Specialty Perfume Base' : 'Flavor Theme';
-
   // Smart matching and classification for constituent ingredients
   const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const currentIngSet = new Set((f.ingredients || []).map(i => norm(i.name)));
 
   // Clean and sanitize evaluator descriptions
   const cleanDescriptions = (f.desc || []).map(raw => {
@@ -1657,7 +1656,6 @@ function openFragranceModal(id) {
   ` : '';
 
   // Multi-Hop Graph Traversal: Find Related Accords sharing ingredients or family
-  const currentIngSet = new Set((f.ingredients || []).map(i => norm(i.name)));
   const relatedAccords = (state.fragrances || [])
     .filter(other => other.id !== f.id)
     .map(other => {
