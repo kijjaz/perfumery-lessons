@@ -1,8 +1,14 @@
 /**
- * ScentTopography3D - Multi-Projection Olfactory Space Engine
- * 1. 16-Pole Harmonic Scent Wheel with distinct Cold Spices (45°) & Warm Spices (202.5°)
+ * ScentTopography3D - 20-Pole Master Olfactory Space Engine
+ * 1. 20 Harmonic Olfactory Poles with continuous 360° polar coordinates (18° spacing)
+ *    - Distinct Cold Spices (54°) vs. Warm Spices (198°)
+ *    - Distinct Sulfurous/Tropical (18°) vs. Fruity (144°)
+ *    - Distinct Lactonic/Dairy (162°) vs. Spun Sugar/Gourmand (180°)
+ *    - Distinct Tobacco/Hay (216°) vs. Amber Resins (234°)
+ *    - Distinct Biological Animalic (252°) vs. Leather & Tar (270°)
+ *    - Distinct Coniferous/Pine (306°) vs. Dry Woods (288°) vs. Sandalwood (324°)
  * 2. 3D Blender Elevation Mountain (Z)
- * 3. 2D Volatility (X) × Luminosity (Y) Constellation Grid with Blender Filaments
+ * 3. 2D Volatility (X) × Luminosity (Y) Constellation Grid with Active Blender Filaments
  */
 
 const SCENT_SECTORS = [
@@ -19,38 +25,52 @@ const SCENT_SECTORS = [
     ]
   },
   {
+    id: 'sulfurous_tropical',
+    name: 'Sulfurous & Tropical Sparkle',
+    icon: '🌋',
+    angle: 18,
+    color: '#fbbf24',
+    subOdors: [
+      'sulfurous', 'sulfur', 'tropical', 'passionfruit', 'cassis', 'grapefruit sulfur',
+      'oxane', 'corps pamplemousse', '4-mmp', 'truffle', 'alliaceous', 'garlic', 'onion',
+      'durian', 'tropathiane', 'blackcurrant bud', 'catty', 'mercapto', 'thiol', 'dimethyl sulfide'
+    ]
+  },
+  {
     id: 'aromatic_herbal',
-    name: 'Aromatic & Herbal',
+    name: 'Aromatic, Herbal & Tea',
     icon: '🌿',
-    angle: 22.5,
+    angle: 36,
     color: '#86efac',
     subOdors: [
       'herbal', 'lavender', 'sage', 'basil', 'rosemary', 'thyme', 'clary sage',
       'green (stem)', 'green (bitter)', 'grassy', 'foliage', 'tarragon', 'celery',
+      'tea', 'green tea', 'black tea', 'matcha', 'theaspirane', 'mate', 'rooibos',
       'thujonic', 'vegetable', 'radish', 'rhubarb', 'tomato', 'mustard', 'wasabi'
     ]
   },
   {
     id: 'cold_spice',
-    name: 'Cold Spices & Terpenic',
+    name: 'Cold Spices & Camphoric',
     icon: '❄️',
-    angle: 45,
+    angle: 54,
     color: '#67e8f9',
     subOdors: [
       'cardamom', 'pink pepper', 'coriander', 'juniper', 'juniper berry', 'ginger',
       'fresh ginger', 'elemi', 'eucalyptus', 'camphoraceous', 'camphoreous',
-      'mint', 'minty', 'facet (minty)', 'facet (wintergreen)', 'cineole', 'terpinyl'
+      'mint', 'minty', 'facet (minty)', 'facet (wintergreen)', 'cineole', 'terpinyl',
+      'menthol', 'peppermint', 'spearmint', 'borneol'
     ]
   },
   {
     id: 'aquatic',
     name: 'Aquatic & Marine',
     icon: '🌊',
-    angle: 67.5,
+    angle: 72,
     color: '#38bdf8',
     subOdors: [
       'marine', 'facet (marine)', 'facet (oceanic)', 'aquatic', 'water (fresh)', 'calone',
-      'cucumber', 'fresh air', 'cooling', 'ozonic', 'oceanic', 'seaweed', 'watery'
+      'cucumber', 'fresh air', 'cooling', 'ozonic', 'oceanic', 'seaweed', 'watery', 'floralozone', 'cascalone'
     ]
   },
   {
@@ -62,149 +82,191 @@ const SCENT_SECTORS = [
     subOdors: [
       'floral (fresh)', 'floral (muguet)', 'muguet', 'floral (lilac)', 'floral (peony)',
       'floral (hawthorn)', 'hedione', 'freesia', 'magnolia', 'transparent floral',
-      'cyclamen', 'lotus', 'hyacinth', 'water lily'
+      'cyclamen', 'lotus', 'hyacinth', 'water lily', 'lily of the valley'
     ]
   },
   {
     id: 'powdery_orris',
     name: 'Powdery & Orris',
     icon: '🪞',
-    angle: 112.5,
+    angle: 108,
     color: '#c084fc',
     subOdors: [
       'floral (orris)', 'floral (powder)', 'floral (violet)', 'orris', 'violet',
-      'iris', 'ionone', 'methyl ionone', 'heliotrope', 'mimosa', 'powdery', 'powder'
+      'iris', 'ionone', 'methyl ionone', 'heliotrope', 'mimosa', 'powdery', 'powder', 'makeup', 'cosmetic'
     ]
   },
   {
     id: 'warm_floral',
     name: 'Warm Florals & Solar',
     icon: '🌺',
-    angle: 135,
+    angle: 126,
     color: '#e879f9',
     subOdors: [
       'floral', 'floral (heavy)', 'floral (rose)', 'floral (jasmine)', 'floral (ylang)',
       'floral (orange bl.)', 'tuberose', 'gardenia', 'carnation', 'neroli',
-      'damascenone', 'geraniol', 'narcissus', 'orange flower', 'pea'
+      'damascenone', 'geraniol', 'narcissus', 'orange flower', 'solar', 'salicylate', 'ylang ylang'
     ]
   },
   {
     id: 'fruity',
-    name: 'Fruity & Berry',
+    name: 'Fruity & Estery',
     icon: '🍑',
-    angle: 157.5,
+    angle: 144,
     color: '#fb923c',
     subOdors: [
       'fruity', 'fruit (apple/plum)', 'fruit (pineapple)', 'fruit (strawberry)', 'fruit (tropical)',
-      'apple', 'berry', 'cherry', 'peach', 'apricot', 'cassis', 'melon', 'banana', 'pear', 'plum',
-      'grape', 'estery', 'jammy', 'juicy', 'passionfruit', 'mango', 'raspberry', 'blackcurrant'
+      'apple', 'berry', 'cherry', 'peach', 'apricot', 'melon', 'banana', 'pear', 'plum',
+      'grape', 'estery', 'jammy', 'juicy', 'mango', 'raspberry', 'pineapple', 'guava', 'fig'
+    ]
+  },
+  {
+    id: 'lactonic_dairy',
+    name: 'Lactonic & Creamy Dairy',
+    icon: '🥥',
+    angle: 162,
+    color: '#fde047',
+    subOdors: [
+      'lactonic', 'coconut', 'milk', 'milky', 'creamy', 'dairy', 'butter', 'buttery',
+      'gamma-decalactone', 'delta-decalactone', 'methyl laitone', 'sulfurol', 'bicyclononaiac',
+      'condensed milk', 'peach skin', 'cream', 'cheese', 'cheesy'
     ]
   },
   {
     id: 'gourmand',
-    name: 'Gourmand & Lactonic',
+    name: 'Gourmand & Spun Sugar',
     icon: '🍨',
     angle: 180,
-    color: '#fbbf24',
+    color: '#f59e0b',
     subOdors: [
-      'gourmet', 'gourmet (sweet)', 'gourmet (buttery)', 'gourmet (nutty)', 'gourmet (coconut)',
-      'vanilla', 'caramellic', 'chocolate', 'cocoa', 'coffee', 'honey', 'almond', 'coconut',
-      'bready', 'buttery', 'candy', 'coumarinic', 'creamy', 'dairy', 'malty', 'molasses',
-      'popcorn', 'toasted', 'tonka', 'corn', 'corn chip', 'lactonic', 'milk', 'tiramisu', 'praline', 'hazelnut'
+      'gourmet', 'gourmet (sweet)', 'gourmet (nutty)', 'vanilla', 'caramellic',
+      'chocolate', 'cocoa', 'coffee', 'honey', 'almond', 'candy', 'maltol', 'ethyl maltol',
+      'sugar', 'cotton candy', 'tiramisu', 'praline', 'hazelnut', 'popcorn', 'bready', 'toasted'
     ]
   },
   {
     id: 'warm_spice',
     name: 'Warm Spices & Phenols',
     icon: '🌶️',
-    angle: 202.5,
+    angle: 198,
     color: '#ea580c',
     subOdors: [
       'cinnamon', 'clove', 'nutmeg', 'allspice', 'saffron', 'spice (saffron)', 'spicy',
       'cinnamaldehyde', 'eugenol', 'isoeugenol', 'star anise', 'anise', 'anisic',
-      'cassia', 'bay leaf', 'pimento', 'phenolic', 'safranal'
+      'cassia', 'bay leaf', 'pimento', 'phenolic', 'safranal', 'clove bud'
+    ]
+  },
+  {
+    id: 'tobacco_hay',
+    name: 'Tobacco, Hay & Coumarinic',
+    icon: '🍂',
+    angle: 216,
+    color: '#b45309',
+    subOdors: [
+      'tobacco', 'tabanon', 'coumarin', 'tonka', 'tonka bean', 'hay', 'flouve',
+      'liatrix', 'cigar', 'pipe tobacco', 'dried leaf', 'coumarinic', 'fougère', 'sweet hay'
     ]
   },
   {
     id: 'amber_resins',
     name: 'Amber & Balsamic Resins',
     icon: '✨',
-    angle: 225,
-    color: '#f59e0b',
+    angle: 234,
+    color: '#d97706',
     subOdors: [
       'amber', 'amber (rich)', 'amber (powerful)', 'balsamic', 'benzoin', 'labdanum',
       'cistus', 'myrrh', 'frankincense', 'incense', 'styrax', 'opoponax', 'resinous',
-      'ambroxan', 'ambergris', 'cistus ladanifer'
+      'ambroxan', 'ambergris', 'cistus ladanifer', 'copaiba', 'tolu'
     ]
   },
   {
-    id: 'animalic_leather',
-    name: 'Animalic, Leather & Musk',
+    id: 'biological_animalic',
+    name: 'Biological Animalic & Musk',
     icon: '🦌',
-    angle: 247.5,
-    color: '#a855f7',
+    angle: 252,
+    color: '#9333ea',
     subOdors: [
       'animal', 'animalic', 'civet', 'castoreum', 'musk', 'musk (botanical)', 'musk (woody)',
-      'leather', 'costus', 'indolic', 'skatole', 'alliaceous', 'garlic', 'onion', 'cabbage',
-      'sulfurous', 'ammoniacal', 'cheesy', 'eggy', 'fishy', 'meaty', 'savory', 'seafood', 'sweaty'
+      'costus', 'indolic', 'indole', 'skatole', 'civetone', 'muscone', 'hyraceum',
+      'eggy', 'sweaty', 'fecal', 'urinis'
+    ]
+  },
+  {
+    id: 'leather_tar',
+    name: 'Leather & Phenolic Tar',
+    icon: '🧥',
+    angle: 270,
+    color: '#78350f',
+    subOdors: [
+      'leather', 'isobutyl quinoline', 'safraleine', 'suederal', 'birch tar', 'cade',
+      'cade oil', 'tar', 'smoky leather', 'russian leather', 'suede', 'phenolic leather'
     ]
   },
   {
     id: 'dry_wood',
-    name: 'Dry Woods & Smoke',
+    name: 'Dry Woods & Smoky Vetiver',
     icon: '🪵',
-    angle: 270,
-    color: '#a3e635',
+    angle: 288,
+    color: '#84cc16',
     subOdors: [
       'woods (dry amber)', 'woods (pine)', 'woods (pepper)', 'woods (rot)', 'cedar',
-      'cedarwood', 'vetiver', 'guaiacwood', 'smoke', 'smoky', 'tar', 'birch', 'birch tar',
-      'fir needle', 'pine', 'dry', 'burnt', 'tobacco'
+      'cedarwood', 'vetiver', 'guaiacwood', 'smoke', 'smoky', 'burnt', 'dry', 'dry wood'
+    ]
+  },
+  {
+    id: 'coniferous_pine',
+    name: 'Coniferous & Pine Needle',
+    icon: '🌲',
+    angle: 306,
+    color: '#15803d',
+    subOdors: [
+      'pine', 'pine needle', 'fir', 'fir balsam', 'cypress', 'isobornyl acetate',
+      'pinene', 'alpha-pinene', 'beta-pinene', 'juniper needle', 'conifer', 'terebinthine'
     ]
   },
   {
     id: 'creamy_wood',
-    name: 'Creamy Woods & Sandal',
-    icon: '🌲',
-    angle: 292.5,
-    color: '#2dd4bf',
+    name: 'Creamy Woods & Sandalwood',
+    icon: '🪵',
+    angle: 324,
+    color: '#14b8a6',
     subOdors: [
       'woody', 'woody amber', 'woods (sandal)', 'woods (agarwood)', 'sandalwood',
-      'cashmeran', 'oud', 'agarwood', 'milky', 'iso e super', 'tea',
-      'rummy', 'whiskey', 'winey', 'alcoholic', 'fusel', 'fermented', 'yeasty'
+      'cashmeran', 'oud', 'agarwood', 'javanol', 'sandalore', 'bacdanol', 'iso e super',
+      'ebanol', 'polysantol'
     ]
   },
   {
     id: 'earthy_mossy',
     name: 'Earthy & Oakmoss',
     icon: '🦠',
-    angle: 315,
-    color: '#10b981',
+    angle: 342,
+    color: '#059669',
     subOdors: [
       'woods (mossy)', 'woods (patchouli)', 'mossy', 'oakmoss', 'evernyl', 'veramoss',
       'patchouli', 'earthy', 'earthy (mushroom)', 'mushroom', 'fungal', 'soil', 'humus',
-      'lichen', 'damp', 'musty', 'moldy', 'dusty', 'rooty', 'potato', 'geosmin'
-    ]
-  },
-  {
-    id: 'aldehydic_clean',
-    name: 'Aldehydic & Clean Linen',
-    icon: '🧼',
-    angle: 337.5,
-    color: '#e2e8f0',
-    subOdors: [
-      'aldehydic', 'aldehydic (clean)', 'aldehydic (complex)', 'c-8', 'c-9', 'c-10', 'c-11', 'c-12',
-      'undecanal', 'mandarin aldehyde', 'clean linen', 'soapy', 'wax', 'waxy'
+      'lichen', 'damp', 'musty', 'moldy', 'dusty', 'rooty', 'potato', 'geosmin',
+      'aldehydic', 'clean linen', 'soapy', 'wax', 'waxy', 'c-8', 'c-10', 'c-12'
     ]
   }
 ];
 
-// Helper to classify text into one of the 16 poles
+// Helper to classify any text or material into one of the 20 Master Poles
 function classifyScentSector(text, fallbackFam) {
   const s = ((text || '') + ' ' + (fallbackFam || '')).toLowerCase();
   
-  // Specific checks for Cold vs Warm Spice
-  if (/\b(cardamom|pink pepper|coriander|juniper|ginger|elemi|camphor|eucalyptus|mint|cineole)\b/.test(s)) return 'cold_spice';
+  // Specific priority regex checks
+  if (/\b(oxane|corps pamplemousse|cassis base|4-mmp|truffle|garlic|onion|durian|tropathiane|mercapto|thiol|sulfur|sulfurous)\b/.test(s)) return 'sulfurous_tropical';
+  if (/\b(cardamom|pink pepper|coriander|juniper|ginger|elemi|camphor|eucalyptus|mint|cineole|menthol|spearmint)\b/.test(s)) return 'cold_spice';
   if (/\b(cinnamon|clove|nutmeg|allspice|saffron|eugenol|isoeugenol|anise|star anise|safranal|cassia|pimento)\b/.test(s)) return 'warm_spice';
+  if (/\b(tea|green tea|black tea|matcha|theaspirane|mate|rooibos)\b/.test(s)) return 'aromatic_herbal';
+  if (/\b(tobacco|tabanon|coumarin|tonka|flouve|liatrix|cigar|hay)\b/.test(s)) return 'tobacco_hay';
+  if (/\b(lactonic|coconut|methyl laitone|sulfurol|condensed milk|butter|buttery|dairy|milk)\b/.test(s)) return 'lactonic_dairy';
+  if (/\b(isobutyl quinoline|safraleine|suederal|birch tar|cade|leather|suede)\b/.test(s)) return 'leather_tar';
+  if (/\b(civet|castoreum|civetone|muscone|costus|skatole|indole|indolic|hyraceum)\b/.test(s)) return 'biological_animalic';
+  if (/\b(fir balsam|pine needle|cypress|isobornyl acetate|pinene|conifer)\b/.test(s)) return 'coniferous_pine';
+  if (/\b(sandal|sandalwood|javanol|sandalore|cashmeran|oud|agarwood|iso e super)\b/.test(s)) return 'creamy_wood';
+  if (/\b(moss|oakmoss|evernyl|veramoss|patchouli|geosmin|mushroom|humus|soil)\b/.test(s)) return 'earthy_mossy';
 
   for (const sec of SCENT_SECTORS) {
     for (const sub of sec.subOdors) {
@@ -212,7 +274,7 @@ function classifyScentSector(text, fallbackFam) {
     }
   }
 
-  // Broad keyword fallbacks
+  // Broad fallbacks
   if (/\b(citrus|lemon|lime|orange|bergamot|grapefruit|mandarin|yuzu)\b/.test(s)) return 'citrus';
   if (/\b(green|herb|herbal|sage|basil|rosemary|lavender|foliage)\b/.test(s)) return 'aromatic_herbal';
   if (/\b(marine|ozone|aquatic|sea|water|calone|ocean|watery)\b/.test(s)) return 'aquatic';
@@ -220,13 +282,10 @@ function classifyScentSector(text, fallbackFam) {
   if (/\b(orris|violet|iris|ionone|powder|powdery|mimosa|heliotrope)\b/.test(s)) return 'powdery_orris';
   if (/\b(rose|jasmine|jasmin|tuberose|gardenia|ylang|floral|damasc|geraniol)\b/.test(s)) return 'warm_floral';
   if (/\b(fruit|fruity|apple|peach|berry|raspberry|strawberry|cherry|plum|melon|tropical|mango)\b/.test(s)) return 'fruity';
-  if (/\b(gourmand|vanill|caramel|sugar|honey|chocolate|coffee|coumarin|sweet|butter)\b/.test(s)) return 'gourmand';
+  if (/\b(gourmand|vanill|caramel|sugar|honey|chocolate|coffee|sweet)\b/.test(s)) return 'gourmand';
   if (/\b(amber|benzoin|labdanum|cistus|myrrh|frankincense|incense|balsam|ambroxan)\b/.test(s)) return 'amber_resins';
-  if (/\b(animal|animalic|civet|castoreum|musk|leather|indol|skatol|costus)\b/.test(s)) return 'animalic_leather';
-  if (/\b(cedar|vetiver|smoke|smoky|tar|guaiac|birch|dry wood|pine|cypress)\b/.test(s)) return 'dry_wood';
-  if (/\b(sandal|sandalwood|cashmeran|oud|agarwood|creamy|milky|woody)\b/.test(s)) return 'creamy_wood';
-  if (/\b(moss|oakmoss|veramoss|patchouli|earthy|soil|fungal|mushroom|geosmin)\b/.test(s)) return 'earthy_mossy';
-  if (/\b(aldehyde|aldehydic|clean|soapy)\b/.test(s)) return 'aldehydic_clean';
+  if (/\b(animal|animalic|musk)\b/.test(s)) return 'biological_animalic';
+  if (/\b(cedar|vetiver|smoke|smoky|guaiac|dry wood)\b/.test(s)) return 'dry_wood';
 
   return 'warm_floral';
 }
@@ -240,14 +299,14 @@ class ScentTopography3D {
 
     this.options = Object.assign({
       width: initialW,
-      height: 320,
-      gridRes: 28,
-      maxElevation: 120
+      height: 330,
+      gridRes: 30,
+      maxElevation: 125
     }, options);
 
     this.viewMode = '3d'; // '3d' | '2d' | 'constellation'
     this.pitch = 54 * (Math.PI / 180);
-    this.yaw = 40 * (Math.PI / 180);
+    this.yaw = 38 * (Math.PI / 180);
     this.zoom = 1.0;
     this.isDragging = false;
     this.lastMouse = { x: 0, y: 0 };
@@ -304,9 +363,9 @@ class ScentTopography3D {
 
     this.toolbar.innerHTML = `
       <button class="topography-btn" id="topo-btn-3d" title="3D Olfactory Mountain" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🏔️ 3D Mountain</button>
-      <button class="topography-btn" id="topo-btn-2d" title="Top-Down 16-Pole Scent Floor" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🧭 16-Pole Wheel</button>
+      <button class="topography-btn" id="topo-btn-2d" title="Top-Down 20-Pole Scent Floor" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🧭 20-Pole Wheel</button>
       <button class="topography-btn" id="topo-btn-constellation" title="2D Volatility × Hue Constellation Grid" style="background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent-purple, #c084fc); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">✨ Constellation Grid</button>
-      <button class="topography-btn" id="topo-btn-atlas" title="Open Full Scent Map Atlas" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); color: var(--accent-blue, #38bdf8); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">🗺️ Full Scent Map</button>
+      <button class="topography-btn" id="topo-btn-atlas" title="Open Full 20-Pole Scent Map Atlas" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); color: var(--accent-blue, #38bdf8); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">🗺️ Full Scent Map</button>
       <button class="topography-btn" id="topo-btn-reset" title="Reset Camera" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">↺ Reset</button>
     `;
 
@@ -326,7 +385,7 @@ class ScentTopography3D {
     this.hud.style.color = '#e2e8f0';
     this.hud.style.pointerEvents = 'none';
     this.hud.style.zIndex = '10';
-    this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">16-Pole Harmonic Grid • Drag to Orbit</span>`;
+    this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">20-Pole Master Grid • Drag to Orbit</span>`;
 
     this.wrapper.appendChild(this.hud);
     this.container.appendChild(this.wrapper);
@@ -398,9 +457,9 @@ class ScentTopography3D {
     if (btn3D) btn3D.onclick = () => {
       this.viewMode = '3d';
       this.pitch = 54 * (Math.PI / 180);
-      this.yaw = 40 * (Math.PI / 180);
+      this.yaw = 38 * (Math.PI / 180);
       this.zoom = 1.0;
-      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">16 Harmonic Poles • Height = Blender Density</span>`;
+      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">20 Harmonic Poles • Height = Blender Density</span>`;
       this.render();
     };
 
@@ -409,7 +468,7 @@ class ScentTopography3D {
       this.pitch = 0.08;
       this.yaw = 0;
       this.zoom = 1.0;
-      this.hud.innerHTML = `<strong>🧭 16-Pole Scent Floor</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">Top-Down Polar Contour Radar</span>`;
+      this.hud.innerHTML = `<strong>🧭 20-Pole Scent Floor</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">Top-Down Polar Contour Radar</span>`;
       this.render();
     };
 
@@ -426,7 +485,7 @@ class ScentTopography3D {
     if (btnReset) btnReset.onclick = () => {
       this.viewMode = '3d';
       this.pitch = 54 * (Math.PI / 180);
-      this.yaw = 40 * (Math.PI / 180);
+      this.yaw = 38 * (Math.PI / 180);
       this.zoom = 1.0;
       this.render();
     };
@@ -490,7 +549,7 @@ class ScentTopography3D {
       }
     } else if (this.hoverSector !== null) {
       this.hoverSector = null;
-      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">16-Pole Harmonic Grid • Drag to Orbit</span>`;
+      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">20-Pole Master Grid • Drag to Orbit</span>`;
       this.render();
     }
   }
@@ -613,13 +672,13 @@ class ScentTopography3D {
       };
     };
 
-    // 1. Concentric Rings
+    // 1. Concentric Reference Rings
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
     ctx.lineWidth = 1;
 
     [0.33, 0.66, 1.0].forEach(rRatio => {
       ctx.beginPath();
-      for (let a = 0; a <= 360; a += 8) {
+      for (let a = 0; a <= 360; a += 6) {
         const rad = a * (Math.PI / 180);
         const pt = project(Math.sin(rad) * rRatio, -Math.cos(rad) * rRatio, 0);
         if (a === 0) ctx.moveTo(pt.px, pt.py);
@@ -629,7 +688,7 @@ class ScentTopography3D {
       ctx.stroke();
     });
 
-    // Radial Sector Rays for all 16 Poles
+    // Radial Rays for all 20 Master Poles
     SCENT_SECTORS.forEach(sec => {
       const rad = sec.angle * (Math.PI / 180);
       const pCenter = project(0, 0, 0);
@@ -638,7 +697,7 @@ class ScentTopography3D {
       ctx.beginPath();
       ctx.moveTo(pCenter.px, pCenter.py);
       ctx.lineTo(pEdge.px, pEdge.py);
-      ctx.strokeStyle = this.hoverSector === sec.id ? sec.color : 'rgba(255, 255, 255, 0.06)';
+      ctx.strokeStyle = this.hoverSector === sec.id ? sec.color : 'rgba(255, 255, 255, 0.05)';
       ctx.stroke();
     });
 
@@ -662,7 +721,7 @@ class ScentTopography3D {
             const sy = -Math.cos(sRad) * 0.72;
             const d = (gx - sx) * (gx - sx) + (gy - sy) * (gy - sy);
             const w = normalizedWeights[sec.id] || 0;
-            elevation += w * Math.exp(-d / 0.09);
+            elevation += w * Math.exp(-d / 0.075);
           });
 
           const edgeFalloff = Math.max(0, 1.0 - Math.pow(distFromCenter, 4));
@@ -717,12 +776,12 @@ class ScentTopography3D {
       ctx.fillStyle = fillColor;
       ctx.fill();
 
-      ctx.strokeStyle = normHeight > 0.4 ? 'rgba(255, 255, 255, 0.22)' : 'rgba(255, 255, 255, 0.06)';
+      ctx.strokeStyle = normHeight > 0.4 ? 'rgba(255, 255, 255, 0.22)' : 'rgba(255, 255, 255, 0.05)';
       ctx.lineWidth = 0.6;
       ctx.stroke();
     });
 
-    // 4. Render Billboards & Sector Tags around Perimeter
+    // 4. Render Billboards & Sector Tags for all 20 Poles
     SCENT_SECTORS.forEach(sec => {
       const rad = sec.angle * (Math.PI / 180);
       const isHover = this.hoverSector === sec.id;
@@ -731,12 +790,12 @@ class ScentTopography3D {
       const labelDist = 1.18;
       const pt = project(Math.sin(rad) * labelDist, -Math.cos(rad) * labelDist, 0);
 
-      ctx.font = isHover ? 'bold 10.5px Inter, sans-serif' : '9.5px Inter, sans-serif';
+      ctx.font = isHover ? 'bold 10px Inter, sans-serif' : '9px Inter, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       ctx.beginPath();
-      ctx.arc(pt.px, pt.py - 10, isHover ? 4.5 : 3, 0, Math.PI * 2);
+      ctx.arc(pt.px, pt.py - 9, isHover ? 4.5 : 3, 0, Math.PI * 2);
       ctx.fillStyle = sec.color;
       ctx.fill();
       if (isHover) {
@@ -750,8 +809,8 @@ class ScentTopography3D {
 
       if (count > 0) {
         ctx.fillStyle = isHover ? sec.color : 'rgba(255, 255, 255, 0.4)';
-        ctx.font = '8.5px monospace';
-        ctx.fillText(`${count}`, pt.px, pt.py + 12);
+        ctx.font = '8px monospace';
+        ctx.fillText(`${count}`, pt.px, pt.py + 11);
       }
     });
 
@@ -764,11 +823,9 @@ class ScentTopography3D {
     const cw = w - pad * 2;
     const ch = h - pad * 2;
 
-    // Draw Grid Lines
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
     ctx.lineWidth = 1;
 
-    // Axis dividers
     ctx.beginPath();
     ctx.moveTo(pad, h / 2);
     ctx.lineTo(w - pad, h / 2);
@@ -776,7 +833,6 @@ class ScentTopography3D {
     ctx.lineTo(w / 2, h - pad);
     ctx.stroke();
 
-    // Axis Labels
     ctx.font = '10px Inter, sans-serif';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
     ctx.textAlign = 'left';
@@ -784,30 +840,32 @@ class ScentTopography3D {
     ctx.textAlign = 'right';
     ctx.fillText('Deep Tenacity (Base) ▶', w - pad, h / 2 - 8);
     ctx.textAlign = 'center';
-    ctx.fillText('▲ Luminous (Floral / Gourmand)', w / 2, pad - 12);
-    ctx.fillText('▼ Dark (Woody / Earth / Moss)', w / 2, h - pad + 20);
+    ctx.fillText('▲ Luminous (Floral / Gourmand / Esters)', w / 2, pad - 12);
+    ctx.fillText('▼ Dark (Woods / Smoke / Roots / Leather)', w / 2, h - pad + 20);
 
-    // Map the 16 Poles into (X = Volatility, Y = Luminosity)
     const poleCoords = {
-      'citrus': { x: 0.15, y: 0.25 },
+      'citrus': { x: 0.14, y: 0.22 },
+      'sulfurous_tropical': { x: 0.18, y: 0.35 },
       'aromatic_herbal': { x: 0.22, y: 0.55 },
-      'cold_spice': { x: 0.28, y: 0.50 }, // Cold Spices: Fast top-heart, bracing neutral-cool
-      'aquatic': { x: 0.25, y: 0.40 },
-      'fresh_floral': { x: 0.38, y: 0.22 },
-      'powdery_orris': { x: 0.55, y: 0.42 },
-      'warm_floral': { x: 0.50, y: 0.20 },
-      'fruity': { x: 0.30, y: 0.18 },
-      'gourmand': { x: 0.65, y: 0.24 },
-      'warm_spice': { x: 0.68, y: 0.36 }, // Warm Spices: Tenacious base-heart, warm sweet
-      'amber_resins': { x: 0.78, y: 0.32 },
-      'animalic_leather': { x: 0.82, y: 0.68 },
-      'dry_wood': { x: 0.72, y: 0.74 },
-      'creamy_wood': { x: 0.70, y: 0.52 },
-      'earthy_mossy': { x: 0.65, y: 0.84 },
-      'aldehydic_clean': { x: 0.20, y: 0.15 }
+      'cold_spice': { x: 0.28, y: 0.48 },
+      'aquatic': { x: 0.25, y: 0.38 },
+      'fresh_floral': { x: 0.36, y: 0.20 },
+      'powdery_orris': { x: 0.52, y: 0.40 },
+      'warm_floral': { x: 0.48, y: 0.18 },
+      'fruity': { x: 0.28, y: 0.16 },
+      'lactonic_dairy': { x: 0.58, y: 0.26 },
+      'gourmand': { x: 0.65, y: 0.22 },
+      'warm_spice': { x: 0.68, y: 0.36 },
+      'tobacco_hay': { x: 0.72, y: 0.48 },
+      'amber_resins': { x: 0.78, y: 0.30 },
+      'biological_animalic': { x: 0.82, y: 0.62 },
+      'leather_tar': { x: 0.84, y: 0.75 },
+      'dry_wood': { x: 0.72, y: 0.72 },
+      'coniferous_pine': { x: 0.45, y: 0.65 },
+      'creamy_wood': { x: 0.70, y: 0.50 },
+      'earthy_mossy': { x: 0.64, y: 0.84 }
     };
 
-    // Draw connecting filaments between active poles
     const activePoles = SCENT_SECTORS.filter(sec => (this.sectorWeights[sec.id] || 0) > 0);
     
     ctx.lineWidth = 1.2;
@@ -830,7 +888,6 @@ class ScentTopography3D {
       }
     }
 
-    // Render Star Nodes for all 16 Poles
     SCENT_SECTORS.forEach(sec => {
       const coord = poleCoords[sec.id] || { x: 0.5, y: 0.5 };
       const nx = pad + coord.x * cw;
@@ -838,7 +895,6 @@ class ScentTopography3D {
       const weight = this.sectorWeights[sec.id] || 0;
       const isActive = weight > 0;
 
-      // Glow effect for active nodes
       if (isActive) {
         ctx.beginPath();
         ctx.arc(nx, ny, 10 + Math.min(12, weight * 0.8), 0, Math.PI * 2);
@@ -851,7 +907,6 @@ class ScentTopography3D {
       ctx.fillStyle = isActive ? sec.color : 'rgba(255, 255, 255, 0.25)';
       ctx.fill();
 
-      // Node Label
       ctx.font = isActive ? 'bold 10px Inter, sans-serif' : '8.5px Inter, sans-serif';
       ctx.fillStyle = isActive ? '#fff' : 'rgba(255, 255, 255, 0.4)';
       ctx.textAlign = 'center';
@@ -866,7 +921,7 @@ class ScentTopography3D {
   }
 }
 
-// 2D Scent Atlas & Reference Map Modal (16-Pole Universe)
+// 2D Scent Atlas & Reference Map Modal (20-Pole Universe)
 function openScentAtlasModal() {
   let atlasModal = document.getElementById('scent-atlas-modal');
   if (!atlasModal) {
@@ -896,27 +951,26 @@ function openScentAtlasModal() {
   `).join('');
 
   atlasModal.innerHTML = `
-    <div class="modal-card" style="max-width: 1040px; max-height: 88vh;">
+    <div class="modal-card" style="max-width: 1080px; max-height: 88vh;">
       <div class="modal-header">
         <div>
           <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <h2 style="font-size: 1.35rem; color: #fff; margin: 0;">🗺️ 16-Pole Olfactory Coordinate Universe</h2>
-            <span class="facet-chip" style="color: var(--accent-gold); border-color: var(--accent-gold);">16 Harmonic Poles • Cold vs. Warm Spices Resolved</span>
+            <h2 style="font-size: 1.35rem; color: #fff; margin: 0;">🗺️ 20-Pole Master Olfactory Coordinate Universe</h2>
+            <span class="facet-chip" style="color: var(--accent-gold); border-color: var(--accent-gold);">20 Master Harmonic Poles • 100% Odor Coverage</span>
           </div>
-          <span style="font-size: 0.8rem; color: var(--text-secondary);">Continuous coordinate space separating Cold Spices (45°), Warm Spices (202.5°), and all 144+ odor types.</span>
+          <span style="font-size: 0.8rem; color: var(--text-secondary);">Continuous chromatic wheel with exact separation for Cold vs. Warm Spices, Sulfurous Tropicals, Lactonics, Tobacco/Hay, Animalic vs. Leather, and Conifers.</span>
         </div>
         <button class="modal-close" onclick="closeScentAtlasModal()">&times;</button>
       </div>
 
       <div class="modal-body" style="padding: 1.25rem; overflow-y: auto;">
-        <!-- Search bar inside atlas -->
         <div style="margin-bottom: 1.25rem;">
-          <input type="text" id="atlas-search-input" placeholder="🔍 Search any odor quality (e.g., cardamom, cinnamon, saffron, mushroom, geosmin)..." 
+          <input type="text" id="atlas-search-input" placeholder="🔍 Search any odor quality (e.g., cardamom, cinnamon, passionfruit, lactone, tobacco, birch tar, geosmin)..." 
                  style="width: 100%; padding: 0.65rem 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: #fff; font-size: 0.85rem;"
                  oninput="filterAtlasSectors(this.value)">
         </div>
 
-        <div id="atlas-sectors-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem;">
+        <div id="atlas-sectors-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 0.75rem;">
           ${sectorsHtml}
         </div>
       </div>
