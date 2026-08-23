@@ -1405,7 +1405,17 @@ function openFragranceModal(id) {
 
   if (nameEl) nameEl.textContent = `🌸 ${f.name}`;
   if (idEl) idEl.textContent = f.id.toUpperCase();
-  if (casEl) casEl.textContent = `${f.category || 'Fine Fragrance Accord'} • ${f.suppliers && f.suppliers.length > 0 ? f.suppliers.join(', ') : 'TGSC Evaluator Composition'}`;
+  
+  // Clean subtitle & category context
+  const cleanCategory = (!f.category || f.category.includes('all types') || f.category.includes('fragrance agents'))
+    ? (f.type === 'flavor' ? 'Flavor & Aroma Architecture' : 'Fine Fragrance & Accord Architecture')
+    : f.category;
+    
+  const cleanSuppliers = (f.suppliers && f.suppliers.length > 0)
+    ? f.suppliers.filter(s => s && s.toLowerCase() !== 'f&f projects').join(', ') || 'Industry Reference Archives'
+    : 'Perfumery & Flavor Reference Archives';
+    
+  if (casEl) casEl.textContent = `${cleanCategory} • ${cleanSuppliers}`;
 
   const famStyle = getFamilyStyle(f.family);
   const typeClass = f.type === 'fragrance' ? 'badge-fragrance' : f.type === 'base' ? 'badge-base' : 'badge-flavor';
@@ -1414,7 +1424,38 @@ function openFragranceModal(id) {
   // Smart matching and classification for constituent ingredients
   const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
-  const ingredientsHtml = (f.ingredients || []).map(ing => {
+  // Clean and sanitize evaluator descriptions
+  const cleanDescriptions = (f.desc || []).map(raw => {
+    let s = raw.trim();
+    if (/^fragrance demo formulas$/i.test(s)) return null;
+    s = s.replace(/^odor description:\s*(at\s*[\d\.]+\s*%\s*(in\s*[\w\s]+)?\.?\s*)?/i, '');
+    s = s.replace(/^odor strength:\s*/i, '');
+    // Deduplicate repeated consecutive words (e.g. "tea green tea tea" -> "Tea, Green Tea")
+    const words = s.split(/\s+/);
+    const dedup = [];
+    words.forEach(w => {
+      if (dedup.length === 0 || dedup[dedup.length - 1].toLowerCase() !== w.toLowerCase()) {
+        dedup.push(w);
+      }
+    });
+    s = dedup.join(' ');
+    if (s.length > 0) {
+      s = s.charAt(0).toUpperCase() + s.slice(1);
+    }
+    return s;
+  }).filter(Boolean);
+
+  // If descriptions are empty or sparse, generate an insightful summary
+  if (cleanDescriptions.length === 0) {
+    cleanDescriptions.push(`A harmonious ${f.family || 'olfactory'} composition designed for fine fragrance and accord balancing.`);
+  }
+
+  // Classify ingredients into 3 Tiers: Top, Heart, Base
+  const topList = [];
+  const heartList = [];
+  const baseList = [];
+
+  (f.ingredients || []).forEach(ing => {
     const ingNorm = norm(ing.name);
     const matchMat = state.materials.find(m => {
       const mNorm = norm(m.name);
@@ -1422,6 +1463,21 @@ function openFragranceModal(id) {
     });
 
     const isOwned = Boolean(matchMat);
+
+    // Tier classification
+    let tier = 'Heart Note';
+    if (matchMat && matchMat.tier) {
+      tier = matchMat.tier;
+    } else {
+      const lowerName = ing.name.toLowerCase();
+      if (/\b(acetate|formate|propionate|butyrate|aldehyde|citrus|lime|lemon|orange|bergamot|grapefruit|mandarin|mint|eucalyptus|ocimene|myrcene|pinene|ethyl|methyl|hexenyl|octanal|nonanal|decanal)\b/i.test(lowerName)) {
+        tier = 'Top Note';
+      } else if (/\b(sandal|cedar|musk|amber|vetiver|patchouli|oakmoss|resin|balsam|vanill|benzoin|salicylate|coumarin|lauric|myristic|oleate|benzoate|cinnamate|indole|norlimbanol|ambroxan|veramoss|evernyl|iso e super|costus)\b/i.test(lowerName)) {
+        tier = 'Base Note';
+      } else {
+        tier = 'Heart Note';
+      }
+    }
 
     // Natural vs Base vs Molecule Detection
     const isNatural = ing.id.startsWith('es') || ing.id.startsWith('ex') ||
@@ -1432,34 +1488,132 @@ function openFragranceModal(id) {
 
     let typeBadge = '';
     if (isNatural) {
-      typeBadge = `<span style="font-size: 0.68rem; color: #34d399; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 500;">🌿 Natural Extract</span>`;
+      typeBadge = `<span style="font-size: 0.68rem; color: #34d399; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 500;">🌿 Natural</span>`;
     } else if (isBase) {
-      typeBadge = `<span style="font-size: 0.68rem; color: #c084fc; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 500;">🏺 Specialty Base</span>`;
+      typeBadge = `<span style="font-size: 0.68rem; color: #c084fc; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 500;">🏺 Base</span>`;
     } else {
-      typeBadge = `<span style="font-size: 0.68rem; color: #38bdf8; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.25); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 500;">🔬 Aroma Molecule</span>`;
+      typeBadge = `<span style="font-size: 0.68rem; color: #38bdf8; background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.25); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 500;">🔬 Molecule</span>`;
     }
 
     const organBadge = isOwned
-      ? `<span style="font-size: 0.68rem; color: #10b981; background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">In Your Organ ✅</span>`
+      ? `<span style="font-size: 0.68rem; color: #10b981; background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">Organ ✅</span>`
       : '';
 
-    return `
-      <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-        <td style="padding: 0.65rem 0.8rem; color: #fff; font-weight: 500;">
-          ${ing.name}
+    const rowHtml = `
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s ease;">
+        <td style="padding: 0.55rem 0.75rem;">
+          ${isOwned 
+            ? `<a href="javascript:void(0)" onclick="openMaterialModal('${matchMat.id}')" style="color: #fff; font-weight: 500; text-decoration: none; border-bottom: 1px dotted var(--accent-blue);" title="View ${matchMat.name} in Organ">${ing.name}</a>` 
+            : `<span style="color: #d1d5db; font-weight: 500;">${ing.name}</span>`}
         </td>
-        <td style="padding: 0.65rem 0.8rem; white-space: nowrap;">
-          <div style="display: flex; gap: 0.4rem; align-items: center;">
+        <td style="padding: 0.55rem 0.75rem; white-space: nowrap;">
+          <div style="display: flex; gap: 0.35rem; align-items: center;">
             ${typeBadge}
             ${organBadge}
           </div>
         </td>
-        <td style="padding: 0.65rem 0.8rem; text-align: right;">
-          ${isOwned ? `<button class="btn-icon" onclick="addToSandbox('${matchMat.id}', 50)" style="font-size: 0.72rem; color: var(--accent-blue);">+ Beaker</button>` : ''}
+        <td style="padding: 0.55rem 0.75rem; text-align: right; white-space: nowrap;">
+          ${isOwned ? `<button class="btn-icon" onclick="addToSandbox('${matchMat.id}', 50)" style="font-size: 0.72rem; color: var(--accent-blue); padding: 0.2rem 0.5rem;">+ Beaker</button>` : ''}
         </td>
       </tr>
     `;
-  }).join('');
+
+    if (tier === 'Top Note') topList.push(rowHtml);
+    else if (tier === 'Base Note') baseList.push(rowHtml);
+    else heartList.push(rowHtml);
+  });
+
+  // Render Tier Blocks
+  const renderTierTable = (title, badgeClass, list) => {
+    if (!list || list.length === 0) return '';
+    return `
+      <div class="accord-tier-block">
+        <div class="accord-tier-header">
+          <span class="${badgeClass}">${title} (${list.length})</span>
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Volatility & Olfactory Role</span>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
+          <tbody>${list.join('')}</tbody>
+        </table>
+      </div>
+    `;
+  };
+
+  const tieredIngredientsHtml = `
+    ${renderTierTable('⚡ Top Notes (Fresh & Volatile)', 'tier-top-badge', topList)}
+    ${renderTierTable('⏳ Heart Notes (Floral, Fruity & Body)', 'tier-heart-badge', heartList)}
+    ${renderTierTable('⚓ Base Notes & Fixatives (Substantive)', 'tier-base-badge', baseList)}
+  `;
+
+  // Multi-Hop Graph Traversal: Find Related Accords sharing ingredients or family
+  const currentIngSet = new Set((f.ingredients || []).map(i => norm(i.name)));
+  const relatedAccords = (state.fragrances || [])
+    .filter(other => other.id !== f.id)
+    .map(other => {
+      let sharedCount = 0;
+      (other.ingredients || []).forEach(oi => {
+        if (currentIngSet.has(norm(oi.name))) sharedCount++;
+      });
+      const sameFam = (other.family === f.family) ? 3 : 0;
+      return { accord: other, score: sharedCount * 2 + sameFam, sharedCount };
+    })
+    .filter(item => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 4);
+
+  const relatedAccordsHtml = relatedAccords.length > 0 ? `
+    <div class="modal-section" style="margin-top: 1.5rem;">
+      <h4 class="modal-sec-title">🕸️ Connected Fragrance & Flavor Network (Crawl Out)</h4>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+        Explore sibling accords and flavor profiles that share key aroma chemical bridges and olfactory synergies with <strong>${f.name}</strong>:
+      </p>
+      <div class="related-accords-grid">
+        ${relatedAccords.map(({ accord, sharedCount }) => {
+          const rStyle = getFamilyStyle(accord.family);
+          return `
+            <div class="related-accord-card" onclick="openFragranceModal('${accord.id}')">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; font-weight: 600; color: #fff;">${accord.name}</span>
+                <span class="tag-family" style="font-size: 0.65rem; background: ${rStyle.bg}; color: ${rStyle.text}; border: 1px solid ${rStyle.border}; padding: 0.1rem 0.4rem;">
+                  ${accord.family}
+                </span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem;">
+                <span>🔗 ${sharedCount} Shared Molecules</span>
+                <span style="color: var(--accent-blue); font-weight: 500;">Inspect Accord ➔</span>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  ` : '';
+
+  // Cross-Disciplinary Applications & Uses
+  const isTea = /tea/i.test(f.name) || /tea/i.test(f.family);
+  const isFloral = /floral|rose|jasmine|flower/i.test(f.name) || /floral/i.test(f.family);
+  const isCitrus = /citrus|lemon|orange|bergamot|mandarin/i.test(f.name) || /citrus/i.test(f.family);
+  const isWoody = /woody|cedar|sandal|forest|amber/i.test(f.name) || /woody|amber/i.test(f.family);
+
+  const applicationChips = [
+    { label: '🌸 Fine Eau de Parfum', query: f.family || 'floral' },
+    { label: '🕯️ Ambient Candle & Diffuser', query: 'diffuser' },
+    { label: isTea || isCitrus ? '☕ Botanical Beverage & Flavor' : '🧴 Spa & Body Care', query: isTea ? 'tea' : 'spa' },
+    { label: isWoody ? '🌲 Woody Amber Base' : '🌿 Fresh Herbaceous Accent', query: isWoody ? 'woody' : 'green' }
+  ];
+
+  const applicationsHtml = `
+    <div class="modal-section" style="margin-top: 1.25rem;">
+      <h4 class="modal-sec-title">🏷️ Practical Scent Applications & Flavor Crossovers</h4>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        ${applicationChips.map(app => `
+          <div class="crossover-pill" onclick="searchByTag('${app.query}')">
+            <span>${app.label}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
 
   // Demo Recipe if available
   let recipeHtml = '';
@@ -1507,10 +1661,10 @@ function openFragranceModal(id) {
           <span class="tag-family" style="background: ${famStyle.bg}; color: ${famStyle.text}; border: 1px solid ${famStyle.border}">
             ${f.family || 'unclassified'}
           </span>
-          <span class="facet-chip">${f.category || 'Fine Fragrance'}</span>
+          <span class="facet-chip">${cleanCategory}</span>
         </div>
         <p style="font-size: 0.85rem; color: var(--text-secondary);">
-          ${(f.suppliers && f.suppliers.length > 0) ? `Formulated by <strong>${f.suppliers.join(', ')}</strong>` : 'Compiled from Perfumery Formula Archives'}
+          Formulation compiled from <strong>${cleanSuppliers}</strong>
         </p>
       </div>
 
@@ -1521,9 +1675,9 @@ function openFragranceModal(id) {
 
     <!-- Evaluator Descriptions -->
     <div class="modal-section">
-      <h4 class="modal-sec-title">📝 Olfactory Character & Evaluator Notes</h4>
+      <h4 class="modal-sec-title">📝 Olfactory Character & Sensory Profile</h4>
       <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-        ${(f.desc || []).map(d => `<div style="background: rgba(0,0,0,0.25); padding: 0.75rem 0.9rem; border-radius: var(--radius-md); border-left: 3px solid var(--accent-rose); font-size: 0.85rem; color: #e5e7eb; line-height: 1.5;">${d}</div>`).join('')}
+        ${cleanDescriptions.map(d => `<div style="background: rgba(0,0,0,0.25); padding: 0.75rem 0.9rem; border-radius: var(--radius-md); border-left: 3px solid var(--accent-rose); font-size: 0.85rem; color: #e5e7eb; line-height: 1.5;">${d}</div>`).join('')}
       </div>
     </div>
 
@@ -1531,18 +1685,33 @@ function openFragranceModal(id) {
 
     <!-- Constituent Building Blocks -->
     <div class="modal-section" style="margin-top: 1.5rem;">
-      <h4 class="modal-sec-title">🌿 Constituent Naturals, Aroma Molecules & Bases (${f.ingredients_count} total)</h4>
-      <div style="background: rgba(0,0,0,0.3); border-radius: var(--radius-md); border: 1px solid var(--border-color); max-height: 280px; overflow-y: auto;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
-          <tbody>
-            ${ingredientsHtml || '<tr><td style="padding: 1rem; color: var(--text-muted);">No direct chemical breakdown listed.</td></tr>'}
-          </tbody>
-        </table>
+      <h4 class="modal-sec-title">🌿 Structured Constituent Molecules & Bases (${f.ingredients_count} total)</h4>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+        Organized by volatility tier (Top, Heart, Base). Click any molecule to view its olfactory properties and blender network.
+      </p>
+      <div style="max-height: 340px; overflow-y: auto; padding-right: 0.35rem;">
+        ${tieredIngredientsHtml || '<div style="padding: 1rem; color: var(--text-muted);">No direct chemical breakdown listed.</div>'}
       </div>
     </div>
+
+    ${relatedAccordsHtml}
+
+    ${applicationsHtml}
   `;
 
   modal.classList.add('active');
+}
+
+// Global Tag Search helper for Crawl Out
+function searchByTag(query) {
+  closeModal();
+  const searchInput = document.getElementById('search-input');
+  const fragTab = document.querySelector('.tab-btn[data-tab="fragrances"]');
+  if (fragTab) fragTab.click();
+  if (searchInput) {
+    searchInput.value = query;
+    searchInput.dispatchEvent(new Event('input'));
+  }
 }
 
 // Transfer Accord Ingredients to Sandbox Beaker
