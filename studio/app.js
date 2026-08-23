@@ -1528,23 +1528,35 @@ function renderFragranceGrid() {
 }
 
 // Open Fragrance Accord Deconstruction Modal
-function openFragranceModal(id) {
-  const f = state.fragrancesMap.get(id);
-  if (!f) return;
+function openFragranceModal(idOrName) {
+  try {
+    const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    let f = state.fragrancesMap ? state.fragrancesMap.get(idOrName) : null;
+    if (!f && Array.isArray(state.fragrances)) {
+      const qNorm = norm(idOrName);
+      f = state.fragrances.find(frag => {
+        const fn = norm(frag.name);
+        return frag.id === idOrName || fn === qNorm || fn.includes(qNorm) || qNorm.includes(fn);
+      });
+    }
+    if (!f) {
+      console.warn('Fragrance/Flavor not found for ID or Name:', idOrName);
+      return;
+    }
 
-  const modal = document.getElementById('material-modal');
-  const nameEl = document.getElementById('modal-mat-name');
-  const idEl = document.getElementById('modal-mat-id');
-  const casEl = document.getElementById('modal-mat-cas');
-  const body = document.getElementById('modal-body-content');
+    const modal = document.getElementById('material-modal');
+    const nameEl = document.getElementById('modal-mat-name');
+    const idEl = document.getElementById('modal-mat-id');
+    const casEl = document.getElementById('modal-mat-cas');
+    const body = document.getElementById('modal-body-content');
 
-  if (nameEl) nameEl.textContent = `🌸 ${f.name}`;
-  if (idEl) idEl.textContent = f.id.toUpperCase();
-  
-  // Clean subtitle & category context
-  const cleanCategory = (!f.category || f.category.includes('all types') || f.category.includes('fragrance agents'))
-    ? (f.type === 'flavor' ? 'Flavor & Aroma Architecture' : 'Fine Fragrance & Accord Architecture')
-    : f.category;
+    if (nameEl) nameEl.textContent = `🌸 ${f.name}`;
+    if (idEl) idEl.textContent = (f.id || '').toUpperCase();
+    
+    // Clean subtitle & category context
+    const cleanCategory = (!f.category || f.category.includes('all types') || f.category.includes('fragrance agents'))
+      ? (f.type === 'flavor' ? 'Flavor & Aroma Architecture' : 'Fine Fragrance & Accord Architecture')
+      : f.category;
     
   const cleanSuppliers = (f.suppliers && f.suppliers.length > 0)
     ? f.suppliers.filter(s => s && s.toLowerCase() !== 'f&f projects').join(', ') || 'Industry Reference Archives'
@@ -1555,7 +1567,6 @@ function openFragranceModal(id) {
   const famStyle = getFamilyStyle(f.family);
   const typeClass = f.type === 'fragrance' ? 'badge-fragrance' : f.type === 'base' ? 'badge-base' : 'badge-flavor';
   // Smart matching and classification for constituent ingredients
-  const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   const currentIngSet = new Set((f.ingredients || []).map(i => norm(i.name)));
 
   // Clean and sanitize evaluator descriptions
@@ -1908,11 +1919,18 @@ function openFragranceModal(id) {
 
   // Initialize 3D Scent Topography for Accord
   setTimeout(() => {
-    if (window.ScentTopography3D) {
-      const topo = new ScentTopography3D('accord-topography-3d', { height: 300 });
-      topo.loadAccord(f, state.materialsMap, state.materials);
+    try {
+      if (window.ScentTopography3D) {
+        const topo = new ScentTopography3D('accord-topography-3d', { height: 300 });
+        topo.loadAccord(f, state.materialsMap, state.materials);
+      }
+    } catch (topoErr) {
+      console.warn('3D Accord Topography render fallback:', topoErr);
     }
   }, 60);
+  } catch (err) {
+    console.error('Error opening fragrance/flavor modal:', err);
+  }
 }
 
 // Global Tag Search helper for Crawl Out
