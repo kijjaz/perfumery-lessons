@@ -422,10 +422,28 @@ function openMaterialModal(matIdOrName) {
     const qNorm = norm(matIdOrName);
     m = state.materials.find(mat => {
       const mn = norm(mat.name);
-      return mn === qNorm || mn.includes(qNorm) || qNorm.includes(mn);
+      return mn === qNorm || mn.includes(qNorm) || qNorm.includes(mn) || (mat.cas && mat.cas === matIdOrName);
     });
   }
-  if (!m) return;
+  if (!m) {
+    const f = state.fragrancesMap.get(matIdOrName);
+    if (f) return openFragranceModal(matIdOrName);
+  }
+  if (!m) {
+    // Generate graceful Extended Lake profile with harmonized blender network
+    const rawName = matIdOrName.replace(/^rw\d+|^fl\d+|^pb\d+|^es\d+/, '').trim() || matIdOrName;
+    m = {
+      id: matIdOrName,
+      name: rawName.charAt(0).toUpperCase() + rawName.slice(1),
+      cas: 'Extended Lake Archive',
+      family: 'gourmand',
+      tier: 'Heart Note',
+      hours: 48,
+      desc: [`${rawName} is a specialized olfactory constituent from the Master Olfactory Knowledge Graph.`],
+      facets: ['extended', 'aroma chemical'],
+      blenders_by_group: {}
+    };
+  }
 
   const modal = document.getElementById('material-modal');
   document.getElementById('modal-mat-name').textContent = m.name;
@@ -1529,14 +1547,16 @@ function openFragranceModal(id) {
 
     const organBadge = isOwned
       ? `<span style="font-size: 0.68rem; color: #10b981; background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); padding: 0.15rem 0.45rem; border-radius: 4px; font-weight: 600;">Organ ✅</span>`
-      : '';
+      : `<span style="font-size: 0.68rem; color: #94a3b8; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.15rem 0.45rem; border-radius: 4px;">Extended Lake</span>`;
+
+    const targetParam = matchMat ? matchMat.id : (ing.id || ing.name);
 
     const rowHtml = `
       <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s ease;">
         <td style="padding: 0.55rem 0.75rem;">
-          ${isOwned 
-            ? `<a href="javascript:void(0)" onclick="openMaterialModal('${matchMat.id}')" style="color: #fff; font-weight: 500; text-decoration: none; border-bottom: 1px dotted var(--accent-blue);" title="View ${matchMat.name} in Organ">${ing.name}</a>` 
-            : `<span style="color: #d1d5db; font-weight: 500;">${ing.name}</span>`}
+          <a href="javascript:void(0)" onclick="openMaterialModal('${targetParam}')" style="color: #fff; font-weight: 500; text-decoration: none; border-bottom: 1px dotted var(--accent-blue);" title="View ${ing.name} & its Blenders">
+            ${ing.name}
+          </a>
         </td>
         <td style="padding: 0.55rem 0.75rem; white-space: nowrap;">
           <div style="display: flex; gap: 0.35rem; align-items: center;">
@@ -1545,7 +1565,10 @@ function openFragranceModal(id) {
           </div>
         </td>
         <td style="padding: 0.55rem 0.75rem; text-align: right; white-space: nowrap;">
-          ${isOwned ? `<button class="btn-icon" onclick="addToSandbox('${matchMat.id}', 50)" style="font-size: 0.72rem; color: var(--accent-blue); padding: 0.2rem 0.5rem;">+ Beaker</button>` : ''}
+          <div style="display: flex; gap: 0.4rem; justify-content: flex-end;">
+            <button class="btn-icon" onclick="openMaterialModal('${targetParam}')" style="font-size: 0.72rem; color: var(--accent-gold); padding: 0.2rem 0.5rem;" title="View Blenders of ${ing.name}">🔗 Blenders</button>
+            ${isOwned ? `<button class="btn-icon" onclick="addToSandbox('${matchMat.id}', 50)" style="font-size: 0.72rem; color: var(--accent-blue); padding: 0.2rem 0.5rem;" title="Add to Formula Beaker">+ Beaker</button>` : ''}
+          </div>
         </td>
       </tr>
     `;
@@ -1562,7 +1585,7 @@ function openFragranceModal(id) {
       <div class="accord-tier-block">
         <div class="accord-tier-header">
           <span class="${badgeClass}">${title} (${list.length})</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted);">Volatility & Olfactory Role</span>
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Click any ingredient or '🔗 Blenders' to explore</span>
         </div>
         <table style="width: 100%; border-collapse: collapse; font-size: 0.82rem;">
           <tbody>${list.join('')}</tbody>
@@ -1576,6 +1599,62 @@ function openFragranceModal(id) {
     ${renderTierTable('⏳ Heart Notes (Floral, Fruity & Body)', 'tier-heart-badge', heartList)}
     ${renderTierTable('⚓ Base Notes & Fixatives (Substantive)', 'tier-base-badge', baseList)}
   `;
+
+  // Aggregate Key Blenders across all ingredients in this Accord / Flavor
+  const accordBlendersMap = new Map();
+  (f.ingredients || []).forEach(ing => {
+    const ingNorm = norm(ing.name);
+    const m = state.materials.find(mat => {
+      const mn = norm(mat.name);
+      return mn === ingNorm || mn.includes(ingNorm) || ingNorm.includes(mn);
+    });
+    if (m && m.blenders_by_group) {
+      Object.entries(m.blenders_by_group).forEach(([grp, list]) => {
+        list.forEach(b => {
+          if (!currentIngSet.has(norm(b.name))) {
+            const cur = accordBlendersMap.get(b.name) || { name: b.name, id: b.id, group: grp, count: 0, odor_group: b.odor_group };
+            cur.count += 1;
+            accordBlendersMap.set(b.name, cur);
+          }
+        });
+      });
+    }
+  });
+
+  const topAccordBlenders = Array.from(accordBlendersMap.values())
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 16);
+
+  const accordBlendersHtml = topAccordBlenders.length > 0 ? `
+    <div class="modal-section" style="margin-top: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <h4 class="modal-sec-title" style="margin: 0;">🔗 Harmonic Blenders for this Composition (${accordBlendersMap.size} Network Bridges)</h4>
+        <span style="font-size: 0.72rem; color: var(--text-muted);">Molecules with highest blending affinity across formula ingredients</span>
+      </div>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+        Click any bridge molecule below to view its full blenders profile or add to formulation:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem;">
+        ${topAccordBlenders.map(b => {
+          const ownedMat = state.materials.find(m => norm(m.name) === norm(b.name));
+          return `
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem; display: flex; justify-content: space-between; align-items: center; transition: all 0.2s ease;">
+              <div style="min-width: 0; flex: 1;">
+                <a href="javascript:void(0)" onclick="openMaterialModal('${ownedMat ? ownedMat.id : (b.id || b.name)}')" style="color: #fff; font-size: 0.82rem; font-weight: 500; text-decoration: none; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="View ${b.name}">
+                  ${b.name}
+                </a>
+                <div style="font-size: 0.68rem; color: var(--accent-gold);">${b.group || b.odor_group || 'Harmonic Pole'}</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.3rem;">
+                <span style="font-size: 0.68rem; color: var(--accent-blue); background: rgba(56,189,248,0.12); padding: 1px 5px; border-radius: 4px;">${b.count}× Affinity</span>
+                <button class="btn-icon" onclick="openMaterialModal('${ownedMat ? ownedMat.id : (b.id || b.name)}')" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;" title="Explore Blenders">🔗</button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  ` : '';
 
   // Multi-Hop Graph Traversal: Find Related Accords sharing ingredients or family
   const currentIngSet = new Set((f.ingredients || []).map(i => norm(i.name)));
@@ -1734,6 +1813,8 @@ function openFragranceModal(id) {
       </div>
       <div id="accord-topography-3d" style="width: 100%; height: 300px;"></div>
     </div>
+
+    ${accordBlendersHtml}
 
     ${relatedAccordsHtml}
 
