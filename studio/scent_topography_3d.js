@@ -1,84 +1,108 @@
 /**
- * ScentTopography3D - Interactive 3D Olfactory Landscape & 2D Scent Map Engine
- * Maps all 144+ odor types and blender groups in the TGSC database
- * onto a continuous 360° 2D Ground Floor and 3D Mountain Elevation (Z).
+ * ScentTopography3D - Multi-Projection Olfactory Space Engine
+ * 1. 16-Pole Harmonic Scent Wheel with distinct Cold Spices (45°) & Warm Spices (202.5°)
+ * 2. 3D Blender Elevation Mountain (Z)
+ * 3. 2D Volatility (X) × Luminosity (Y) Constellation Grid with Blender Filaments
  */
 
 const SCENT_SECTORS = [
   {
     id: 'citrus',
-    name: 'Citrus & Aldehydes',
+    name: 'Citrus & Hesperidic',
     icon: '🍋',
     angle: 0,
     color: '#facc15',
     subOdors: [
       'citrus', 'citrus (lime)', 'citrus (orange)', 'mandarin', 'grapefruit', 'yuzu',
-      'aldehydic (clean)', 'aldehydic (complex)', 'aliphatic', 'citronella', 'ethereal',
+      'bergamot', 'lemon', 'lime', 'orange', 'aliphatic', 'citronella', 'ethereal',
       'terpenic', 'acetic', 'acidic', 'astringent', 'clean', 'sour', 'vinegar'
     ]
   },
   {
-    id: 'green',
-    name: 'Green & Herbaceous',
+    id: 'aromatic_herbal',
+    name: 'Aromatic & Herbal',
     icon: '🌿',
-    angle: 30,
-    color: '#4ade80',
+    angle: 22.5,
+    color: '#86efac',
     subOdors: [
-      'green', 'green (stem)', 'green (bitter)', 'green (fatty)', 'green (gemstone)', 'green (harsh)',
-      'herbal', 'mint', 'minty', 'facet (minty)', 'facet (wintergreen)', 'sage', 'basil', 'rosemary',
-      'thyme', 'lavender', 'galbanum', 'grassy', 'foliage', 'tarragon', 'celery', 'thujonic',
-      'vegetable', 'radish', 'rhubarb', 'tomato', 'mustard', 'wasabi'
+      'herbal', 'lavender', 'sage', 'basil', 'rosemary', 'thyme', 'clary sage',
+      'green (stem)', 'green (bitter)', 'grassy', 'foliage', 'tarragon', 'celery',
+      'thujonic', 'vegetable', 'radish', 'rhubarb', 'tomato', 'mustard', 'wasabi'
+    ]
+  },
+  {
+    id: 'cold_spice',
+    name: 'Cold Spices & Terpenic',
+    icon: '❄️',
+    angle: 45,
+    color: '#67e8f9',
+    subOdors: [
+      'cardamom', 'pink pepper', 'coriander', 'juniper', 'juniper berry', 'ginger',
+      'fresh ginger', 'elemi', 'eucalyptus', 'camphoraceous', 'camphoreous',
+      'mint', 'minty', 'facet (minty)', 'facet (wintergreen)', 'cineole', 'terpinyl'
     ]
   },
   {
     id: 'aquatic',
     name: 'Aquatic & Marine',
     icon: '🌊',
-    angle: 60,
+    angle: 67.5,
     color: '#38bdf8',
     subOdors: [
       'marine', 'facet (marine)', 'facet (oceanic)', 'aquatic', 'water (fresh)', 'calone',
-      'cucumber', 'fresh air', 'cooling', 'ozonic', 'oceanic', 'seaweed'
+      'cucumber', 'fresh air', 'cooling', 'ozonic', 'oceanic', 'seaweed', 'watery'
     ]
   },
   {
     id: 'fresh_floral',
-    name: 'Fresh Floral (Muguet)',
+    name: 'Fresh Florals & Muguet',
     icon: '🌸',
     angle: 90,
     color: '#f472b6',
     subOdors: [
       'floral (fresh)', 'floral (muguet)', 'muguet', 'floral (lilac)', 'floral (peony)',
-      'floral (hawthorn)', 'hedione', 'freesia', 'magnolia', 'transparent floral', 'cyclamen', 'lotus'
+      'floral (hawthorn)', 'hedione', 'freesia', 'magnolia', 'transparent floral',
+      'cyclamen', 'lotus', 'hyacinth', 'water lily'
     ]
   },
   {
-    id: 'heavy_floral',
-    name: 'Warm Floral (Rose/Jasmin)',
+    id: 'powdery_orris',
+    name: 'Powdery & Orris',
+    icon: '🪞',
+    angle: 112.5,
+    color: '#c084fc',
+    subOdors: [
+      'floral (orris)', 'floral (powder)', 'floral (violet)', 'orris', 'violet',
+      'iris', 'ionone', 'methyl ionone', 'heliotrope', 'mimosa', 'powdery', 'powder'
+    ]
+  },
+  {
+    id: 'warm_floral',
+    name: 'Warm Florals & Solar',
     icon: '🌺',
-    angle: 120,
+    angle: 135,
     color: '#e879f9',
     subOdors: [
       'floral', 'floral (heavy)', 'floral (rose)', 'floral (jasmine)', 'floral (ylang)',
-      'floral (orange bl.)', 'floral (violet)', 'floral (orris)', 'floral (powder)',
-      'tuberose', 'gardenia', 'carnation', 'neroli', 'damascenone', 'geraniol', 'pea'
+      'floral (orange bl.)', 'tuberose', 'gardenia', 'carnation', 'neroli',
+      'damascenone', 'geraniol', 'narcissus', 'orange flower', 'pea'
     ]
   },
   {
     id: 'fruity',
     name: 'Fruity & Berry',
     icon: '🍑',
-    angle: 150,
+    angle: 157.5,
     color: '#fb923c',
     subOdors: [
       'fruity', 'fruit (apple/plum)', 'fruit (pineapple)', 'fruit (strawberry)', 'fruit (tropical)',
       'apple', 'berry', 'cherry', 'peach', 'apricot', 'cassis', 'melon', 'banana', 'pear', 'plum',
-      'grape', 'estery', 'jammy', 'juicy'
+      'grape', 'estery', 'jammy', 'juicy', 'passionfruit', 'mango', 'raspberry', 'blackcurrant'
     ]
   },
   {
     id: 'gourmand',
-    name: 'Gourmand & Vanilla',
+    name: 'Gourmand & Lactonic',
     icon: '🍨',
     angle: 180,
     color: '#fbbf24',
@@ -86,27 +110,39 @@ const SCENT_SECTORS = [
       'gourmet', 'gourmet (sweet)', 'gourmet (buttery)', 'gourmet (nutty)', 'gourmet (coconut)',
       'vanilla', 'caramellic', 'chocolate', 'cocoa', 'coffee', 'honey', 'almond', 'coconut',
       'bready', 'buttery', 'candy', 'coumarinic', 'creamy', 'dairy', 'malty', 'molasses',
-      'popcorn', 'toasted', 'tonka', 'corn', 'corn chip'
+      'popcorn', 'toasted', 'tonka', 'corn', 'corn chip', 'lactonic', 'milk', 'tiramisu', 'praline', 'hazelnut'
     ]
   },
   {
-    id: 'amber',
-    name: 'Amber & Balsamic',
+    id: 'warm_spice',
+    name: 'Warm Spices & Phenols',
+    icon: '🌶️',
+    angle: 202.5,
+    color: '#ea580c',
+    subOdors: [
+      'cinnamon', 'clove', 'nutmeg', 'allspice', 'saffron', 'spice (saffron)', 'spicy',
+      'cinnamaldehyde', 'eugenol', 'isoeugenol', 'star anise', 'anise', 'anisic',
+      'cassia', 'bay leaf', 'pimento', 'phenolic', 'safranal'
+    ]
+  },
+  {
+    id: 'amber_resins',
+    name: 'Amber & Balsamic Resins',
     icon: '✨',
-    angle: 210,
+    angle: 225,
     color: '#f59e0b',
     subOdors: [
       'amber', 'amber (rich)', 'amber (powerful)', 'balsamic', 'benzoin', 'labdanum',
-      'cistus', 'myrrh', 'frankincense', 'incense', 'styrax', 'elemi', 'opoponax', 'resinous',
-      'spicy', 'spice (saffron)', 'peppery', 'anise', 'anisic', 'licorice'
+      'cistus', 'myrrh', 'frankincense', 'incense', 'styrax', 'opoponax', 'resinous',
+      'ambroxan', 'ambergris', 'cistus ladanifer'
     ]
   },
   {
-    id: 'animalic',
+    id: 'animalic_leather',
     name: 'Animalic, Leather & Musk',
     icon: '🦌',
-    angle: 240,
-    color: '#c084fc',
+    angle: 247.5,
+    color: '#a855f7',
     subOdors: [
       'animal', 'animalic', 'civet', 'castoreum', 'musk', 'musk (botanical)', 'musk (woody)',
       'leather', 'costus', 'indolic', 'skatole', 'alliaceous', 'garlic', 'onion', 'cabbage',
@@ -121,40 +157,55 @@ const SCENT_SECTORS = [
     color: '#a3e635',
     subOdors: [
       'woods (dry amber)', 'woods (pine)', 'woods (pepper)', 'woods (rot)', 'cedar',
-      'vetiver', 'guaiacwood', 'smoke', 'smoky', 'tar', 'birch', 'fir needle', 'pine',
-      'dry', 'burnt', 'phenolic', 'tobacco'
+      'cedarwood', 'vetiver', 'guaiacwood', 'smoke', 'smoky', 'tar', 'birch', 'birch tar',
+      'fir needle', 'pine', 'dry', 'burnt', 'tobacco'
     ]
   },
   {
     id: 'creamy_wood',
     name: 'Creamy Woods & Sandal',
     icon: '🌲',
-    angle: 300,
+    angle: 292.5,
     color: '#2dd4bf',
     subOdors: [
       'woody', 'woody amber', 'woods (sandal)', 'woods (agarwood)', 'sandalwood',
-      'cashmeran', 'oud', 'agarwood', 'milky', 'lactonic', 'iso e super', 'tea',
+      'cashmeran', 'oud', 'agarwood', 'milky', 'iso e super', 'tea',
       'rummy', 'whiskey', 'winey', 'alcoholic', 'fusel', 'fermented', 'yeasty'
     ]
   },
   {
-    id: 'mossy',
+    id: 'earthy_mossy',
     name: 'Earthy & Oakmoss',
     icon: '🦠',
-    angle: 330,
+    angle: 315,
     color: '#10b981',
     subOdors: [
       'woods (mossy)', 'woods (patchouli)', 'mossy', 'oakmoss', 'evernyl', 'veramoss',
       'patchouli', 'earthy', 'earthy (mushroom)', 'mushroom', 'fungal', 'soil', 'humus',
-      'lichen', 'damp', 'musty', 'moldy', 'dusty', 'rooty', 'potato'
+      'lichen', 'damp', 'musty', 'moldy', 'dusty', 'rooty', 'potato', 'geosmin'
+    ]
+  },
+  {
+    id: 'aldehydic_clean',
+    name: 'Aldehydic & Clean Linen',
+    icon: '🧼',
+    angle: 337.5,
+    color: '#e2e8f0',
+    subOdors: [
+      'aldehydic', 'aldehydic (clean)', 'aldehydic (complex)', 'c-8', 'c-9', 'c-10', 'c-11', 'c-12',
+      'undecanal', 'mandarin aldehyde', 'clean linen', 'soapy', 'wax', 'waxy'
     ]
   }
 ];
 
-// Helper to find sector for any query
+// Helper to classify text into one of the 16 poles
 function classifyScentSector(text, fallbackFam) {
   const s = ((text || '') + ' ' + (fallbackFam || '')).toLowerCase();
   
+  // Specific checks for Cold vs Warm Spice
+  if (/\b(cardamom|pink pepper|coriander|juniper|ginger|elemi|camphor|eucalyptus|mint|cineole)\b/.test(s)) return 'cold_spice';
+  if (/\b(cinnamon|clove|nutmeg|allspice|saffron|eugenol|isoeugenol|anise|star anise|safranal|cassia|pimento)\b/.test(s)) return 'warm_spice';
+
   for (const sec of SCENT_SECTORS) {
     for (const sub of sec.subOdors) {
       if (s.includes(sub)) return sec.id;
@@ -162,20 +213,22 @@ function classifyScentSector(text, fallbackFam) {
   }
 
   // Broad keyword fallbacks
-  if (/\b(citrus|lemon|lime|orange|bergamot|grapefruit|mandarin|aldehyde|citral|limonene)\b/.test(s)) return 'citrus';
-  if (/\b(green|grass|herb|herbal|mint|basil|sage|lavender|rosemary|thyme|galbanum)\b/.test(s)) return 'green';
-  if (/\b(marine|ozone|aquatic|sea|water|calone|ocean|watery|fresh air|ozonic)\b/.test(s)) return 'aquatic';
-  if (/\b(muguet|lily|lilac|freesia|hyacinth|fresh floral|cyclamen|magnolia|hedione)\b/.test(s)) return 'fresh_floral';
-  if (/\b(rose|jasmine|jasmin|tuberose|gardenia|ylang|violet|carnation|floral|damasc|geraniol)\b/.test(s)) return 'heavy_floral';
-  if (/\b(fruit|fruity|apple|peach|berry|raspberry|strawberry|cherry|plum|melon|tropical)\b/.test(s)) return 'fruity';
-  if (/\b(gourmand|vanill|caramel|sugar|honey|chocolate|coffee|coumarin|maltol|sweet)\b/.test(s)) return 'gourmand';
-  if (/\b(amber|benzoin|labdanum|cistus|myrrh|frankincense|incense|balsam|ambroxan|spice)\b/.test(s)) return 'amber';
-  if (/\b(animal|animalic|civet|castoreum|musk|leather|indol|skatol|costus)\b/.test(s)) return 'animalic';
+  if (/\b(citrus|lemon|lime|orange|bergamot|grapefruit|mandarin|yuzu)\b/.test(s)) return 'citrus';
+  if (/\b(green|herb|herbal|sage|basil|rosemary|lavender|foliage)\b/.test(s)) return 'aromatic_herbal';
+  if (/\b(marine|ozone|aquatic|sea|water|calone|ocean|watery)\b/.test(s)) return 'aquatic';
+  if (/\b(muguet|lily|lilac|freesia|hyacinth|fresh floral|magnolia|hedione)\b/.test(s)) return 'fresh_floral';
+  if (/\b(orris|violet|iris|ionone|powder|powdery|mimosa|heliotrope)\b/.test(s)) return 'powdery_orris';
+  if (/\b(rose|jasmine|jasmin|tuberose|gardenia|ylang|floral|damasc|geraniol)\b/.test(s)) return 'warm_floral';
+  if (/\b(fruit|fruity|apple|peach|berry|raspberry|strawberry|cherry|plum|melon|tropical|mango)\b/.test(s)) return 'fruity';
+  if (/\b(gourmand|vanill|caramel|sugar|honey|chocolate|coffee|coumarin|sweet|butter)\b/.test(s)) return 'gourmand';
+  if (/\b(amber|benzoin|labdanum|cistus|myrrh|frankincense|incense|balsam|ambroxan)\b/.test(s)) return 'amber_resins';
+  if (/\b(animal|animalic|civet|castoreum|musk|leather|indol|skatol|costus)\b/.test(s)) return 'animalic_leather';
   if (/\b(cedar|vetiver|smoke|smoky|tar|guaiac|birch|dry wood|pine|cypress)\b/.test(s)) return 'dry_wood';
   if (/\b(sandal|sandalwood|cashmeran|oud|agarwood|creamy|milky|woody)\b/.test(s)) return 'creamy_wood';
-  if (/\b(moss|oakmoss|veramoss|patchouli|earthy|soil|fungal|mushroom)\b/.test(s)) return 'mossy';
+  if (/\b(moss|oakmoss|veramoss|patchouli|earthy|soil|fungal|mushroom|geosmin)\b/.test(s)) return 'earthy_mossy';
+  if (/\b(aldehyde|aldehydic|clean|soapy)\b/.test(s)) return 'aldehydic_clean';
 
-  return 'heavy_floral';
+  return 'warm_floral';
 }
 
 class ScentTopography3D {
@@ -192,12 +245,14 @@ class ScentTopography3D {
       maxElevation: 120
     }, options);
 
+    this.viewMode = '3d'; // '3d' | '2d' | 'constellation'
     this.pitch = 54 * (Math.PI / 180);
     this.yaw = 40 * (Math.PI / 180);
     this.zoom = 1.0;
     this.isDragging = false;
     this.lastMouse = { x: 0, y: 0 };
     this.hoverSector = null;
+    this.activeMaterial = null;
 
     this.sectorWeights = {};
     this.sectorBlenders = {};
@@ -248,9 +303,10 @@ class ScentTopography3D {
     this.toolbar.style.zIndex = '10';
 
     this.toolbar.innerHTML = `
-      <button class="topography-btn" id="topo-btn-3d" title="Isometric 3D Mountain View" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🏔️ 3D View</button>
-      <button class="topography-btn" id="topo-btn-2d" title="Top-Down 2D Radar View" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🧭 2D Ground Floor</button>
-      <button class="topography-btn" id="topo-btn-atlas" title="Open 360 Scent Atlas Reference" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); color: var(--accent-blue, #38bdf8); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">🗺️ Full Scent Map</button>
+      <button class="topography-btn" id="topo-btn-3d" title="3D Olfactory Mountain" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🏔️ 3D Mountain</button>
+      <button class="topography-btn" id="topo-btn-2d" title="Top-Down 16-Pole Scent Floor" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">🧭 16-Pole Wheel</button>
+      <button class="topography-btn" id="topo-btn-constellation" title="2D Volatility × Hue Constellation Grid" style="background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); color: var(--accent-purple, #c084fc); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">✨ Constellation Grid</button>
+      <button class="topography-btn" id="topo-btn-atlas" title="Open Full Scent Map Atlas" style="background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); color: var(--accent-blue, #38bdf8); padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; font-weight: 600;">🗺️ Full Scent Map</button>
       <button class="topography-btn" id="topo-btn-reset" title="Reset Camera" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.72rem; cursor: pointer;">↺ Reset</button>
     `;
 
@@ -270,7 +326,7 @@ class ScentTopography3D {
     this.hud.style.color = '#e2e8f0';
     this.hud.style.pointerEvents = 'none';
     this.hud.style.zIndex = '10';
-    this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">Drag to Orbit • Scroll to Zoom</span>`;
+    this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">16-Pole Harmonic Grid • Drag to Orbit</span>`;
 
     this.wrapper.appendChild(this.hud);
     this.container.appendChild(this.wrapper);
@@ -335,20 +391,31 @@ class ScentTopography3D {
     // Toolbar Buttons
     const btn3D = this.wrapper.querySelector('#topo-btn-3d');
     const btn2D = this.wrapper.querySelector('#topo-btn-2d');
+    const btnConst = this.wrapper.querySelector('#topo-btn-constellation');
     const btnAtlas = this.wrapper.querySelector('#topo-btn-atlas');
     const btnReset = this.wrapper.querySelector('#topo-btn-reset');
 
     if (btn3D) btn3D.onclick = () => {
+      this.viewMode = '3d';
       this.pitch = 54 * (Math.PI / 180);
       this.yaw = 40 * (Math.PI / 180);
       this.zoom = 1.0;
+      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">16 Harmonic Poles • Height = Blender Density</span>`;
       this.render();
     };
 
     if (btn2D) btn2D.onclick = () => {
+      this.viewMode = '2d';
       this.pitch = 0.08;
       this.yaw = 0;
       this.zoom = 1.0;
+      this.hud.innerHTML = `<strong>🧭 16-Pole Scent Floor</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">Top-Down Polar Contour Radar</span>`;
+      this.render();
+    };
+
+    if (btnConst) btnConst.onclick = () => {
+      this.viewMode = 'constellation';
+      this.hud.innerHTML = `<strong>✨ 2D Volatility × Luminosity Constellation</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">X: Volatility (Top→Base) • Y: Polarity</span>`;
       this.render();
     };
 
@@ -357,6 +424,7 @@ class ScentTopography3D {
     };
 
     if (btnReset) btnReset.onclick = () => {
+      this.viewMode = '3d';
       this.pitch = 54 * (Math.PI / 180);
       this.yaw = 40 * (Math.PI / 180);
       this.zoom = 1.0;
@@ -376,6 +444,8 @@ class ScentTopography3D {
   }
 
   handleHover(e) {
+    if (this.viewMode === 'constellation') return;
+
     const rect = this.canvas.getBoundingClientRect();
     const mx = e.clientX - rect.left;
     const my = e.clientY - rect.top;
@@ -406,12 +476,12 @@ class ScentTopography3D {
         this.hoverSector = closest.id;
         const count = this.sectorWeights[closest.id] || 0;
         const blenders = this.sectorBlenders[closest.id] || [];
-        const top3 = blenders.slice(0, 3).map(b => b.name).join(', ') || 'Synergistic olfactory pole';
+        const top3 = blenders.slice(0, 3).map(b => b.name).join(', ') || 'Harmonic olfactory pole';
 
         this.hud.innerHTML = `
           <div style="display: flex; align-items: center; gap: 6px;">
             <span style="font-size: 1rem;">${closest.icon}</span>
-            <strong style="color: ${closest.color};">${closest.name}</strong>
+            <strong style="color: ${closest.color};">${closest.name} (${closest.angle}°)</strong>
             <span style="background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 4px; font-weight: 600; font-size: 0.72rem;">${count} Density</span>
           </div>
           <div style="font-size: 0.72rem; color: #94a3b8; margin-top: 2px;">Key Bridges: ${top3}</div>
@@ -420,12 +490,13 @@ class ScentTopography3D {
       }
     } else if (this.hoverSector !== null) {
       this.hoverSector = null;
-      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">Drag to Orbit • Scroll to Zoom</span>`;
+      this.hud.innerHTML = `<strong>🏔️ 3D Scent Landscape</strong> <span style="color: var(--text-muted, #94a3b8); margin-left: 6px;">16-Pole Harmonic Grid • Drag to Orbit</span>`;
       this.render();
     }
   }
 
   loadMaterial(mat) {
+    this.activeMaterial = mat;
     SCENT_SECTORS.forEach(sec => {
       this.sectorWeights[sec.id] = 0;
       this.sectorBlenders[sec.id] = [];
@@ -455,6 +526,7 @@ class ScentTopography3D {
   }
 
   loadAccord(accord, materialsMap, materialsList) {
+    this.activeMaterial = accord;
     SCENT_SECTORS.forEach(sec => {
       this.sectorWeights[sec.id] = 0;
       this.sectorBlenders[sec.id] = [];
@@ -462,11 +534,9 @@ class ScentTopography3D {
 
     const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 
-    // 1. Accumulate constituents and their blenders
     (accord.ingredients || []).forEach(ing => {
       const ingNorm = norm(ing.name);
       
-      // Find matching organ material
       let matchMat = materialsMap ? materialsMap.get(ing.id) : null;
       if (!matchMat && Array.isArray(materialsList)) {
         matchMat = materialsList.find(m => {
@@ -479,7 +549,6 @@ class ScentTopography3D {
       this.sectorWeights[secId] = (this.sectorWeights[secId] || 0) + 4;
       this.sectorBlenders[secId].push(ing);
 
-      // If material has rich blenders, accumulate blender gravity
       if (matchMat && matchMat.blenders_by_group) {
         Object.entries(matchMat.blenders_by_group).forEach(([grp, list]) => {
           list.forEach(b => {
@@ -493,20 +562,9 @@ class ScentTopography3D {
       }
     });
 
-    // 2. Also incorporate accord's own facets, descriptions & family
     (accord.facets || []).forEach(f => {
       const fSec = classifyScentSector(f, f);
       this.sectorWeights[fSec] = (this.sectorWeights[fSec] || 0) + 3;
-    });
-
-    (accord.desc || []).forEach(d => {
-      SCENT_SECTORS.forEach(sec => {
-        sec.subOdors.forEach(sub => {
-          if (d.toLowerCase().includes(sub)) {
-            this.sectorWeights[sec.id] = (this.sectorWeights[sec.id] || 0) + 2;
-          }
-        });
-      });
     });
 
     const famSec = classifyScentSector(accord.family || accord.name, accord.family);
@@ -524,6 +582,12 @@ class ScentTopography3D {
     ctx.save();
     ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, w, h);
+
+    if (this.viewMode === 'constellation') {
+      this.renderConstellationView(ctx, w, h);
+      ctx.restore();
+      return;
+    }
 
     const cx = w / 2;
     const cy = h / 2 + (this.pitch > 0.3 ? 20 : 0);
@@ -555,7 +619,7 @@ class ScentTopography3D {
 
     [0.33, 0.66, 1.0].forEach(rRatio => {
       ctx.beginPath();
-      for (let a = 0; a <= 360; a += 10) {
+      for (let a = 0; a <= 360; a += 8) {
         const rad = a * (Math.PI / 180);
         const pt = project(Math.sin(rad) * rRatio, -Math.cos(rad) * rRatio, 0);
         if (a === 0) ctx.moveTo(pt.px, pt.py);
@@ -565,7 +629,7 @@ class ScentTopography3D {
       ctx.stroke();
     });
 
-    // Radial Sector Rays
+    // Radial Sector Rays for all 16 Poles
     SCENT_SECTORS.forEach(sec => {
       const rad = sec.angle * (Math.PI / 180);
       const pCenter = project(0, 0, 0);
@@ -598,7 +662,7 @@ class ScentTopography3D {
             const sy = -Math.cos(sRad) * 0.72;
             const d = (gx - sx) * (gx - sx) + (gy - sy) * (gy - sy);
             const w = normalizedWeights[sec.id] || 0;
-            elevation += w * Math.exp(-d / 0.12);
+            elevation += w * Math.exp(-d / 0.09);
           });
 
           const edgeFalloff = Math.max(0, 1.0 - Math.pow(distFromCenter, 4));
@@ -664,15 +728,15 @@ class ScentTopography3D {
       const isHover = this.hoverSector === sec.id;
       const count = this.sectorWeights[sec.id] || 0;
       
-      const labelDist = 1.16;
+      const labelDist = 1.18;
       const pt = project(Math.sin(rad) * labelDist, -Math.cos(rad) * labelDist, 0);
 
-      ctx.font = isHover ? 'bold 11px Inter, sans-serif' : '10px Inter, sans-serif';
+      ctx.font = isHover ? 'bold 10.5px Inter, sans-serif' : '9.5px Inter, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
       ctx.beginPath();
-      ctx.arc(pt.px, pt.py - 12, isHover ? 5 : 3.5, 0, Math.PI * 2);
+      ctx.arc(pt.px, pt.py - 10, isHover ? 4.5 : 3, 0, Math.PI * 2);
       ctx.fillStyle = sec.color;
       ctx.fill();
       if (isHover) {
@@ -686,16 +750,123 @@ class ScentTopography3D {
 
       if (count > 0) {
         ctx.fillStyle = isHover ? sec.color : 'rgba(255, 255, 255, 0.4)';
-        ctx.font = '9px var(--font-mono, monospace)';
-        ctx.fillText(`${count}`, pt.px, pt.py + 13);
+        ctx.font = '8.5px monospace';
+        ctx.fillText(`${count}`, pt.px, pt.py + 12);
       }
     });
 
     ctx.restore();
   }
+
+  // 2D Volatility × Luminosity Constellation View
+  renderConstellationView(ctx, w, h) {
+    const pad = 40;
+    const cw = w - pad * 2;
+    const ch = h - pad * 2;
+
+    // Draw Grid Lines
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.07)';
+    ctx.lineWidth = 1;
+
+    // Axis dividers
+    ctx.beginPath();
+    ctx.moveTo(pad, h / 2);
+    ctx.lineTo(w - pad, h / 2);
+    ctx.moveTo(w / 2, pad);
+    ctx.lineTo(w / 2, h - pad);
+    ctx.stroke();
+
+    // Axis Labels
+    ctx.font = '10px Inter, sans-serif';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.textAlign = 'left';
+    ctx.fillText('◀ Fast Volatility (Top)', pad, h / 2 - 8);
+    ctx.textAlign = 'right';
+    ctx.fillText('Deep Tenacity (Base) ▶', w - pad, h / 2 - 8);
+    ctx.textAlign = 'center';
+    ctx.fillText('▲ Luminous (Floral / Gourmand)', w / 2, pad - 12);
+    ctx.fillText('▼ Dark (Woody / Earth / Moss)', w / 2, h - pad + 20);
+
+    // Map the 16 Poles into (X = Volatility, Y = Luminosity)
+    const poleCoords = {
+      'citrus': { x: 0.15, y: 0.25 },
+      'aromatic_herbal': { x: 0.22, y: 0.55 },
+      'cold_spice': { x: 0.28, y: 0.50 }, // Cold Spices: Fast top-heart, bracing neutral-cool
+      'aquatic': { x: 0.25, y: 0.40 },
+      'fresh_floral': { x: 0.38, y: 0.22 },
+      'powdery_orris': { x: 0.55, y: 0.42 },
+      'warm_floral': { x: 0.50, y: 0.20 },
+      'fruity': { x: 0.30, y: 0.18 },
+      'gourmand': { x: 0.65, y: 0.24 },
+      'warm_spice': { x: 0.68, y: 0.36 }, // Warm Spices: Tenacious base-heart, warm sweet
+      'amber_resins': { x: 0.78, y: 0.32 },
+      'animalic_leather': { x: 0.82, y: 0.68 },
+      'dry_wood': { x: 0.72, y: 0.74 },
+      'creamy_wood': { x: 0.70, y: 0.52 },
+      'earthy_mossy': { x: 0.65, y: 0.84 },
+      'aldehydic_clean': { x: 0.20, y: 0.15 }
+    };
+
+    // Draw connecting filaments between active poles
+    const activePoles = SCENT_SECTORS.filter(sec => (this.sectorWeights[sec.id] || 0) > 0);
+    
+    ctx.lineWidth = 1.2;
+    for (let i = 0; i < activePoles.length; i++) {
+      for (let j = i + 1; j < activePoles.length; j++) {
+        const p1 = poleCoords[activePoles[i].id];
+        const p2 = poleCoords[activePoles[j].id];
+        if (!p1 || !p2) continue;
+
+        const x1 = pad + p1.x * cw;
+        const y1 = pad + p1.y * ch;
+        const x2 = pad + p2.x * cw;
+        const y2 = pad + p2.y * ch;
+
+        ctx.strokeStyle = 'rgba(168, 85, 247, 0.25)';
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+    }
+
+    // Render Star Nodes for all 16 Poles
+    SCENT_SECTORS.forEach(sec => {
+      const coord = poleCoords[sec.id] || { x: 0.5, y: 0.5 };
+      const nx = pad + coord.x * cw;
+      const ny = pad + coord.y * ch;
+      const weight = this.sectorWeights[sec.id] || 0;
+      const isActive = weight > 0;
+
+      // Glow effect for active nodes
+      if (isActive) {
+        ctx.beginPath();
+        ctx.arc(nx, ny, 10 + Math.min(12, weight * 0.8), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${sec.color === '#facc15' ? '250,204,21' : '168,85,247'}, 0.2)`;
+        ctx.fill();
+      }
+
+      ctx.beginPath();
+      ctx.arc(nx, ny, isActive ? 5.5 : 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = isActive ? sec.color : 'rgba(255, 255, 255, 0.25)';
+      ctx.fill();
+
+      // Node Label
+      ctx.font = isActive ? 'bold 10px Inter, sans-serif' : '8.5px Inter, sans-serif';
+      ctx.fillStyle = isActive ? '#fff' : 'rgba(255, 255, 255, 0.4)';
+      ctx.textAlign = 'center';
+      ctx.fillText(`${sec.icon} ${sec.name.split(' ')[0]}`, nx, ny + 14);
+
+      if (isActive) {
+        ctx.font = '8px monospace';
+        ctx.fillStyle = sec.color;
+        ctx.fillText(`${weight} bld`, nx, ny + 24);
+      }
+    });
+  }
 }
 
-// 2D Scent Atlas & Reference Map Modal
+// 2D Scent Atlas & Reference Map Modal (16-Pole Universe)
 function openScentAtlasModal() {
   let atlasModal = document.getElementById('scent-atlas-modal');
   if (!atlasModal) {
@@ -706,17 +877,17 @@ function openScentAtlasModal() {
   }
 
   const sectorsHtml = SCENT_SECTORS.map(sec => `
-    <div class="atlas-sector-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid ${sec.color}; border-radius: var(--radius-md, 8px); padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
+    <div class="atlas-sector-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-top: 3px solid ${sec.color}; border-radius: var(--radius-md, 8px); padding: 0.9rem; display: flex; flex-direction: column; gap: 0.5rem;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; align-items: center; gap: 6px;">
-          <span style="font-size: 1.2rem;">${sec.icon}</span>
-          <strong style="color: #fff; font-size: 0.92rem;">${sec.name}</strong>
+          <span style="font-size: 1.15rem;">${sec.icon}</span>
+          <strong style="color: #fff; font-size: 0.88rem;">${sec.name}</strong>
         </div>
-        <span style="font-family: var(--font-mono, monospace); font-size: 0.72rem; color: ${sec.color}; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px;">${sec.angle}° Pole</span>
+        <span style="font-family: var(--font-mono, monospace); font-size: 0.7rem; color: ${sec.color}; background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px;">${sec.angle}° Pole</span>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+      <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
         ${sec.subOdors.map(sub => `
-          <span class="crossover-pill" onclick="filterOrganByOdor('${sub}')" style="font-size: 0.72rem; padding: 0.15rem 0.45rem;" title="Click to filter organ for '${sub}'">
+          <span class="crossover-pill" onclick="filterOrganByOdor('${sub}')" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;" title="Click to filter organ for '${sub}'">
             ${sub}
           </span>
         `).join('')}
@@ -725,14 +896,14 @@ function openScentAtlasModal() {
   `).join('');
 
   atlasModal.innerHTML = `
-    <div class="modal-card" style="max-width: 960px; max-height: 88vh;">
+    <div class="modal-card" style="max-width: 1040px; max-height: 88vh;">
       <div class="modal-header">
         <div>
           <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <h2 style="font-size: 1.35rem; color: #fff; margin: 0;">🗺️ 2D Olfactory Ground Floor Scent Map</h2>
-            <span class="facet-chip" style="color: var(--accent-gold); border-color: var(--accent-gold);">144 Odor Types • 12 Harmonic Sectors</span>
+            <h2 style="font-size: 1.35rem; color: #fff; margin: 0;">🗺️ 16-Pole Olfactory Coordinate Universe</h2>
+            <span class="facet-chip" style="color: var(--accent-gold); border-color: var(--accent-gold);">16 Harmonic Poles • Cold vs. Warm Spices Resolved</span>
           </div>
-          <span style="font-size: 0.8rem; color: var(--text-secondary);">Continuous 360° coordinate reference mapping all material families, blender groups, and sensory facets.</span>
+          <span style="font-size: 0.8rem; color: var(--text-secondary);">Continuous coordinate space separating Cold Spices (45°), Warm Spices (202.5°), and all 144+ odor types.</span>
         </div>
         <button class="modal-close" onclick="closeScentAtlasModal()">&times;</button>
       </div>
@@ -740,12 +911,12 @@ function openScentAtlasModal() {
       <div class="modal-body" style="padding: 1.25rem; overflow-y: auto;">
         <!-- Search bar inside atlas -->
         <div style="margin-bottom: 1.25rem;">
-          <input type="text" id="atlas-search-input" placeholder="🔍 Search any odor quality (e.g., lime, mushroom, saffron, vetiver, tonka)..." 
+          <input type="text" id="atlas-search-input" placeholder="🔍 Search any odor quality (e.g., cardamom, cinnamon, saffron, mushroom, geosmin)..." 
                  style="width: 100%; padding: 0.65rem 1rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: #fff; font-size: 0.85rem;"
                  oninput="filterAtlasSectors(this.value)">
         </div>
 
-        <div id="atlas-sectors-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.85rem;">
+        <div id="atlas-sectors-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem;">
           ${sectorsHtml}
         </div>
       </div>
@@ -772,7 +943,7 @@ function filterAtlasSectors(query) {
 function filterOrganByOdor(odor) {
   closeScentAtlasModal();
   const searchInput = document.getElementById('search-input');
-  const matTab = document.querySelector('.tab-btn[data-tab="materials"]');
+  const matTab = document.querySelector('.tab-btn[data-tab="materials"]') || document.querySelector('.nav-tab[data-tab="organ"]');
   if (matTab) matTab.click();
   if (searchInput) {
     searchInput.value = odor;
