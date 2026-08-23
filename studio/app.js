@@ -1510,21 +1510,33 @@ function renderFragranceGrid() {
       </div>
     `;
 
-    // Click handler for inspect
-    card.querySelector('.btn-inspect-frag').addEventListener('click', (e) => {
-      e.stopPropagation();
-      openFragranceModal(f.id);
-    });
-
-    // Click handler for +Beaker
-    card.querySelector('.btn-load-beaker-frag').addEventListener('click', (e) => {
-      e.stopPropagation();
-      loadAccordToSandbox(f.id);
-    });
-
-    card.addEventListener('click', () => openFragranceModal(f.id));
     grid.appendChild(card);
   });
+
+  // Container-level click delegation for 100% reliable click capture
+  grid.onclick = (e) => {
+    const beakerBtn = e.target.closest('.btn-load-beaker-frag');
+    if (beakerBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = beakerBtn.getAttribute('data-id');
+      if (id) loadAccordToSandbox(id);
+      return;
+    }
+    const inspectBtn = e.target.closest('.btn-inspect-frag');
+    if (inspectBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = inspectBtn.getAttribute('data-id');
+      if (id) openFragranceModal(id);
+      return;
+    }
+    const card = e.target.closest('.material-card');
+    if (card) {
+      const id = card.getAttribute('data-id');
+      if (id) openFragranceModal(id);
+    }
+  };
 }
 
 // Open Fragrance Accord Deconstruction Modal
@@ -2000,6 +2012,20 @@ function loadAccordToSandbox(id) {
   closeMaterialModal();
   switchTab('sandbox');
 }
+
+// Global window handlers for HTML onclick attributes
+window.state = state;
+window.openMaterialModal = openMaterialModal;
+window.openFragranceModal = openFragranceModal;
+window.closeMaterialModal = closeMaterialModal;
+window.closeModal = closeMaterialModal;
+window.loadAccordToSandbox = loadAccordToSandbox;
+window.searchByTag = searchByTag;
+window.filterOrganByOdor = filterOrganByOdor;
+window.addToSandbox = addToSandbox;
+window.removeFromSandbox = removeFromSandbox;
+window.openChordExplorer = openChordExplorer;
+window.switchTab = switchTab;
 
 function safeStart() {
   if (window._appStarted) return;
