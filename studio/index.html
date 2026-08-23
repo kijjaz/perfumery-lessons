@@ -43,18 +43,24 @@
         </button>
       </nav>
 
-      <div class="header-stats">
-        <div class="stat-pill">
-          <span class="stat-val" id="stat-materials-count">...</span>
-          <span class="stat-lbl">Materials</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-val" id="stat-fragrances-count" style="color: var(--accent-rose);">...</span>
-          <span class="stat-lbl">Accords & Bases</span>
-        </div>
-        <div class="stat-pill">
-          <span class="stat-val" id="stat-blenders-count" style="color: var(--accent-blue);">...</span>
-          <span class="stat-lbl">Blender Edges</span>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <button class="btn-primary" onclick="openScentAtlasModal()" style="display: flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; font-size: 0.8rem; background: linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(168,85,247,0.2) 100%); border: 1px solid rgba(56,189,248,0.4); border-radius: var(--radius-full);">
+          <span>🗺️</span> 360° Scent Map
+        </button>
+
+        <div class="header-stats">
+          <div class="stat-pill">
+            <span class="stat-val" id="stat-materials-count">...</span>
+            <span class="stat-lbl">Materials</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-val" id="stat-fragrances-count" style="color: var(--accent-rose);">...</span>
+            <span class="stat-lbl">Accords & Bases</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-val" id="stat-blenders-count" style="color: var(--accent-blue);">...</span>
+            <span class="stat-lbl">Blender Edges</span>
+          </div>
         </div>
       </div>
     </div>
@@ -331,10 +337,6 @@
         </div>
 
       </div>
-    </section>         </div>
-        </div>
-
-      </div>
     </section>
 
   </main>
@@ -362,6 +364,8 @@
   <!-- Preloaded In-Memory Data Scripts (Instant Load) -->
   <script src="organ_materials_data.js"></script>
   <script src="fragrances_accords_data.js"></script>
+  <!-- 3D Olfactory Topography Engine -->
+  <script src="scent_topography_3d.js"></script>
   <!-- Main Application Engine -->
   <script src="app.js"></script>
 </body>

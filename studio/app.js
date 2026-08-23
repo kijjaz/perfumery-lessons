@@ -450,6 +450,15 @@ function openMaterialModal(matId) {
       <div><span style="font-size: 0.7rem; color: var(--text-muted);">LOGP (O/W)</span><div style="font-family: var(--font-mono); font-size: 0.85rem; color: #fff;">${m.logp || 'N/A'}</div></div>
     </div>
 
+    <!-- 3D Olfactory Topography & Blender Terrain -->
+    <div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <h4 style="font-size: 0.95rem; color: #fff; margin: 0;">🏔️ 3D Olfactory Topography & Blender Gravity</h4>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">Drag to Orbit 360° • Height = Blender Density</span>
+      </div>
+      <div id="modal-topography-3d" style="width: 100%; height: 300px;"></div>
+    </div>
+
     <!-- Organoleptic Descriptions -->
     <div>
       <h4 style="font-size: 0.95rem; color: #fff; margin-bottom: 0.5rem;">Organoleptic Descriptions & Quotes</h4>
@@ -478,6 +487,14 @@ function openMaterialModal(matId) {
   `;
 
   modal.classList.add('active');
+
+  // Initialize 3D Scent Topography
+  setTimeout(() => {
+    if (window.ScentTopography3D) {
+      const topo = new ScentTopography3D('modal-topography-3d', { height: 300 });
+      topo.loadMaterial(m);
+    }
+  }, 40);
 }
 
 function closeMaterialModal() {
@@ -1694,12 +1711,29 @@ function openFragranceModal(id) {
       </div>
     </div>
 
+    <!-- 3D Accord Topography Landscape -->
+    <div class="modal-section" style="margin-top: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <h4 class="modal-sec-title">🏔️ 3D Accord Olfactory Landscape</h4>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">Composite Blender Gravity & 360° Scent Terrain</span>
+      </div>
+      <div id="accord-topography-3d" style="width: 100%; height: 300px;"></div>
+    </div>
+
     ${relatedAccordsHtml}
 
     ${applicationsHtml}
   `;
 
   modal.classList.add('active');
+
+  // Initialize 3D Scent Topography for Accord
+  setTimeout(() => {
+    if (window.ScentTopography3D) {
+      const topo = new ScentTopography3D('accord-topography-3d', { height: 300 });
+      topo.loadAccord(f, state.materialsMap);
+    }
+  }, 40);
 }
 
 // Global Tag Search helper for Crawl Out
