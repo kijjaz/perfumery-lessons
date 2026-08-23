@@ -415,9 +415,16 @@ function renderOrganGrid() {
   }
 }
 
-// Deep Inspection Modal
-function openMaterialModal(matId) {
-  const m = state.materialsMap.get(matId);
+function openMaterialModal(matIdOrName) {
+  let m = state.materialsMap.get(matIdOrName);
+  if (!m) {
+    const norm = str => (str || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const qNorm = norm(matIdOrName);
+    m = state.materials.find(mat => {
+      const mn = norm(mat.name);
+      return mn === qNorm || mn.includes(qNorm) || qNorm.includes(mn);
+    });
+  }
   if (!m) return;
 
   const modal = document.getElementById('material-modal');
@@ -1200,6 +1207,14 @@ function startApp() {
   const bridgeBtn = document.getElementById('btn-find-bridge');
   if (bridgeBtn) {
     bridgeBtn.addEventListener('click', solveHarmonicChord);
+  }
+
+  // Auto-update blenders view when Note 1 selection changes
+  const bridge1 = document.getElementById('bridge-mat-1');
+  if (bridge1) {
+    bridge1.addEventListener('change', (e) => {
+      if (e.target.value) openChordExplorer(e.target.value);
+    });
   }
 
   // Preset Accords buttons
