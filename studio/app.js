@@ -67,6 +67,23 @@ async function initApp() {
       throw new Error('Olfactory dataset not loaded. Please refresh the page.');
     }
 
+    // High-speed client dictionary expansion for packed graph edges
+    if (Array.isArray(data.dict) && Array.isArray(data.materials)) {
+      const d = data.dict;
+      data.materials.forEach(m => {
+        if (m.bg && !m.blenders_by_group) {
+          m.blenders_by_group = {};
+          for (const [grp, list] of Object.entries(m.bg)) {
+            m.blenders_by_group[grp] = list.map(([idIdx, nameIdx]) => ({
+              id: d[idIdx],
+              name: d[nameIdx],
+              group: grp
+            }));
+          }
+        }
+      });
+    }
+
     state.materials = data.materials || [];
     state.materials.forEach(m => state.materialsMap.set(m.id, m));
     state.filteredMaterials = [...state.materials];
