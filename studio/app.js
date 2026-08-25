@@ -1595,6 +1595,7 @@ function openFragranceModal(idOrName) {
 
   const famStyle = getFamilyStyle(f.family);
   const typeClass = f.type === 'fragrance' ? 'badge-fragrance' : f.type === 'base' ? 'badge-base' : 'badge-flavor';
+  const typeLabel = f.type === 'fragrance' ? '🌸 Fragrance Accord' : f.type === 'base' ? '🏺 Perfume Base' : '🍬 Flavor Theme';
   // Smart matching and classification for constituent ingredients
   const currentIngSet = new Set((f.ingredients || []).map(i => norm(i.name)));
 
