@@ -2037,10 +2037,11 @@ window.openFragranceModal = openFragranceModal;
 window.closeMaterialModal = closeMaterialModal;
 window.closeModal = closeMaterialModal;
 window.loadAccordToSandbox = loadAccordToSandbox;
+window.loadChordToSandbox = loadChordToSandbox;
 window.searchByTag = searchByTag;
-window.filterOrganByOdor = filterOrganByOdor;
 window.addToSandbox = addToSandbox;
-window.removeFromSandbox = removeFromSandbox;
+window.removeFromFormula = removeFromFormula;
+window.updateFormulaPpt = updateFormulaPpt;
 window.openChordExplorer = openChordExplorer;
 window.switchTab = switchTab;
 
