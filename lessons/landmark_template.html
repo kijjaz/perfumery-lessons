@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landmark Analysis Template: [PERFUME_NAME] ([YEAR]) | Perfumery Analytical Archive</title>
+    <title>Landmark Study: [PERFUME_NAME] ([YEAR]) | Perfumery Analytical Archive</title>
     <!-- Modern Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +19,10 @@
             --border-highlight: rgba(212, 175, 55, 0.35);
             --gold: #d4af37;
             --gold-bright: #f9d71c;
-            --accent-cyan: #38bdf8;
-            --accent-pink: #f472b6;
+            --accent-top: #38bdf8;
+            --accent-mid: #f472b6;
+            --accent-base: #10b981;
             --accent-amber: #f59e0b;
-            --accent-botanical: #10b981;
             --text-main: #f3f4f6;
             --text-dim: #9ca3af;
             --text-muted: #6b7280;
@@ -46,14 +46,14 @@
             padding: 0 10px;
         }
 
-        /* Classified / Secret Banner */
-        .secret-tag {
+        /* Category / Collection Badge */
+        .archive-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(239, 68, 68, 0.12);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 5px 14px;
             border-radius: 999px;
             font-family: var(--font-mono);
@@ -64,9 +64,9 @@
         }
 
         header {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 30px;
+            padding-bottom: 25px;
         }
 
         .title-row {
@@ -79,10 +79,10 @@
         }
 
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 85%, var(--gold) 100%);
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-top) 85%, var(--gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -108,29 +108,29 @@
         .pill i { color: var(--gold); }
 
         p.lead {
-            font-size: 1.15rem;
+            font-size: 1.12rem;
             color: var(--text-dim);
             max-width: 1100px;
             margin-top: 10px;
             font-weight: 300;
         }
 
-        /* Summary Stats Cards */
+        /* Metric / Highlight Cards (Expandable from 2 to 6 cards) */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 16px;
-            margin-bottom: 35px;
+            margin-bottom: 32px;
         }
 
         .stat-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 20px;
+            padding: 18px 20px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             transition: transform 0.2s, border-color 0.2s;
         }
 
@@ -140,7 +140,7 @@
         }
 
         .stat-label {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-muted);
@@ -148,13 +148,13 @@
         }
 
         .stat-value {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: #ffffff;
         }
 
         .stat-sub {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-dim);
         }
 
@@ -163,8 +163,8 @@
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 32px;
+            padding: 26px;
+            margin-bottom: 28px;
             backdrop-filter: blur(12px);
         }
 
@@ -172,13 +172,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 14px;
+            padding-bottom: 12px;
         }
 
         .section-title {
-            font-size: 1.35rem;
+            font-size: 1.28rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -190,13 +190,111 @@
             color: var(--gold);
         }
 
+        /* 4D Life Cycle: 3 Windows Grid */
+        .lifecycle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .window-box {
+            background: rgba(14, 14, 20, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .window-title {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .window-time {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .window-desc {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+
+        /* Narrative / Dialectic Grid (Expandable to N cards) */
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .narrative-box {
+            background: rgba(12, 12, 16, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .narrative-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .narrative-box p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        /* Search input */
+        .search-box {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(14, 14, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px 12px 42px;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
         /* Filter Controls */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .filter-btn {
@@ -220,7 +318,7 @@
             color: #ffffff;
         }
 
-        /* Table Styling */
+        /* Full-Width Responsive Table */
         .table-responsive {
             overflow-x: auto;
             border-radius: 10px;
@@ -259,10 +357,18 @@
             background: rgba(255, 255, 255, 0.02);
         }
 
-        /* Category tags */
+        /* Column width distributions (Optimized 6-column layout) */
+        #formulaTable th:nth-child(1), #formulaTable td:nth-child(1) { width: 12%; min-width: 110px; }
+        #formulaTable th:nth-child(2), #formulaTable td:nth-child(2) { width: 12%; min-width: 115px; }
+        #formulaTable th:nth-child(3), #formulaTable td:nth-child(3) { width: 26%; min-width: 200px; }
+        #formulaTable th:nth-child(4), #formulaTable td:nth-child(4) { width: 27%; min-width: 200px; }
+        #formulaTable th:nth-child(5), #formulaTable td:nth-child(5) { width: 11%; min-width: 95px; }
+        #formulaTable th:nth-child(6), #formulaTable td:nth-child(6) { width: 12%; min-width: 110px; }
+
+        /* Volatility Tags */
         .tier-tag {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             font-weight: 700;
             padding: 3px 8px;
             border-radius: 6px;
@@ -273,78 +379,21 @@
 
         .tier-Top {
             background: rgba(56, 189, 248, 0.15);
-            color: var(--accent-cyan);
+            color: var(--accent-top);
             border: 1px solid rgba(56, 189, 248, 0.35);
         }
 
         .tier-Middle {
             background: rgba(244, 114, 182, 0.15);
-            color: var(--accent-pink);
+            color: var(--accent-mid);
             border: 1px solid rgba(244, 114, 182, 0.35);
         }
 
         .tier-Base {
             background: rgba(16, 185, 129, 0.15);
-            color: var(--accent-botanical);
+            color: var(--accent-base);
             border: 1px solid rgba(16, 185, 129, 0.35);
         }
-
-        .dosage-badge {
-            font-family: var(--font-mono);
-            font-weight: 700;
-            font-size: 0.88rem;
-            color: var(--gold-bright);
-            background: rgba(212, 175, 55, 0.08);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            padding: 3px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        .material-title {
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 2px;
-        }
-
-        .material-role {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-        }
-
-        .declared-note {
-            font-size: 0.85rem;
-            color: #d1d5db;
-        }
-
-        .source-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3px;
-            max-width: 220px;
-        }
-
-        .src-ref {
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            padding: 1px 4px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: all 0.15s;
-        }
-
-        /* Column width distributions */
-        #formulaTable th:nth-child(1), #formulaTable td:nth-child(1) { width: 11%; min-width: 110px; }
-        #formulaTable th:nth-child(2), #formulaTable td:nth-child(2) { width: 11%; min-width: 110px; }
-        #formulaTable th:nth-child(3), #formulaTable td:nth-child(3) { width: 22%; min-width: 180px; }
-        #formulaTable th:nth-child(4), #formulaTable td:nth-child(4) { width: 20%; min-width: 170px; }
-        #formulaTable th:nth-child(5), #formulaTable td:nth-child(5) { width: 16%; min-width: 140px; }
-        #formulaTable th:nth-child(6), #formulaTable td:nth-child(6) { width: 10%; min-width: 100px; }
-        #formulaTable th:nth-child(7), #formulaTable td:nth-child(7) { width: 10%; min-width: 120px; }
 
         /* Functional Architectural Accord Roles */
         .role-badge {
@@ -384,80 +433,79 @@
             border: 1px solid rgba(16, 185, 129, 0.35);
         }
 
-        /* Life Cycle & Windows */
-        .lifecycle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin-top: 15px;
-        }
-
-        .window-box {
-            background: rgba(14, 14, 20, 0.7);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 18px;
-            border-left: 4px solid var(--gold);
-        }
-
-        .window-title {
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-
-        .window-time {
-            font-weight: 700;
-            font-size: 1.05rem;
+        .material-title {
+            font-weight: 600;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 2px;
         }
 
-        .window-desc {
+        .material-role {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        .declared-note {
+            font-size: 0.8rem;
+            color: #d1d5db;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .declared-note i {
+            color: var(--gold);
+            margin-right: 4px;
+            font-size: 0.72rem;
+        }
+
+        .dosage-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
             font-size: 0.88rem;
-            color: var(--text-dim);
-            line-height: 1.55;
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            white-space: nowrap;
         }
 
-        /* Dialectic Matrix / Anatomy Grid */
-        .dialectic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .dialectic-box {
-            background: rgba(12, 12, 16, 0.6);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 22px;
-        }
-
-        .dialectic-box h3 {
-            font-size: 1.15rem;
-            margin-bottom: 12px;
+        .source-badges {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 4px;
         }
 
-        .dialectic-box p {
-            font-size: 0.92rem;
+        .src-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
             color: var(--text-dim);
-            line-height: 1.6;
-            margin-bottom: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap;
         }
 
-        /* Reference bibliography */
+        .src-tag.gcms {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-top);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .src-tag.patent {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-amber);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        /* Bibliography grid (Expandable to N citations) */
         .biblio-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 10px 24px;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .biblio-item {
@@ -474,43 +522,12 @@
             color: var(--gold);
             font-weight: 700;
             flex-shrink: 0;
-            width: 32px;
-        }
-
-        /* Search input */
-        .search-box {
-            position: relative;
-            margin-bottom: 16px;
-        }
-
-        .search-box input {
-            width: 100%;
-            background: rgba(14, 14, 18, 0.8);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 12px 16px 12px 42px;
-            color: #ffffff;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .search-box input:focus {
-            border-color: var(--gold);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
+            width: 28px;
         }
 
         .interactive-tagline {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-muted);
         }
     </style>
@@ -518,113 +535,128 @@
 <body>
 
 <div class="container">
-    <!-- Secret / Confidential Tag -->
-    <div class="secret-tag">
-        <i class="fas fa-lock"></i> Confidential Formula Reconstruction & Archive
+    <!-- Archive Category Pill [OPTIONAL: Change label or omit] -->
+    <div class="archive-badge">
+        <i class="fas fa-archive"></i> Landmark Perfume Deconstruction & Analytical Archive
     </div>
 
-    <!-- Header Section -->
+    <!-- ================================================================= -->
+    <!-- SECTION 1: HEADER & CORE IDENTITY [REQUIRED]                      -->
+    <!-- ================================================================= -->
     <header>
         <div class="title-row">
             <div>
-                <h1>[BRAND / HOUSE]: [PERFUME_NAME] ([YEAR])</h1>
-                <p class="lead">[Comprehensive technical subtitle detailing the archetypal family, historical significance, and GCMS / formula reconstitution insights. Remember to use Amber, never oriental.]</p>
+                <h1>[HOUSE / BRAND]: [PERFUME_NAME] ([YEAR])</h1>
+                <p class="lead">[1-2 sentence technical summary: Olfactory archetype, historical milestone, and key chemical breakthrough. Note: Always use "Amber", never "oriental".]</p>
             </div>
             <div class="meta-pills">
                 <div class="pill"><i class="fas fa-flask"></i> Perfumer(s): [PERFUMER_NAME(S)]</div>
-                <div class="pill"><i class="fas fa-tags"></i> Archetype & Family: [FRAGRANCE_FAMILY]</div>
-                <div class="pill"><i class="fas fa-atom"></i> Signature Innovation / Overdose: [PRIMARY_INNOVATION]</div>
+                <div class="pill"><i class="fas fa-tags"></i> Archetype: [GENRE / FAMILY - e.g. Amber Gourmand, Floral Aldehydic, Aromatic Fougère]</div>
+                <div class="pill"><i class="fas fa-atom"></i> Signature Innovation: [e.g. 0.5% Ethyl Maltol overdose, 1% Isobutyl Quinoline, Hedione transparency]</div>
             </div>
         </div>
     </header>
 
-    <!-- Stat Highlights / Key Structural Tensions -->
+    <!-- ================================================================= -->
+    <!-- SECTION 2: FORMULA METRICS / STAT CARDS                           -->
+    <!-- [OPTIONAL: Can be expanded from 2 to 6 cards, or removed entirely]-->
+    <!-- ================================================================= -->
     <div class="stats-grid">
         <div class="stat-card">
-            <span class="stat-label">Core Tension #1</span>
-            <span class="stat-value" style="color: #f59e0b;">[DOSE_1]% [MATERIAL_1]</span>
-            <span class="stat-sub">[Key sensory role or breakthrough accord tension]</span>
+            <span class="stat-label">[METRIC 1 - e.g. Core Overdose / Shock]</span>
+            <span class="stat-value" style="color: #f59e0b;">[XX]% [MATERIAL]</span>
+            <span class="stat-sub">[Sensory function or historic milestone]</span>
         </div>
         <div class="stat-card">
-            <span class="stat-label">Core Tension #2</span>
-            <span class="stat-value" style="color: #10b981;">[DOSE_2]% [MATERIAL_2]</span>
+            <span class="stat-label">[METRIC 2 - e.g. Anchoring Chassis / Spine]</span>
+            <span class="stat-value" style="color: #10b981;">[XX]% [MATERIAL]</span>
             <span class="stat-sub">[Counterweight material balancing the composition]</span>
         </div>
         <div class="stat-card">
-            <span class="stat-label">Diffusive Engine</span>
-            <span class="stat-value" style="color: #38bdf8;">[DOSE_3]% [MATERIAL_3]</span>
-            <span class="stat-sub">[Radiance / transparency molecule or bridge]</span>
+            <span class="stat-label">[METRIC 3 - e.g. Diffusive Aeration / Halo]</span>
+            <span class="stat-value" style="color: #38bdf8;">[XX]% [MATERIAL]</span>
+            <span class="stat-sub">[Diffusive engine or transparency bridge]</span>
         </div>
         <div class="stat-card">
-            <span class="stat-label">Opening Shock / Top</span>
-            <span class="stat-value" style="color: #f472b6;">[DOSE_4]% [MATERIAL_4]</span>
-            <span class="stat-sub">[Initial flash impact or signature top accord]</span>
+            <span class="stat-label">[METRIC 4 - e.g. Natural vs Synthetic Ratio]</span>
+            <span class="stat-value" style="color: #f472b6;">[XX / YY]%</span>
+            <span class="stat-sub">[Analytical breakdown of formula nature]</span>
         </div>
     </div>
 
-    <!-- Structural Architecture & Dialectic Analysis -->
-    <div class="section-card">
-        <div class="section-header">
-            <div class="section-title">
-                <i class="fas fa-balance-scale"></i> Structural Architecture: The Olfactory Dialectic
-            </div>
-            <span class="interactive-tagline">The Invariant Chassis & The Modern Twist</span>
-        </div>
-        
-        <div class="dialectic-grid">
-            <div class="dialectic-box">
-                <h3 style="color: #f59e0b;"><i class="fas fa-lightbulb"></i> 1. The Core Innovation / Overdose</h3>
-                <p>[Explain the central creative leap, dosage breakthrough, or accidental/intentional overdose that broke conventions.]</p>
-                <p>[How this theme interacts with traditional foundations to redefine the fragrance genre.]</p>
-            </div>
-            <div class="dialectic-box">
-                <h3 style="color: #10b981;"><i class="fas fa-monument"></i> 2. The Anchoring Chassis</h3>
-                <p>[Detail the classic structural skeleton (e.g., Chypre spine, Fougère triad, Amber base, or Cologne core) providing structural balance.]</p>
-                <p>[Describe the stabilizing materials that keep the high-impact innovation grounded.]</p>
-            </div>
-            <div class="dialectic-box">
-                <h3 style="color: #38bdf8;"><i class="fas fa-wind"></i> 3. The Aeration & Radiance Bridge</h3>
-                <p>[Explain how heavy or cloying notes are aerated (e.g., Hedione, Iso E Super, synthetic aldehydes, or transparent florals) to grant sillage.]</p>
-                <p>[The mechanical function of the bridge connecting top volatility to base tenacity.]</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 4D Perfume Life Cycle: The 3 Temporal Evaluation Windows -->
+    <!-- ================================================================= -->
+    <!-- SECTION 3: 4D LIFE CYCLE - 3 TEMPORAL EVALUATION WINDOWS          -->
+    <!-- [RECOMMENDED: Core course concept. Window times can be tailored]   -->
+    <!-- ================================================================= -->
     <div class="section-card">
         <div class="section-header">
             <div class="section-title">
                 <i class="fas fa-clock"></i> 4D Life Cycle: The 3 Temporal Evaluation Windows
             </div>
-            <span class="interactive-tagline">Evaporation Kinetics & Perceptual Trajectory</span>
+            <span class="interactive-tagline">Course Evaporation Kinetics Standard</span>
         </div>
 
         <div class="lifecycle-grid">
-            <div class="window-box" style="border-left-color: var(--accent-cyan);">
-                <div class="window-title" style="color: var(--accent-cyan);"><i class="fas fa-bolt"></i> Window 1: The Flash</div>
+            <div class="window-box" style="border-left-color: var(--accent-top);">
+                <div class="window-title" style="color: var(--accent-top);"><i class="fas fa-bolt"></i> Window 1: The Flash</div>
                 <div class="window-time">0 to 15 Minutes</div>
                 <div class="window-desc">
-                    [Describe high-volatility materials, initial impact, radiant esters, citrus oils, or aldehydes that greet the nose and prepare the transition into the heart.]
+                    [High-volatility materials, esters, citrus oils, or aldehydes that strike the nose initially and prepare the transition into the heart.]
                 </div>
             </div>
-            <div class="window-box" style="border-left-color: var(--accent-pink);">
-                <div class="window-title" style="color: var(--accent-pink);"><i class="fas fa-spa"></i> Window 2: The Bloom</div>
+            <div class="window-box" style="border-left-color: var(--accent-mid);">
+                <div class="window-title" style="color: var(--accent-mid);"><i class="fas fa-spa"></i> Window 2: The Bloom</div>
                 <div class="window-time">30 Minutes to 2 Hours</div>
                 <div class="window-desc">
-                    [Describe heart florals, modifiers, bridge materials, and diffusive accords that expand at body temperature without losing volume.]
+                    [Heart florals, modifiers, bridge materials, and diffusive accords expanding at body temperature without volume seams.]
                 </div>
             </div>
-            <div class="window-box" style="border-left-color: var(--accent-botanical);">
-                <div class="window-title" style="color: var(--accent-botanical);"><i class="fas fa-shield-alt"></i> Window 3: The Drydown</div>
+            <div class="window-box" style="border-left-color: var(--accent-base);">
+                <div class="window-title" style="color: var(--accent-base);"><i class="fas fa-shield-alt"></i> Window 3: The Drydown</div>
                 <div class="window-time">4 Hours to 24+ Hours</div>
                 <div class="window-desc">
-                    [Describe the fixative baseline, heavy sesquiterpenes, musks, ambers, resins, and skin-scent anchors that define the persistent memory of the perfume.]
+                    [The fixative baseline, heavy sesquiterpenes, musks, ambers, resins, and skin-scent anchors defining persistent tenacity.]
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Interactive Material & Formula Table (Full Width Responsive Matrix) -->
+    <!-- ================================================================= -->
+    <!-- SECTION 4: ARCHITECTURAL ANATOMY / THEMATIC ACCORDS               -->
+    <!-- [OPTIONAL: Can be expanded to N theme cards or omitted]           -->
+    <!-- ================================================================= -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-balance-scale"></i> Architectural Anatomy & Thematic Accords
+            </div>
+            <span class="interactive-tagline">Expandable to N Thematic Blocks</span>
+        </div>
+        
+        <div class="narrative-grid">
+            <div class="narrative-box">
+                <h3 style="color: #f59e0b;"><i class="fas fa-lightbulb"></i> 1. The Core Innovation Accord</h3>
+                <p>[Explain the creative breakthrough, intentional overdose, or key captive chemical that gives the fragrance its unique DNA.]</p>
+                <p>[How this theme breaks with preceding historical formulas in the genre.]</p>
+            </div>
+            <div class="narrative-box">
+                <h3 style="color: #10b981;"><i class="fas fa-monument"></i> 2. The Classic Spine / Chassis</h3>
+                <p>[Detail the stabilizing skeleton (e.g. Chypre moss/bergamot, Amber resin, Fougère triad) that balances the innovation.]</p>
+                <p>[The mechanical role that keeps the fragrance from falling apart over time.]</p>
+            </div>
+            <div class="narrative-box">
+                <h3 style="color: #38bdf8;"><i class="fas fa-wind"></i> 3. The Transparency & Sillage Bridge</h3>
+                <p>[Explain how heavy or cloying notes are aerated (e.g. Hedione, Iso E Super, synthetic aldehydes, or transparent floral bases).]</p>
+                <p>[The bridge preventing volume drop between top flash and heavy baseline.]</p>
+            </div>
+            <!-- [EXPANDABLE: Add more .narrative-box blocks here for additional accords (e.g. 4. Animalic Counterpoint, 5. Cold Spice Engine)] -->
+        </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- SECTION 5: RAW MATERIALS & APPROXIMATED FORMULA MATRIX [REQUIRED] -->
+    <!-- Full-width responsive table. Add as many <tr> rows as needed.    -->
+    <!-- ================================================================= -->
     <div class="section-card">
         <div class="section-header">
             <div class="section-title">
@@ -633,11 +665,13 @@
             <span class="interactive-tagline">Interactive Filtering by Volatility & Architectural Function</span>
         </div>
 
+        <!-- Real-Time Search Filter -->
         <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Search by chemical name, declared note, or olfactory role..." onkeyup="filterTable()">
+            <input type="text" id="searchInput" placeholder="Search by chemical name, declared note, CAS, or olfactory role..." onkeyup="filterTable()">
         </div>
 
+        <!-- Filter Buttons Bar [Extendable if custom categories needed] -->
         <div class="filter-bar">
             <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-right: 4px;">VOLATILITY:</span>
             <button class="filter-btn active" onclick="setFilter('all', this)"><i class="fas fa-layer-group"></i> All</button>
@@ -652,137 +686,157 @@
             <button class="filter-btn" onclick="setFilter('role-fixative', this)"><i class="fas fa-anchor" style="color: #34d399;"></i> Fixative Anchor</button>
         </div>
 
+        <!-- The Table (Optimized 6-column responsive layout) -->
         <div class="table-responsive">
             <table id="formulaTable">
                 <thead>
                     <tr>
                         <th>Tier / Life Cycle</th>
                         <th>Architectural Role</th>
-                        <th>Chemical Name or Natural Material</th>
-                        <th>Key Olfactory Role</th>
-                        <th>Declared Fragrance Note</th>
-                        <th>Dosage / % (Inferred)</th>
-                        <th>Corroborating Sources</th>
+                        <th>Material & Commercial Note</th>
+                        <th>Olfactory Role & Sensory Impact</th>
+                        <th>Dosage / %</th>
+                        <th>Source / Evidence</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- EXAMPLE ROW: HEART PROTAGONIST -->
+                    <!-- ======================================================= -->
+                    <!-- ROW PATTERN A: HEART PROTAGONIST (Middle / Bloom)       -->
+                    <!-- ======================================================= -->
                     <tr data-tier="Middle" data-role="role-heart">
                         <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
                         <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
                         <td>
-                            <div class="material-title">[Example Material Name]</div>
-                            <div class="material-role">CAS [000-00-0] • [Chemical Class or Natural Origin]</div>
+                            <div class="material-title">[Material Name]</div>
+                            <div class="material-role">CAS [000-00-0] • [Chemical Family / Origin]</div>
+                            <!-- [OPTIONAL: Commercial note line below] -->
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: [Declared Marketing Note]</span>
                         </td>
-                        <td>[Key Olfactory facet and sensory impact in formulation]</td>
-                        <td><span class="declared-note">[Commercial marketing notes represented]</span></td>
+                        <td>[Key Olfactory role: Character, texture, and why this is the protagonist accord]</td>
                         <td><span class="dosage-badge">[0.X% - X.X%]</span></td>
                         <td>
                             <div class="source-badges">
-                                <a href="#ref-1" class="src-ref">[1]</a>
-                                <a href="#ref-2" class="src-ref">[2]</a>
-                                <span class="src-ref">GCMS</span>
+                                <span class="src-tag gcms">GCMS</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
                             </div>
                         </td>
                     </tr>
 
-                    <!-- EXAMPLE ROW: MODIFIER -->
+                    <!-- ======================================================= -->
+                    <!-- ROW PATTERN B: MODIFIER (Top / Flash)                   -->
+                    <!-- ======================================================= -->
                     <tr data-tier="Top" data-role="role-modifier">
                         <td><span class="tier-tag tier-Top">Top • Flash</span></td>
                         <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
                         <td>
-                            <div class="material-title">[Example Modifier]</div>
-                            <div class="material-role">CAS [000-00-0] • [Fruity / Floral / Green accent]</div>
+                            <div class="material-title">[Material Name]</div>
+                            <div class="material-role">CAS [000-00-0] • [Chemical Family / Origin]</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: [Declared Marketing Note]</span>
                         </td>
-                        <td>[Nuance, contouring, or textural contrast]</td>
-                        <td><span class="declared-note">[Top / Accent Note]</span></td>
+                        <td>[Modifier role: Nuance, textural contrast, contouring, or opening shock]</td>
                         <td><span class="dosage-badge">[0.X%]</span></td>
                         <td>
                             <div class="source-badges">
-                                <a href="#ref-3" class="src-ref">[3]</a>
+                                <span class="src-tag">Literature</span>
+                                <a href="#ref-2" class="src-tag">[2]</a>
                             </div>
                         </td>
                     </tr>
 
-                    <!-- EXAMPLE ROW: BLENDER / BRIDGE -->
+                    <!-- ======================================================= -->
+                    <!-- ROW PATTERN C: BLENDER / BRIDGE (Middle or Base)        -->
+                    <!-- ======================================================= -->
                     <tr data-tier="Middle" data-role="role-blender">
                         <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
                         <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
                         <td>
-                            <div class="material-title">[Example Blender Molecule]</div>
-                            <div class="material-role">CAS [000-00-0] • [Diffusive ester / macrocycle / jasmine/woody halo]</div>
+                            <div class="material-title">[Material Name]</div>
+                            <div class="material-role">CAS [000-00-0] • [Diffusive Macrocycle / Transparent Ester]</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: [Declared Marketing Note]</span>
                         </td>
-                        <td>[Eliminating seams between volatility tiers, floral halo, radiance]</td>
-                        <td><span class="declared-note">[Floral / Airy / Transparent]</span></td>
+                        <td>[Blender role: Eliminates seams between tiers, grants vaporous sillage or floral radiance]</td>
                         <td><span class="dosage-badge">[X% - XX%]</span></td>
                         <td>
                             <div class="source-badges">
-                                <a href="#ref-1" class="src-ref">[1]</a>
-                                <a href="#ref-4" class="src-ref">[4]</a>
+                                <span class="src-tag gcms">GCMS</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
                             </div>
                         </td>
                     </tr>
 
-                    <!-- EXAMPLE ROW: FIXATIVE ANCHOR -->
+                    <!-- ======================================================= -->
+                    <!-- ROW PATTERN D: FIXATIVE ANCHOR (Base / Tenacity)        -->
+                    <!-- ======================================================= -->
                     <tr data-tier="Base" data-role="role-fixative">
                         <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
                         <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
                         <td>
-                            <div class="material-title">[Example Base Material]</div>
-                            <div class="material-role">CAS [000-00-0] • [Botanical fraction, musk, resin, or synthetic anchor]</div>
+                            <div class="material-title">[Material Name]</div>
+                            <div class="material-role">CAS [000-00-0] • [Heavy Sesquiterpene / Musk / Resin]</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: [Declared Marketing Note]</span>
                         </td>
-                        <td>[Evaporation retardation, foundational longevity, skin adhesion]</td>
-                        <td><span class="declared-note">[Base / Resin / Wood / Musk]</span></td>
+                        <td>[Fixative role: Retards evaporation, binds formula to stratum corneum, provides lasting memory]</td>
                         <td><span class="dosage-badge">[XX% - XX%]</span></td>
                         <td>
                             <div class="source-badges">
-                                <a href="#ref-2" class="src-ref">[2]</a>
-                                <span class="src-ref">Industry</span>
+                                <span class="src-tag patent">Patent / GCMS</span>
+                                <a href="#ref-3" class="src-tag">[3]</a>
                             </div>
                         </td>
                     </tr>
+
+                    <!-- [EXPANDABLE: Duplicate <tr> rows as needed for the complete 15-40 material formula matrix] -->
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- Compounding & Analytical Chemistry Insights -->
+    <!-- ================================================================= -->
+    <!-- SECTION 6: PRACTICAL COMPOUNDING & GCMS CALIBRATIONS [RECOMMENDED]-->
+    <!-- [Expandable with as many analytical paragraph blocks as needed]   -->
+    <!-- ================================================================= -->
     <div class="section-card">
         <div class="section-header">
             <div class="section-title">
                 <i class="fas fa-microscope"></i> Compounding & Analytical Chemistry Insights
             </div>
-            <span class="interactive-tagline">GCMS Calibrations & Organ Considerations</span>
+            <span class="interactive-tagline">GCMS Calibrations & Organ Practicalities</span>
         </div>
         <div style="font-size: 0.95rem; color: var(--text-dim); line-height: 1.7;">
-            <p><strong>[Key Analytical Insight #1 - Material Grade / Natural Fractionation]:</strong> [Explain specific grades required, e.g., molecular distillation, bergapten-free citrus, or patchoulol-rich fractions, and why standard crude materials fail.]</p>
+            <p><strong>[Analytical Topic 1 - Material Grade / Natural Fractionation]:</strong> [Explain specific qualities required (e.g. fractionated MD oils, decolorized oakmoss, bergapten-free citrus) and why standard crude materials fail.]</p>
             <br>
-            <p><strong>[Key Analytical Insight #2 - GCMS Reconciliations & Calibrations]:</strong> [Clarify discrepancies between generic marketing/educational claims versus rigorously quantified chromatographic data.]</p>
+            <p><strong>[Analytical Topic 2 - GCMS Reconciliations vs Commercial Claims]:</strong> [Clarify dosage reality versus inflated marketing numbers or uncalibrated public formulas.]</p>
             <br>
-            <p><strong>[Key Analytical Insight #3 - Olfactory Synesthesia / Illusions]:</strong> [Describe emergent accords created by combinations rather than standalone single molecules (e.g., chocolate, leather, ambergris, or peach skin).]</p>
+            <p><strong>[Analytical Topic 3 - Olfactory Synesthesia / Emergent Illusions]:</strong> [Describe perceived notes generated by emergent synergies rather than standalone captive molecules (e.g. chocolate, leather, ambergris, or wet stone).]</p>
             <br>
-            <p><strong>[Key Analytical Insight #4 - Chemical Kinetics & Aging Reactions]:</strong> [Note any Schiff base formations, discoloration, esterification, or maceration phenomena perfumers must monitor.]</p>
+            <p><strong>[Analytical Topic 4 - Chemical Kinetics & Aging Reactions (OPTIONAL)]:</strong> [Note any Schiff base formations, discoloration, esterification, or maceration phenomena perfumers must anticipate.]</p>
         </div>
     </div>
 
-    <!-- Literature & Analytical Citations -->
+    <!-- ================================================================= -->
+    <!-- SECTION 7: LITERATURE & ANALYTICAL CITATIONS                      -->
+    <!-- [OPTIONAL: Can be expanded to N citations or omitted if single src]-->
+    <!-- ================================================================= -->
     <div class="section-card">
         <div class="section-header">
             <div class="section-title">
                 <i class="fas fa-book"></i> Literature & Analytical Citations
             </div>
-            <span class="interactive-tagline">[N] Sources Cross-Referenced</span>
+            <span class="interactive-tagline">Expandable Bibliography List</span>
         </div>
 
         <div class="biblio-list">
-            <div class="biblio-item" id="ref-1"><span class="biblio-num">[1]</span> <span>[Citation 1: GCMS report / Author, Journal or Industry monograph title]</span></div>
-            <div class="biblio-item" id="ref-2"><span class="biblio-num">[2]</span> <span>[Citation 2: Formulation database, patent, or laboratory reconstruction sheet]</span></div>
-            <div class="biblio-item" id="ref-3"><span class="biblio-num">[3]</span> <span>[Citation 3: Academic chemical analysis / Perfumer & Flavorist reference]</span></div>
-            <div class="biblio-item" id="ref-4"><span class="biblio-num">[4]</span> <span>[Citation 4: Technical perfumery community or supplier documentation]</span></div>
+            <div class="biblio-item" id="ref-1"><span class="biblio-num">[1]</span> <span>[Primary GCMS Laboratory Analysis / Chromatogram Report & Date]</span></div>
+            <div class="biblio-item" id="ref-2"><span class="biblio-num">[2]</span> <span>[Author, Article / Monograph Title, Perfumer & Flavorist or Academic Journal]</span></div>
+            <div class="biblio-item" id="ref-3"><span class="biblio-num">[3]</span> <span>[Patent Number / Historical Formulation Archive Document]</span></div>
+            <!-- [EXPANDABLE: Add more .biblio-item lines here as needed] -->
         </div>
     </div>
 </div>
 
+<!-- ===================================================================== -->
+<!-- JAVASCRIPT LOGIC [REQUIRED FOR INTERACTIVE FILTERING & SEARCH]        -->
+<!-- ===================================================================== -->
 <script>
     let activeFilter = 'all';
 
