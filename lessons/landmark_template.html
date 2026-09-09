@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landmark Analysis Template: [PERFUME_NAME] ([YEAR]) | Perfumery Analytical Archive</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #09090d;
+            --card-bg: rgba(18, 18, 24, 0.85);
+            --card-hover: rgba(28, 28, 38, 0.98);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(212, 175, 55, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f9d71c;
+            --accent-cyan: #38bdf8;
+            --accent-pink: #f472b6;
+            --accent-amber: #f59e0b;
+            --accent-botanical: #10b981;
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --text-muted: #6b7280;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.65;
+            padding: 40px 24px 80px;
+        }
+
+        .container {
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* Classified / Secret Banner */
+        .secret-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+        }
+
+        .title-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 85%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .pill i { color: var(--gold); }
+
+        p.lead {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            max-width: 1100px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* Summary Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-highlight);
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stat-sub {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(12px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+        }
+
+        .section-title i {
+            color: var(--gold);
+        }
+
+        /* Filter Controls */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold);
+            color: #ffffff;
+        }
+
+        /* Table Styling */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(14, 14, 18, 0.95);
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.35;
+        }
+
+        td {
+            padding: 11px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            vertical-align: middle;
+            line-height: 1.45;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Category tags */
+        .tier-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .tier-Top {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+
+        .tier-Middle {
+            background: rgba(244, 114, 182, 0.15);
+            color: var(--accent-pink);
+            border: 1px solid rgba(244, 114, 182, 0.35);
+        }
+
+        .tier-Base {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-botanical);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        .dosage-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .material-title {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .material-role {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        .declared-note {
+            font-size: 0.85rem;
+            color: #d1d5db;
+        }
+
+        .source-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            max-width: 220px;
+        }
+
+        .src-ref {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 1px 4px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        /* Column width distributions */
+        #formulaTable th:nth-child(1), #formulaTable td:nth-child(1) { width: 11%; min-width: 110px; }
+        #formulaTable th:nth-child(2), #formulaTable td:nth-child(2) { width: 11%; min-width: 110px; }
+        #formulaTable th:nth-child(3), #formulaTable td:nth-child(3) { width: 22%; min-width: 180px; }
+        #formulaTable th:nth-child(4), #formulaTable td:nth-child(4) { width: 20%; min-width: 170px; }
+        #formulaTable th:nth-child(5), #formulaTable td:nth-child(5) { width: 16%; min-width: 140px; }
+        #formulaTable th:nth-child(6), #formulaTable td:nth-child(6) { width: 10%; min-width: 100px; }
+        #formulaTable th:nth-child(7), #formulaTable td:nth-child(7) { width: 10%; min-width: 120px; }
+
+        /* Functional Architectural Accord Roles */
+        .role-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .role-heart {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+
+        .role-modifier {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+
+        .role-blender {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+
+        .role-fixative {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        /* Life Cycle & Windows */
+        .lifecycle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .window-box {
+            background: rgba(14, 14, 20, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .window-title {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .window-time {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .window-desc {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+
+        /* Dialectic Matrix / Anatomy Grid */
+        .dialectic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .dialectic-box {
+            background: rgba(12, 12, 16, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .dialectic-box h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dialectic-box p {
+            font-size: 0.92rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* Reference bibliography */
+        .biblio-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 10px 24px;
+            margin-top: 15px;
+        }
+
+        .biblio-item {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.45;
+        }
+
+        .biblio-num {
+            font-family: var(--font-mono);
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+            width: 32px;
+        }
+
+        /* Search input */
+        .search-box {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(14, 14, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px 12px 42px;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .interactive-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Secret / Confidential Tag -->
+    <div class="secret-tag">
+        <i class="fas fa-lock"></i> Confidential Formula Reconstruction & Archive
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="title-row">
+            <div>
+                <h1>[BRAND / HOUSE]: [PERFUME_NAME] ([YEAR])</h1>
+                <p class="lead">[Comprehensive technical subtitle detailing the archetypal family, historical significance, and GCMS / formula reconstitution insights. Remember to use Amber, never oriental.]</p>
+            </div>
+            <div class="meta-pills">
+                <div class="pill"><i class="fas fa-flask"></i> Perfumer(s): [PERFUMER_NAME(S)]</div>
+                <div class="pill"><i class="fas fa-tags"></i> Archetype & Family: [FRAGRANCE_FAMILY]</div>
+                <div class="pill"><i class="fas fa-atom"></i> Signature Innovation / Overdose: [PRIMARY_INNOVATION]</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stat Highlights / Key Structural Tensions -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-label">Core Tension #1</span>
+            <span class="stat-value" style="color: #f59e0b;">[DOSE_1]% [MATERIAL_1]</span>
+            <span class="stat-sub">[Key sensory role or breakthrough accord tension]</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Core Tension #2</span>
+            <span class="stat-value" style="color: #10b981;">[DOSE_2]% [MATERIAL_2]</span>
+            <span class="stat-sub">[Counterweight material balancing the composition]</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Diffusive Engine</span>
+            <span class="stat-value" style="color: #38bdf8;">[DOSE_3]% [MATERIAL_3]</span>
+            <span class="stat-sub">[Radiance / transparency molecule or bridge]</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Opening Shock / Top</span>
+            <span class="stat-value" style="color: #f472b6;">[DOSE_4]% [MATERIAL_4]</span>
+            <span class="stat-sub">[Initial flash impact or signature top accord]</span>
+        </div>
+    </div>
+
+    <!-- Structural Architecture & Dialectic Analysis -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-balance-scale"></i> Structural Architecture: The Olfactory Dialectic
+            </div>
+            <span class="interactive-tagline">The Invariant Chassis & The Modern Twist</span>
+        </div>
+        
+        <div class="dialectic-grid">
+            <div class="dialectic-box">
+                <h3 style="color: #f59e0b;"><i class="fas fa-lightbulb"></i> 1. The Core Innovation / Overdose</h3>
+                <p>[Explain the central creative leap, dosage breakthrough, or accidental/intentional overdose that broke conventions.]</p>
+                <p>[How this theme interacts with traditional foundations to redefine the fragrance genre.]</p>
+            </div>
+            <div class="dialectic-box">
+                <h3 style="color: #10b981;"><i class="fas fa-monument"></i> 2. The Anchoring Chassis</h3>
+                <p>[Detail the classic structural skeleton (e.g., Chypre spine, Fougère triad, Amber base, or Cologne core) providing structural balance.]</p>
+                <p>[Describe the stabilizing materials that keep the high-impact innovation grounded.]</p>
+            </div>
+            <div class="dialectic-box">
+                <h3 style="color: #38bdf8;"><i class="fas fa-wind"></i> 3. The Aeration & Radiance Bridge</h3>
+                <p>[Explain how heavy or cloying notes are aerated (e.g., Hedione, Iso E Super, synthetic aldehydes, or transparent florals) to grant sillage.]</p>
+                <p>[The mechanical function of the bridge connecting top volatility to base tenacity.]</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4D Perfume Life Cycle: The 3 Temporal Evaluation Windows -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-clock"></i> 4D Life Cycle: The 3 Temporal Evaluation Windows
+            </div>
+            <span class="interactive-tagline">Evaporation Kinetics & Perceptual Trajectory</span>
+        </div>
+
+        <div class="lifecycle-grid">
+            <div class="window-box" style="border-left-color: var(--accent-cyan);">
+                <div class="window-title" style="color: var(--accent-cyan);"><i class="fas fa-bolt"></i> Window 1: The Flash</div>
+                <div class="window-time">0 to 15 Minutes</div>
+                <div class="window-desc">
+                    [Describe high-volatility materials, initial impact, radiant esters, citrus oils, or aldehydes that greet the nose and prepare the transition into the heart.]
+                </div>
+            </div>
+            <div class="window-box" style="border-left-color: var(--accent-pink);">
+                <div class="window-title" style="color: var(--accent-pink);"><i class="fas fa-spa"></i> Window 2: The Bloom</div>
+                <div class="window-time">30 Minutes to 2 Hours</div>
+                <div class="window-desc">
+                    [Describe heart florals, modifiers, bridge materials, and diffusive accords that expand at body temperature without losing volume.]
+                </div>
+            </div>
+            <div class="window-box" style="border-left-color: var(--accent-botanical);">
+                <div class="window-title" style="color: var(--accent-botanical);"><i class="fas fa-shield-alt"></i> Window 3: The Drydown</div>
+                <div class="window-time">4 Hours to 24+ Hours</div>
+                <div class="window-desc">
+                    [Describe the fixative baseline, heavy sesquiterpenes, musks, ambers, resins, and skin-scent anchors that define the persistent memory of the perfume.]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Material & Formula Table (Full Width Responsive Matrix) -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-vial"></i> Raw Materials & Approximated Formula Matrix
+            </div>
+            <span class="interactive-tagline">Interactive Filtering by Volatility & Architectural Function</span>
+        </div>
+
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by chemical name, declared note, or olfactory role..." onkeyup="filterTable()">
+        </div>
+
+        <div class="filter-bar">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-right: 4px;">VOLATILITY:</span>
+            <button class="filter-btn active" onclick="setFilter('all', this)"><i class="fas fa-layer-group"></i> All</button>
+            <button class="filter-btn" onclick="setFilter('Top', this)"><i class="fas fa-feather-alt"></i> Top Flash</button>
+            <button class="filter-btn" onclick="setFilter('Middle', this)"><i class="fas fa-heart"></i> Heart Bloom</button>
+            <button class="filter-btn" onclick="setFilter('Base', this)"><i class="fas fa-anchor"></i> Base Tenacity</button>
+
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-left: 12px; margin-right: 4px;">FUNCTION:</span>
+            <button class="filter-btn" onclick="setFilter('role-heart', this)"><i class="fas fa-star" style="color: #fbbf24;"></i> Heart Protagonist</button>
+            <button class="filter-btn" onclick="setFilter('role-modifier', this)"><i class="fas fa-magic" style="color: #f87171;"></i> Modifier</button>
+            <button class="filter-btn" onclick="setFilter('role-blender', this)"><i class="fas fa-random" style="color: #38bdf8;"></i> Blender / Bridge</button>
+            <button class="filter-btn" onclick="setFilter('role-fixative', this)"><i class="fas fa-anchor" style="color: #34d399;"></i> Fixative Anchor</button>
+        </div>
+
+        <div class="table-responsive">
+            <table id="formulaTable">
+                <thead>
+                    <tr>
+                        <th>Tier / Life Cycle</th>
+                        <th>Architectural Role</th>
+                        <th>Chemical Name or Natural Material</th>
+                        <th>Key Olfactory Role</th>
+                        <th>Declared Fragrance Note</th>
+                        <th>Dosage / % (Inferred)</th>
+                        <th>Corroborating Sources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- EXAMPLE ROW: HEART PROTAGONIST -->
+                    <tr data-tier="Middle" data-role="role-heart">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">[Example Material Name]</div>
+                            <div class="material-role">CAS [000-00-0] • [Chemical Class or Natural Origin]</div>
+                        </td>
+                        <td>[Key Olfactory facet and sensory impact in formulation]</td>
+                        <td><span class="declared-note">[Commercial marketing notes represented]</span></td>
+                        <td><span class="dosage-badge">[0.X% - X.X%]</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-1" class="src-ref">[1]</a>
+                                <a href="#ref-2" class="src-ref">[2]</a>
+                                <span class="src-ref">GCMS</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- EXAMPLE ROW: MODIFIER -->
+                    <tr data-tier="Top" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">[Example Modifier]</div>
+                            <div class="material-role">CAS [000-00-0] • [Fruity / Floral / Green accent]</div>
+                        </td>
+                        <td>[Nuance, contouring, or textural contrast]</td>
+                        <td><span class="declared-note">[Top / Accent Note]</span></td>
+                        <td><span class="dosage-badge">[0.X%]</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-3" class="src-ref">[3]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- EXAMPLE ROW: BLENDER / BRIDGE -->
+                    <tr data-tier="Middle" data-role="role-blender">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">[Example Blender Molecule]</div>
+                            <div class="material-role">CAS [000-00-0] • [Diffusive ester / macrocycle / jasmine/woody halo]</div>
+                        </td>
+                        <td>[Eliminating seams between volatility tiers, floral halo, radiance]</td>
+                        <td><span class="declared-note">[Floral / Airy / Transparent]</span></td>
+                        <td><span class="dosage-badge">[X% - XX%]</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-1" class="src-ref">[1]</a>
+                                <a href="#ref-4" class="src-ref">[4]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- EXAMPLE ROW: FIXATIVE ANCHOR -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">[Example Base Material]</div>
+                            <div class="material-role">CAS [000-00-0] • [Botanical fraction, musk, resin, or synthetic anchor]</div>
+                        </td>
+                        <td>[Evaporation retardation, foundational longevity, skin adhesion]</td>
+                        <td><span class="declared-note">[Base / Resin / Wood / Musk]</span></td>
+                        <td><span class="dosage-badge">[XX% - XX%]</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-2" class="src-ref">[2]</a>
+                                <span class="src-ref">Industry</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Compounding & Analytical Chemistry Insights -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-microscope"></i> Compounding & Analytical Chemistry Insights
+            </div>
+            <span class="interactive-tagline">GCMS Calibrations & Organ Considerations</span>
+        </div>
+        <div style="font-size: 0.95rem; color: var(--text-dim); line-height: 1.7;">
+            <p><strong>[Key Analytical Insight #1 - Material Grade / Natural Fractionation]:</strong> [Explain specific grades required, e.g., molecular distillation, bergapten-free citrus, or patchoulol-rich fractions, and why standard crude materials fail.]</p>
+            <br>
+            <p><strong>[Key Analytical Insight #2 - GCMS Reconciliations & Calibrations]:</strong> [Clarify discrepancies between generic marketing/educational claims versus rigorously quantified chromatographic data.]</p>
+            <br>
+            <p><strong>[Key Analytical Insight #3 - Olfactory Synesthesia / Illusions]:</strong> [Describe emergent accords created by combinations rather than standalone single molecules (e.g., chocolate, leather, ambergris, or peach skin).]</p>
+            <br>
+            <p><strong>[Key Analytical Insight #4 - Chemical Kinetics & Aging Reactions]:</strong> [Note any Schiff base formations, discoloration, esterification, or maceration phenomena perfumers must monitor.]</p>
+        </div>
+    </div>
+
+    <!-- Literature & Analytical Citations -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-book"></i> Literature & Analytical Citations
+            </div>
+            <span class="interactive-tagline">[N] Sources Cross-Referenced</span>
+        </div>
+
+        <div class="biblio-list">
+            <div class="biblio-item" id="ref-1"><span class="biblio-num">[1]</span> <span>[Citation 1: GCMS report / Author, Journal or Industry monograph title]</span></div>
+            <div class="biblio-item" id="ref-2"><span class="biblio-num">[2]</span> <span>[Citation 2: Formulation database, patent, or laboratory reconstruction sheet]</span></div>
+            <div class="biblio-item" id="ref-3"><span class="biblio-num">[3]</span> <span>[Citation 3: Academic chemical analysis / Perfumer & Flavorist reference]</span></div>
+            <div class="biblio-item" id="ref-4"><span class="biblio-num">[4]</span> <span>[Citation 4: Technical perfumery community or supplier documentation]</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let activeFilter = 'all';
+
+    function setFilter(filterVal, btn) {
+        activeFilter = filterVal;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterTable();
+    }
+
+    function filterTable() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#formulaTable tbody tr');
+
+        rows.forEach(row => {
+            const tier = row.getAttribute('data-tier');
+            const role = row.getAttribute('data-role');
+            const text = row.textContent.toLowerCase();
+
+            const matchesFilter = (activeFilter === 'all' || tier === activeFilter || role === activeFilter);
+            const matchesSearch = (!query || text.includes(query));
+
+            if (matchesFilter && matchesSearch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
