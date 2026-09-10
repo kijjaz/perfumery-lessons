@@ -1819,7 +1819,7 @@
 
             <!-- SVG Map Canvas -->
             <div class="map-canvas-wrap" id="canvas-wrapper">
-                <svg id="biomap-svg" viewBox="0 0 1400 950" preserveAspectRatio="xMidYMid meet">
+                <svg id="biomap-svg" viewBox="0 0 1600 950" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <!-- Glow Filters -->
                         <filter id="glow-rose" x="-20%" y="-20%" width="140%" height="140%">
@@ -1862,54 +1862,63 @@
                         </linearGradient>
                     </defs>
 
-                    <!-- Background Grid & Quadrant Regions -->
-                    <rect x="0" y="0" width="1400" height="950" fill="#07070b"/>
+                    <!-- Background Canvas (1600 x 950) -->
+                    <rect x="0" y="0" width="1600" height="950" fill="#07070b"/>
                     
-                    <!-- Region bands (Expanded Heights) -->
-                    <rect x="0" y="20" width="1400" height="165" fill="rgba(16, 185, 129, 0.03)"/>
-                    <rect x="0" y="185" width="1400" height="295" fill="rgba(251, 191, 36, 0.03)"/>
-                    <rect x="0" y="480" width="1400" height="255" fill="rgba(244, 63, 94, 0.03)"/>
-                    <rect x="0" y="735" width="1400" height="195" fill="rgba(56, 189, 248, 0.04)"/>
+                    <!-- Dedicated Left Axis Corridor (X: 0 to 185) - ZERO chemical nodes permitted here -->
+                    <rect x="0" y="0" width="185" height="950" fill="#0a0a10"/>
+                    <line x1="185" y1="0" x2="185" y2="950" stroke="rgba(212, 175, 55, 0.25)" stroke-width="1.5" />
 
-                    <!-- Grid lines -->
-                    <line x1="80" y1="185" x2="1370" y2="185" class="grid-line" />
-                    <line x1="80" y1="480" x2="1370" y2="480" class="grid-line" />
-                    <line x1="80" y1="735" x2="1370" y2="735" class="grid-line" />
+                    <!-- Horizontal Region Bands across Canvas (X: 185 to 1600) -->
+                    <rect x="185" y="20" width="1415" height="165" fill="rgba(16, 185, 129, 0.03)"/>
+                    <rect x="185" y="185" width="1415" height="295" fill="rgba(251, 191, 36, 0.03)"/>
+                    <rect x="185" y="480" width="1415" height="255" fill="rgba(244, 63, 94, 0.03)"/>
+                    <rect x="185" y="735" width="1415" height="195" fill="rgba(56, 189, 248, 0.04)"/>
 
-                    <line x1="390" y1="30" x2="390" y2="920" class="grid-line" />
-                    <line x1="720" y1="30" x2="720" y2="920" class="grid-line" />
-                    <line x1="1020" y1="30" x2="1020" y2="920" class="grid-line" />
+                    <!-- Horizontal Grid Dividers -->
+                    <line x1="185" y1="185" x2="1570" y2="185" class="grid-line" />
+                    <line x1="185" y1="480" x2="1570" y2="480" class="grid-line" />
+                    <line x1="185" y1="735" x2="1570" y2="735" class="grid-line" />
 
-                    <!-- Axes Annotations (Y-Axis: Genesis - positioned safely in top headers) -->
-                    <g transform="translate(30, 42)">
-                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1"/>
-                        <text x="0" y="0" class="axis-label" fill="#10b981" font-weight="bold">1. Lipoxygenase & Lipid Cascade</text>
-                        <text x="0" y="12" style="font-size: 8.5px; fill: #6ee7b7; font-family: monospace; letter-spacing: 0.5px;">Fatty Acid Membrane Cleavage (C6, C10, C11)</text>
+                    <!-- Vertical Grid Columns (Shifted +160px) -->
+                    <line x1="550" y1="30" x2="550" y2="920" class="grid-line" />
+                    <line x1="880" y1="30" x2="880" y2="920" class="grid-line" />
+                    <line x1="1180" y1="30" x2="1180" y2="920" class="grid-line" />
+
+                    <!-- Dedicated Y-Axis Badges in Left Axis Corridor (X <= 185) -->
+                    <g transform="translate(14, 80)">
+                        <rect x="0" y="0" width="158" height="52" rx="6" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1"/>
+                        <text x="10" y="20" class="axis-label" fill="#10b981" font-weight="bold" font-size="10px">1. LIPOXYGENASE</text>
+                        <text x="10" y="32" class="axis-label" fill="#6ee7b7" font-size="8px">& LIPID CASCADE</text>
+                        <text x="10" y="44" style="font-size: 7.5px; fill: #6b7280; font-family: monospace;">Fatty Acid C6, C10, C11</text>
                     </g>
 
-                    <g transform="translate(30, 206)">
-                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(251, 191, 36, 0.25)" stroke-width="1"/>
-                        <text x="0" y="0" class="axis-label" fill="#fbbf24" font-weight="bold">2. Terpenoid & Carotenoid MEP</text>
-                        <text x="0" y="12" style="font-size: 8.5px; fill: #fde68a; font-family: monospace; letter-spacing: 0.5px;">Isoprene C5 & Carotenoid C13 Cleavage</text>
+                    <g transform="translate(14, 305)">
+                        <rect x="0" y="0" width="158" height="52" rx="6" fill="rgba(251, 191, 36, 0.08)" stroke="rgba(251, 191, 36, 0.4)" stroke-width="1"/>
+                        <text x="10" y="20" class="axis-label" fill="#fbbf24" font-weight="bold" font-size="10px">2. TERPENOID &</text>
+                        <text x="10" y="32" class="axis-label" fill="#fde68a" font-size="8px">CAROTENOID MEP</text>
+                        <text x="10" y="44" style="font-size: 7.5px; fill: #6b7280; font-family: monospace;">Isoprene C5 & C13 Cleavage</text>
                     </g>
 
-                    <g transform="translate(30, 500)">
-                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(244, 63, 94, 0.25)" stroke-width="1"/>
-                        <text x="0" y="0" class="axis-label" fill="#fda4af" font-weight="bold">3. Shikimate / Phenylpropanoid</text>
-                        <text x="0" y="12" style="font-size: 8.5px; fill: #fca5a5; font-family: monospace; letter-spacing: 0.5px;">Phenylalanine & Tryptophan Catabolism</text>
+                    <g transform="translate(14, 580)">
+                        <rect x="0" y="0" width="158" height="52" rx="6" fill="rgba(244, 63, 94, 0.08)" stroke="rgba(244, 63, 94, 0.4)" stroke-width="1"/>
+                        <text x="10" y="20" class="axis-label" fill="#fda4af" font-weight="bold" font-size="10px">3. SHIKIMATE /</text>
+                        <text x="10" y="32" class="axis-label" fill="#fca5a5" font-size="8px">PHENYLPROPANOID</text>
+                        <text x="10" y="44" style="font-size: 7.5px; fill: #6b7280; font-family: monospace;">Phenylalanine / Tryptophan</text>
                     </g>
 
-                    <g transform="translate(30, 755)">
-                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1"/>
-                        <text x="0" y="0" class="axis-label" fill="#38bdf8" font-weight="bold">4. Organic Chemical Synthesis</text>
-                        <text x="0" y="12" style="font-size: 8.5px; fill: #7dd3fc; font-family: monospace; letter-spacing: 0.5px;">Catalytic Hydration & Substituted Pyrans</text>
+                    <g transform="translate(14, 805)">
+                        <rect x="0" y="0" width="158" height="52" rx="6" fill="rgba(56, 189, 248, 0.08)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1"/>
+                        <text x="10" y="20" class="axis-label" fill="#38bdf8" font-weight="bold" font-size="10px">4. ORGANIC CHEMICAL</text>
+                        <text x="10" y="32" class="axis-label" fill="#7dd3fc" font-size="8px">SYNTHESIS</text>
+                        <text x="10" y="44" style="font-size: 7.5px; fill: #6b7280; font-family: monospace;">Hydration & Substituted Pyrans</text>
                     </g>
 
-                    <!-- Axes Annotations (X-Axis: Structural Ring Geometry) -->
-                    <text x="210" y="940" class="axis-label" text-anchor="middle" fill="#cbd5e1">Acyclic Linear & Branched</text>
-                    <text x="555" y="940" class="axis-label" text-anchor="middle" fill="#cbd5e1">Alicyclic & Lactone Rings</text>
-                    <text x="870" y="940" class="axis-label" text-anchor="middle" fill="#38bdf8">Tetrahydropyrans (Ether Ring)</text>
-                    <text x="1200" y="940" class="axis-label" text-anchor="middle" fill="#fda4af">Aromatic Benzenoid & Indole</text>
+                    <!-- Axes Annotations (X-Axis: Structural Ring Geometry - Shifted +160px) -->
+                    <text x="370" y="942" class="axis-label" text-anchor="middle" fill="#cbd5e1">Acyclic Linear & Branched</text>
+                    <text x="715" y="942" class="axis-label" text-anchor="middle" fill="#cbd5e1">Alicyclic & Lactone Rings</text>
+                    <text x="1030" y="942" class="axis-label" text-anchor="middle" fill="#38bdf8">Tetrahydropyrans (Ether Ring)</text>
+                    <text x="1360" y="942" class="axis-label" text-anchor="middle" fill="#fda4af">Aromatic Benzenoid & Indole</text>
 
                     <!-- Biosynthetic Lineage Connecting Paths -->
                     <g id="lineage-links-group"></g>
@@ -1970,7 +1979,7 @@ const CHEMICAL_NODES = [
         commonName: "Leaf Alcohol",
         cas: "928-96-1",
         formula: "C6H12O",
-        x: 195, y: 80,
+        x: 355, y: 80,
         labelPos: "top",
         type: "acyclic",
         pathway: "Lipoxygenase (LOX) Cleavage of alpha-Linolenic Acid",
@@ -1988,7 +1997,7 @@ const CHEMICAL_NODES = [
         commonName: "Leaf Acetate",
         cas: "3681-71-8",
         formula: "C8H14O2",
-        x: 320, y: 110,
+        x: 480, y: 110,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Esterification of LOX Leaf Alcohol",
@@ -2006,7 +2015,7 @@ const CHEMICAL_NODES = [
         commonName: "Green Benzoate",
         cas: "25152-85-6",
         formula: "C13H16O2",
-        x: 1080, y: 95,
+        x: 1240, y: 95,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Hybrid: LOX Leaf Alcohol + Shikimate Benzoate",
@@ -2024,7 +2033,7 @@ const CHEMICAL_NODES = [
         commonName: "cis-Jasmone",
         cas: "488-10-8",
         formula: "C11H16O",
-        x: 460, y: 90,
+        x: 620, y: 90,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Jasmonic Acid Plant Defense Hormone Cascade",
@@ -2042,7 +2051,7 @@ const CHEMICAL_NODES = [
         commonName: "Jasmine Lactone",
         cas: "25524-95-2",
         formula: "C10H16O2",
-        x: 630, y: 135,
+        x: 790, y: 135,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Enzymatic Cyclization of Hydroperoxide Fatty Acids",
@@ -2060,7 +2069,7 @@ const CHEMICAL_NODES = [
         commonName: "Linolenic Ester",
         cas: "301-00-8",
         formula: "C19H32O2",
-        x: 195, y: 155,
+        x: 355, y: 155,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Fatty Acid Methyl Esterification",
@@ -2080,7 +2089,7 @@ const CHEMICAL_NODES = [
         commonName: "Linalool",
         cas: "78-70-6",
         formula: "C10H18O",
-        x: 180, y: 310,
+        x: 340, y: 310,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Isopentenyl Diphosphate (IPP) Monoterpenoid",
@@ -2098,7 +2107,7 @@ const CHEMICAL_NODES = [
         commonName: "Geraniol",
         cas: "106-24-1",
         formula: "C10H18O",
-        x: 275, y: 320,
+        x: 435, y: 320,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Monoterpene Synthase (Geranyl Diphosphate, GPP)",
@@ -2116,7 +2125,7 @@ const CHEMICAL_NODES = [
         commonName: "Citronellol",
         cas: "106-22-9",
         formula: "C10H20O",
-        x: 360, y: 255,
+        x: 520, y: 255,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Enzymatic Reduction of Geraniol",
@@ -2134,7 +2143,7 @@ const CHEMICAL_NODES = [
         commonName: "Nerol",
         cas: "106-25-2",
         formula: "C10H18O",
-        x: 360, y: 340,
+        x: 520, y: 340,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Cis-Isomer of Geraniol",
@@ -2152,7 +2161,7 @@ const CHEMICAL_NODES = [
         commonName: "alpha-Farnesene",
         cas: "502-61-4",
         formula: "C15H24",
-        x: 365, y: 425,
+        x: 525, y: 425,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Farnesyl Pyrophosphate (FPP) Sesquiterpene",
@@ -2170,7 +2179,7 @@ const CHEMICAL_NODES = [
         commonName: "Farnesol",
         cas: "4602-84-0",
         formula: "C15H26O",
-        x: 280, y: 415,
+        x: 440, y: 415,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Sesquiterpene Alcohol (FPP precursor)",
@@ -2188,7 +2197,7 @@ const CHEMICAL_NODES = [
         commonName: "Phytol Complex",
         cas: "150-86-7",
         formula: "C20H40O",
-        x: 180, y: 415,
+        x: 340, y: 415,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Chlorophyll Hydrophobic Tail Cleavage (Diterpene)",
@@ -2206,7 +2215,7 @@ const CHEMICAL_NODES = [
         commonName: "Caryophyllene",
         cas: "87-44-5",
         formula: "C15H24",
-        x: 460, y: 235,
+        x: 620, y: 235,
         labelPos: "top",
         type: "alicyclic",
         pathway: "Bicyclic Sesquiterpene Synthase",
@@ -2224,7 +2233,7 @@ const CHEMICAL_NODES = [
         commonName: "Rose Oxide",
         cas: "16409-43-1",
         formula: "C10H18O",
-        x: 870, y: 290,
+        x: 1030, y: 290,
         labelPos: "bottom",
         type: "pyran",
         pathway: "UV Photo-Oxidative Cyclization of Citronellol",
@@ -2244,7 +2253,7 @@ const CHEMICAL_NODES = [
         commonName: "PEA",
         cas: "60-12-8",
         formula: "C8H10O",
-        x: 1150, y: 520,
+        x: 1310, y: 520,
         labelPos: "top",
         type: "aromatic",
         pathway: "Shikimate Decarboxylation of L-Phenylalanine",
@@ -2262,7 +2271,7 @@ const CHEMICAL_NODES = [
         commonName: "PEA Acetate",
         cas: "103-45-7",
         formula: "C10H12O2",
-        x: 1250, y: 520,
+        x: 1410, y: 520,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Esterification of Phenylalanine-derived PEA",
@@ -2280,7 +2289,7 @@ const CHEMICAL_NODES = [
         commonName: "Benzyl Acetate",
         cas: "140-11-4",
         formula: "C9H10O2",
-        x: 1070, y: 610,
+        x: 1230, y: 610,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Twilight Phenylpropanoid Esterification",
@@ -2298,7 +2307,7 @@ const CHEMICAL_NODES = [
         commonName: "Benzyl Benzoate",
         cas: "120-51-4",
         formula: "C14H12O2",
-        x: 1265, y: 605,
+        x: 1425, y: 605,
         labelPos: "top",
         type: "aromatic",
         pathway: "Di-Aromatic Esterification (Benzoic Acid + Benzyl Alcohol)",
@@ -2316,7 +2325,7 @@ const CHEMICAL_NODES = [
         commonName: "Eugenol",
         cas: "97-53-0",
         formula: "C10H12O2",
-        x: 1165, y: 605,
+        x: 1325, y: 605,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Phenylpropanoid Lignin / Coniferyl Chain",
@@ -2334,7 +2343,7 @@ const CHEMICAL_NODES = [
         commonName: "Methyl Isoeugenol",
         cas: "93-16-3",
         formula: "C11H14O2",
-        x: 1345, y: 610,
+        x: 1505, y: 610,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "O-Methylation of Isoeugenol",
@@ -2352,7 +2361,7 @@ const CHEMICAL_NODES = [
         commonName: "Methyl Anthranilate",
         cas: "134-20-3",
         formula: "C8H9NO2",
-        x: 1180, y: 690,
+        x: 1340, y: 690,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Tryptophan / Anthranilic Acid Degradation",
@@ -2370,7 +2379,7 @@ const CHEMICAL_NODES = [
         commonName: "Indole",
         cas: "120-72-9",
         formula: "C8H7N",
-        x: 1300, y: 690,
+        x: 1460, y: 690,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Catabolism of L-Tryptophan Amino Acid",
@@ -2390,7 +2399,7 @@ const CHEMICAL_NODES = [
         commonName: "Hydroxycitronellal (1905)",
         cas: "107-75-5",
         formula: "C10H20O2",
-        x: 240, y: 820,
+        x: 400, y: 820,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Industrial Acid Hydration of Natural Citronellal",
@@ -2408,7 +2417,7 @@ const CHEMICAL_NODES = [
         commonName: "Cyclamen Aldehyde",
         cas: "103-95-7",
         formula: "C13H18O",
-        x: 1050, y: 785,
+        x: 1210, y: 785,
         labelPos: "top",
         type: "aromatic",
         pathway: "Friedel-Crafts Alkylation of Cumene",
@@ -2426,7 +2435,7 @@ const CHEMICAL_NODES = [
         commonName: "Lilial / Lysmeral",
         cas: "80-54-6",
         formula: "C14H20O",
-        x: 1250, y: 875,
+        x: 1410, y: 875,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "tert-Butylbenzene Formylation Synthesis",
@@ -2444,7 +2453,7 @@ const CHEMICAL_NODES = [
         commonName: "Florol",
         cas: "63500-71-0",
         formula: "C10H20O2",
-        x: 870, y: 820,
+        x: 1030, y: 820,
         labelPos: "bottom",
         type: "pyran",
         pathway: "Prins Reaction of Isoprenol & Isovaleraldehyde",
@@ -2462,7 +2471,7 @@ const CHEMICAL_NODES = [
         commonName: "Mayol",
         cas: "5502-75-0",
         formula: "C11H22O",
-        x: 540, y: 785,
+        x: 700, y: 785,
         labelPos: "top",
         type: "alicyclic",
         pathway: "Catalytic Hydrogenation of Cyclohexyl Carbinols",
@@ -2480,7 +2489,7 @@ const CHEMICAL_NODES = [
         commonName: "Lyral (Banned 2021)",
         cas: "31906-04-4",
         formula: "C13H22O2",
-        x: 565, y: 875,
+        x: 725, y: 875,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Cycloaddition of Myrcenol & Acrolein",
@@ -2498,7 +2507,7 @@ const CHEMICAL_NODES = [
         commonName: "Bourgeonal",
         cas: "18127-01-0",
         formula: "C13H18O",
-        x: 1080, y: 875,
+        x: 1240, y: 875,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "tert-Butylphenyl Aldehyde Synthesis",
@@ -2516,7 +2525,7 @@ const CHEMICAL_NODES = [
         commonName: "Majantol",
         cas: "103694-68-4",
         formula: "C12H18O",
-        x: 1210, y: 785,
+        x: 1370, y: 785,
         labelPos: "top",
         type: "aromatic",
         pathway: "Substituted Phenyl Alcohol Synthesis",
@@ -2534,7 +2543,7 @@ const CHEMICAL_NODES = [
         commonName: "Dupical",
         cas: "30168-23-1",
         formula: "C14H20O",
-        x: 655, y: 820,
+        x: 815, y: 820,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Tricyclodecane Carbonylation",
@@ -2552,7 +2561,7 @@ const CHEMICAL_NODES = [
         commonName: "Coranol",
         cas: "83926-73-2",
         formula: "C11H22O",
-        x: 450, y: 820,
+        x: 610, y: 820,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Hydrogenation of Benzenoid Phenylethyl Intermediates + Tertiary Hydration",
@@ -2572,7 +2581,7 @@ const CHEMICAL_NODES = [
         commonName: "beta-Damascenone",
         cas: "23696-85-7",
         formula: "C13H18O",
-        x: 565, y: 290,
+        x: 725, y: 290,
         labelPos: "top",
         type: "alicyclic",
         pathway: "Carotenoid (Neoxanthin) Photo-Oxidative Cleavage",
@@ -2590,7 +2599,7 @@ const CHEMICAL_NODES = [
         commonName: "alpha-Damascone",
         cas: "24720-09-0",
         formula: "C13H20O",
-        x: 675, y: 295,
+        x: 835, y: 295,
         labelPos: "top",
         type: "alicyclic",
         pathway: "Carotenoid Cleavage / Cyclocitral Isomerism",
@@ -2608,7 +2617,7 @@ const CHEMICAL_NODES = [
         commonName: "alpha-Ionone",
         cas: "127-41-3",
         formula: "C13H20O",
-        x: 460, y: 325,
+        x: 620, y: 325,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Pseudoionone Acid Cyclization / Carotenoid Cleavage",
@@ -2626,7 +2635,7 @@ const CHEMICAL_NODES = [
         commonName: "beta-Ionone",
         cas: "14901-07-6",
         formula: "C13H20O",
-        x: 470, y: 420,
+        x: 630, y: 420,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "beta-Carotene Enzymatic Cleavage (CCD1)",
@@ -2644,7 +2653,7 @@ const CHEMICAL_NODES = [
         commonName: "Safranal",
         cas: "116-26-7",
         formula: "C10H14O",
-        x: 575, y: 395,
+        x: 735, y: 395,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Picrocrocin Hydrolysis / Zeaxanthin Carotenoid Cleavage",
@@ -2662,7 +2671,7 @@ const CHEMICAL_NODES = [
         commonName: "Ethyl Safranate",
         cas: "35044-59-8",
         formula: "C12H18O2",
-        x: 675, y: 400,
+        x: 835, y: 400,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Safranic Acid Esterification / Synthetic Saffron",
@@ -2680,7 +2689,7 @@ const CHEMICAL_NODES = [
         commonName: "Givescone (Givaudan)",
         cas: "57934-97-1",
         formula: "C14H22O2",
-        x: 755, y: 345,
+        x: 915, y: 345,
         labelPos: "bottom",
         type: "alicyclic",
         pathway: "Synthetic Hybridization of Damascone & Saffron Esters",
@@ -2698,7 +2707,7 @@ const CHEMICAL_NODES = [
         commonName: "Geranyl Acetate",
         cas: "105-87-3",
         formula: "C12H20O2",
-        x: 275, y: 240,
+        x: 435, y: 240,
         labelPos: "top",
         type: "acyclic",
         pathway: "Esterification of Geraniol + Acetyl-CoA",
@@ -2716,7 +2725,7 @@ const CHEMICAL_NODES = [
         commonName: "Stearoptene Waxes",
         cas: "629-78-7",
         formula: "C17H36",
-        x: 170, y: 235,
+        x: 330, y: 235,
         labelPos: "top",
         type: "acyclic",
         pathway: "Fatty Acid Decarbonylation (Plant Cuticular Paraffins)",
@@ -2736,7 +2745,7 @@ const CHEMICAL_NODES = [
         commonName: "Benzyl Alcohol",
         cas: "100-51-6",
         formula: "C7H8O",
-        x: 1050, y: 525,
+        x: 1210, y: 525,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Shikimate Reduction of Benzaldehyde",
@@ -2754,7 +2763,7 @@ const CHEMICAL_NODES = [
         commonName: "p-Cresol",
         cas: "106-44-5",
         formula: "C7H8O",
-        x: 1340, y: 525,
+        x: 1500, y: 525,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Tyrosine Amino Acid Catabolism",
@@ -2772,7 +2781,7 @@ const CHEMICAL_NODES = [
         commonName: "Methyl Jasmonate",
         cas: "39924-52-2",
         formula: "C13H20O3",
-        x: 560, y: 75,
+        x: 720, y: 75,
         labelPos: "top",
         type: "alicyclic",
         pathway: "Methylation of Jasmonic Acid Hormone",
