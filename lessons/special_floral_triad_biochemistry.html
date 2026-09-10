@@ -1854,18 +1854,30 @@
                     <line x1="720" y1="30" x2="720" y2="920" class="grid-line" />
                     <line x1="1020" y1="30" x2="1020" y2="920" class="grid-line" />
 
-                    <!-- Axes Annotations (Y-Axis: Genesis) -->
-                    <text x="30" y="105" class="axis-label" fill="#10b981">1. Lipoxygenase & Lipid Cascade</text>
-                    <text x="30" y="123" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Fatty Acid Membrane Cleavage (C6, C10, C11)</text>
+                    <!-- Axes Annotations (Y-Axis: Genesis - positioned safely in top headers) -->
+                    <g transform="translate(30, 42)">
+                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(16, 185, 129, 0.25)" stroke-width="1"/>
+                        <text x="0" y="0" class="axis-label" fill="#10b981" font-weight="bold">1. Lipoxygenase & Lipid Cascade</text>
+                        <text x="0" y="12" style="font-size: 8.5px; fill: #6ee7b7; font-family: monospace; letter-spacing: 0.5px;">Fatty Acid Membrane Cleavage (C6, C10, C11)</text>
+                    </g>
 
-                    <text x="30" y="325" class="axis-label" fill="#fbbf24">2. Terpenoid & Carotenoid MEP</text>
-                    <text x="30" y="343" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Isoprene C5 & Carotenoid C13 Cleavage</text>
+                    <g transform="translate(30, 206)">
+                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(251, 191, 36, 0.25)" stroke-width="1"/>
+                        <text x="0" y="0" class="axis-label" fill="#fbbf24" font-weight="bold">2. Terpenoid & Carotenoid MEP</text>
+                        <text x="0" y="12" style="font-size: 8.5px; fill: #fde68a; font-family: monospace; letter-spacing: 0.5px;">Isoprene C5 & Carotenoid C13 Cleavage</text>
+                    </g>
 
-                    <text x="30" y="585" class="axis-label" fill="#fda4af">3. Shikimate / Phenylpropanoid</text>
-                    <text x="30" y="603" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Phenylalanine & Tryptophan Catabolism</text>
+                    <g transform="translate(30, 500)">
+                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(244, 63, 94, 0.25)" stroke-width="1"/>
+                        <text x="0" y="0" class="axis-label" fill="#fda4af" font-weight="bold">3. Shikimate / Phenylpropanoid</text>
+                        <text x="0" y="12" style="font-size: 8.5px; fill: #fca5a5; font-family: monospace; letter-spacing: 0.5px;">Phenylalanine & Tryptophan Catabolism</text>
+                    </g>
 
-                    <text x="30" y="810" class="axis-label" fill="#38bdf8">4. Organic Chemical Synthesis</text>
-                    <text x="30" y="828" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Catalytic Hydration & Substituted Pyrans</text>
+                    <g transform="translate(30, 755)">
+                        <rect x="-8" y="-14" width="280" height="28" rx="4" fill="rgba(6, 6, 12, 0.75)" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1"/>
+                        <text x="0" y="0" class="axis-label" fill="#38bdf8" font-weight="bold">4. Organic Chemical Synthesis</text>
+                        <text x="0" y="12" style="font-size: 8.5px; fill: #7dd3fc; font-family: monospace; letter-spacing: 0.5px;">Catalytic Hydration & Substituted Pyrans</text>
+                    </g>
 
                     <!-- Axes Annotations (X-Axis: Structural Ring Geometry) -->
                     <text x="210" y="940" class="axis-label" text-anchor="middle" fill="#cbd5e1">Acyclic Linear & Branched</text>
@@ -1932,8 +1944,8 @@ const CHEMICAL_NODES = [
         commonName: "Leaf Alcohol",
         cas: "928-96-1",
         formula: "C6H12O",
-        x: 180, y: 70,
-        labelPos: "bottom",
+        x: 195, y: 80,
+        labelPos: "top",
         type: "acyclic",
         pathway: "Lipoxygenase (LOX) Cleavage of alpha-Linolenic Acid",
         structure: "CH3-CH2-CH=CH-CH2-CH2OH (Acyclic (Z)-alkenol)",
@@ -1950,7 +1962,7 @@ const CHEMICAL_NODES = [
         commonName: "Leaf Acetate",
         cas: "3681-71-8",
         formula: "C8H14O2",
-        x: 290, y: 80,
+        x: 320, y: 110,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Esterification of LOX Leaf Alcohol",
@@ -2022,7 +2034,7 @@ const CHEMICAL_NODES = [
         commonName: "Linolenic Ester",
         cas: "301-00-8",
         formula: "C19H32O2",
-        x: 180, y: 145,
+        x: 195, y: 155,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Fatty Acid Methyl Esterification",
@@ -2042,7 +2054,7 @@ const CHEMICAL_NODES = [
         commonName: "Linalool",
         cas: "78-70-6",
         formula: "C10H18O",
-        x: 160, y: 310,
+        x: 180, y: 310,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Isopentenyl Diphosphate (IPP) Monoterpenoid",
@@ -2060,7 +2072,7 @@ const CHEMICAL_NODES = [
         commonName: "Geraniol",
         cas: "106-24-1",
         formula: "C10H18O",
-        x: 255, y: 320,
+        x: 275, y: 320,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Monoterpene Synthase (Geranyl Diphosphate, GPP)",
@@ -2078,7 +2090,7 @@ const CHEMICAL_NODES = [
         commonName: "Citronellol",
         cas: "106-22-9",
         formula: "C10H20O",
-        x: 345, y: 255,
+        x: 360, y: 255,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Enzymatic Reduction of Geraniol",
@@ -2096,7 +2108,7 @@ const CHEMICAL_NODES = [
         commonName: "Nerol",
         cas: "106-25-2",
         formula: "C10H18O",
-        x: 345, y: 340,
+        x: 360, y: 340,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Cis-Isomer of Geraniol",
@@ -2114,7 +2126,7 @@ const CHEMICAL_NODES = [
         commonName: "alpha-Farnesene",
         cas: "502-61-4",
         formula: "C15H24",
-        x: 355, y: 425,
+        x: 365, y: 425,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Farnesyl Pyrophosphate (FPP) Sesquiterpene",
@@ -2132,7 +2144,7 @@ const CHEMICAL_NODES = [
         commonName: "Farnesol",
         cas: "4602-84-0",
         formula: "C15H26O",
-        x: 265, y: 415,
+        x: 280, y: 415,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Sesquiterpene Alcohol (FPP precursor)",
@@ -2150,7 +2162,7 @@ const CHEMICAL_NODES = [
         commonName: "Phytol Complex",
         cas: "150-86-7",
         formula: "C20H40O",
-        x: 150, y: 415,
+        x: 180, y: 415,
         labelPos: "bottom",
         type: "acyclic",
         pathway: "Chlorophyll Hydrophobic Tail Cleavage (Diterpene)",
@@ -2660,7 +2672,7 @@ const CHEMICAL_NODES = [
         commonName: "Geranyl Acetate",
         cas: "105-87-3",
         formula: "C12H20O2",
-        x: 250, y: 235,
+        x: 275, y: 240,
         labelPos: "top",
         type: "acyclic",
         pathway: "Esterification of Geraniol + Acetyl-CoA",
@@ -2678,8 +2690,8 @@ const CHEMICAL_NODES = [
         commonName: "Stearoptene Waxes",
         cas: "629-78-7",
         formula: "C17H36",
-        x: 130, y: 220,
-        labelPos: "bottom",
+        x: 170, y: 235,
+        labelPos: "top",
         type: "acyclic",
         pathway: "Fatty Acid Decarbonylation (Plant Cuticular Paraffins)",
         structure: "Linear saturated alkane chains (C15 - C19)",
