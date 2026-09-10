@@ -1775,6 +1775,34 @@
                             <td>3.84% hallmark narcotic moth beacon; gives living flesh and nocturnal heat.</td>
                             <td>Essential trace (0.05–0.1%) in authentic lily bases; injects living petal reality.</td>
                         </tr>
+                        <tr>
+                            <td><strong style="color: #fde68a;">Benzyl Salicylate</strong></td>
+                            <td><span class="role-pill" style="border-color: #fde68a; color: #fde68a;">Jasmine • Muguet • Solar</span></td>
+                            <td>Acts as a heavy fixative blender to anchor delicate rose absolute petals.</td>
+                            <td>The golden solar cushion; softens indolic sharpness into creamy sunlit sillage.</td>
+                            <td>Historic cosmetic blender; adds translucent white-petal weight and diffusion.</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #fbbf24;">Farnesyl Acetate</strong></td>
+                            <td><span class="role-pill" style="border-color: #fbbf24; color: #fde68a;">Sambac • Rose • Muguet</span></td>
+                            <td>Natural trace ester; confers delicate green-pear petal waxiness to the drydown.</td>
+                            <td>0.50% in Sambac; anchors volatile esters into velvety, warm botanical skin.</td>
+                            <td>Smooths sharp synthetic aldehydes (Bourgeonal/Dupical) into natural petal velvet.</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #fda4af;">Eugenyl Acetate</strong></td>
+                            <td><span class="role-pill" style="border-color: #fda4af; color: #fda4af;">Rose • Jasmine</span></td>
+                            <td>0.2–0.5% in Damask Otto; rounds raw clove bite into rich carnation sweetness.</td>
+                            <td>Balsamic spice modifier enhancing the exotic, sensual facets of Jasmine absolute.</td>
+                            <td>Trace modifier in spicy woodland lily bases (Liriodendron nuances).</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #94a3b8;">alpha-Guaiene</strong></td>
+                            <td><span class="role-pill" style="border-color: #94a3b8; color: #cbd5e1;">Rose Otto (Peak 32)</span></td>
+                            <td>0.50% in Otto; earthy balsamic woody-spicy base grounding floral dew in stems.</td>
+                            <td>Trace sesquiterpene constituent imparting authentic whole-bush realism.</td>
+                            <td>Forest floor anchor preventing pure synthetic lily accords from smelling watery.</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -2379,7 +2407,7 @@ const CHEMICAL_NODES = [
         commonName: "Indole",
         cas: "120-72-9",
         formula: "C8H7N",
-        x: 1460, y: 690,
+        x: 1435, y: 690,
         labelPos: "bottom",
         type: "aromatic",
         pathway: "Catabolism of L-Tryptophan Amino Acid",
@@ -2792,10 +2820,92 @@ const CHEMICAL_NODES = [
         gcmsText: "0.77% in Grandiflorum (Z + E isomers)",
         tgscUrl: "https://www.thegoodscentscompany.com/data/rw1459361.html",
         desc: "The botanical discovery in 1962 that inspired Firmenich to synthesize Hedione (Methyldihydrojasmonate)."
+    },
+    // NEW SECONDARY METABOLITES EXPANSION
+    {
+        id: "eugenyl_acetate",
+        name: "Eugenyl Acetate (4-Allyl-2-methoxyphenyl acetate)",
+        commonName: "Eugenyl Acetate",
+        cas: "93-28-7",
+        formula: "C12H14O3",
+        x: 1540, y: 690,
+        labelPos: "bottom",
+        type: "aromatic",
+        pathway: "Acetylation of Eugenol via Phenylpropanoid Cascade",
+        structure: "Methoxyphenyl acetate with allyl chain (Aromatic Ester)",
+        role: "Warm, sweet, balsamic-clove spicy rose bloom & fixative warmth",
+        sources: ["rose", "grandiflorum"],
+        color: "#fda4af",
+        gcmsText: "0.20% - 0.50% in Damask Rose Otto & Jasmine Absolute",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1005021.html",
+        desc: "The esterified sister of Eugenol: rounds off the sharp medicinal bite of raw clove into velvety sweet carnation-rose petal warmth."
+    },
+    {
+        id: "alpha_guaiene",
+        name: "alpha-Guaiene",
+        commonName: "alpha-Guaiene",
+        cas: "3691-12-1",
+        formula: "C15H24",
+        x: 890, y: 245,
+        labelPos: "top",
+        type: "alicyclic",
+        pathway: "Guaiene Synthase (FPP Sesquiterpenoid)",
+        structure: "Bicyclic sesquiterpene hydrocarbon (5-7 fused bicyclic ring)",
+        role: "Deep earthy, balsamic woody-spicy base notes in rose sepals",
+        sources: ["rose"],
+        color: "#94a3b8",
+        gcmsText: "0.50% in Bulgarian Rose Otto (Peak 32)",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1054351.html",
+        desc: "The earthy, woody bicyclic terpene grounding ethereal petal dew in physical wood, stems, and thorny calyx architecture."
+    },
+    {
+        id: "benzyl_salicylate",
+        name: "Benzyl Salicylate",
+        commonName: "Benzyl Salicylate",
+        cas: "118-58-1",
+        formula: "C14H12O3",
+        x: 1230, y: 690,
+        labelPos: "bottom",
+        type: "aromatic",
+        pathway: "Shikimate Salicylic Acid + Benzyl Alcohol Esterification",
+        structure: "Benzyl 2-hydroxybenzoate (Dual benzene rings connected by ester)",
+        role: "The ultimate white-floral cosmetic blender & radiant solar cushion",
+        sources: ["grandiflorum", "sambac", "muguet"],
+        color: "#fde68a",
+        gcmsText: "Essential solar blender across Jasmine, Ylang & Muguet bases",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1001712.html",
+        desc: "The legendary floral cushion of fine perfumery: delivers silky sunlit solar diffusion, smoothing indole and methyl anthranilate into cohesive golden sillage."
+    },
+    {
+        id: "farnesyl_acetate",
+        name: "(2E,6E)-Farnesyl Acetate",
+        commonName: "Farnesyl Acetate",
+        cas: "29548-30-9",
+        formula: "C17H28O2",
+        x: 265, y: 360,
+        labelPos: "bottom",
+        type: "acyclic",
+        pathway: "Esterification of C15 Farnesol Alcohol",
+        structure: "3,7,11-trimethyldodeca-2,6,10-trien-1-yl acetate (Sesquiterpene Ester)",
+        role: "Sweet velvety woody-green floral undertone & fixative cushion",
+        sources: ["sambac", "rose", "muguet"],
+        color: "#fbbf24",
+        gcmsText: "0.50% in Jasmine Sambac (Peak 20) • Natural trace in Rose Otto",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1290091.html",
+        desc: "The esterified form of farnesol: imparts a luxurious, delicate pear-green petal softness, anchoring volatile floral notes into deep skin warmth."
     }
 ];
 
 const LINEAGE_LINKS = [
+    // Secondary Metabolite Bridges (Eugenyl Acetate, Guaiene, Benzyl Salicylate, Farnesyl Acetate)
+    { from: "eugenol", to: "eugenyl_acetate", color: "#fda4af", label: "Acetylation" },
+    { from: "eugenyl_acetate", to: "methyl_isoeugenol", color: "#fda4af", label: "Spicy Rose Complex", dashed: true },
+    { from: "caryophyllene", to: "alpha_guaiene", color: "#94a3b8", label: "Sesquiterpene Isomerism", dashed: true },
+    { from: "alpha_guaiene", to: "rose_oxide", color: "#94a3b8", label: "Calyx & Sepal Matrix", dashed: true },
+    { from: "benzyl_alcohol", to: "benzyl_salicylate", color: "#fde68a", label: "Salicylate Esterification" },
+    { from: "benzyl_salicylate", to: "benzyl_benzoate", color: "#cbd5e1", label: "Di-Aromatic Fixation", dashed: true },
+    { from: "farnesol", to: "farnesyl_acetate", color: "#fbbf24", label: "Esterification" },
+    { from: "farnesyl_acetate", to: "linalool", color: "#fbbf24", label: "Petal Wax Softener", dashed: true },
     // 1. LOX Green Cleavages & Universal Umbilical Axis
     { from: "c3hexenol", to: "c3hexenyl_acetate", color: "#10b981", label: "Esterification" },
     { from: "c3hexenol", to: "c3hexenyl_benzoate", color: "#10b981", label: "Shikimate Cross-Bridge" },
