@@ -2803,6 +2803,7 @@ const LINEAGE_LINKS = [
     { from: "cis_jasmone", to: "methyl_jasmonate", color: "#10b981", label: "Enzymatic Methylation" },
     { from: "cis_jasmone", to: "jasmine_lactone", color: "#10b981", label: "Fatty Acid Cyclization" },
     { from: "methyl_linolenate", to: "c3hexenol", color: "#10b981", label: "Membrane Cleavage" },
+    { from: "c3hexenyl_benzoate", to: "benzyl_benzoate", color: "#10b981", label: "Benzoate Ester Homology", dashed: true },
 
     // 2. Terpenoid Isomers, Conversions & Rose-Jasmine-Muguet Shared Bridges
     { from: "geraniol", to: "geranyl_acetate", color: "#fbbf24", label: "Esterification" },
@@ -2811,7 +2812,11 @@ const LINEAGE_LINKS = [
     { from: "geraniol", to: "nerol", color: "#fbbf24", label: "Cis/Trans Isomerism" },
     { from: "citronellol", to: "rose_oxide", color: "#6ee7b7", label: "UV Photo-Oxidation" },
     { from: "farnesene", to: "farnesol", color: "#fbbf24", label: "Hydroxylation (Rose ↔ Jasmine ↔ Muguet)" },
-    { from: "stearoptenes", to: "geraniol", color: "#94a3b8", label: "Cuticle Matrix" },
+    { from: "geraniol", to: "farnesol", color: "#fbbf24", label: "C10 → C15 Chain Extension", dashed: true },
+    { from: "farnesol", to: "phytol", color: "#fbbf24", label: "C15 → C20 Diterpene Cascade", dashed: true },
+    { from: "stearoptenes", to: "geraniol", color: "#94a3b8", label: "Cuticle Wax Matrix" },
+    { from: "caryophyllene", to: "farnesene", color: "#fbbf24", label: "Sesquiterpene Synthase", dashed: true },
+    { from: "caryophyllene", to: "damascenone", color: "#fda4af", label: "Woody Sepal to Jammy Petal", dashed: true },
 
     // 3. Cross-Family Inter-Note Functional Bridges (Rose ↔ Jasmine ↔ Muguet)
     { from: "linalool", to: "hydroxycitronellal", color: "#38bdf8", label: "Terpene Muguet Spine", dashed: true },
@@ -2820,6 +2825,8 @@ const LINEAGE_LINKS = [
     { from: "pea", to: "benzyl_acetate", color: "#fde68a", label: "Floral Dew ↔ Solar Flare", dashed: true },
     { from: "c3hexenyl_acetate", to: "hydroxycitronellal", color: "#10b981", label: "Green Sap into Bell Accord", dashed: true },
     { from: "indole", to: "hydroxycitronellal", color: "#a855f7", label: "White Flower Resonance", dashed: true },
+    { from: "farnesol", to: "hydroxycitronellal", color: "#38bdf8", label: "Fixative Softening", dashed: true },
+    { from: "coranol", to: "hydroxycitronellal", color: "#38bdf8", label: "Modern Aerial Hydration", dashed: true },
 
     // 4. Carotenoid Cleavage Axis: Rose Ketones, Ionones & Saffron
     { from: "damascenone", to: "alpha_damascone", color: "#fda4af", label: "Rose Ketone Isomerism" },
@@ -2828,6 +2835,7 @@ const LINEAGE_LINKS = [
     { from: "damascenone", to: "safranal", color: "#f59e0b", label: "CCD Cleavage Kinship" },
     { from: "safranal", to: "ethyl_safranate", color: "#f59e0b", label: "Synthetic Esterification" },
     { from: "alpha_damascone", to: "givescone", color: "#f59e0b", label: "Hybrid Rose-Saffron" },
+    { from: "safranal", to: "givescone", color: "#f59e0b", label: "Saffron Resonance", dashed: true },
 
     // 5. Shikimate Benzenoid Lines & Fixative Matrices
     { from: "benzyl_alcohol", to: "benzyl_acetate", color: "#fde68a", label: "Acetylation" },
@@ -2836,8 +2844,11 @@ const LINEAGE_LINKS = [
     { from: "eugenol", to: "methyl_isoeugenol", color: "#fda4af", label: "O-Methylation (Rose Antique Spice)" },
     { from: "p_cresol", to: "indole", color: "#fde68a", label: "Animalic Axis" },
     { from: "benzyl_benzoate", to: "eugenol", color: "#cbd5e1", label: "Grand Floral Fixative Anchor", dashed: true },
+    { from: "methyl_anthranilate", to: "indole", color: "#a855f7", label: "Tryptophan Precursor", dashed: true },
+    { from: "methyl_anthranilate", to: "benzyl_acetate", color: "#fde68a", label: "Sambac Kinetic Sparkle", dashed: true },
+    { from: "p_cresol", to: "benzyl_benzoate", color: "#cbd5e1", label: "Solvent Extraction Cushion", dashed: true },
 
-    // 6. Modern Organic Synthetic Lineages
+    // 6. Modern Organic Synthetic Lineages (Muguet 4 Generations)
     { from: "citronellol", to: "hydroxycitronellal", color: "#38bdf8", label: "+H2O Hydration (1905)", dashed: true },
     { from: "rose_oxide", to: "florol", color: "#38bdf8", label: "Pyran Ring Homology", dashed: true },
     { from: "pea", to: "cyclamen_ald", color: "#38bdf8", label: "Benzenoid Aldehyde", dashed: true },
@@ -2846,7 +2857,10 @@ const LINEAGE_LINKS = [
     { from: "cyclamen_ald", to: "lilial", color: "#ef4444", label: "tert-Butyl Extension", dashed: true },
     { from: "mayol", to: "lyral", color: "#ef4444", label: "Cyclohexenyl Bridge", dashed: true },
     { from: "mayol", to: "dupical", color: "#38bdf8", label: "Cage Cyclization", dashed: true },
-    { from: "linalool", to: "coranol", color: "#38bdf8", label: "Alicyclic Terpenol", dashed: true }
+    { from: "linalool", to: "coranol", color: "#38bdf8", label: "Alicyclic Terpenol", dashed: true },
+    { from: "florol", to: "mayol", color: "#38bdf8", label: "Modern Safe Hydrators", dashed: true },
+    { from: "bourgeonal", to: "lilial", color: "#38bdf8", label: "Alkyl-Benzene Substantivity", dashed: true },
+    { from: "dupical", to: "bourgeonal", color: "#38bdf8", label: "Aldehyde Radiance Synergy", dashed: true }
 ];
 
 let showLinks = true;
