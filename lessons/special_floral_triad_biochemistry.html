@@ -408,6 +408,171 @@
         .role-narcotic { background: rgba(251, 191, 36, 0.15); color: #fde68a; border: 1px solid rgba(251, 191, 36, 0.35); }
         .role-aeration { background: rgba(52, 211, 153, 0.15); color: #a7f3d0; border: 1px solid rgba(52, 211, 153, 0.35); }
         .role-umbilical { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35); }
+
+        /* Biomolecular Map Styles */
+        .map-container {
+            background: radial-gradient(circle at 50% 50%, rgba(20, 20, 30, 0.7) 0%, rgba(9, 9, 13, 0.95) 100%);
+            border: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-btn:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .filter-btn.active {
+            background: rgba(212, 175, 55, 0.18);
+            border-color: var(--gold);
+            color: var(--gold-bright);
+            font-weight: 700;
+        }
+
+        .map-canvas-wrap {
+            width: 100%;
+            height: 720px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            background: rgba(6, 6, 10, 0.85);
+            overflow: hidden;
+        }
+
+        .map-canvas-wrap svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* SVG interactive elements */
+        .grid-line {
+            stroke: rgba(255, 255, 255, 0.04);
+            stroke-dasharray: 4 4;
+        }
+        .axis-line {
+            stroke: rgba(212, 175, 55, 0.25);
+            stroke-width: 1.5;
+        }
+        .axis-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            fill: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .lineage-link {
+            fill: none;
+            stroke-width: 1.5;
+            opacity: 0.35;
+            transition: opacity 0.3s, stroke-width 0.3s;
+        }
+        .lineage-link:hover {
+            opacity: 0.9;
+            stroke-width: 2.5;
+        }
+
+        .chem-node {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .chem-node:hover {
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
+        }
+
+        .node-symbol {
+            transition: all 0.25s ease;
+        }
+
+        /* Detail Modal / Drawer */
+        .chem-drawer {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 440px;
+            max-width: calc(100vw - 48px);
+            background: rgba(15, 15, 22, 0.96);
+            border: 1px solid var(--gold);
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            display: none;
+            animation: slideUp 0.25s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chem-drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .chem-drawer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .chem-drawer-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .chem-drawer-close:hover { color: #ffffff; }
+
+        .drawer-badge-row {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
     </style>
 </head>
 <body>
@@ -1365,7 +1530,860 @@
             </tbody>
         </table>
     </div>
+
+    <!-- MODULE 7: THE 2D BIOMOLECULAR & BIOSYNTHETIC HOMOLOGY MAP -->
+    <div class="section-card" id="biomolecular-map-section" style="border: 1px solid var(--border-highlight); box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-atom" style="color: var(--gold);"></i> Interactive Biomolecular Map: Molecular Structure $\times$ Biochemical Genesis
+            </div>
+            <span class="tagline">Interactive 2D Topology • Metabolic Cascades • Real GCMS Calibrations</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 16px; font-size: 0.94rem; line-height: 1.6;">
+            Every aroma chemical in this masterclass is plotted in a 2D coordinates landscape. 
+            The <strong>Vertical Axis (Y)</strong> represents <em>Biochemical Genesis</em> (from primary plant membrane cleavage down to laboratory organic synthesis). 
+            The <strong>Horizontal Axis (X)</strong> represents <em>Molecular Ring & Skeletal Architecture</em> (from flexible acyclic chains to alicyclics, tetrahydropyran oxygen rings, and benzenoid aromatics).
+        </p>
+
+        <div class="map-container">
+            <!-- Toolbar -->
+            <div class="map-toolbar">
+                <div>
+                    <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-right: 12px;">Highlight Species:</span>
+                    <div class="filter-group" style="display: inline-flex;">
+                        <button class="filter-btn active" onclick="filterMap('all')"><i class="fas fa-border-all"></i> All Chemicals</button>
+                        <button class="filter-btn" onclick="filterMap('rose')"><i class="fas fa-spa" style="color: var(--rose-accent);"></i> Bulgarian Rose Otto</button>
+                        <button class="filter-btn" onclick="filterMap('grandiflorum')"><i class="fas fa-moon" style="color: var(--jasmine-accent);"></i> Jasminum Grandiflorum</button>
+                        <button class="filter-btn" onclick="filterMap('sambac')"><i class="fas fa-sun" style="color: #38bdf8;"></i> Jasmine Sambac</button>
+                        <button class="filter-btn" onclick="filterMap('muguet')"><i class="fas fa-wind" style="color: var(--muguet-accent);"></i> Muguet Synthetics</button>
+                    </div>
+                </div>
+
+                <div>
+                    <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); margin-right: 8px;">Lineage Links:</span>
+                    <button class="filter-btn" id="toggle-links-btn" onclick="toggleLinks()"><i class="fas fa-project-diagram"></i> Biosynthetic Paths: ON</button>
+                </div>
+            </div>
+
+            <!-- SVG Map Canvas -->
+            <div class="map-canvas-wrap" id="canvas-wrapper">
+                <svg id="biomap-svg" viewBox="0 0 1400 780" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <!-- Glow Filters -->
+                        <filter id="glow-rose" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                        <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                        <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                        <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                        <filter id="glow-violet" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+
+                        <!-- Gradients -->
+                        <linearGradient id="link-grad-green" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#10b981" stop-opacity="0.1"/>
+                        </linearGradient>
+                        <linearGradient id="link-grad-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.1"/>
+                        </linearGradient>
+                        <linearGradient id="link-grad-rose" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.1"/>
+                        </linearGradient>
+                        <linearGradient id="link-grad-synth" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.15"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Background Grid & Quadrant Regions -->
+                    <rect x="0" y="0" width="1400" height="780" fill="#07070b"/>
+                    
+                    <!-- Region bands -->
+                    <rect x="0" y="20" width="1400" height="150" fill="rgba(16, 185, 129, 0.03)"/>
+                    <rect x="0" y="170" width="1400" height="230" fill="rgba(251, 191, 36, 0.03)"/>
+                    <rect x="0" y="400" width="1400" height="200" fill="rgba(244, 63, 94, 0.03)"/>
+                    <rect x="0" y="600" width="1400" height="160" fill="rgba(56, 189, 248, 0.04)"/>
+
+                    <!-- Grid lines -->
+                    <line x1="100" y1="170" x2="1350" y2="170" class="grid-line" />
+                    <line x1="100" y1="400" x2="1350" y2="400" class="grid-line" />
+                    <line x1="100" y1="600" x2="1350" y2="600" class="grid-line" />
+
+                    <line x1="390" y1="40" x2="390" y2="740" class="grid-line" />
+                    <line x1="680" y1="40" x2="680" y2="740" class="grid-line" />
+                    <line x1="990" y1="40" x2="990" y2="740" class="grid-line" />
+
+                    <!-- Axes Annotations (Y-Axis: Genesis) -->
+                    <text x="30" y="100" class="axis-label" fill="#10b981">1. Lipoxygenase & Lipid Cascade</text>
+                    <text x="30" y="118" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Fatty Acid Membrane Cleavage (C6, C10, C11)</text>
+
+                    <text x="30" y="270" class="axis-label" fill="#fbbf24">2. Terpenoid MEP Pathway</text>
+                    <text x="30" y="288" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Isoprene C5 Condensation (C10, C15, C20)</text>
+
+                    <text x="30" y="490" class="axis-label" fill="#fda4af">3. Shikimate / Phenylpropanoid</text>
+                    <text x="30" y="508" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Phenylalanine & Tryptophan Catabolism</text>
+
+                    <text x="30" y="675" class="axis-label" fill="#38bdf8">4. Organic Chemical Synthesis</text>
+                    <text x="30" y="693" style="font-size: 9px; fill: #6b7280; font-family: monospace;">Catalytic Hydration & Substituted Pyrans</text>
+
+                    <!-- Axes Annotations (X-Axis: Structural Ring Geometry) -->
+                    <text x="210" y="768" class="axis-label" text-anchor="middle" fill="#cbd5e1">Acyclic Linear & Branched</text>
+                    <text x="535" y="768" class="axis-label" text-anchor="middle" fill="#cbd5e1">Alicyclic & Lactone Rings</text>
+                    <text x="835" y="768" class="axis-label" text-anchor="middle" fill="#38bdf8">Tetrahydropyrans (Ether Ring)</text>
+                    <text x="1170" y="768" class="axis-label" text-anchor="middle" fill="#fda4af">Aromatic Benzenoid & Indole</text>
+
+                    <!-- Biosynthetic Lineage Connecting Paths -->
+                    <g id="lineage-links-group"></g>
+
+                    <!-- Dynamic Aroma Chemical Nodes -->
+                    <g id="chem-nodes-group"></g>
+                </svg>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);">
+                <span><i class="fas fa-mouse-pointer" style="color: var(--gold);"></i> Click any node to view molecular topology, structural skeleton, and GCMS calibrations</span>
+                <span>Hexagon = Benzenoid • Circle = Acyclic • Square = Pyrans • Diamond = Jasmonate/Lactones</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chemical Details Slide-out Drawer -->
+    <div class="chem-drawer" id="chem-drawer">
+        <div class="chem-drawer-header">
+            <div>
+                <div class="chem-drawer-title" id="drawer-name">Citronellol</div>
+                <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--gold);" id="drawer-cas">CAS 106-22-9 • C10H20O</div>
+            </div>
+            <button class="chem-drawer-close" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="drawer-badge-row" id="drawer-badges"></div>
+
+        <div style="background: rgba(0,0,0,0.4); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+            <div style="font-size: 0.78rem; font-family: var(--font-mono); color: var(--text-muted); text-transform: uppercase;">Molecular Architecture & Skeleton</div>
+            <div style="font-family: var(--font-mono); font-size: 0.88rem; color: #38bdf8; margin-top: 4px;" id="drawer-structure">Acyclic monoterpenoid alcohol</div>
+        </div>
+
+        <div style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin-bottom: 12px;" id="drawer-desc">
+            The clean, fresh, rosy core flesh of living petals.
+        </div>
+
+        <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.84rem;">
+            <strong style="color: var(--gold);"><i class="fas fa-flask"></i> Biochemical Genesis:</strong>
+            <div id="drawer-genesis" style="color: #e2e8f0; margin-top: 4px;">Derived from condensation of IPP + DMAPP isoprenoid units.</div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 12px;">
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);" id="drawer-gcms">GCMS: 38.22% in Rose</span>
+            <a href="#" target="_blank" id="drawer-tgsc-link" class="filter-btn" style="border-color: var(--gold); color: var(--gold-bright);">
+                <i class="fas fa-external-link-alt"></i> View on TGSC
+            </a>
+        </div>
+    </div>
 </div>
 
+<!-- Biomolecular Dataset & Interactive Engine Script -->
+<script>
+const CHEMICAL_NODES = [
+    // 1. LIPOXYGENASE & LIPID CASCADE (Y: 50 - 150)
+    {
+        id: "c3hexenol",
+        name: "cis-3-Hexen-1-ol",
+        commonName: "Leaf Alcohol",
+        cas: "928-96-1",
+        formula: "C6H12O",
+        x: 180, y: 75,
+        type: "acyclic",
+        pathway: "Lipoxygenase (LOX) Cleavage of alpha-Linolenic Acid",
+        structure: "CH3-CH2-CH=CH-CH2-CH2OH (Acyclic (Z)-alkenol)",
+        role: "Universal Green Umbilical Cord; snapped sepal & leaf sap",
+        sources: ["rose", "grandiflorum", "sambac", "muguet"],
+        color: "#10b981",
+        gcmsText: "0.01% in Rose • 0.07% in Grandiflorum • Headspace marker in Muguet",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1005931.html",
+        desc: "Synthesized within 3 seconds of leaf/sepal bruising by plant lipoxygenase. Oxygenates dense florals with fresh morning garden air."
+    },
+    {
+        id: "c3hexenyl_acetate",
+        name: "cis-3-Hexen-1-yl Acetate",
+        commonName: "Leaf Acetate",
+        cas: "3681-71-8",
+        formula: "C8H14O2",
+        x: 290, y: 80,
+        type: "acyclic",
+        pathway: "Esterification of LOX Leaf Alcohol",
+        structure: "CH3-CH2-CH=CH-CH2-CH2-O-COCH3 (Acyclic ester)",
+        role: "Crisp green apple & green banana leaf sparkle",
+        sources: ["sambac"],
+        color: "#10b981",
+        gcmsText: "0.14% in Jasmine Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1001471.html",
+        desc: "Volatile green ester providing opening diffusion and sparkling freshness across floral top notes."
+    },
+    {
+        id: "c3hexenyl_benzoate",
+        name: "cis-3-Hexen-1-yl Benzoate",
+        commonName: "Green Benzoate",
+        cas: "25152-85-6",
+        formula: "C13H16O2",
+        x: 1040, y: 95,
+        type: "aromatic",
+        pathway: "Hybrid: LOX Leaf Alcohol + Shikimate Benzoate",
+        structure: "C6H5-COO-CH2-CH2-CH=CH-CH2-CH3 (Aromatic Benzenoid Ester)",
+        role: "Green vegetative balsamic tenacity bridge",
+        sources: ["grandiflorum", "sambac"],
+        color: "#10b981",
+        gcmsText: "1.31% in Grandiflorum • 2.50% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1001382.html",
+        desc: "Biochemical master-bridge directly linking the green LOX aliphatic chain to the aromatic benzene ring core."
+    },
+    {
+        id: "cis_jasmone",
+        name: "(Z)-Jasmone",
+        commonName: "cis-Jasmone",
+        cas: "488-10-8",
+        formula: "C11H16O",
+        x: 480, y: 110,
+        type: "alicyclic",
+        pathway: "Jasmonic Acid Plant Defense Hormone Cascade",
+        structure: "Cyclopentenone ring with 2-methyl & (Z)-pent-2-enyl chains",
+        role: "Warm bruised vegetative celery velvet; links flowers to stem tissue",
+        sources: ["grandiflorum", "sambac"],
+        color: "#10b981",
+        gcmsText: "2.23% in Grandiflorum • 0.45% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1016891.html",
+        desc: "Universal wound-healing signal emitted when petals or foliage are grazed by insects; gives authentic botanical warmth."
+    },
+    {
+        id: "jasmine_lactone",
+        name: "(R)-(Z)-7-Decen-5-olide",
+        commonName: "Jasmine Lactone",
+        cas: "25524-95-2",
+        formula: "C10H16O2",
+        x: 580, y: 125,
+        type: "alicyclic",
+        pathway: "Enzymatic Cyclization of Hydroperoxide Fatty Acids",
+        structure: "Delta-lactone 6-membered heterocyclic ester ring with unsaturated tail",
+        role: "Milky peach skin, white petal creaminess, velvety soft texture",
+        sources: ["grandiflorum"],
+        color: "#10b981",
+        gcmsText: "1.31% in Grandiflorum",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/ab1591071.html",
+        desc: "The buttery, lactonic secret of Egyptian Jasmine absolute, buffering indolic bite into silky petal flesh."
+    },
+    {
+        id: "methyl_linolenate",
+        name: "Methyl Linolenate",
+        commonName: "Linolenic Ester",
+        cas: "301-00-8",
+        formula: "C19H32O2",
+        x: 230, y: 135,
+        type: "acyclic",
+        pathway: "Fatty Acid Methyl Esterification",
+        structure: "Polyunsaturated C18:3 ester chain",
+        role: "Lipid precursor reservoir and subtle waxy anchor",
+        sources: ["grandiflorum", "sambac"],
+        color: "#10b981",
+        gcmsText: "4.09% in Grandiflorum • 4.30% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1477771.html",
+        desc: "The massive lipid backbone in Jasmine solvent extracts, confirming the central importance of fatty acid cascades."
+    },
+
+    // 2. TERPENOID MEP / ISOPRENE PATHWAY (Y: 200 - 380)
+    {
+        id: "linalool",
+        name: "Linalool",
+        commonName: "Linalool",
+        cas: "78-70-6",
+        formula: "C10H18O",
+        x: 160, y: 240,
+        type: "acyclic",
+        pathway: "Isopentenyl Diphosphate (IPP) Monoterpenoid",
+        structure: "3,7-dimethylocta-1,6-dien-3-ol (Chiral acyclic tertiary alcohol)",
+        role: "Expansive floral aeration, sweet dewy citrus-wood lift",
+        sources: ["rose", "grandiflorum", "sambac", "muguet"],
+        color: "#fbbf24",
+        gcmsText: "3.14% in Rose • 4.65% in Grandiflorum • 7.40% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1007872.html",
+        desc: "The universal floral bridge. Present in virtually every living blossom; structural isomer to geraniol via allylic rearrangement."
+    },
+    {
+        id: "geraniol",
+        name: "Geraniol",
+        commonName: "Geraniol",
+        cas: "106-24-1",
+        formula: "C10H18O",
+        x: 240, y: 255,
+        type: "acyclic",
+        pathway: "Monoterpene Synthase (Geranyl Diphosphate, GPP)",
+        structure: "(2E)-3,7-dimethylocta-2,6-dien-1-ol (Trans allylic primary alcohol)",
+        role: "Sweet, waxy petal cuticle, long-tenacity core rose substance",
+        sources: ["rose", "sambac", "muguet"],
+        color: "#fbbf24",
+        gcmsText: "14.41% in Rose Otto • 0.08% in Sambac • Key spine in Muguet",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1006992.html",
+        desc: "Protective waxy cuticle secreted in glandular petal trichomes to seal hydration under midday sun."
+    },
+    {
+        id: "citronellol",
+        name: "Citronellol",
+        commonName: "Citronellol",
+        cas: "106-22-9",
+        formula: "C10H20O",
+        x: 320, y: 270,
+        type: "acyclic",
+        pathway: "Enzymatic Reduction of Geraniol",
+        structure: "3,7-dimethyloct-6-en-1-ol (Acyclic monoterpenol)",
+        role: "Fresh rosy flesh, clean morning dew, waxy anatomical body",
+        sources: ["rose", "muguet"],
+        color: "#fbbf24",
+        gcmsText: "38.22% in Rose Otto • 15-30% anatomical chassis in Muguet",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1007032.html",
+        desc: "The undeniable numeric titan of Bulgarian Rose Otto. Serves as the required anatomical spine in classical Muguet bases."
+    },
+    {
+        id: "nerol",
+        name: "Nerol",
+        commonName: "Nerol",
+        cas: "106-25-2",
+        formula: "C10H18O",
+        x: 200, y: 300,
+        type: "acyclic",
+        pathway: "Cis-Isomer of Geraniol",
+        structure: "(2Z)-3,7-dimethylocta-2,6-dien-1-ol (Cis-conformation)",
+        role: "Crisp, fresh, sea-breeze citrus-rose nuance",
+        sources: ["rose"],
+        color: "#fbbf24",
+        gcmsText: "0.05% in Rose Otto",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1008952.html",
+        desc: "Cis-isomer of Geraniol bringing a refreshing, water-splashed citrus top-note character."
+    },
+    {
+        id: "farnesene",
+        name: "alpha-Farnesene",
+        commonName: "alpha-Farnesene",
+        cas: "502-61-4",
+        formula: "C15H24",
+        x: 340, y: 330,
+        type: "acyclic",
+        pathway: "Farnesyl Pyrophosphate (FPP) Sesquiterpene",
+        structure: "Acyclic sesquiterpene with four conjugated double bonds",
+        role: "Crisp green apple skin, natural gardenia-petal waxiness",
+        sources: ["sambac", "grandiflorum"],
+        color: "#fbbf24",
+        gcmsText: "12.40% in Sambac • 1.98% in Grandiflorum",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1044061.html",
+        desc: "Forms a massive 12.40% fraction of Indian Sambac absolute, giving it an intoxicating crisp green apple peel bite."
+    },
+    {
+        id: "farnesol",
+        name: "(E,E)- & (Z,Z)-Farnesol",
+        commonName: "Farnesol",
+        cas: "4602-84-0",
+        formula: "C15H26O",
+        x: 270, y: 355,
+        type: "acyclic",
+        pathway: "Sesquiterpene Alcohol (FPP precursor)",
+        structure: "3,7,11-trimethyldodeca-2,6,10-trien-1-ol (C15 Sesquiterpenol)",
+        role: "Velvety floral-woody fixative alcohol",
+        sources: ["rose", "sambac"],
+        color: "#fbbf24",
+        gcmsText: "2.19% in Rose Otto • 1.30% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1290201.html",
+        desc: "Natural C15 sesquiterpenoid fixative anchoring delicate petals across both Rose and Jasmine drydowns."
+    },
+    {
+        id: "phytol",
+        name: "Phytol & Phytyl Acetate",
+        commonName: "Phytol Complex",
+        cas: "150-86-7",
+        formula: "C20H40O",
+        x: 170, y: 375,
+        type: "acyclic",
+        pathway: "Chlorophyll Hydrophobic Tail Cleavage (Diterpene)",
+        structure: "Heavy 20-carbon branched diterpene alcohol",
+        role: "Invisible botanical viscosity anchor & heavy fixative matrix",
+        sources: ["grandiflorum", "sambac"],
+        color: "#fbbf24",
+        gcmsText: "32.60% in Grandiflorum • 3.24% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1002361.html",
+        desc: "Cleaved from chlorophyll; acts as nature's ultimate heavy fixative solvent cushion holding volatile esters onto skin."
+    },
+    {
+        id: "caryophyllene",
+        name: "beta-Caryophyllene",
+        commonName: "Caryophyllene",
+        cas: "87-44-5",
+        formula: "C15H24",
+        x: 520, y: 340,
+        type: "alicyclic",
+        pathway: "Bicyclic Sesquiterpene Synthase",
+        structure: "Bicyclic 9-membered ring fused with cyclobutane",
+        role: "Peppery woody green spice; stems and calyx architecture",
+        sources: ["rose"],
+        color: "#fbbf24",
+        gcmsText: "0.77% in Bulgarian Rose Otto",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1060851.html",
+        desc: "The universal peppery-woody terpene that grounds floral sweetness in genuine woody sepal architecture."
+    },
+    {
+        id: "rose_oxide",
+        name: "Rose Oxide (cis & trans)",
+        commonName: "Rose Oxide",
+        cas: "16409-43-1",
+        formula: "C10H18O",
+        x: 770, y: 260,
+        type: "pyran",
+        pathway: "UV Photo-Oxidative Cyclization of Citronellol",
+        structure: "4-methyl-2-(2-methylprop-1-enyl)oxane (Tetrahydropyran Ring)",
+        role: "Cold metallic green thorn prickle, high-vibration top flash",
+        sources: ["rose"],
+        color: "#6ee7b7",
+        gcmsText: "1.71% in Bulgarian Rose Otto",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1525451.html",
+        desc: "Created by intense UV sunlight on high-altitude Bulgarian/Grasse roses. Crucial structural sibling to synthetic Florol!"
+    },
+
+    // 3. SHIKIMATE & PHENYLPROPANOID PATHWAY (Y: 420 - 580)
+    {
+        id: "pea",
+        name: "2-Phenethyl Alcohol",
+        commonName: "PEA",
+        cas: "60-12-8",
+        formula: "C8H10O",
+        x: 1060, y: 440,
+        type: "aromatic",
+        pathway: "Shikimate Decarboxylation of L-Phenylalanine",
+        structure: "C6H5-CH2-CH2OH (Benzene ring + ethanol tail)",
+        role: "Cold petal water & cellular dew; honeyed sweetness",
+        sources: ["rose", "sambac", "muguet"],
+        color: "#fda4af",
+        gcmsText: "0.13% in Otto (99% lost to hydrosol!) • 2.15% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1010051.html",
+        desc: "Highly water-soluble; forms 70-85% of rose absolute and rosewater. Present natively at 2.15% in Sambac!"
+    },
+    {
+        id: "pea_acetate",
+        name: "2-Phenethyl Acetate",
+        commonName: "PEA Acetate",
+        cas: "103-45-7",
+        formula: "C10H12O2",
+        x: 1140, y: 460,
+        type: "aromatic",
+        pathway: "Esterification of Phenylalanine-derived PEA",
+        structure: "C6H5-CH2-CH2-O-COCH3 (Aromatic Acetate Ester)",
+        role: "Fruity rose-honey sparkle & warm sweet bloom",
+        sources: ["sambac"],
+        color: "#fda4af",
+        gcmsText: "2.35% in Jasmine Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1010031.html",
+        desc: "Direct biochemical proof that Jasmine Sambac synthesizes rose-lineage phenethyl esters in high concentration."
+    },
+    {
+        id: "benzyl_acetate",
+        name: "Benzyl Acetate",
+        commonName: "Benzyl Acetate",
+        cas: "140-11-4",
+        formula: "C9H10O2",
+        x: 1090, y: 490,
+        type: "aromatic",
+        pathway: "Twilight Phenylpropanoid Esterification",
+        structure: "C6H5-CH2-O-COCH3 (Benzene ring + methyl acetate tail)",
+        role: "High-velocity twilight solar flare; expansive golden sillage",
+        sources: ["grandiflorum", "sambac"],
+        color: "#fde68a",
+        gcmsText: "26.08% in Grandiflorum • 21.20% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1001612.html",
+        desc: "The primary kinetic engine of Jasmine. Floods gardens with radiating fragrance as petals open at dusk."
+    },
+    {
+        id: "benzyl_benzoate",
+        name: "Benzyl Benzoate",
+        commonName: "Benzyl Benzoate",
+        cas: "120-51-4",
+        formula: "C14H12O2",
+        x: 1240, y: 505,
+        type: "aromatic",
+        pathway: "Di-Aromatic Esterification (Benzoic Acid + Benzyl Alcohol)",
+        structure: "C6H5-COO-CH2-C6H5 (Dual benzene rings connected by ester)",
+        role: "Dense balsamic fixative solvent; slows evaporation",
+        sources: ["rose", "grandiflorum", "sambac"],
+        color: "#cbd5e1",
+        gcmsText: "0.10% in Rose • 11.67% in Grandiflorum • 1.50% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1001672.html",
+        desc: "Nature's internal solvent carrier, dampening the shrill velocity of lighter esters and anchoring sillage."
+    },
+    {
+        id: "eugenol",
+        name: "Eugenol",
+        commonName: "Eugenol",
+        cas: "97-53-0",
+        formula: "C10H12O2",
+        x: 1110, y: 530,
+        type: "aromatic",
+        pathway: "Phenylpropanoid Lignin / Coniferyl Chain",
+        structure: "4-allyl-2-methoxyphenol (Methoxyphenol with allyl arm)",
+        role: "Warm woody clove contouring, vintage floral gravitas",
+        sources: ["rose", "grandiflorum", "sambac"],
+        color: "#fda4af",
+        gcmsText: "0.82% in Rose Otto • 2.63% in Grandiflorum • 0.08% in Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1004991.html",
+        desc: "Antimicrobial tissue defender in sepals and petals; imparts antique warmth across both Rose and Jasmine."
+    },
+    {
+        id: "methyl_isoeugenol",
+        name: "Methyl Isoeugenol",
+        commonName: "Methyl Isoeugenol",
+        cas: "93-16-3",
+        formula: "C11H14O2",
+        x: 1190, y: 540,
+        type: "aromatic",
+        pathway: "O-Methylation of Isoeugenol",
+        structure: "1,2-dimethoxy-4-(prop-1-en-1-yl)benzene",
+        role: "Sweet, ethereal, spicy-carnation radiance",
+        sources: ["rose"],
+        color: "#fda4af",
+        gcmsText: "1.71% in Bulgarian Rose Otto",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1011132.html",
+        desc: "Contributes smooth, radiant floral spiciness to Rose Otto without the phenolic bite of pure clove."
+    },
+    {
+        id: "methyl_anthranilate",
+        name: "Methyl Anthranilate",
+        commonName: "Methyl Anthranilate",
+        cas: "134-20-3",
+        formula: "C8H9NO2",
+        x: 1260, y: 560,
+        type: "aromatic",
+        pathway: "Tryptophan / Anthranilic Acid Degradation",
+        structure: "Methyl 2-aminobenzoate (Benzene with amine & ester arms)",
+        role: "Concord grape, orange blossom luminescence, narcotic fruitiness",
+        sources: ["sambac"],
+        color: "#a855f7",
+        gcmsText: "4.90% in Jasmine Sambac",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1008211.html",
+        desc: "The hallmark chemical marker of Jasmine Sambac, creating its unmistakable green-tea and orange flower glow."
+    },
+    {
+        id: "indole",
+        name: "Indole (Benzopyrrole)",
+        commonName: "Indole",
+        cas: "120-72-9",
+        formula: "C8H7N",
+        x: 1320, y: 575,
+        type: "aromatic",
+        pathway: "Catabolism of L-Tryptophan Amino Acid",
+        structure: "Bicyclic benzopyrrole (Benzene ring fused with 5-membered pyrrole)",
+        role: "Warm mammalian breath, animalic skin, nocturnal moth beacon",
+        sources: ["grandiflorum"],
+        color: "#a855f7",
+        gcmsText: "3.84% in Grandiflorum",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1006511.html",
+        desc: "Emitted in twilight bursts for nocturnal hawkmoths navigating darkness. Imparts sensual body heat to white florals."
+    },
+
+    // 4. ORGANIC CHEMICAL SYNTHESIS (Y: 630 - 720)
+    {
+        id: "hydroxycitronellal",
+        name: "Hydroxycitronellal",
+        commonName: "Hydroxycitronellal (1905)",
+        cas: "107-75-5",
+        formula: "C10H20O2",
+        x: 280, y: 650,
+        type: "acyclic",
+        pathway: "Industrial Acid Hydration of Natural Citronellal",
+        structure: "7-hydroxy-3,7-dimethyloctanal (Hydrated acyclic chain + aldehyde)",
+        role: "Pioneered the wet, sweet, waxy green bell-flower scent",
+        sources: ["muguet"],
+        color: "#38bdf8",
+        gcmsText: "Synthetic Milestone (Diorissimo 1956)",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1006192.html",
+        desc: "The historic leap from Rose to Muguet: literally adding H2O across the double bond of rose monoterpenes!"
+    },
+    {
+        id: "cyclamen_ald",
+        name: "Cyclamen Aldehyde",
+        commonName: "Cyclamen Aldehyde",
+        cas: "103-95-7",
+        formula: "C13H18O",
+        x: 1080, y: 660,
+        type: "aromatic",
+        pathway: "Friedel-Crafts Alkylation of Cumene",
+        structure: "3-(4-propan-2-ylphenyl)butanal (Aromatic benzene + aldehyde arm)",
+        role: "Substantive dewy muguet lift; diffusive spring bell blossom",
+        sources: ["muguet"],
+        color: "#38bdf8",
+        gcmsText: "Classic Synthetic Aldehyde",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1003881.html",
+        desc: "Expanded the benzenoid ring of PEA into a powerful, fresh, water-diffusive floralizer."
+    },
+    {
+        id: "lilial",
+        name: "Lilial (Banned 2022)",
+        commonName: "Lilial / Lysmeral",
+        cas: "80-54-6",
+        formula: "C14H20O",
+        x: 1160, y: 675,
+        type: "aromatic",
+        pathway: "tert-Butylbenzene Formylation Synthesis",
+        structure: "3-(4-tert-butylphenyl)-2-methylpropanal (Aromatic aldehyde)",
+        role: "Monumental cosmetic diffusion and laundry volume",
+        sources: ["muguet"],
+        color: "#ef4444",
+        gcmsText: "IFRA Annex II Prohibited",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1007781.html",
+        desc: "Dominant 20th-century muguet giant; banned worldwide for reproductive toxicity, sparking the modern pyran era."
+    },
+    {
+        id: "florol",
+        name: "Florol (Florosa)",
+        commonName: "Florol",
+        cas: "63500-71-0",
+        formula: "C10H20O2",
+        x: 820, y: 660,
+        type: "pyran",
+        pathway: "Prins Reaction of Isoprenol & Isovaleraldehyde",
+        structure: "2-isobutyl-4-methyltetrahydro-2H-pyran-4-ol (Tetrahydropyran Ring)",
+        role: "Dewy, indestructible petal moisture without discoloration",
+        sources: ["muguet"],
+        color: "#38bdf8",
+        gcmsText: "Modern Muguet Standard",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1005181.html",
+        desc: "Shares the 6-membered tetrahydropyran ring with Rose Oxide. Delivers clean, permanent petal hydration."
+    },
+    {
+        id: "mayol",
+        name: "Mayol",
+        commonName: "Mayol",
+        cas: "5502-75-0",
+        formula: "C11H22O",
+        x: 540, y: 670,
+        type: "alicyclic",
+        pathway: "Catalytic Hydrogenation of Cyclohexyl Carbinols",
+        structure: "cis-4-isopropylcyclohexylmethanol (Cyclohexane ring)",
+        role: "Soft, white, velvety petal skin and crisp green lily nuance",
+        sources: ["muguet"],
+        color: "#38bdf8",
+        gcmsText: "Modern Safe Hydrator",
+        tgscUrl: "https://www.thegoodscentscompany.com/data/rw1008061.html",
+        desc: "Substituted cyclohexyl alcohol providing pure cosmetic softness without aldehydes or allergen restrictions."
+    }
+];
+
+const LINEAGE_LINKS = [
+    // LOX Green cleavages
+    { from: "c3hexenol", to: "c3hexenyl_acetate", color: "#10b981", label: "Esterification" },
+    { from: "c3hexenol", to: "c3hexenyl_benzoate", color: "#10b981", label: "Shikimate Cross-Bridge" },
+    { from: "c3hexenol", to: "cis_jasmone", color: "#10b981", label: "Jasmonate Cascade" },
+    { from: "cis_jasmone", to: "jasmine_lactone", color: "#10b981", label: "Fatty Acid Cyclization" },
+    { from: "methyl_linolenate", to: "c3hexenol", color: "#10b981", label: "Membrane Cleavage" },
+
+    // Terpenoid isomers & conversions
+    { from: "geraniol", to: "linalool", color: "#fbbf24", label: "Allylic Isomerism" },
+    { from: "geraniol", to: "citronellol", color: "#fbbf24", label: "Enzymatic Reduction" },
+    { from: "geraniol", to: "nerol", color: "#fbbf24", label: "Cis/Trans Isomerism" },
+    { from: "citronellol", to: "rose_oxide", color: "#6ee7b7", label: "UV Photo-Oxidation" },
+    { from: "farnesene", to: "farnesol", color: "#fbbf24", label: "Hydroxylation" },
+
+    // Shikimate benzenoid lines
+    { from: "pea", to: "pea_acetate", color: "#fda4af", label: "Esterification" },
+    { from: "pea", to: "benzyl_acetate", color: "#fda4af", label: "Homology" },
+    { from: "benzyl_acetate", to: "benzyl_benzoate", color: "#cbd5e1", label: "Balsamic Matrix" },
+    { from: "eugenol", to: "methyl_isoeugenol", color: "#fda4af", label: "O-Methylation" },
+
+    // Synthetic jumps
+    { from: "citronellol", to: "hydroxycitronellal", color: "#38bdf8", label: "+H2O Hydration (1905)", dashed: true },
+    { from: "rose_oxide", to: "florol", color: "#38bdf8", label: "Pyran Ring Homology", dashed: true },
+    { from: "pea", to: "cyclamen_ald", color: "#38bdf8", label: "Benzenoid Aldehyde", dashed: true },
+    { from: "cyclamen_ald", to: "lilial", color: "#ef4444", label: "tert-Butyl Extension", dashed: true }
+];
+
+let showLinks = true;
+let currentFilter = "all";
+
+function renderMap() {
+    const linksGroup = document.getElementById("lineage-links-group");
+    const nodesGroup = document.getElementById("chem-nodes-group");
+
+    // Render Links
+    linksGroup.innerHTML = "";
+    if (showLinks) {
+        LINEAGE_LINKS.forEach(link => {
+            const n1 = CHEMICAL_NODES.find(n => n.id === link.from);
+            const n2 = CHEMICAL_NODES.find(n => n.id === link.to);
+            if (n1 && n2) {
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                const dx = n2.x - n1.x;
+                const dy = n2.y - n1.y;
+                const cx1 = n1.x + dx * 0.4;
+                const cy1 = n1.y;
+                const cx2 = n1.x + dx * 0.6;
+                const cy2 = n2.y;
+
+                const d = `M ${n1.x} ${n1.y} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${n2.x} ${n2.y}`;
+                path.setAttribute("d", d);
+                path.setAttribute("stroke", link.color);
+                path.setAttribute("class", "lineage-link");
+                if (link.dashed) {
+                    path.setAttribute("stroke-dasharray", "5 4");
+                }
+                linksGroup.appendChild(path);
+            }
+        });
+    }
+
+    // Render Nodes
+    nodesGroup.innerHTML = "";
+    CHEMICAL_NODES.forEach(node => {
+        const isDimmed = currentFilter !== "all" && !node.sources.includes(currentFilter);
+        const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        g.setAttribute("class", "chem-node");
+        g.setAttribute("transform", `translate(${node.x}, ${node.y})`);
+        g.setAttribute("opacity", isDimmed ? "0.15" : "1");
+        g.onclick = () => openDrawer(node);
+
+        // Node Shape based on molecular type
+        let shape;
+        if (node.type === "acyclic") {
+            // Circle for acyclic chains
+            shape = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            shape.setAttribute("r", "16");
+            shape.setAttribute("fill", "rgba(10, 10, 16, 0.9)");
+            shape.setAttribute("stroke", node.color);
+            shape.setAttribute("stroke-width", "2");
+        } else if (node.type === "aromatic") {
+            // Hexagon for Benzene rings
+            shape = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            // 6-sided polygon coordinates around (0,0)
+            const pts = [];
+            const r = 18;
+            for (let i = 0; i < 6; i++) {
+                const angle = (Math.PI / 3) * i;
+                pts.push(`${(r * Math.cos(angle)).toFixed(1)},${(r * Math.sin(angle)).toFixed(1)}`);
+            }
+            shape.setAttribute("points", pts.join(" "));
+            shape.setAttribute("fill", "rgba(10, 10, 16, 0.9)");
+            shape.setAttribute("stroke", node.color);
+            shape.setAttribute("stroke-width", "2");
+        } else if (node.type === "pyran") {
+            // Rounded Square with Oxygen indicator for Tetrahydropyrans
+            shape = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            shape.setAttribute("x", "-16");
+            shape.setAttribute("y", "-16");
+            shape.setAttribute("width", "32");
+            shape.setAttribute("height", "32");
+            shape.setAttribute("rx", "7");
+            shape.setAttribute("fill", "rgba(10, 10, 16, 0.9)");
+            shape.setAttribute("stroke", node.color);
+            shape.setAttribute("stroke-width", "2");
+        } else {
+            // Diamond for Alicyclic & Lactone rings
+            shape = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            shape.setAttribute("points", "0,-18 18,0 0,18 -18,0");
+            shape.setAttribute("fill", "rgba(10, 10, 16, 0.9)");
+            shape.setAttribute("stroke", node.color);
+            shape.setAttribute("stroke-width", "2");
+        }
+
+        g.appendChild(shape);
+
+        // Core icon / symbol
+        const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        txt.setAttribute("text-anchor", "middle");
+        txt.setAttribute("dy", "4");
+        txt.setAttribute("fill", node.color);
+        txt.setAttribute("font-size", "10px");
+        txt.setAttribute("font-weight", "bold");
+        txt.setAttribute("font-family", "Space Mono, monospace");
+        
+        let labelIcon = "C";
+        if (node.type === "aromatic") labelIcon = "⬡";
+        else if (node.type === "pyran") labelIcon = "-O-";
+        else if (node.type === "alicyclic") labelIcon = "◇";
+        else labelIcon = "〰";
+        txt.textContent = labelIcon;
+        g.appendChild(txt);
+
+        // Text label below node
+        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        label.setAttribute("text-anchor", "middle");
+        label.setAttribute("y", "32");
+        label.setAttribute("fill", isDimmed ? "#4b5563" : "#f3f4f6");
+        label.setAttribute("font-size", "11px");
+        label.setAttribute("font-weight", "600");
+        label.setAttribute("font-family", "Outfit, sans-serif");
+        label.textContent = node.commonName;
+        g.appendChild(label);
+
+        nodesGroup.appendChild(g);
+    });
+}
+
+function openDrawer(node) {
+    const drawer = document.getElementById("chem-drawer");
+    document.getElementById("drawer-name").textContent = node.name;
+    document.getElementById("drawer-cas").textContent = `CAS ${node.cas} • ${node.formula}`;
+    document.getElementById("drawer-structure").textContent = node.structure;
+    document.getElementById("drawer-desc").innerHTML = `<strong>Olfactory Role:</strong> ${node.role}<br><br>${node.desc}`;
+    document.getElementById("drawer-genesis").textContent = node.pathway;
+    document.getElementById("drawer-gcms").textContent = node.gcmsText;
+    document.getElementById("drawer-tgsc-link").href = node.tgscUrl;
+
+    // Badges
+    const badgeRow = document.getElementById("drawer-badges");
+    badgeRow.innerHTML = "";
+    node.sources.forEach(src => {
+        const span = document.createElement("span");
+        span.className = "role-pill";
+        if (src === "rose") { span.className += " role-flesh"; span.textContent = "Rose Otto"; }
+        else if (src === "grandiflorum") { span.className += " role-narcotic"; span.textContent = "Grandiflorum"; }
+        else if (src === "sambac") { span.className += " role-umbilical"; span.textContent = "Sambac"; }
+        else if (src === "muguet") { span.className += " role-aeration"; span.textContent = "Muguet Synthetic"; }
+        badgeRow.appendChild(span);
+    });
+
+    drawer.style.display = "block";
+}
+
+function closeDrawer() {
+    document.getElementById("chem-drawer").style.display = "none";
+}
+
+function filterMap(species) {
+    currentFilter = species;
+    document.querySelectorAll(".filter-group .filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+    event.currentTarget.classList.add("active");
+    renderMap();
+}
+
+function toggleLinks() {
+    showLinks = !showLinks;
+    const btn = document.getElementById("toggle-links-btn");
+    btn.innerHTML = `<i class="fas fa-project-diagram"></i> Biosynthetic Paths: ${showLinks ? 'ON' : 'OFF'}`;
+    btn.classList.toggle("active", showLinks);
+    renderMap();
+}
+
+// Initial Render
+window.addEventListener("DOMContentLoaded", () => {
+    renderMap();
+});
+</script>
 </body>
 </html>
