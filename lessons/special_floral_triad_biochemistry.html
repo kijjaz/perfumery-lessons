@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Masterclass: The Molecular Triad of Floral Architecture | Rose, Jasmine & Muguet</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #09090d;
+            --card-bg: rgba(18, 18, 24, 0.88);
+            --card-hover: rgba(28, 28, 38, 0.98);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(212, 175, 55, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f9d71c;
+            
+            /* Floral Semantic Palettes */
+            --rose-accent: #f43f5e;
+            --rose-bg: rgba(244, 63, 94, 0.12);
+            --rose-border: rgba(244, 63, 94, 0.35);
+            
+            --jasmine-accent: #fbbf24;
+            --jasmine-bg: rgba(251, 191, 36, 0.12);
+            --jasmine-border: rgba(251, 191, 36, 0.35);
+            
+            --muguet-accent: #34d399;
+            --muguet-bg: rgba(52, 211, 153, 0.12);
+            --muguet-border: rgba(52, 211, 153, 0.35);
+            
+            --green-accent: #10b981;
+            --cyan-accent: #38bdf8;
+            
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --text-muted: #6b7280;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.68;
+            padding: 40px 24px 80px;
+        }
+
+        .container {
+            max-width: 1560px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* Top Monogram Banner */
+        .special-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 28px;
+        }
+
+        .title-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--rose-accent) 70%, var(--jasmine-accent) 85%, var(--muguet-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            max-width: 1180px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .meta-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .pill i { color: var(--gold); }
+
+        /* The Triad Visual Grid */
+        .triad-hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .hero-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-card.rose { border-top: 4px solid var(--rose-accent); }
+        .hero-card.jasmine { border-top: 4px solid var(--jasmine-accent); }
+        .hero-card.muguet { border-top: 4px solid var(--muguet-accent); }
+
+        .hero-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .hero-card.rose .hero-title { color: #fda4af; }
+        .hero-card.rose .hero-subtitle { color: var(--rose-accent); }
+
+        .hero-card.jasmine .hero-title { color: #fde68a; }
+        .hero-card.jasmine .hero-subtitle { color: var(--jasmine-accent); }
+
+        .hero-card.muguet .hero-title { color: #a7f3d0; }
+        .hero-card.muguet .hero-subtitle { color: var(--muguet-accent); }
+
+        .hero-desc {
+            font-size: 0.92rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(12px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 14px;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+        }
+
+        .section-title i {
+            color: var(--gold);
+        }
+
+        .tagline {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Botanical Grid & Pathways */
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .pathway-card {
+            background: rgba(12, 12, 16, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .pathway-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pathway-label {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .chem-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .metaphor-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--gold);
+            padding: 10px 14px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.88rem;
+            color: #e5e7eb;
+        }
+
+        .metaphor-box strong {
+            color: var(--gold-bright);
+        }
+
+        /* Kinship Visual Bridge Boxes */
+        .kinship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .kinship-card {
+            background: rgba(14, 14, 20, 0.85);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .kinship-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .kinship-header h4 {
+            font-size: 1.05rem;
+            color: #ffffff;
+        }
+
+        .structure-diagram {
+            font-family: var(--font-mono);
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            color: #38bdf8;
+            line-height: 1.5;
+            margin: 12px 0;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* Timeline / Era Stepper for Muguet */
+        .era-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .era-box {
+            background: rgba(12, 12, 16, 0.65);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            border-top: 3px solid var(--muguet-accent);
+        }
+
+        .era-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--muguet-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .era-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        /* Synthesis Triad Architecture Table */
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .matrix-table th {
+            background: rgba(14, 14, 18, 0.95);
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .matrix-table td {
+            padding: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            vertical-align: middle;
+        }
+
+        .matrix-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .role-pill {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .role-flesh { background: rgba(244, 63, 94, 0.15); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.35); }
+        .role-narcotic { background: rgba(251, 191, 36, 0.15); color: #fde68a; border: 1px solid rgba(251, 191, 36, 0.35); }
+        .role-aeration { background: rgba(52, 211, 153, 0.15); color: #a7f3d0; border: 1px solid rgba(52, 211, 153, 0.35); }
+        .role-umbilical { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.35); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Top Monogram Banner -->
+    <div class="special-badge">
+        <i class="fas fa-seedling"></i> Advanced Masterclass • Botanical Biochemistry & Molecular Homology
+    </div>
+
+    <!-- Main Header -->
+    <header>
+        <div class="title-row">
+            <div>
+                <h1>The Molecular Triad: Rose, Jasmine & Muguet</h1>
+                <p class="lead">Deconstructing the profound biochemical genesis of floral perfumery: from living photosynthetic metabolism to physical sensory metaphors, chemical homology, and the synthetic quest for the phantom lily.</p>
+            </div>
+            <div class="meta-pills">
+                <div class="pill"><i class="fas fa-atom"></i> Structural Homology & Kinship</div>
+                <div class="pill"><i class="fas fa-leaf"></i> Lipoxygenase Green Cleavage</div>
+                <div class="pill"><i class="fas fa-flask"></i> Tetrahydropyran & Benzenoid Bridges</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- The Floral Triad Overview Cards -->
+    <div class="triad-hero">
+        <div class="hero-card rose">
+            <div class="hero-subtitle">The Sunlight & Sugar Engine</div>
+            <div class="hero-title"><i class="fas fa-spa"></i> 1. Rose (The Petal Flesh)</div>
+            <div class="hero-desc">
+                Assembled from phenylalanine amino acids and carotenoid light pigments. Represents cellular sap, cold petal water, sweet protective waxes, and the deep red velvet of carotenoid cleavage.
+            </div>
+        </div>
+
+        <div class="hero-card jasmine">
+            <div class="hero-subtitle">The Nocturnal Seduction Engine</div>
+            <div class="hero-title"><i class="fas fa-moon"></i> 2. Jasmine (The Narcotic Sunburst)</div>
+            <div class="hero-desc">
+                Operates on twilight ester flashes and the amino acid tryptophan. Represents warm animal breath (indole), cellular defense lipids (cis-jasmone), and the hypnotic golden sillage of night pollinators.
+            </div>
+        </div>
+
+        <div class="hero-card muguet">
+            <div class="hero-subtitle">The Synthetic Phantom Flower</div>
+            <div class="hero-title"><i class="fas fa-wind"></i> 3. Muguet (The Luminosity Engine)</div>
+            <div class="hero-desc">
+                Cannot be extracted from nature. Entirely an invention of 20th- and 21st-century organic synthesis: the hydrated aldehydes and non-discoloring tetrahydropyrans that open wide channels of light.
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 1: THE ROSE METABOLISM -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-dna" style="color: var(--rose-accent);"></i> Module 1: The Rose Biochemical Factory (*Rosa damascena & centifolia*)
+            </div>
+            <span class="tagline">Photosynthesis ➔ Shikimate & Mevalonate Cascades</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+            A living rose does not produce scent to be bottled. Every molecule serves a ruthless botanical imperative: long-range pollinator signaling, UV protection, cellular hydration, and tissue defense.
+        </p>
+
+        <div class="pathway-grid">
+            <!-- PEA -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(244, 63, 94, 0.15); color: #fda4af;">Shikimate / Phenylalanine Pathway</span>
+                <h3 style="color: #fda4af;"><i class="fas fa-tint"></i> Phenylethyl Alcohol (PEA)</h3>
+                <span class="chem-badge">CAS 60-12-8 • C8H10O (Aromatic Alcohol)</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> Synthesized by transaminating and decarboxylating the amino acid <em>L-phenylalanine</em>. Highly water-soluble, PEA dissolves directly into the vascular sap and living cellular cytoplasm of the petal.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"Cold Petal Water & Cellular Dew"</em><br>
+                    It represents the physical wetness and sweet, honeyed water inside the living petal. (Lost during steam distillation because it remains dissolved in the rosewater hydrosol!).
+                </div>
+            </div>
+
+            <!-- Geraniol / Citronellol / Nerol -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(244, 63, 94, 0.15); color: #fda4af;">Terpene MEP / Isoprene Pathway</span>
+                <h3 style="color: #fda4af;"><i class="fas fa-sun"></i> Geraniol & Citronellol</h3>
+                <span class="chem-badge">CAS 106-24-1 & 106-22-9 • C10 Monoterpenoids</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> Formed from condensation of two $C_5$ isoprene units (IPP and DMAPP). Non-polar and lipophilic, they accumulate in the glandular waxy trichomes on the petal surface.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"Protective Waxes & Fresh Morning Cleanliness"</em><br>
+                    <strong>Geraniol:</strong> The sweet, waxy cuticle sealing moisture inside under noon sun.<br>
+                    <strong>Citronellol:</strong> The fresh, crisp rosy flesh and clean morning dew.
+                </div>
+            </div>
+
+            <!-- Damascones / Damascenone -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(244, 63, 94, 0.15); color: #fda4af;">Carotenoid Cleavage Pathway</span>
+                <h3 style="color: #fda4af;"><i class="fas fa-wine-glass-alt"></i> $\beta$-Damascenone & Damascones</h3>
+                <span class="chem-badge">Rose Ketones • Trace Parts-Per-Billion</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> Formed through photo-oxidative degradation of carotenoid pigment molecules (the very chemicals that grant roses yellow, orange, and red velvet colors) as petals mature.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"Velvet Crimson, Stewed Plum & Berry Skin"</em><br>
+                    They represent the heavy, wine-like, jammy richness of deep colored petals. At sub-parts-per-billion levels, they infuse flat blends with living, three-dimensional depth.
+                </div>
+            </div>
+
+            <!-- Rose Oxide -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(244, 63, 94, 0.15); color: #fda4af;">Terpene Photo-Oxidation</span>
+                <h3 style="color: #fda4af;"><i class="fas fa-bolt"></i> Rose Oxide (cis & trans)</h3>
+                <span class="chem-badge">CAS 16409-43-1 • Tetrahydropyran Heterocycle</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> An enzymatic cyclization of citronellol hydroperoxides triggered by intense mountain ultraviolet sunlight on high-altitude Bulgarian/Grasse crops.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"The Prickle & Thorn / Cold Metallic Light"</em><br>
+                    The sharp, green, vibrating metallic edge of a rose; the crisp sting of the thorn and the frosty morning air before the sun warms the blossom.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 2: THE JASMINE NOCTURNAL ENGINE -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-moon" style="color: var(--jasmine-accent);"></i> Module 2: The Jasmine Midnight Biochemical Engine (*Jasminum*)
+            </div>
+            <span class="tagline">Tryptophan Cleavage & The Jasmonic Immune Cascade</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+            Unlike the rose, which unfolds its sweetness to the morning sun, Jasmine is a creature of dusk. Its chemical machinery turns on as daylight dies, shifting from sugar-esters to nitrogenous animal beacons.
+        </p>
+
+        <div class="pathway-grid">
+            <!-- Indole -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(251, 191, 36, 0.15); color: #fde68a;">Tryptophan Amino Acid Catabolism</span>
+                <h3 style="color: #fde68a;"><i class="fas fa-paw"></i> Indole (Benzopyrrole)</h3>
+                <span class="chem-badge">CAS 120-72-9 • C8H7N (Bicyclic Amine)</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> Synthesized from the aromatic amino acid <em>tryptophan</em>. Emitted in dramatic surges at twilight to signal nocturnal hawkmoths (*Sphingidae*) navigating in near-total darkness.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"The Animal in the Plant / Warm Skin & Moth Wings"</em><br>
+                    It represents mammalian body heat, slight organic decay, and velvety breath. It prevents white flowers from smelling like antiseptic soap, providing sensual gravity.
+                </div>
+            </div>
+
+            <!-- Cis-Jasmone -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(251, 191, 36, 0.15); color: #fde68a;">Jasmonic Acid Stress / Defense Cascade</span>
+                <h3 style="color: #fde68a;"><i class="fas fa-shield-alt"></i> Cis-Jasmone & Methyl Jasmonate</h3>
+                <span class="chem-badge">CAS 488-10-8 • Cyclopentenone Ring</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> Derived from $\alpha$-linolenic acid in cell membranes via the jasmonate pathway—the universal botanical wound-healing and immune defense signal against insect grazing.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"Wounded Greenery / Warm Celery Velvet"</em><br>
+                    It links the sweet white petals to living, bruised stem tissue. In high dilution, it provides a warm, solar, tea-like vegetative glow that synthetic florality cannot replicate.
+                </div>
+            </div>
+
+            <!-- Benzyl Acetate -->
+            <div class="pathway-card">
+                <span class="pathway-label" style="background: rgba(251, 191, 36, 0.15); color: #fde68a;">Twilight Esterification</span>
+                <h3 style="color: #fde68a;"><i class="fas fa-meteor"></i> Benzyl Acetate & Benzyl Alcohol</h3>
+                <span class="chem-badge">CAS 140-11-4 • High-Volatility Phenyl Ester</span>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Botanical Genesis:</strong> Rapid enzymatic condensation of benzyl alcohol and acetyl-CoA during the initial minutes of flower opening at sunset.
+                </p>
+                <div class="metaphor-box">
+                    <strong>Sensory & Physical Metaphor:</strong> <em>"The Golden Twilight Flash & Ripe Banana Sheen"</em><br>
+                    The brilliant, high-velocity opening explosion of jasmine. It carries sillage across gardens like a flare, projecting the blossom's location into the evening breeze.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 3: THE UNIVERSAL GREEN HINGE -->
+    <div class="section-card" style="border-left: 4px solid var(--green-accent);">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-leaf" style="color: var(--green-accent);"></i> Module 3: The Universal Green Umbilical Cord — *cis-3-Hexenol*
+            </div>
+            <span class="tagline">The Universal Lipoxygenase Cascade</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 16px;">
+            Why does <strong>cis-3-Hexenol (Leaf Alcohol)</strong> and its ester <strong>cis-3-Hexenyl Acetate</strong> appear as an indispensable component in natural Rose extracts, natural Jasmine extracts, AND living Muguet headspace?
+        </p>
+
+        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+            <h4 style="color: #6ee7b7; margin-bottom: 8px;"><i class="fas fa-flask"></i> The Lipoxygenase Reaction (Crushed Living Tissue)</h4>
+            <p style="font-size: 0.92rem; color: var(--text-dim); line-height: 1.6;">
+                Whenever <em>any</em> green plant cell wall is crushed, bent, or stimulated by morning sunlight, enzymes called <strong>lipoxygenase (LOX)</strong> and <strong>hydroperoxide lyase</strong> instantly cleave membrane polyunsaturated fatty acids ($\alpha$-linolenic acid). In less than 3 seconds, the plant produces volatile $C_6$ aldehydes which enzymatically reduce into <strong>cis-3-Hexenol</strong>.
+            </p>
+        </div>
+
+        <div class="pathway-grid">
+            <div class="pathway-card">
+                <h4 style="color: #fda4af;"><i class="fas fa-spa"></i> In Rose Architecture</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    Represents the <strong>snapped calyx (sepals)</strong> and dewy green thorns. Without cis-3-hexenol, rose accords smell like stale potpourri or dry Turkish delight.
+                </p>
+            </div>
+            <div class="pathway-card">
+                <h4 style="color: #fde68a;"><i class="fas fa-moon"></i> In Jasmine Architecture</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    Acts as the <strong>oxygenating razor</strong>. It slices cleanly through the dense, suffocating weight of indole and benzyl benzoate, infusing the night flower with fresh evening air.
+                </p>
+            </div>
+            <div class="pathway-card">
+                <h4 style="color: #a7f3d0;"><i class="fas fa-wind"></i> In Muguet Architecture</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    Forms the <strong>forest floor foundation</strong>. Muguet cannot exist without the cold, wet, chlorophyll-rich green leaves from which the pale white bells emerge.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 4: THE MUGUET MYSTERY & SYNTHETIC EVOLUTION -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-ghost" style="color: var(--muguet-accent);"></i> Module 4: The Muguet Paradox — The Phantom Flower & The Synthetic Quest
+            </div>
+            <span class="tagline">From Hydroxycitronellal to the Lilial/Lyral Bans to Modern Pyrans</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+            Unlike Rose and Jasmine, <strong>Lily of the Valley (*Convallaria majalis*) does not yield an essential oil</strong>. Distillation yields brown, scorched vegetal water; solvent extraction produces an unrepresentative, odorless wax. <br>
+            <strong style="color: #ffffff;">Muguet is entirely a triumph of organic chemical synthesis.</strong>
+        </p>
+
+        <div class="era-timeline">
+            <!-- Era 1 -->
+            <div class="era-box">
+                <div class="era-tag">Era 1 • Early 1900s</div>
+                <div class="era-title">The Hydrated Terpene</div>
+                <p style="font-size: 0.86rem; color: var(--text-dim); margin-bottom: 10px;">
+                    <strong>Hydroxycitronellal (1905):</strong> Organic chemists hydrated natural citronellal with acid and water. For the first time in human history, perfumers could build the wet, sweet, waxy green bell-flower scent (*Diorissimo*, 1956).
+                </p>
+            </div>
+
+            <!-- Era 2 -->
+            <div class="era-box">
+                <div class="era-tag">Era 2 • 1950s – 1980s</div>
+                <div class="era-title">The Alkyl-Benzene Giants</div>
+                <p style="font-size: 0.86rem; color: var(--text-dim); margin-bottom: 10px;">
+                    <strong>Cyclamen Aldehyde, Lilial, Lyral:</strong> Substituted benzene rings with aldehyde arms. Delivered monumental sillage, volume, and cosmetic laundry diffusion across 20th-century perfumery.
+                </p>
+            </div>
+
+            <!-- Era 3 -->
+            <div class="era-box" style="border-top-color: #ef4444;">
+                <div class="era-tag" style="color: #ef4444;">Era 3 • 2015 – 2022</div>
+                <div class="era-title">The Regulatory Collapse</div>
+                <p style="font-size: 0.86rem; color: var(--text-dim); margin-bottom: 10px;">
+                    <strong>The Fall of Lilial & Lyral:</strong> European bans (CMR classification for reproductive toxicity in Lilial, severe allergen sensitization in Lyral) forced the global fragrance industry into a multi-billion dollar reformulation race.
+                </p>
+            </div>
+
+            <!-- Era 4 -->
+            <div class="era-box" style="border-top-color: var(--cyan-accent);">
+                <div class="era-tag" style="color: var(--cyan-accent);">Era 4 • Present Day</div>
+                <div class="era-title">The Modern Hydrators</div>
+                <p style="font-size: 0.86rem; color: var(--text-dim); margin-bottom: 10px;">
+                    <strong>Florol, Mayol, Nympheal, Hivernal:</strong> Safe, non-sensitizing tetrahydropyrans and substituted cyclohexyl carbinols. Provide dewy, indestructible petal moisture without discoloration or Schiff base traps.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 5: THE KINSHIP MATRIX - STRUCTURAL HOMOLOGY -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-project-diagram" style="color: var(--cyan-accent);"></i> Module 5: The Kinship Matrix — Visual Structural Homology
+            </div>
+            <span class="tagline">How Nature's Atoms Connect Across Families</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+            Aroma chemicals do not exist in isolation. When you look at their skeletons, Rose, Jasmine, and Muguet are direct chemical cousins sharing rings, functional groups, and carbon chains.
+        </p>
+
+        <div class="kinship-grid">
+            <!-- Kinship 1: Benzene Rings -->
+            <div class="kinship-card">
+                <div class="kinship-header">
+                    <h4>1. The Benzenoid Ring Cousins (Rose $\leftrightarrow$ Muguet)</h4>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold);">Aromatic Core</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>PEA (Phenylethyl Alcohol)</strong> in Rose has a 6-carbon benzene ring with a 2-carbon ethanol tail. If you add an isopropyl group and an extended aldehyde arm, you directly get <strong>Cyclamen Aldehyde</strong> and <strong>Lilial</strong>!
+                </p>
+                <div class="structure-diagram">
+     PEA (Rose Petal Dew)             Cyclamen Aldehyde (Muguet Lift)
+          [Benzene]                              [Benzene]
+              │                                   │     │
+         -CH2-CH2-OH                        -CH2-CH-CHO  -CH(CH3)2
+                                                 │
+                                                CH3
+   Water-soluble petal moisture        Substantive diffusive bell-flower</div>
+            </div>
+
+            <!-- Kinship 2: Tetrahydropyrans -->
+            <div class="kinship-card">
+                <div class="kinship-header">
+                    <h4>2. The Tetrahydropyran Siblings (Rose Oxide $\leftrightarrow$ Florol)</h4>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--muguet-accent);">Ether Oxygen Ring</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Rose Oxide</strong> is a 6-membered <em>tetrahydropyran</em> ether ring with a vinyl tail. Modern Muguet superstar <strong>Florol (Florosa)</strong> is ALSO a <em>tetrahydropyran</em> ring with an isobutyl group and a hydroxyl group!
+                </p>
+                <div class="structure-diagram">
+    Rose Oxide (Rose Thorn)               Florol (Modern Muguet Hinge)
+          ┌───O───┐                               ┌───O───┐
+      H3C─│       │─CH=CH2                    H3C─│       │─CH2-CH(CH3)2
+          └───────┘                               └───OH──┘
+    Metallic green shiver                    Dewy, indestructible petal moisture</div>
+                <p style="font-size: 0.84rem; color: var(--text-dim); margin-top: 8px;">
+                    <em>Why this matters:</em> Both molecules share the identical cool, non-oxidizing cyclic ether oxygen atom that registers in human olfactory receptors as crisp, clean, liquid hydration.
+                </p>
+            </div>
+
+            <!-- Kinship 3: Hydration Lineage -->
+            <div class="kinship-card">
+                <div class="kinship-header">
+                    <h4>3. The Hydration Chain (Citronellol $\leftrightarrow$ Hydroxycitronellal)</h4>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--rose-accent);">Monoterpene Lineage</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    Take Rose’s natural terpene alcohol (<strong>Citronellol</strong>). Add a water molecule ($\text{H}_2\text{O}$) across its terminal double bond, and oxidize the alcohol into an aldehyde: you get <strong>Hydroxycitronellal</strong>. The leap from Rose to Muguet is literally chemical hydration.
+                </p>
+                <div class="structure-diagram">
+   Citronellol (Rose Wax & Flesh) ──[ + H2O hydration ]──> Hydroxycitronellal (Muguet)
+   (CH3)2C = CH-(CH2)2-CH(CH3)-CH2OH                 (CH3)2C(OH)-(CH2)3-CH(CH3)-CH2CHO</div>
+            </div>
+
+            <!-- Kinship 4: Acyclic Alcohols -->
+            <div class="kinship-card">
+                <div class="kinship-header">
+                    <h4>4. The Acyclic Terpene Spine (Geraniol $\leftrightarrow$ Linalool $\leftrightarrow$ Citronellol)</h4>
+                    <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--jasmine-accent);">Universal Bridge</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);">
+                    <strong>Linalool</strong> (prominent in Jasmine and Muguet) and <strong>Geraniol</strong> (Rose) are structural isomers. The plant converts one into the other via a simple allylic rearrangement in cellular vacuoles!
+                </p>
+                <div class="structure-diagram">
+        Geraniol (Rose Petal Wax)           Linalool (Jasmine/Muguet Aeration)
+      Primary allylic monoterpenol            Tertiary volatile floralizer
+      Trans-conformation: waxy/dense          Chiral flexibility: expansive/dewy</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULE 6: ARCHITECTURAL FORMULATION SYNTHESIS -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-cubes" style="color: var(--gold);"></i> Module 6: Architectural Formulation Synthesis — How the Triad Interlocks
+            </div>
+            <span class="tagline">Formulation by Function in Fine Fragrance</span>
+        </div>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">
+            When compounding a grand floral, a master perfumer does not treat Rose, Jasmine, and Muguet as isolated smells. They treat them as <strong>functional engineering forces</strong> balancing one another:
+        </p>
+
+        <table class="matrix-table">
+            <thead>
+                <tr>
+                    <th>Flower Component</th>
+                    <th>Architectural Function</th>
+                    <th>Primary Chemical Carriers</th>
+                    <th>Sensory & Mechanical Role in Formula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong style="color: #fda4af;">Rose</strong></td>
+                    <td><span class="role-pill role-flesh">The Flesh & Blood</span></td>
+                    <td>PEA, Geraniol, Citronellol, Damascenone</td>
+                    <td>Provides core substance, cellular petal moisture, sweet nectar honey, and rich crimson/pink color depth.</td>
+                </tr>
+                <tr>
+                    <td><strong style="color: #fde68a;">Jasmine</strong></td>
+                    <td><span class="role-pill role-narcotic">The Radiance & Gravity</span></td>
+                    <td>Benzyl Acetate, Indole, Cis-Jasmone, Hedione</td>
+                    <td>Provides high-velocity solar projection, twilight sillage flare, and the animalic, skin-warming eroticism of indole.</td>
+                </tr>
+                <tr>
+                    <td><strong style="color: #a7f3d0;">Muguet</strong></td>
+                    <td><span class="role-pill role-aeration">The Light & Ventilation</span></td>
+                    <td>Florol, Hydroxycitronellal, Mayol, Nympheal</td>
+                    <td>Provides transparent dewy aeration. It opens wide channels of air between the heavy rose petals and indolic jasmine wax.</td>
+                </tr>
+                <tr>
+                    <td><strong style="color: #7dd3fc;">cis-3-Hexenol</strong></td>
+                    <td><span class="role-pill role-umbilical">The Umbilical Cord</span></td>
+                    <td>cis-3-Hexenol, cis-3-Hexenyl Acetate</td>
+                    <td>The living botanical life force. It snaps the sepals, crushes the leaves, and roots all three flowers in living garden soil.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
