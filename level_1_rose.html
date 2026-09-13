@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floral Petals • Level 1 Scent Constellation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-rose: #f687b3;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(246, 135, 179, 0.15);
+            color: var(--accent-rose);
+            border: 1px solid rgba(246, 135, 179, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-rose);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #fad1e2;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span class="level-indicator">Level 1 • Scent Node</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-spa"></i> Medium Pace (Heart)</span>
+        <h1>Floral Petals (The Living Rose)</h1>
+        <p class="lead">The living warmth of petals that connects volatile tops to grounding woods.</p>
+    </div>
+
+    <!-- WHY COMPOSE FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(246, 135, 179, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(246,135,179,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-rose); margin-right: 10px;"></i> Why Must We Compose Notes from Raw Materials?</h2>
+        <p>A beginner often asks: <em>"Why can't I just buy a pre-made 'Rose Fragrance Oil' or only use Rose Absolute and pour it in?"</em></p>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The "Mute Flower" Reality</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Many iconic flowers (Lily of the Valley, Lilac, Peony, Gardenia) are <em>fleurs muettes</em> (mute flowers)—they yield <strong>zero extract</strong> when distilled or extracted. If you cannot compose them from molecules, they cannot exist in your perfume.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Absolute Freedom to Sculpt</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    A natural oil is frozen in amber. By composing notes from materials, you decide whether your flower is fresh and dewy, dark and peppery, or transparent and weightless.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The Synthetic Lift vs. Natural Depth</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    <strong>Synthetics</strong> give projection, negative space, and lift (they soar into the room). <strong>Naturals</strong> give micro-texture, depth, and soul. Great perfumery is never 100% natural or 100% synthetic; it is their harmony.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. Safety & IFRA Compliance</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Natural rose is restricted by IFRA because of methyleugenol. By constructing the accord yourself, you achieve huge floral impact while staying 100% skin-safe.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW TO MAKE THE NOTE: ANATOMICAL BREAKDOWN -->
+    <div class="card">
+        <h2><span class="step-number">1</span> How to Build a Living Rose Note (100.0 Parts Total)</h2>
+        <p>A living rose is not a single chemical. It is a dialogue between 4 functional layers (calibrated out of 100.0 Parts):</p>
+
+        <div style="margin: 20px 0;">
+            <div style="border-left: 3px solid #f687b3; padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: #f687b3;">1. The Core Flesh (Heart):</strong> <strong>Phenylethyl Alcohol (PEA)</strong> — <em>50.0 parts (0.50 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">The soft, honeyed, dewy water of fresh petals. Forms the bulk volume.</span>
+            </div>
+            <div style="border-left: 3px solid #ecc94b; padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: #ecc94b;">2. The Citrus-Geranium Edge (Modifier):</strong> <strong>Geraniol or Citronellol</strong> — <em>30.0 parts (0.30 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">Crisp, rosy-lemon sparkle that gives the flower its bright outdoor throw.</span>
+            </div>
+            <div style="border-left: 3px solid #d4af37; padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: var(--gold);">3. The Living Soul (Natural Component):</strong> <strong>Natural Rose Absolute or Geranium Oil</strong> — <em>10.0 parts (0.10 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">Injects over 200 trace natural molecules, adding authentic botanical depth and richness.</span>
+            </div>
+            <div style="border-left: 3px solid #48bb78; padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: #48bb78;">4. The Dewdrop & Stem (Envelope):</strong> <strong>Cis-3-Hexenol 1% (Green) + Hedione</strong> — <em>10.0 parts (0.10 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">Green morning dew on thorns, opening negative space around the flower so it breathes.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(246, 135, 179, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-rose); margin-right: 10px;"></i> The Multi-Facet Reality of the Living Rose</h2>
+        <p>A natural rose is not just "pink sweetness"—it contains a constellation of contrasting facets:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-rose); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Honeyed Petal Water</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Soft, sweet, dewy rosewater body (Phenylethyl Alcohol).</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ecc94b; text-transform: uppercase; font-weight: 700;">Facet 2 (Freshness)</div>
+                <strong style="color: #fff;">Citrus-Geranium Spark</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Bright lemony-rose bite (Geraniol/Citronellol) that connects to citrus.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ed8936; text-transform: uppercase; font-weight: 700;">Facet 3 (Hidden)</div>
+                <strong style="color: #fff;">Spicy Clove & Tobacco</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Trace natural Eugenol gives rose a dark, warm, carnation-clove spice.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #48bb78; text-transform: uppercase; font-weight: 700;">Facet 4 (Botanical)</div>
+                <strong style="color: #fff;">Green Calyx & Thorns</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Sharp bitter green sap of the leaves and thorny stem.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="step-number">2</span> What does it do on the bench?</h2>
+        <p>
+            Dip a paper strip into your rose bottle.
+        </p>
+        <ul style="margin-left: 25px; margin-top: 10px; color: var(--text-dim);">
+            <li style="margin-bottom: 8px;"><strong style="color: #fff;">At 0 minutes:</strong> Soft, warm, honeyed petal body. Not shouting, but solid.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #fff;">At 1 hour:</strong> Still right there, smelling just as warm as when you dipped it.</li>
+            <li><strong style="color: #fff;">At 4 hours:</strong> Gently fading into sweet water on the paper strip.</li>
+        </ul>
+        <p style="margin-top: 15px;">
+            Because flowers live in the middle hours of a perfume, they are the universal bridge connecting the fast opening to the slow drydown.
+        </p>
+    </div>
+
+    <!-- LATERAL DOORS TO ANYWHERE IN LEVEL 1 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_1_citrus.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🍋 Citrus & Peels</div>
+                <div class="door-desc">Brighten deep rose petals with sparkling bergamot sunlight.</div>
+            </a>
+
+            <a href="level_1_green.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🌿 Green Leaf (Cis-3-Hexenol)</div>
+                <div class="door-desc">Add thorny stems and wet calyx leaves to turn sweet rose into an outdoor botanical garden.</div>
+            </a>
+
+            <a href="level_2_hedione.html" class="portal-door" style="border-color: rgba(75, 166, 166, 0.4);">
+                <div class="door-tag" style="color: #4ba6a6;">Level 2 Upward Link</div>
+                <div class="door-title">🌬️ Hedione (Acoustic Diffuser)</div>
+                <div class="door-desc">Blow wind through heavy rose petals to create Jean-Claude Ellena's dewy minimalist watercolor rose!</div>
+            </a>
+
+            <a href="level_3_patchouli.html" class="portal-door" style="border-color: rgba(156, 66, 33, 0.4);">
+                <div class="door-tag" style="color: #fbd38d;">Level 3 Upward Link</div>
+                <div class="door-title">🍂 Natural Patchouli Oil</div>
+                <div class="door-desc">Discover the most famous bond in perfumery: dark cellar earth grounding opulent rose petals.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

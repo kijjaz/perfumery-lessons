@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Leaf & Grass • Level 1 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-green: #48bb78;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(72, 187, 120, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(72, 187, 120, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #c6f6d5;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 1 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-leaf"></i> The Botanical Razor</span>
+        <h1>Green Leaf & Grass (Cis-3-Hexenol)</h1>
+        <p class="lead">The electric snap of freshly broken stems and dew on cut grass that cuts through sweetness and injects living realism.</p>
+    </div>
+
+    <!-- WHY COMPOSE GREEN FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(72, 187, 120, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(72,187,120,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-green); margin-right: 10px;"></i> Why Compose Green Notes from Raw Materials?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The "Cooked Spinach" Problem</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    You cannot steam-distill fresh grass or flower leaves! The heat cooks the leaves, turning the fresh green snap into smelly brown compost or boiled cabbage.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Isolating the Living Plant Signal</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    When a plant leaf is damaged, its enzymes instantly synthesize <strong>Cis-3-Hexenol</strong> (the "Leaf Alcohol"). Perfumers synthesize this exact molecule to capture the instantaneous snap of a crushed stem.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The Sweetness Scissors</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Perfumes with only flowers and vanilla quickly become cloying and sugary. A trace micro-drop of green functions like scissors, trimming the sugar and making flowers smell freshly picked from a garden.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. ⚠️ The 1% Dilution Mandate</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Pure Cis-3-Hexenol is violently powerful. At 100%, 1 drop will ruin an entire bottle with a pungent petroleum-grass stench. It MUST always be pre-diluted to <strong>1% or 0.1%</strong> on your organ!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(72, 187, 120, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-green); margin-right: 10px;"></i> The Multi-Facet Reality of Cis-3-Hexenol</h2>
+        <p>Cis-3-Hexenol is not just "lawn mowing". It has multifaceted botanical facets:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-green); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Broken Green Stem</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Crisp, watery, electric snap of breaking a dandelion stem in spring.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ecc94b; text-transform: uppercase; font-weight: 700;">Facet 2 (Fruity)</div>
+                <strong style="color: #fff;">Green Apple Skin</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Tart, mouth-watering Granny Smith apple peel and unripe green banana.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #f687b3; text-transform: uppercase; font-weight: 700;">Facet 3 (Floral)</div>
+                <strong style="color: #fff;">Rose Calyx & Violet Leaf</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">The cool dewy green leaves and thorny green calyx cupping the rose petals.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #4ba6a6; text-transform: uppercase; font-weight: 700;">Facet 4 (Atmospheric)</div>
+                <strong style="color: #fff;">Rain on Cut Grass</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">The ozonic, petrichor chill of a rain shower falling on a freshly mowed lawn.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <div class="sensory-box">
+            "Cis-3-Hexenol at 1% smells like walking through a park right after a thunderstorm while gardeners are mowing the wet grass. It is shockingly crisp, electric, and cold."
+        </div>
+    </div>
+
+    <!-- LATERAL & UPWARD PORTALS -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Explore Scent Connections
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_1_rose.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🌹 Floral Petals (Rose)</div>
+                <div class="door-desc">Add 1 drop of green to honeyed rose petals to create the fresh, thorny botanical stem accord.</div>
+            </a>
+
+            <a href="level_1_citrus.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🍋 Citrus & Peels</div>
+                <div class="door-desc">Combine with Bergamot to recreate bitter green petitgrain and crushed citrus leaves.</div>
+            </a>
+
+            <a href="level_2_hedione.html" class="portal-door" style="border-color: rgba(75, 166, 166, 0.4);">
+                <div class="door-tag" style="color: #4ba6a6;">Level 2 Upward Link</div>
+                <div class="door-title">🌬️ Hedione (Diffuser)</div>
+                <div class="door-desc">Bridge green leaf with Hedione and Bergamot to build the iconic Bvlgari Green Tea accord!</div>
+            </a>
+
+            <a href="level_3_ibq.html" class="portal-door" style="border-color: rgba(236, 201, 75, 0.4);">
+                <div class="door-tag" style="color: #ecc94b;">Level 3 Upward Link</div>
+                <div class="door-title">🧥 Isobutyl Quinoline (IBQ)</div>
+                <div class="door-desc">Green leaf locks into IBQ's green-walnut facet for legendary 1970s aristocratic chypres!</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

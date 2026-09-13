@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florol • Level 3 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-pink: #ed64a6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(237, 100, 166, 0.15);
+            color: var(--accent-pink);
+            border: 1px solid rgba(237, 100, 166, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-pink);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #fed7e2;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 3 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-spa"></i> Modern Dewy Petal Water</span>
+        <h1>Florol (Floralpyran)</h1>
+        <p class="lead">The secret weapon of modern floral transparency: fresh white lily-of-the-valley petals drenched in cool morning dew.</p>
+    </div>
+
+    <!-- WHY COMPOSE WITH FLOROL -->
+    <div class="card" style="border-color: rgba(237, 100, 166, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(237,100,166,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-pink); margin-right: 10px;"></i> Why Compose with Florol? (The Hydroxycitronellal Successor)</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. Replacing Hydroxycitronellal</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    For decades, the classic dewy lily-of-the-valley was built on <strong>Hydroxycitronellal</strong>. While <em>not banned</em>, Hydroxycitronellal is heavily restricted by IFRA (~1% max in Cat 4) and prone to oxidation/Schiff base formation. Florol replaced it as an ultra-stable, skin-safe, unrestricted alternative!
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Superior Chemical Stability</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Unlike aldehydes which oxidize into harsh acids over time, Florol is a <strong>pyran ether-alcohol</strong>: chemically indestructible, resistant to discoloration, and stable in high heat and alkaline bases.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. Softening Leather into Beige Suede</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    When combined with <strong>Isobutyl Quinoline (IBQ)</strong>, Florol's creamy, dewy petal texture takes the aggressive, sharp edge off raw leather hide, buffering it into soft, luxurious suede.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. The Neo-Chypre Heart</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Classic 1917 Chypres relied on dense vintage florals. Modern Neo-Chypres (*Coco Mademoiselle*) use Florol to give the floral core a weightless, glowing petal radiance.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(237, 100, 166, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-pink); margin-right: 10px;"></i> The Multi-Facet Reality of Florol</h2>
+        <p>Florol is not just a single lily note. It is an indispensable modern petal prism:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-pink); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Dewy White Muguet</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Crisp, watery lily-of-the-valley petals drenched in cool morning mist.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #48bb78; text-transform: uppercase; font-weight: 700;">Facet 2 (Freshness)</div>
+                <strong style="color: #fff;">Watery Melon / Cucumber</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Subtle aquatic green rind that adds transparent hydration to floral accords.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #f6e05e; text-transform: uppercase; font-weight: 700;">Facet 3 (Body)</div>
+                <strong style="color: #fff;">Creamy Petal Substance</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Velvety floral body that adds tactile weight without adding powder.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #9f7aea; text-transform: uppercase; font-weight: 700;">Facet 4 (Modifier)</div>
+                <strong style="color: #fff;">Clean Textile Freshness</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Smooth, newly laundered white linen finish that modernizes base notes.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <div class="sensory-box">
+            "Florol smells like holding a cold, wet white flower petal right after a rainfall. It is crisp, softly green, watery, and radiantly clean."
+        </div>
+    </div>
+
+    <!-- LATERAL DOORS IN LEVEL 3 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 3?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_3_labdanum.html" class="portal-door">
+                <div class="door-tag">Light Meets Shadow</div>
+                <div class="door-title">🔥 Labdanum Resinoid</div>
+                <div class="door-desc">See how Florol's dewy white petal transparency balances Labdanum's dark ancient amber resin.</div>
+            </a>
+
+            <a href="level_3_ibq.html" class="portal-door">
+                <div class="door-tag">Create Velvet Suede</div>
+                <div class="door-title">🧥 Isobutyl Quinoline (IBQ)</div>
+                <div class="door-desc">Transform bitter raw leather into soft beige luxury suede with a touch of Florol.</div>
+            </a>
+
+            <a href="level_2_hedione.html" class="portal-door">
+                <div class="door-tag">The Transparent Floral Duo</div>
+                <div class="door-title">🌬️ Hedione (Acoustic Diffuser)</div>
+                <div class="door-desc">Hedione + Florol forms the universal modern floral engine used in almost every contemporary luxury perfume!</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

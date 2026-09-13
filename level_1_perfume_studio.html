@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 Perfume Studio: The 4 Archetypes & Complete Lifecycle | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+            --blue: #63b3ed;
+            --green: #48bb78;
+            --purple: #b794f4;
+            --red: #fc8181;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(72, 187, 120, 0.03) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: var(--gold-bright); transform: translateX(-4px); }
+
+        .hero {
+            margin-bottom: 30px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-bright);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-gold);
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        /* LIFECYCLE PROGRESS STEPPER */
+        .lifecycle-stepper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) { .lifecycle-stepper { grid-template-columns: 1fr 1fr; } }
+        .step-pill {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-pill.active {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(212,175,55,0.12));
+        }
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Space Mono', monospace;
+        }
+        .step-pill.active .step-num {
+            background: var(--gold);
+            color: #000;
+        }
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+        .card-gold { border-color: var(--border-gold); }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        /* STYLE SELECTOR BUTTONS */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .style-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .style-btn:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .style-btn.active {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(212,175,55,0.15));
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+        }
+        .style-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .style-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .style-family {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* ARCHETYPE BRIEFS & MINDMAP */
+        .brief-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 680px) { .brief-grid { grid-template-columns: 1fr; } }
+        .brief-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .pane-tag { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+        .pane-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin: 4px 0 6px; }
+
+        /* MIND-MAP VISUALIZER */
+        .mindmap-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 16px;
+        }
+        .mindmap-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .map-cluster {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+        }
+        .map-node {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .node-role { font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-dim); }
+        .node-item { font-size: 0.88rem; font-weight: 700; color: #fff; margin: 2px 0; }
+        .node-function { font-size: 0.78rem; color: var(--text-dim); }
+
+        /* BENCH FORMULATION SLIDERS */
+        .slider-control { margin: 16px 0; }
+        .slider-header { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+        .part-display { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--gold); }
+        input[type=range] { width: 100%; accent-color: var(--gold); cursor: pointer; height: 6px; }
+
+        /* LIVE FORMULATION TABLE */
+        .bench-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 18px;
+        }
+        .bench-table th, .bench-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .bench-table th {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .recipe-summary {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            text-align: center;
+        }
+        .f-val { font-size: 1.3rem; font-weight: 800; color: var(--gold); font-family: 'Space Mono', monospace; }
+        .f-name { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; margin-top: 3px; }
+
+        .instruction-box {
+            background: rgba(72, 187, 120, 0.08);
+            border: 1px solid rgba(72, 187, 120, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 16px;
+            font-size: 0.88rem;
+            color: var(--text-dim);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: var(--gold-bright);
+            transform: translateY(-2px);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Curriculum Constellation</a>
+        <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Level 1 Capstone Studio</span>
+    </div>
+
+    <div class="hero">
+        <span class="badge">Professional Fragrance Life Cycle • 5 Bottles Only</span>
+        <h1>Level 1 Perfume Studio: The 4 Archetypes</h1>
+        <p class="lead">
+            Follow the complete professional life cycle from <strong>Client Briefing</strong> to <strong>Technical Objectives</strong>, <strong>Scent Mind-Mapping</strong>, <strong>Testing & Evaluation</strong>, and <strong>100-Part Compounding</strong>.
+        </p>
+    </div>
+
+    <!-- LEVEL 0 ORIENTATION CALLOUT -->
+    <div style="background: rgba(56, 178, 172, 0.08); border: 1px solid rgba(56, 178, 172, 0.3); border-radius: 10px; padding: 12px 18px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 0.85rem; color: var(--text-dim);">
+            <strong style="color: #81e6d9;"><i class="fas fa-graduation-cap"></i> New to Perfume Architecture?</strong> Review the foundational taxonomy (Raw Material ➔ Accord ➔ Base ➔ Fragrance) and development cycle.
+        </span>
+        <a href="level_0_foundations.html" style="color: #81e6d9; font-weight: 700; font-size: 0.82rem; text-decoration: none; white-space: nowrap; margin-left: 14px;">
+            Open Level 0 Guide <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- DEVELOPMENT LIFECYCLE STEPPER BAR -->
+    <div class="lifecycle-stepper" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="step-pill active">
+            <div class="step-num">1</div>
+            <div class="step-label">Briefing</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">2</div>
+            <div class="step-label">Objectives</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">3</div>
+            <div class="step-label">Mind-Mapping</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">4</div>
+            <div class="step-label">Formulation</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">5</div>
+            <div class="step-label">Testing & Flacon</div>
+        </div>
+    </div>
+
+    <!-- STAGE 1 & 2: BRIEFING & ARCHETYPE OBJECTIVES -->
+    <div class="card card-gold">
+        <h2><span class="step-number">1</span> Stage 1: The Creative Brief & Objectives</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 16px;">
+            Select one of the 4 archetypes to review its client brief, sensory concept, and performance objectives:
+        </p>
+
+        <div class="style-grid">
+            <button class="style-btn active" onclick="loadStyle('cologne')">
+                <div class="style-tag">Style 1 • Cologne</div>
+                <div class="style-title">The Cashmere Skin Scent</div>
+                <div class="style-family">Family: Luminous Woody Citrus</div>
+            </button>
+            <button class="style-btn" onclick="loadStyle('rose')">
+                <div class="style-tag">Style 2 • Soliflore</div>
+                <div class="style-title">The Neo-Rose Minimalist</div>
+                <div class="style-family">Family: Dewy Botanical Floral</div>
+            </button>
+            <button class="style-btn" onclick="loadStyle('amber')">
+                <div class="style-tag">Style 3 • Amber</div>
+                <div class="style-title">The Velvet Amber Wood</div>
+                <div class="style-family">Family: Soft Warm Balsamic</div>
+            </button>
+            <button class="style-btn" onclick="loadStyle('green')">
+                <div class="style-tag">Style 4 • Green</div>
+                <div class="style-title">The Crisp Botanical Stem</div>
+                <div class="style-family">Family: Fresh Aromatic Green</div>
+            </button>
+        </div>
+
+        <div class="brief-grid">
+            <div class="brief-pane">
+                <div class="pane-tag">Stage 1: The Creative Brief</div>
+                <div class="pane-title" id="archSkelTitle">The 1709 Eau de Cologne Heritage</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);" id="archSkelDesc">
+                    Capture the crisp, sun-drenched joy of Italian citrus groves at dawn. Must evoke clean white linen, morning optimism, and pristine grooming.
+                </p>
+            </div>
+            <div class="brief-pane" style="border-color: var(--border-gold);">
+                <div class="pane-tag" style="color: var(--gold-bright);">Stage 2: Technical Objectives</div>
+                <div class="pane-title" id="archTwistTitle">The Modern Monolithic Solution</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);" id="archTwistDesc">
+                    Solve the classical 30-minute evaporation problem. By using 32% Iso E Super as a transparent foundation, the volatile citrus is anchored for 8+ hours without becoming thick or sweet.
+                </p>
+            </div>
+        </div>
+
+        <!-- STAGE 3: SCENT ARCHITECTURE MIND-MAPPING -->
+        <div class="mindmap-box">
+            <div class="mindmap-title">
+                <i class="fas fa-project-diagram"></i> Stage 3: Scent Architecture Mind-Map (Structural Clustering)
+            </div>
+            <div class="map-cluster" id="mindMapNodes">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- STAGE 4: FORMULATION CONSOLE (100.0 PARTS TOTAL) -->
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">
+            <h2><span class="step-number">2</span> Stage 4: Formulation Console (100.0 Parts Total)</h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.85rem; color: var(--text-dim);">Batch Target:</span>
+                <select id="selBatchSize" onchange="calculateTotal()" style="background: rgba(255,255,255,0.06); color: var(--gold); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+                    <option value="5.0">5.00 g (Bench Trial)</option>
+                    <option value="10.0" selected>10.00 g (Standard Flacon)</option>
+                    <option value="20.0">20.00 g (Full Bottle)</option>
+                </select>
+            </div>
+        </div>
+        
+        <p style="color: var(--text-dim); margin-bottom: 16px; font-size: 0.9rem;">
+            Formulas are calibrated out of <strong>100.0 Parts</strong> (Percentage by weight). Fine-tune the parts to balance your concentrate.
+        </p>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🍋 Bergamot FCF (Italy) — Clean Zest Spark</span>
+                <span id="txtCit" class="part-display">40.0 parts (4.00 g)</span>
+            </div>
+            <input type="range" id="slCit" min="0" max="60" step="0.5" value="40.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌹 Rose (PEA) — Dewy Honeyed Petals</span>
+                <span id="txtRose" class="part-display">20.0 parts (2.00 g)</span>
+            </div>
+            <input type="range" id="slRose" min="0" max="50" step="0.5" value="20.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌲 Iso E Super — Velvet Cedar Skeleton</span>
+                <span id="txtWood" class="part-display">32.0 parts (3.20 g)</span>
+            </div>
+            <input type="range" id="slWood" min="0" max="60" step="0.5" value="32.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🍦 Vanillin 10% in DPG — Sweet Pastry Warmth</span>
+                <span id="txtVan" class="part-display">6.0 parts (0.60 g)</span>
+            </div>
+            <input type="range" id="slVan" min="0" max="25" step="0.5" value="6.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌿 Green Leaf (Cis-3-Hexenol 1% in DPG) — Botanical Dew</span>
+                <span id="txtGrn" class="part-display">2.0 parts (0.20 g)</span>
+            </div>
+            <input type="range" id="slGrn" min="0" max="10" step="0.5" value="2.0" oninput="calculateTotal()">
+        </div>
+
+        <!-- LIVE LAB SHEET TABLE -->
+        <table class="bench-table">
+            <thead>
+                <tr>
+                    <th>Bottle Material</th>
+                    <th>Working Dilution</th>
+                    <th style="text-align: right;">Formula Parts</th>
+                    <th style="text-align: right;">Batch Mass (g)</th>
+                </tr>
+            </thead>
+            <tbody id="labTableBody">
+                <!-- Generated by JS -->
+            </tbody>
+        </table>
+
+        <!-- RECIPE TOTAL SUMMARY -->
+        <div class="recipe-summary">
+            <div>
+                <div class="f-val" id="sumParts">100.0</div>
+                <div class="f-name">Total Parts</div>
+            </div>
+            <div>
+                <div class="f-val" id="dispBatchWeight">10.00 g</div>
+                <div class="f-name">Target Batch Weight</div>
+            </div>
+            <div>
+                <div class="f-val" id="isoPct" style="color: var(--gold);">32.0%</div>
+                <div class="f-name">Iso E Super Ratio</div>
+            </div>
+            <div>
+                <div class="f-val" id="statusPill" style="color: var(--green);">BALANCED</div>
+                <div class="f-name">Formula Status</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 18px; text-align: right;">
+            <button class="btn" onclick="copyLabSheet()" style="background: rgba(255,255,255,0.06); color: var(--gold); border: 1px solid var(--border);">
+                <i class="fas fa-clipboard"></i> Copy Laboratory Sheet
+            </button>
+        </div>
+    </div>
+
+    <!-- STAGE 5: TESTING & FLACON EVALUATION -->
+    <div class="card" style="border-color: rgba(72, 187, 120, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(72,187,120,0.06));">
+        <h2><span class="step-number">3</span> Stage 5: Testing & Blotter Diagnostics</h2>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 14px;">
+            Before committing your concentrate to alcohol, evaluate the core interaction on smelling strips over time:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+                <strong style="color: var(--gold); font-size: 0.82rem; text-transform: uppercase;">0 to 15 Minutes (Opening)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;" id="testOpening">
+                    Italian Bergamot FCF explodes with sparkling zest, cut subtly by 2% green leaf sap to prevent candy sweetness.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+                <strong style="color: var(--blue); font-size: 0.82rem; text-transform: uppercase;">30 Min to 2 Hours (Heart)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;" id="testHeart">
+                    Rose (PEA) blooms gently as the citrus calms. The floral note is dry and clean, supported by the transparent cedar skeleton.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+                <strong style="color: var(--green); font-size: 0.82rem; text-transform: uppercase;">4 to 8+ Hours (Drydown)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;" id="testDrydown">
+                    Iso E Super and Vanillin 10% fuse on skin into a warm, comforting cashmere halo that lingers intimate and clean.
+                </p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span style="font-size: 0.84rem; color: var(--text-dim);">Need to test individual two-material chords first?</span>
+            <a href="level_1_accords.html" style="color: #68d391; text-decoration: none; font-weight: 700; font-size: 0.84rem;">
+                <i class="fas fa-vial"></i> Explore Level 1 Accords Lab
+            </a>
+        </div>
+    </div>
+
+    <!-- STAGE 6: FINISHED FLACON DILUTION & BOTTLING -->
+    <div class="card card-gold">
+        <h2><span class="step-number">4</span> Final Stage: Dilution & Bottling</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem;">
+            Convert your raw perfume concentrate into a skin-ready commercial fine fragrance:
+        </p>
+
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin: 16px 0; border: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-weight: 600; color: #fff;">Select Concentration Standard:</span>
+                <select id="selConcentration" onchange="calculateDilution()" style="background: rgba(255,255,255,0.06); color: var(--gold); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+                    <option value="5">Eau de Cologne (5%)</option>
+                    <option value="10">Eau de Toilette (10% EdT)</option>
+                    <option value="15" selected>Eau de Parfum (15% EdP)</option>
+                    <option value="20">Eau de Parfum Intense (20% EdP)</option>
+                </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center; font-family: 'Space Mono', monospace;">
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Perfume Concentrate</div>
+                    <div id="dispConcWeight" style="font-size: 1.1rem; color: var(--gold); font-weight: 700; margin-top: 4px;">1.50 g</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Perfumer's Alcohol (96%)</div>
+                    <div id="dispAlcoWeight" style="font-size: 1.1rem; color: var(--blue); font-weight: 700; margin-top: 4px;">8.50 g</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Finished Flacon</div>
+                    <div id="dispTotalBottle" style="font-size: 1.1rem; color: var(--green); font-weight: 700; margin-top: 4px;">10.00 g</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction-box" id="bottleInstructions">
+            Weigh out your perfume concentrate into an amber glass flacon. Add <strong>8.50 g Perfumer's Alcohol (96% Ethanol)</strong> to reach exactly <strong>15% EdP concentration</strong>. Affix your studio label:  
+            <strong style="color: var(--gold);">PERFUME-01: Modern Cashmere Cologne (15% EdP)</strong>.
+        </div>
+
+        <div style="margin-top: 24px; text-align: center;">
+            <a href="index.html" class="btn btn-gold" style="font-weight: 700; padding: 12px 30px;">
+                <i class="fas fa-check-circle"></i> Complete Level 1 & Advance to Level 2
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const materialsMeta = [
+        { id: 'slCit', name: 'Bergamot FCF (Italy)', dil: 'Neat (100%)' },
+        { id: 'slRose', name: 'Rose (PEA / Phenylethyl Alc)', dil: 'Neat (100%)' },
+        { id: 'slWood', name: 'Iso E Super', dil: 'Neat (100%)' },
+        { id: 'slVan', name: 'Vanillin', dil: '10% in DPG' },
+        { id: 'slGrn', name: 'Cis-3-Hexenol (Green Leaf)', dil: '1% in DPG' }
+    ];
+
+    const styles = {
+        cologne: {
+            skelTitle: "The 1709 Eau de Cologne Heritage",
+            skelDesc: "Capture the crisp, sun-drenched joy of Italian citrus groves at dawn. Must evoke clean white linen, morning optimism, and pristine grooming.",
+            twistTitle: "The Modern Monolithic Solution",
+            twistDesc: "Solve the classical 30-minute evaporation problem. By using 32% Iso E Super as a transparent foundation, the volatile citrus is anchored for 8+ hours without becoming thick or sweet.",
+            cit: 40.0, rose: 20.0, wood: 32.0, van: 6.0, grn: 2.0,
+            bottleLabel: "PERFUME-01: Modern Cashmere Cologne (15% EdP)",
+            mindMap: [
+                { role: "Top Note / Spark", item: "Bergamot FCF", fn: "Provides immediate, explosive morning freshness (40%)" },
+                { role: "Heart / Body", item: "Rose (PEA)", fn: "Adds clean floral moisture and human warmth (20%)" },
+                { role: "Modern Backbone", item: "Iso E Super", fn: "Transparent cedar cushion holding citrus aloft (32%)" },
+                { role: "Sweet Anchor", item: "Vanillin (10%)", fn: "Smooths balsamic rough edges into skin comfort (6%)" },
+                { role: "Botanical Snap", item: "Cis-3-Hexenol (1%)", fn: "Cuts powdery sweetness with green stem dew (2%)" }
+            ],
+            testOpening: "Italian Bergamot FCF explodes with sparkling zest, cut subtly by 2% green leaf sap to prevent candy sweetness.",
+            testHeart: "Rose (PEA) blooms gently as the citrus calms. The floral note is dry and clean, supported by the transparent cedar skeleton.",
+            testDrydown: "Iso E Super and Vanillin 10% fuse on skin into a warm, comforting cashmere halo that lingers intimate and clean."
+        },
+        rose: {
+            skelTitle: "The Victorian Soliflore Heritage",
+            skelDesc: "Create an intimate tribute to a living rose garden. Must avoid the heavy potpourri or dusty granny powder of 19th-century rose waters.",
+            twistTitle: "The Minimalist Dewdrop Solution",
+            twistDesc: "Combine high Phenylethyl alcohol with a crisp touch of green leaf sap and transparent cedar, producing a hyper-modern photorealistic flower.",
+            cit: 18.0, rose: 46.0, wood: 26.0, van: 6.0, grn: 4.0,
+            bottleLabel: "PERFUME-01: Neo-Rose Minimalist (15% EdP)",
+            mindMap: [
+                { role: "Floral Hero", item: "Rose (PEA)", fn: "Forms the dominant core of dewy pink rose petals (46%)" },
+                { role: "Green Calyx", item: "Cis-3-Hexenol (1%)", fn: "Provides photorealistic snapped stem freshness (4%)" },
+                { role: "Atmospheric Spine", item: "Iso E Super", fn: "Velvet cedarwood prevents flower from fading quickly (26%)" },
+                { role: "Citrus Dewdrop", item: "Bergamot FCF", fn: "Adds morning sunshine sparkle to wet petals (18%)" },
+                { role: "Petal Softener", item: "Vanillin (10%)", fn: "Rounds out honeyed nectar sweetness (6%)" }
+            ],
+            testOpening: "Crisp green thorns and cold bergamot dew, followed immediately by blooming sweet rose petals.",
+            testHeart: "Photorealistic living rose garden. The flower smells fresh on the bush, rather than bottled as dry perfume.",
+            testDrydown: "Clean soft cedar and honeyed nectar clinging close to the pulse points."
+        },
+        amber: {
+            skelTitle: "The Classical Balsamic Heritage",
+            skelDesc: "Deliver deep, comforting evening warmth and golden amber luxury that stays addictive from dusk till dawn.",
+            twistTitle: "The Modern Weightless Amber Solution",
+            twistDesc: "Avoid heavy, suffocating resins. Overdosing Iso E Super turns sweet vanilla into a breathable cashmere sweater that floats in modern rooms.",
+            cit: 16.0, rose: 16.0, wood: 46.0, van: 20.0, grn: 2.0,
+            bottleLabel: "PERFUME-01: Velvet Cashmere Amber (15% EdP)",
+            mindMap: [
+                { role: "Comfort Core", item: "Vanillin (10%)", fn: "Golden warmth, toasted sweet pastry, and comfort (20%)" },
+                { role: "Airy Monolith", item: "Iso E Super", fn: "46% overdose ensures amber breathes without stickiness" },
+                { role: "Velvet Bridge", item: "Rose (PEA)", fn: "Binds vanilla to cedar with floral softness (16%)" },
+                { role: "Golden Light", item: "Bergamot FCF", fn: "Provides initial lift to heavy balsamic base (16%)" },
+                { role: "Crisp Contrast", item: "Cis-3-Hexenol (1%)", fn: "Prevents the gourmand note from smelling like cake batter (2%)" }
+            ],
+            testOpening: "Golden bergamot peel meeting warm toasted vanilla paper.",
+            testHeart: "Cashmere wood and soft petals wrapping around sweet balsamic resin.",
+            testDrydown: "Intimate, warm, velvet skin aura that lasts well past 12 hours."
+        },
+        green: {
+            skelTitle: "The Aristocratic Foliage Heritage",
+            skelDesc: "Evoke the wild, invigorating botanical freshness of rain falling onto a lush botanical greenhouse.",
+            twistTitle: "The Balanced Greenhouse Solution",
+            twistDesc: "Neat greens can be brutally sharp. Cushioning the green leaf sap with equal parts citrus and transparent cedar makes it wearable and elegant.",
+            cit: 34.0, rose: 20.0, wood: 34.0, van: 4.0, grn: 8.0,
+            bottleLabel: "PERFUME-01: Crisp Botanical Stem (15% EdP)",
+            mindMap: [
+                { role: "Botanical Hero", item: "Cis-3-Hexenol (1%)", fn: "Crushed green leaves, snapped stems, and chlorophyll (8%)" },
+                { role: "Solar Lift", item: "Bergamot FCF", fn: "Sunlight shining through rain-drenched leaves (34%)" },
+                { role: "Greenhouse Bench", item: "Iso E Super", fn: "Damp blonde wood and greenhouse architecture (34%)" },
+                { role: "Garden Blossom", item: "Rose (PEA)", fn: "Wild pink roses growing along greenhouse glass (20%)" },
+                { role: "Smooth Binder", item: "Vanillin (10%)", fn: "Tames bitter tannins into wearable luxury (4%)" }
+            ],
+            testOpening: "Sharp, invigorating botanical snap of broken stems and citrus rind.",
+            testHeart: "Humid greenhouse foliage, wild climbing petals, and cedar planter boxes.",
+            testDrydown: "Clean, dry cedarwood with a lingering trace of cool morning grass."
+        }
+    };
+
+    function loadStyle(styleKey) {
+        const btns = document.querySelectorAll('.style-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const s = styles[styleKey];
+        document.getElementById('archSkelTitle').textContent = s.skelTitle;
+        document.getElementById('archSkelDesc').textContent = s.skelDesc;
+        document.getElementById('archTwistTitle').textContent = s.twistTitle;
+        document.getElementById('archTwistDesc').textContent = s.twistDesc;
+        document.getElementById('testOpening').textContent = s.testOpening;
+        document.getElementById('testHeart').textContent = s.testHeart;
+        document.getElementById('testDrydown').textContent = s.testDrydown;
+
+        // Render Mind-Map Nodes
+        const mmContainer = document.getElementById('mindMapNodes');
+        mmContainer.innerHTML = '';
+        s.mindMap.forEach(n => {
+            const nodeEl = document.createElement('div');
+            nodeEl.className = 'map-node';
+            nodeEl.innerHTML = `
+                <div class="node-role">${n.role}</div>
+                <div class="node-item">${n.item}</div>
+                <div class="node-function">${n.fn}</div>
+            `;
+            mmContainer.appendChild(nodeEl);
+        });
+
+        document.getElementById('slCit').value = s.cit;
+        document.getElementById('slRose').value = s.rose;
+        document.getElementById('slWood').value = s.wood;
+        document.getElementById('slVan').value = s.van;
+        document.getElementById('slGrn').value = s.grn;
+
+        calculateTotal();
+    }
+
+    function calculateTotal() {
+        const cit = parseFloat(document.getElementById('slCit').value);
+        const rose = parseFloat(document.getElementById('slRose').value);
+        const wood = parseFloat(document.getElementById('slWood').value);
+        const van = parseFloat(document.getElementById('slVan').value);
+        const grn = parseFloat(document.getElementById('slGrn').value);
+
+        const totalParts = cit + rose + wood + van + grn;
+        const batchGrams = parseFloat(document.getElementById('selBatchSize').value);
+
+        // Update displays
+        const factor = batchGrams / (totalParts > 0 ? totalParts : 100);
+        document.getElementById('txtCit').textContent = `${cit.toFixed(1)} parts (${(cit * factor).toFixed(2)} g)`;
+        document.getElementById('txtRose').textContent = `${rose.toFixed(1)} parts (${(rose * factor).toFixed(2)} g)`;
+        document.getElementById('txtWood').textContent = `${wood.toFixed(1)} parts (${(wood * factor).toFixed(2)} g)`;
+        document.getElementById('txtVan').textContent = `${van.toFixed(1)} parts (${(van * factor).toFixed(2)} g)`;
+        document.getElementById('txtGrn').textContent = `${grn.toFixed(1)} parts (${(grn * factor).toFixed(2)} g)`;
+
+        document.getElementById('sumParts').textContent = totalParts.toFixed(1);
+        document.getElementById('dispBatchWeight').textContent = `${batchGrams.toFixed(2)} g`;
+        
+        const isoRatio = totalParts > 0 ? ((wood / totalParts) * 100).toFixed(1) : 0;
+        document.getElementById('isoPct').textContent = `${isoRatio}%`;
+
+        const statusPill = document.getElementById('statusPill');
+        if (Math.abs(totalParts - 100.0) < 0.1) {
+            statusPill.textContent = "BALANCED (100%)";
+            statusPill.style.color = "var(--green)";
+        } else if (totalParts < 100.0) {
+            statusPill.textContent = `LOW (${totalParts.toFixed(1)}/100)`;
+            statusPill.style.color = "var(--gold)";
+        } else {
+            statusPill.textContent = `OVER (${totalParts.toFixed(1)}/100)`;
+            statusPill.style.color = "var(--red)";
+        }
+
+        // Render Table Body
+        const values = [cit, rose, wood, van, grn];
+        const tbody = document.getElementById('labTableBody');
+        tbody.innerHTML = '';
+        materialsMeta.forEach((m, idx) => {
+            const p = values[idx];
+            const g = (p * factor).toFixed(3);
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="font-weight: 600; color: #fff;">${m.name}</td>
+                <td style="color: var(--text-dim);">${m.dil}</td>
+                <td style="text-align: right; font-family: 'Space Mono', monospace; color: var(--gold);">${p.toFixed(1)}</td>
+                <td style="text-align: right; font-family: 'Space Mono', monospace; color: #fff; font-weight: 700;">${g} g</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        calculateDilution();
+    }
+
+    function calculateDilution() {
+        const batchGrams = parseFloat(document.getElementById('selBatchSize').value);
+        const concPct = parseFloat(document.getElementById('selConcentration').value);
+        
+        const totalBottleGrams = batchGrams / (concPct / 100);
+        const alcoholGrams = totalBottleGrams - batchGrams;
+
+        document.getElementById('dispConcWeight').textContent = `${batchGrams.toFixed(2)} g`;
+        document.getElementById('dispAlcoWeight').textContent = `${alcoholGrams.toFixed(2)} g`;
+        document.getElementById('dispTotalBottle').textContent = `${totalBottleGrams.toFixed(2)} g`;
+
+        // Update active style label
+        const activeBtn = document.querySelector('.style-btn.active');
+        const styleKey = activeBtn ? activeBtn.getAttribute('onclick').match(/'(.*)'/)[1] : 'cologne';
+        const labelName = styles[styleKey].bottleLabel;
+
+        document.getElementById('bottleInstructions').innerHTML = `
+            Weigh out your perfume concentrate into an amber glass flacon. Add <strong>${alcoholGrams.toFixed(2)} g Perfumer's Alcohol (96% Ethanol)</strong> to reach exactly <strong>${concPct}% concentration</strong>. Affix your studio label:  
+            <strong style="color: var(--gold);">${labelName}</strong>.
+        `;
+    }
+
+    function copyLabSheet() {
+        const batch = document.getElementById('selBatchSize').value;
+        const totalP = document.getElementById('sumParts').textContent;
+        let text = `=== ARTISAN PERFUMERY LAB SHEET ===\nLevel 1 Studio Formula (Target: ${batch}g)\n`;
+        const rows = document.querySelectorAll('#labTableBody tr');
+        rows.forEach(r => {
+            const cols = r.querySelectorAll('td');
+            text += `${cols[0].textContent} | ${cols[1].textContent} | Parts: ${cols[2].textContent} | Mass: ${cols[3].textContent}\n`;
+        });
+        text += `Total Parts: ${totalP} / 100.0\n`;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Laboratory formulation sheet copied to clipboard!");
+        });
+    }
+
+    // Initialize with default
+    loadStyle('cologne');
+</script>
+
+</body>
+</html>

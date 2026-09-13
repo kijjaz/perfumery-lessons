@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4: Benzoin Siam — The Golden Balsamic Heart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --border: rgba(255, 255, 255, 0.08);
+            --gold: #d4af37;
+            --accent-amber: #dd6b20;
+            --text-main: #f7fafc;
+            --text-dim: #a0aec0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-nav {
+            margin-bottom: 20px;
+        }
+
+        .back-nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .back-nav a:hover {
+            color: var(--gold);
+        }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(221, 107, 32, 0.15);
+            color: var(--accent-amber);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 12px;
+            border: 1px solid rgba(221, 107, 32, 0.3);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff, var(--accent-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .step-number {
+            background: var(--accent-amber);
+            color: #000;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .instruction-box {
+            background: rgba(221, 107, 32, 0.08);
+            border-left: 4px solid var(--accent-amber);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent-amber);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="back-nav">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Return to Curriculum Organ</a>
+    </div>
+
+    <div class="header">
+        <span class="badge">Level 4 — Bottle #1</span>
+        <h1>Benzoin Siam (Styrax tonkinensis)</h1>
+        <p class="lead">The sweet golden resin tears that provide warm honeyed balsam, toasted almond glaze, and the voluptuous heart of classical Amber perfumery.</p>
+    </div>
+
+    <!-- WHY COMPOSE WITH BENZOIN -->
+    <div class="card" style="border-color: rgba(221, 107, 32, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(221,107,32,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-amber); margin-right: 10px;"></i> Why Compose with Benzoin Siam?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Siam vs. Sumatra Distinction</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    <strong>Benzoin Siam</strong> (*Styrax tonkinensis*) is rich in benzoic acid and vanillin, smelling like sweet vanilla cream and almond marzipan. <strong>Benzoin Sumatra</strong> (*Styrax benzoin*) is rich in cinnamic acid, smelling harsher, medicinal, and phenolic. For fine luxury ambers, Siam is universally preferred.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. The Natural Fixative Cushion</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Benzoin contains heavy balsamic esters that physically slow down the evaporation of fugitive top notes (like Bergamot) through London dispersion forces, gluing light citrus molecules to skin for hours.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. ⚠️ The Resinoid Solubility Trap</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Raw benzoin resin contains insoluble botanical bark fragments and waxes that cause precipitation in ethanol. In the student organ, always use a pre-dissolved <strong>50% or 10% resinoid solution in TEC or Ethanol</strong> to ensure crystal-clear formulation!
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. The Golden Amber Chord</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    The legendary classical <em>Amber Accord</em> is formed by combining **Benzoin** (sweet, creamy balsam) + **Labdanum** (dark, leathery smoke) + **Vanillin / Ethyl Vanillin** (warm pastry velvet). Benzoin is the golden bridge connecting them!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(221, 107, 32, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-amber); margin-right: 10px;"></i> The Multi-Facet Reality of Benzoin Siam</h2>
+        <p>Benzoin is not just "sweet resin". It is a complex balsamic confectionery prism:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-amber); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Sweet Honeyed Vanilla Balsam</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Golden syrupy resin tears weeping from Styrax tree bark, warmed by sunlight.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ecc94b; text-transform: uppercase; font-weight: 700;">Facet 2 (Gourmand)</div>
+                <strong style="color: #fff;">Toasted Almond Marzipan</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Subtle benzaldehyde nuance evoking fresh marzipan glaze on hot French pastries.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #f56565; text-transform: uppercase; font-weight: 700;">Facet 3 (Spicy)</div>
+                <strong style="color: #fff;">Warm Cinnamon & Cinnamate</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Gentle woody spice from natural trace cinnamates that prevent cloying sweetness.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #b7791f; text-transform: uppercase; font-weight: 700;">Facet 4 (Animalic)</div>
+                <strong style="color: #fff;">Subtle Warmed Leather Hide</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">A faint animalic, skin-like undertone that locks effortlessly with Labdanum and IBQ.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <p>Dip a smelling strip into your **Benzoin Siam 50% solution**.</p>
+        <div class="instruction-box">
+            <p>Notice how different this is from Level 1 Vanilla and Level 3 Labdanum. Where pure Vanillin is crystalline and powdery, and Labdanum is dark, tarry, and smoky, Benzoin Siam is <strong>warm, honeyed, and golden</strong>. It smells like ancient resin tears that have been glazed in toasted almond syrup and cinnamon bark.</p>
+        </div>
+    </div>
+
+    <!-- LATERAL BRIDGES -->
+    <div class="card">
+        <h2><i class="fas fa-network-wired" style="color: var(--gold); margin-right: 10px;"></i> Organ Connections & Structural Bridges</h2>
+        <ul style="list-style-type: none; margin-left: 5px;">
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                <i class="fas fa-arrow-right" style="color: var(--accent-amber); margin-top: 5px;"></i>
+                <div>
+                    <strong>Bridge to Ethyl Vanillin (Level 4):</strong> Benzoin Siam naturally contains vanillin; when reinforced with pure Ethyl Vanillin, you create the legendary rich dessert core of *Shalimar (1925)*.
+                </div>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                <i class="fas fa-arrow-right" style="color: var(--accent-amber); margin-top: 5px;"></i>
+                <div>
+                    <strong>Bridge to Labdanum (Level 3):</strong> Combining Benzoin (sweet golden balsam) with Labdanum (dark leather rockrose) forms the timeless <strong>Classical Amber Base (Ambre 83)</strong>.
+                </div>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                <i class="fas fa-arrow-right" style="color: var(--accent-amber); margin-top: 5px;"></i>
+                <div>
+                    <strong>Bridge to Bergamot FCF (Level 1):</strong> Benzoin cushions the sharp citrus acid of Bergamot, turning it into the creamy, candied Earl-Grey top note famous in oriental chypres.
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="button-group">
+        <a href="level_4_ethyl_vanillin.html" class="btn btn-primary">Proceed to Ethyl Vanillin (Bottle #2) <i class="fas fa-arrow-right"></i></a>
+        <a href="index.html" class="btn btn-secondary">Organ Hub</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evernyl • Level 2 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-moss: #38a169;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(56, 161, 105, 0.15);
+            color: var(--accent-moss);
+            border: 1px solid rgba(56, 161, 105, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-moss);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #c6f6d5;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 2 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-tree"></i> Bitter Moss & Earth Shadow</span>
+        <h1>Evernyl (Veramoss / Methyl Atrarate)</h1>
+        <p class="lead">The clean lichen bark and damp forest shadow that cuts sweet notes and anchors the classic Chypre and Fougère.</p>
+    </div>
+
+    <!-- WHY COMPOSE EVERNYL FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(56, 161, 105, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(56,161,105,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-moss); margin-right: 10px;"></i> Why Compose with Synthetic Evernyl?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Exact IFRA Standard on Moss Extracts</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Under IFRA Standards, restrictions for <strong>Oakmoss and Treemoss extracts</strong> are directly linked to the presence of <em>Atranol and Chloroatranol</em>. Furthermore, IFRA mandates a <strong>cumulative limit</strong>: if Treemoss is used alongside Oakmoss, the permitted level must be reduced accordingly so the combined total does not exceed the category maximum.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Unrestricted Dosage Freedom with Evernyl</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Because <strong>Evernyl (Methyl atrarate)</strong> is a single defined aroma chemical free from atranol/chloroatranol, it is <strong>not bound by the moss extract cumulative ceiling</strong>. Perfumers can dose it freely at 1%, 2%, or 5%+ to create modern, room-filling mossy sillage.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The Sweet Spun-Sugar Secret</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Unlike bitter natural absolute, synthetic Evernyl has an intense medicinal caramel and spun-sugar sweetness at higher doses, making it versatile across both vintage chypres and modern gourmands.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. The IBQ / Leather Bridge</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Evernyl's damp-peat facet locks seamlessly into <strong>Isobutyl Quinoline (IBQ)</strong>, forming the dark earthy spine of iconic leather chypres (*Bandit, Cabochard*).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(56, 161, 105, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-moss); margin-right: 10px;"></i> The Multi-Facet Reality of Evernyl (Veramoss)</h2>
+        <p>Never treat Evernyl as just "bitter moss". It is a multi-dimensional sweet-moss paradox:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-moss); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Damp Lichen & Oak Bark</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Clean, dry gray-green tree lichen and forest floor bark.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #f687b3; text-transform: uppercase; font-weight: 700;">Facet 2 (The Paradox)</div>
+                <strong style="color: #fff;">Spun Sugar & Cotton Candy</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Intensely sweet medicinal caramel facet that emerges at higher dosages.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #4ba6a6; text-transform: uppercase; font-weight: 700;">Facet 3 (Mineral)</div>
+                <strong style="color: #fff;">Saline Sea-Breeze Air</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Subtle marine-salt air clinging to coastal oak trees.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ecc94b; text-transform: uppercase; font-weight: 700;">Facet 4 (The Crossover)</div>
+                <strong style="color: #fff;">Damp Peat Soil (IBQ Bond)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Rich earthy dampness that locks with Isobutyl Quinoline in leather chypres.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation? (The Sweet Moss Paradox)</h2>
+        <p>
+            Many textbooks mistakenly describe Evernyl as purely dry or bitter. That is only half the story!
+        </p>
+        <div class="sensory-box" style="color: #c6f6d5;">
+            "Evernyl holds a famous sensory paradox: while it brings the earthy, lichen-bark texture of an oak tree, <strong>it is also intensely sweet</strong>. At higher dosages, it reveals a distinctive spun-sugar, medicinal caramel, and cotton-candy facet."
+        </div>
+        <p style="margin-top: 15px;">
+            This sweet-saline-moss duality is precisely why Francis Kurkdjian overdosed Evernyl in <em>Baccarat Rouge 540</em> alongside Ethyl Maltol. It is not cold, dead ash—it is a warm, sweet, mineral-moss crystal that clings to skin like velvet!
+        </p>
+    </div>
+
+    <!-- LATERAL DOORS TO SIBLINGS IN LEVEL 2 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 2?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_2_coumarin.html" class="portal-door">
+                <div class="door-tag">The Sweet Counterpart</div>
+                <div class="door-title">🌾 Coumarin (Sweet Hay)</div>
+                <div class="door-desc">Balance Evernyl's bitter forest moss against Coumarin's warm almond to hear the Fougère chord hum.</div>
+            </a>
+
+            <a href="level_2_lavender.html" class="portal-door">
+                <div class="door-tag">The Aromatic Crown</div>
+                <div class="door-title">🌾 French Lavender Oil</div>
+                <div class="door-desc">Lavender's clean herbal sunlight anchored by Evernyl's dark forest floor.</div>
+            </a>
+
+            <a href="level_2_hedione.html" class="portal-door">
+                <div class="door-tag">The Modern Mineral Lift</div>
+                <div class="door-title">🌬️ Hedione (Acoustic Diffuser)</div>
+                <div class="door-desc">Combine Evernyl and Hedione to create the modern transparent mineral wash used in contemporary luxury launches.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

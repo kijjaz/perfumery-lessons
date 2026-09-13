@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isobutyl Quinoline (IBQ / Pyralone) • Level 3 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-leather: #744210;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(116, 66, 16, 0.25);
+            color: #ecc94b;
+            border: 1px solid rgba(236, 201, 75, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #fefcbf;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 3 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-vest"></i> Leather, Earth & Green Peat</span>
+        <h1>Isobutyl Quinoline (IBQ / Pyralone)</h1>
+        <p class="lead">The legendary molecule of rebellious 20th-century perfumery: bitter tanned hide, green walnut husks, and damp mossy peat.</p>
+    </div>
+
+    <!-- WHY COMPOSE WITH IBQ -->
+    <div class="card" style="border-color: rgba(236, 201, 75, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(116,66,16,0.12));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--gold); margin-right: 10px;"></i> What Does IBQ Bring to the Table?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Castoreum Connection</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    IBQ shares profound chemical and olfactory bridges with <strong>Castoreum</strong> (the beaver musk used in vintage leather). Both contain phenolic, pyrazinic, and quinoline notes that mimic smoked birch bark, warm animal fur, and cured tanned hides!
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. The Secret "Mossy-Earthy" Crossover</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    IBQ is not just a dry jacket. It is deeply <strong>mossy, damp-soil, and peat-like</strong>. That is why it acts as a dark anchor directly complementing or replacing Evernyl in Chypres.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. Green Walnut & Bitter Vetiver</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    It has a piercing astringent green facet (like biting into a raw green walnut rind) that cuts sweet resins like a razor blade.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. ⚠️ The 1% Dilution Mandate</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    At 100%, IBQ smells like burnt tires, diesel, and harsh acrid smoke. On the student bench, it must always be worked at <strong>1% or 10% dilution</strong>. A single micro-drop at 1% provides massive, elegant leather sillage!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(212, 175, 55, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--gold); margin-right: 10px;"></i> The Multi-Facet Reality of IBQ / Pyralone</h2>
+        <p>Never treat IBQ as just "leather". It is a multifaceted green-earth powerhouse:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Cured Saddle Leather</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Bitter, dry, aristocratic cured hide and worn motorcycle jacket.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #38a169; text-transform: uppercase; font-weight: 700;">Facet 2 (The Chypre Secret)</div>
+                <strong style="color: #fff;">Damp Peat & Lichen Moss</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Earthy forest soil and oakmoss dampness that anchors classical Chypres.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #48bb78; text-transform: uppercase; font-weight: 700;">Facet 3 (Astringent)</div>
+                <strong style="color: #fff;">Bitter Green Walnut Rind</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Crisp, vegetal, snappy green bitterness that slices through sweet balsams.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #feb2b2; text-transform: uppercase; font-weight: 700;">Facet 4 (Smoke)</div>
+                <strong style="color: #fff;">Birch Wood Tar Smoke</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Subtle Russian leather campfire smoke and cured hide resins.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <div class="sensory-box">
+            "IBQ is bitter, commanding, and uncompromising. It smells like stepping into an ancient saddlery shop lined with cured hides, fresh green walnut leaves, and damp earth under the floorboards."
+        </div>
+    </div>
+
+    <!-- LATERAL DOORS IN LEVEL 3 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 3?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_3_labdanum.html" class="portal-door">
+                <div class="door-tag">The Amber Pair</div>
+                <div class="door-title">🔥 Labdanum Resinoid</div>
+                <div class="door-desc">Combine IBQ's bitter green leather with Labdanum's warm resin for the legendary 1944 Bandit leather-chypre accord.</div>
+            </a>
+
+            <a href="level_2_evernyl.html" class="portal-door">
+                <div class="door-tag">The Moss Synergy</div>
+                <div class="door-title">🌲 Evernyl (Synthetic Oakmoss)</div>
+                <div class="door-desc">See how IBQ and Evernyl lock together on the shared earthy-mossy facet.</div>
+            </a>
+
+            <a href="level_3_florol.html" class="portal-door">
+                <div class="door-tag">Suede Transparency</div>
+                <div class="door-title">🌸 Florol (Dewy Petal)</div>
+                <div class="door-desc">Soften harsh bitter leather into luxurious velvety suede with dewy white petals.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

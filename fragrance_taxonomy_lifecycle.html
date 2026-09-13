@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragrance Taxonomy & Lifecycle Diagram</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface: #1e293b;
+            --surface-hover: #334155;
+            --accent-gold: #fbbf24;
+            --accent-blue: #38bdf8;
+            --accent-green: #34d399;
+            --accent-purple: #c084fc;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent-gold), #fef08a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        /* Timeline Section */
+        .lifecycle-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .lifecycle-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            right: 2rem;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .stage {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-color);
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--accent-blue);
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .stage:hover, .stage.active {
+            background: var(--accent-blue);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Taxonomy Grid */
+        .taxonomy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .taxonomy-grid {
+                grid-template-columns: 1fr;
+            }
+            .lifecycle-timeline {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .lifecycle-timeline::before {
+                display: none;
+            }
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .tag.class { color: var(--accent-green); border-color: var(--accent-green); }
+        .tag.desc { color: var(--text-muted); }
+        .tag.arch { color: var(--accent-purple); border-color: var(--accent-purple); }
+        .tag.family { color: var(--accent-gold); border-color: var(--accent-gold); }
+
+        .tag:hover, .tag.active {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+
+        /* Tree structure for classification */
+        .hierarchy-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .hierarchy-title {
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .intersection-note {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 3px solid var(--accent-gold);
+            padding: 1rem;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instruction {
+            text-align: center;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Fragrance Taxonomy & Lifecycle</h1>
+        <p class="subtitle">An interactive mapping of odor classifications, archetypes, families, and their relationship with the product development lifecycle.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="instruction">Hover over the lifecycle stages below to see how they connect to the taxonomies.</div>
+
+        <!-- Section 1: Lifecycle Timeline -->
+        <section class="lifecycle-timeline" id="timeline">
+            <div class="stage" data-target="family arch class desc">Briefing</div>
+            <div class="stage" data-target="family arch class desc">Objective</div>
+            <div class="stage" data-target="family arch class desc">Mind-mapping</div>
+            <div class="stage" data-target="class desc arch">Formulation</div>
+            <div class="stage" data-target="family desc">Testing/Evaluation</div>
+        </section>
+
+        <!-- Section 2: Taxonomies -->
+        <section class="taxonomy-grid">
+            
+            <!-- Odor Classification & Description -->
+            <div class="card">
+                <h2>🔬 Odor Classification & Description</h2>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Based on the TGSC visual vocabulary framework. Maps scent concepts and materials.</p>
+                
+                <div class="hierarchy-box" data-id="class desc">
+                    <div class="hierarchy-title">Floral & Fruits</div>
+                    <div class="tag-group">
+                        <span class="tag desc">🌸 Floral (rose, jasmine)</span>
+                        <span class="tag desc">🍋 Citrus (lemon, bergamot)</span>
+                        <span class="tag desc">🍓 Fruit (berry, tropical)</span>
+                    </div>
+                    <div class="intersection-note" data-id="class desc" style="margin-top: 1rem; border-left-color: var(--accent-purple); background: rgba(192, 132, 252, 0.1);">
+                        <strong>Subgroup Overlap:</strong> Citrus <em>fruits</em> (like Lemon) technically fall under the broader Fruity umbrella. However, citrus <em>flowers</em> (like Neroli) lean heavily Floral, and citrus <em>leaves</em> (like Petitgrain) overlap with Green, despite their shared botanical origin.
+                    </div>
+                </div>
+
+                <div class="hierarchy-box" data-id="class desc">
+                    <div class="hierarchy-title">Woody & Earthy</div>
+                    <div class="tag-group">
+                        <span class="tag desc">🪵 Woody (sandal, cedar)</span>
+                        <span class="tag desc">🪨 Earthy (patchouli, soil)</span>
+                        <span class="tag desc">🦠 Moss / Lichen (oakmoss)</span>
+                    </div>
+                </div>
+
+                <div class="hierarchy-box" data-id="class desc">
+                    <div class="hierarchy-title">Green & Herbal</div>
+                    <div class="tag-group">
+                        <span class="tag desc">🥬 Green (leaf, grass)</span>
+                        <span class="tag desc">🌿 Herbal (mint, sage)</span>
+                        <span class="tag desc intersection-tag">🌾 Hay (coumarin, tonka)</span>
+                    </div>
+                </div>
+
+                <div class="hierarchy-box" data-id="class desc">
+                    <div class="hierarchy-title">Gourmand & Spicy</div>
+                    <div class="tag-group">
+                        <span class="tag desc">🍦 Vanilla / Choc / Coffee</span>
+                        <span class="tag desc">🍬 Sweet (caramel, honey)</span>
+                        <span class="tag desc">🌶️ Spicy (pepper, clove)</span>
+                        <span class="tag desc intersection-tag">🌾 Hay (coumarin, tonka)</span>
+                    </div>
+                </div>
+
+                <div class="hierarchy-box" data-id="class desc" style="background: rgba(255, 0, 0, 0.1);">
+                    <div class="hierarchy-title" style="color: #fca5a5;">Savory & Unconventional (TGSC Extensions)</div>
+                    <div class="tag-group">
+                        <span class="tag desc">🧅 Allium (garlic, onion)</span>
+                        <span class="tag desc">🍖 Meaty / Savory</span>
+                        <span class="tag desc">🌋 Sulfurous</span>
+                    </div>
+                </div>
+
+                <div class="intersection-note" data-id="class desc">
+                    <strong>Intersection Example:</strong> Is Coumarin/Tonka Bean Gourmand (almond/sweet) or Herbal (fresh hay)? It bridges both classifications, forming the backbone of the Fougère archetype.
+                </div>
+            </div>
+
+            <!-- Fragrance Archetypes -->
+            <div class="card">
+                <h2>🏛️ Fragrance Archetypes</h2>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Combinations of odors and raw materials defining classical landmark styles.</p>
+                
+                <div class="tag-group" data-id="arch">
+                    <span class="tag arch">Fougère (Lavender/Oakmoss/Coumarin)</span>
+                    <span class="tag arch">Chypre (Citrus/Labdanum/Oakmoss)</span>
+                    <span class="tag arch">Amber (Vanilla/Resins/Woods)</span>
+                    <span class="tag arch">Cologne (Citrus/Herbal/Neroli)</span>
+                    <span class="tag arch">Gourmand (Edible/Dessert-like)</span>
+                </div>
+
+                <div class="intersection-note" data-id="arch" style="border-left-color: var(--accent-purple); background: rgba(192, 132, 252, 0.1);">
+                    Archetypes serve as structural blueprints during <em>Mind-mapping</em> and <em>Formulation</em>, combining specific classifications into recognizable cultural patterns.
+                </div>
+            </div>
+
+            <!-- Fragrance Family -->
+            <div class="card">
+                <h2>🎡 Fragrance Family</h2>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem;">Based on Michael Edwards' Fragrance Wheel, describing the overall tone of a finished fragrance.</p>
+                
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <img src="https://www.fragrancesoftheworld.com/img/wheel_new.png" alt="Michael Edwards Fragrance Wheel" style="max-width: 100%; height: auto; max-height: 200px; border-radius: 50%; border: 2px solid var(--border);">
+                </div>
+
+                <div class="tag-group" data-id="family">
+                    <span class="tag family" title="From single flower concertos to symphonies of complex bouquets, today’s perfumers capture the essence of living flowers.">Floral</span>
+                    <span class="tag family" title="The marriage of sparkling aldehydes with delicate flowers and musk create soft, often powdery, abstract florals.">Soft Floral</span>
+                    <span class="tag family" title="Imagine luminous flowers warmed with spices, resins, and vanilla.">Floral Amber</span>
+                    <span class="tag family" title="Incense casts a spell on sweet spices and resins, to create softly sensual fragrances.">Soft Amber</span>
+                    <span class="tag family" title="Sensual blends of golden resins, opulent flowers and sweet vanilla.">Amber</span>
+                    <span class="tag family" title="Spicy amber accords woven with potent wood notes of patchouli, oud, and sandalwood.">Woody Amber</span>
+                    <span class="tag family" title="Sheer woody notes that renew the harmonies of cedar, patchouli, pine, sandalwood, and vetiver.">Woods</span>
+                    <span class="tag family" title="Velvety notes of oakmoss and patchouli blend smoothly with amber and citrus.">Mossy Woods</span>
+                    <span class="tag family" title="Leather and tobacco notes add a dry, often smoky accent to woody fragrances.">Dry Woods</span>
+                    <span class="tag family" title="Signature lavender and geranium blend with citrus, herbs, and woods.">Aromatic Fougère</span>
+                    <span class="tag family" title="The clean, refreshing notes of bergamot and lemon, mandarin and lime, oranges and grapefruit.">Citrus</span>
+                    <span class="tag family" title="The scent of sea breeze, the freshness of a waterfall, or the ozonic note of wet air after a thunderstorm.">Water</span>
+                    <span class="tag family" title="The sharp notes of fresh-cut grass, violet leaves or cucumber invigorate the senses.">Green</span>
+                    <span class="tag family" title="Orchard fruits, berries of all hues, and a splash of flowers create delicious fruity floral cocktails.">Fruity</span>
+                </div>
+
+                <div class="intersection-note" data-id="family" style="border-left-color: var(--accent-blue); background: rgba(56, 189, 248, 0.1);">
+                    Families provide high-level consumer-facing communication. Often defined in the <em>Briefing</em> and verified during <em>Evaluation</em>.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Section 3: Lifecycle Integration Matrix -->
+        <section class="integration-matrix" style="margin-top: 3rem;">
+            <h2>🔄 Lifecycle Integration Matrix</h2>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 2rem;">How each taxonomy is utilized across the fragrance development lifecycle.</p>
+
+            <div class="matrix-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <!-- Briefing -->
+                <div class="card" style="border-top: 4px solid var(--accent-blue);">
+                    <h3 style="margin-top: 0; color: #fff;">Briefing</h3>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.6;">
+                        <li><strong>Families:</strong> Used to communicate high-level marketing goals (e.g., <em>"We need a new Woody Amber"</em>).</li>
+                        <li><strong>Archetypes:</strong> Sometimes mentioned to set structural expectations (e.g., <em>"A modern Fougère"</em>).</li>
+                        <li><strong>Odor Class:</strong> Rarely used directly, unless specific hero notes are requested (e.g., <em>"Must feature a strong rosy note"</em>).</li>
+                    </ul>
+                </div>
+
+                <!-- Objective -->
+                <div class="card" style="border-top: 4px solid var(--accent-blue);">
+                    <h3 style="margin-top: 0; color: #fff;">Objective</h3>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.6;">
+                        <li><strong>Families:</strong> Anchors the final target market and tone.</li>
+                        <li><strong>Archetypes:</strong> Defines the core technical blueprint to be modified by the perfumer.</li>
+                        <li><strong>Odor Class:</strong> Establishes specific nuances (e.g., <em>"The top note must be sharp and green, not fruity"</em>).</li>
+                    </ul>
+                </div>
+
+                <!-- Mind-mapping -->
+                <div class="card" style="border-top: 4px solid var(--accent-purple);">
+                    <h3 style="margin-top: 0; color: #fff;">Mind-mapping</h3>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 1rem;">Branching out from the main idea(s) set in the objective. It helps translate the perfume objective into something that has a structure—not in exact percentages like a formula, but in terms of feeling and interconnected nodes.</p>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.6; margin-bottom: 0;">
+                        <li><strong>Archetypes:</strong> Used to brainstorm structural twists (e.g., <em>"What if we take a Chypre but replace the citrus with tropical fruit?"</em>).</li>
+                        <li><strong>Odor Class:</strong> Heavily used to cluster raw materials by facet to conceptualize new accords.</li>
+                    </ul>
+                </div>
+
+                <!-- Formulation -->
+                <div class="card" style="border-top: 4px solid var(--accent-orange);">
+                    <h3 style="margin-top: 0; color: #fff;">Formulation</h3>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.6;">
+                        <li><strong>Archetypes:</strong> The actual skeleton being built in the lab (the ratio of base materials).</li>
+                        <li><strong>Odor Class:</strong> The primary tool for selecting specific raw materials (e.g., <em>"I need a balsamic material to soften the dry woods"</em>).</li>
+                    </ul>
+                </div>
+
+                <!-- Testing/Evaluation -->
+                <div class="card" style="border-top: 4px solid var(--accent-gold);">
+                    <h3 style="margin-top: 0; color: #fff;">Testing/Evaluation</h3>
+                    <ul style="color: var(--text-muted); font-size: 0.9rem; padding-left: 1.2rem; line-height: 1.6;">
+                        <li><strong>Families:</strong> Evaluated for market fit: Does it fit the intended consumer family? Is it recognizable as a 'Citrus'?</li>
+                        <li><strong>Odor Class:</strong> Used to evaluate the performance and evaporation curve of specific facets over time (e.g., <em>"The spicy facet fades too quickly on skin"</em>).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Simple interactivity to highlight relationships between lifecycle and taxonomies
+        const stages = document.querySelectorAll('.stage');
+        const tags = document.querySelectorAll('.tag');
+        const hierarchyBoxes = document.querySelectorAll('.hierarchy-box');
+        const notes = document.querySelectorAll('.intersection-note');
+
+        stages.forEach(stage => {
+            stage.addEventListener('mouseenter', () => {
+                const targets = stage.getAttribute('data-target').split(' ');
+                
+                // Highlight related tags and boxes
+                tags.forEach(tag => {
+                    const isTarget = targets.some(t => tag.classList.contains(t));
+                    if(isTarget) {
+                        tag.style.opacity = '1';
+                        tag.style.transform = 'scale(1.05)';
+                        tag.style.boxShadow = '0 0 10px rgba(255,255,255,0.2)';
+                    } else {
+                        tag.style.opacity = '0.3';
+                        tag.style.transform = 'scale(1)';
+                        tag.style.boxShadow = 'none';
+                    }
+                });
+
+                hierarchyBoxes.forEach(box => {
+                    const boxTargets = box.getAttribute('data-id').split(' ');
+                    const isTarget = targets.some(t => boxTargets.includes(t));
+                    if(isTarget) {
+                        box.style.opacity = '1';
+                    } else {
+                        box.style.opacity = '0.3';
+                    }
+                });
+
+                notes.forEach(note => {
+                    const noteTargets = note.getAttribute('data-id').split(' ');
+                    const isTarget = targets.some(t => noteTargets.includes(t));
+                    if(isTarget) {
+                        note.style.opacity = '1';
+                    } else {
+                        note.style.opacity = '0.3';
+                    }
+                });
+            });
+
+            stage.addEventListener('mouseleave', () => {
+                tags.forEach(tag => {
+                    tag.style.opacity = '1';
+                    tag.style.transform = 'scale(1)';
+                    tag.style.boxShadow = 'none';
+                });
+                hierarchyBoxes.forEach(box => {
+                    box.style.opacity = '1';
+                });
+                notes.forEach(note => {
+                    note.style.opacity = '1';
+                });
+            });
+        });
+
+        // Hover effect for intersection tags
+        const intersectionTags = document.querySelectorAll('.intersection-tag');
+        intersectionTags.forEach(it => {
+            it.addEventListener('mouseenter', () => {
+                intersectionTags.forEach(otherIt => {
+                    otherIt.style.background = 'var(--accent-gold)';
+                    otherIt.style.color = '#000';
+                });
+            });
+            it.addEventListener('mouseleave', () => {
+                intersectionTags.forEach(otherIt => {
+                    otherIt.style.background = 'rgba(255, 255, 255, 0.05)';
+                    otherIt.style.color = 'var(--text-muted)';
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>

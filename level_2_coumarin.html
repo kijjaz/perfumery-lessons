@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coumarin • Level 2 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-warm: #ed8936;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(237, 137, 54, 0.15);
+            color: var(--accent-warm);
+            border: 1px solid rgba(237, 137, 54, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-warm);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #feebc8;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 2 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-sun"></i> Warm Almond & Sweet Hay</span>
+        <h1>Coumarin (Tonka Bean)</h1>
+        <p class="lead">The creamy heart of sweet cut hay, toasted marzipan almond, and warm tobacco leaves.</p>
+    </div>
+
+    <!-- WHY COMPOSE COUMARIN FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(237, 137, 54, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(237,137,54,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-warm); margin-right: 10px;"></i> Why Compose Coumarin from Raw Materials?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Tonka Bean Precipitation Trap</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Natural Tonka Bean absolute is packed with dark waxy fats and coumarin crystals that precipitate out of cold alcohol, clogging bottle sprayers and leaving dark brown stains on white clothing.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Synthetic Crystals = Clean Shaving Soap</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Pure synthetic Coumarin crystals provide the pristine, powdery almond-hay aroma without the heavy, sticky brown resin, allowing perfumers to create crisp, clean barbershop foam.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. Strict IFRA 51st Compliance</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Coumarin is restricted to ~1.5% in finished Category 4 fine fragrances. Natural tonka varies wildly in coumarin content, whereas synthetic crystals guarantee mathematically precise safety audits.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. The 1882 Birth of Synthetic Perfumery</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Synthesized in 1868, Paul Parquet used it in *Fougère Royale (1882)* to invent the first abstract fantasy perfume family, freeing perfumery from merely copying natural flower waters!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(237, 137, 54, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-warm); margin-right: 10px;"></i> The Multi-Facet Reality of Coumarin</h2>
+        <p>Coumarin is not just "sweet tonka". It is a multifaceted agricultural and grooming prism:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-warm); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Toasted Sweet Almond</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Warm marzipan, bitter almond pastry, and caramelized tonka beans.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ecc94b; text-transform: uppercase; font-weight: 700;">Facet 2 (Agricultural)</div>
+                <strong style="color: #fff;">Sun-Cured Sweetgrass Hay</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Dry summer sweetgrass and golden hay bales baking under the afternoon sun.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #9f7aea; text-transform: uppercase; font-weight: 700;">Facet 3 (Grooming)</div>
+                <strong style="color: #fff;">Clean Shaving Cream Foam</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">When paired with Lavender, creates the unmistakable clean soapy lather of a luxury shave.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #b7791f; text-transform: uppercase; font-weight: 700;">Facet 4 (Warmth)</div>
+                <strong style="color: #fff;">Cured Blonde Tobacco</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Rich, aromatic sweet pipe tobacco leaves drying in wooden sheds.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <p>
+            Smell raw tonka beans or a warm hay barn in August.
+        </p>
+        <div class="sensory-box">
+            "Coumarin is warm, powdery, and comforting. It has the sweetness of vanilla, but wrapped in toasted almond shells and sun-cured sweetgrass."
+        </div>
+    </div>
+
+    <!-- REVISITING LEVEL 1: THE TEA ACCORD SUBSTITUTION -->
+    <div class="card" style="border-color: rgba(75, 166, 166, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(75,166,166,0.06));">
+        <h2><i class="fas fa-mug-hot" style="color: #4ba6a6; margin-right: 10px;"></i> Formulator's Challenge: Revisiting the Level 1 Tea Accord</h2>
+        <p style="font-size: 0.92rem; color: var(--text-dim); margin-bottom: 14px;">
+            In Level 1, we built the <strong>Earl Grey Tea Accord</strong> (Bergamot + Iso E Super + Vanillin 10%). What happens when you replace sweet **Vanillin** with dry **Coumarin**?
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: var(--gold); text-transform: uppercase; font-weight: 700;">Level 1 Original: With Vanillin (10%)</div>
+                <strong style="color: #fff; display: block; margin: 4px 0;">English Afternoon Tea</strong>
+                <p style="font-size: 0.84rem; color: var(--text-dim); margin: 0;">
+                    Steeped black tea served with a drop of warm milk and a sugar cube. Sweet, cozy, dessert-like, and comforting.
+                </p>
+            </div>
+            <div style="background: rgba(75,166,166,0.06); border: 1px solid rgba(75,166,166,0.3); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.72rem; color: #81e6d9; text-transform: uppercase; font-weight: 700;">Level 2 Revision: With Coumarin (10%)</div>
+                <strong style="color: #fff; display: block; margin: 4px 0;">Japanese Roasted Sencha & Hay Infusion</strong>
+                <p style="font-size: 0.84rem; color: var(--text-dim); margin: 0;">
+                    All pastry sugar vanishes. Coumarin's sun-cured sweetgrass facet turns the blend into dry, crisp herbal tea leaves and cured tobacco leaves. Far more botanical and aristocratic!
+                </p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.3); padding: 12px 16px; border-radius: 8px;">
+            <span style="font-size: 0.85rem; color: var(--text-dim);"><i class="fas fa-vial" style="color: #81e6d9; margin-right: 6px;"></i> Test this side-by-side on smelling strips in the Accords Lab:</span>
+            <a href="level_2_accords.html" style="color: #81e6d9; text-decoration: none; font-weight: 700; font-size: 0.85rem;">
+                Open Level 2 Accords Lab <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- LATERAL DOORS TO SIBLINGS IN LEVEL 2 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 2?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_2_lavender.html" class="portal-door">
+                <div class="door-tag">The Fougère Engine</div>
+                <div class="door-title">🌾 French Lavender Oil</div>
+                <div class="door-desc">Combine Coumarin with Lavender to experience the legendary shaving foam alchemy.</div>
+            </a>
+
+            <a href="level_2_evernyl.html" class="portal-door">
+                <div class="door-tag">The Bitter Counterbalance</div>
+                <div class="door-title">🌲 Evernyl (Synthetic Oakmoss)</div>
+                <div class="door-desc">Coumarin is sweet; Evernyl is bitter and earthy. Together, they create the timeless Fougère tension.</div>
+            </a>
+
+            <a href="level_2_hedione.html" class="portal-door">
+                <div class="door-tag">Blow Floral Wind</div>
+                <div class="door-title">🌬️ Hedione (Atmospheric Floral Diffuser)</div>
+                <div class="door-desc">See how Hedione lifts the toasted tonka warmth into a transparent, radiant cloud.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

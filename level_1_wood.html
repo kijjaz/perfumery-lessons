@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woods & Roots • Level 1 Scent Constellation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-wood: #b7791f;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(183, 121, 31, 0.15);
+            color: #d69e2e;
+            border: 1px solid rgba(183, 121, 31, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-wood);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #ecc94b;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span class="level-indicator">Level 1 • Scent Node</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-tree"></i> Patient Anchor (Base)</span>
+        <h1>Woods & Roots (The Living Forest)</h1>
+        <p class="lead">The dry, quiet texture of ancient tree trunks and damp roots that clings to skin for days.</p>
+    </div>
+
+    <!-- WHY COMPOSE WOOD FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(183, 121, 31, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(183,121,31,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-wood); margin-right: 10px;"></i> Why Compose Wood Notes from Raw Materials?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Weight & Mud Trap of 100% Naturals</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Pure natural woods (Cedarwood Virginia, Sandalwood, Vetiver) are thick, viscous, and heavy. If you only use natural oils, the perfume feels "muddy" and sits flat like oily wood varnish without air.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Transparent Modern Physics (Iso E Super)</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Synthetics like <strong>Iso E Super</strong> and <strong>Cedrol</strong> provide the feeling of dry cedarwood without the oily sludge. They allow light to pass through the perfume like clean window glass.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. Tailoring Your Forest Atmosphere</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Do you want an aristocratic Scandinavian sauna (high Iso E Super + Atlas Cedar) or a damp jungle temple floor (Vetiver + Patchouli)? By controlling the raw components, you set the climate.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. Living Root Organic Texture</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    A synthetic wood alone can smell like a dry cardboard box. Adding a touch of natural Patchouli Oil or Vetiver instantly adds the damp forest soil, roots, and fungal life that make wood smell alive.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW TO MAKE THE WOOD NOTE -->
+    <div class="card">
+        <h2><span class="step-number">1</span> How to Build a Living Forest Wood Note (100.0 Parts Total)</h2>
+        <p>A living tree note is a dialogue between transparent synthetic fiber and natural root depth (calibrated out of 100.0 Parts):</p>
+
+        <div style="margin: 20px 0;">
+            <div style="border-left: 3px solid var(--gold); padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: var(--gold);">1. The Core Wood Trunk (Synthetic Monolith):</strong> <strong>Iso E Super</strong> — <em>65.0 parts (0.65 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">Velvety cedar pencil shavings that expand around the wearer like an invisible cashmere sweater.</span>
+            </div>
+            <div style="border-left: 3px solid #b7791f; padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: #ecc94b;">2. The Resinous Bark (Natural Depth):</strong> <strong>Natural Cedarwood Atlas or Texas</strong> — <em>25.0 parts (0.25 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">Adds the authentic, resinous, slightly smoky ring of real tree bark.</span>
+            </div>
+            <div style="border-left: 3px solid #805ad5; padding: 12px 16px; background: rgba(255,255,255,0.02); margin-bottom: 10px; border-radius: 0 8px 8px 0;">
+                <strong style="color: #9f7aea;">3. The Forest Soil & Roots (Natural Anchor):</strong> <strong>Natural Patchouli Oil (Fractionated)</strong> — <em>10.0 parts (0.10 g)</em><br>
+                <span style="font-size: 0.88rem; color: var(--text-dim);">Damp earth, autumn leaves, and mossy mycorrhizal fungi under the roots.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(183, 121, 31, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-wood); margin-right: 10px;"></i> The Multi-Facet Reality of Iso E Super</h2>
+        <p>Never treat Iso E Super as just "pencil wood". It is an optical illusion with multiple hidden facets:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-wood); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Dry Cedarwood Shavings</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Crisp, clean, tactile pencil shavings and dry sauna wood.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700;">Facet 2 (The Skin Magic)</div>
+                <strong style="color: #fff;">Velvety Ambergris / Skin</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Subtle warmth that smells like warm clean human skin and cozy cashmere.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #4ba6a6; text-transform: uppercase; font-weight: 700;">Facet 3 (Acoustic)</div>
+                <strong style="color: #fff;">Acoustic Amplifier / Lift</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Carries floral and citrus notes upward, giving the perfume vertical projection.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #9f7aea; text-transform: uppercase; font-weight: 700;">Facet 4 (Illusion)</div>
+                <strong style="color: #fff;">The Vanishing Mirage</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Causes rapid olfactory habituation—you stop smelling it, but others smell you from 6 feet away!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><span class="step-number">2</span> What does it do on the bench?</h2>
+        <p>
+            Dip a paper strip into your wood bottle.
+        </p>
+        <ul style="margin-left: 25px; margin-top: 10px; color: var(--text-dim);">
+            <li style="margin-bottom: 8px;"><strong style="color: #fff;">At 0 minutes:</strong> Soft, faint, tactile cedar velvet. You might even wonder if it's there.</li>
+            <li style="margin-bottom: 8px;"><strong style="color: #fff;">At 2 hours:</strong> It is still quietly humming along, completely unchanged.</li>
+            <li><strong style="color: #fff;">Tomorrow morning:</strong> The strip will still smell like pure cedarwood.</li>
+        </ul>
+        <p style="margin-top: 15px;">
+            This is the **Fixative Anchor** of perfumery—the heavy floor that catches everything else.
+        </p>
+    </div>
+
+    <!-- LATERAL DOORS TO ANYWHERE IN LEVEL 1 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_1_citrus.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🍋 Citrus & Peels</div>
+                <div class="door-desc">See how Iso E Super creates Sophia Grojsman's modern cashmere cologne cloud.</div>
+            </a>
+
+            <a href="level_1_vanilla.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🍦 Warm Vanilla</div>
+                <div class="door-desc">Soften dry pencil shavings into warm, cozy cashmere sweaters.</div>
+            </a>
+
+            <a href="level_2_evernyl.html" class="portal-door" style="border-color: rgba(56, 161, 105, 0.4);">
+                <div class="door-tag" style="color: #38a169;">Level 2 Upward Link</div>
+                <div class="door-title">🌲 Evernyl (Synthetic Oakmoss)</div>
+                <div class="door-desc">Combine cedar with sweet lichen bark to anchor classical Fougères and Chypres!</div>
+            </a>
+
+            <a href="level_3_ibq.html" class="portal-door" style="border-color: rgba(236, 201, 75, 0.4);">
+                <div class="door-tag" style="color: #ecc94b;">Level 3 Upward Link</div>
+                <div class="door-title">🧥 IBQ / Leather</div>
+                <div class="door-desc">Iso E Super cushions aggressive raw leather hide into soft, supple luxury suede!</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 4 Accords Workshop: Golden Amber & Sacred Chords Lab | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-amber: rgba(221, 107, 32, 0.4);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --amber: #dd6b20;
+            --smoke: #cbd5e0;
+            --musk: #b794f4;
+            --vanilla: #f6e05e;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(221, 107, 32, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+        
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--amber);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: 0.2s;
+        }
+        .nav-back:hover { color: #fbd38d; transform: translateX(-4px); }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(221, 107, 32, 0.15);
+            color: #fbd38d;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-amber);
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ACCORD SELECTOR TABS */
+        .accord-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .accord-tab {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: left;
+        }
+        .accord-tab:hover {
+            border-color: var(--amber);
+            transform: translateY(-2px);
+        }
+        .accord-tab.active {
+            border-color: var(--amber);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(221,107,32,0.15));
+            box-shadow: 0 4px 16px rgba(221, 107, 32, 0.2);
+        }
+        .tab-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--amber);
+            margin-bottom: 4px;
+        }
+        .tab-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .tab-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        /* INTERACTIVE ACCORD STAGE */
+        .stage-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 12px;
+        }
+        .stage-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fbd38d;
+        }
+        .stage-badge {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.06);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-dim);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .bar-container { margin-bottom: 14px; }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        .bar-bg {
+            height: 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+
+        .sensory-fusion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 18px;
+        }
+        .fusion-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .fusion-pane h4 {
+            font-size: 0.85rem;
+            color: var(--amber);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .fusion-pane p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* CONCENTRATION SHIFT BOX */
+        .dilution-comparison {
+            background: rgba(221, 107, 32, 0.05);
+            border: 1px solid rgba(221, 107, 32, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 18px;
+        }
+        .dil-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #fbd38d;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dil-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            font-size: 0.82rem;
+        }
+
+        .smelling-strip-box {
+            background: linear-gradient(135deg, rgba(221,107,32,0.08), rgba(22,22,27,0.9));
+            border: 1px solid var(--border-amber);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 18px;
+        }
+        .strip-title {
+            color: #fbd38d;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-amber {
+            background: var(--amber);
+            color: #fff;
+        }
+        .btn-amber:hover {
+            background: #ed8936;
+            transform: translateY(-2px);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <a href="index.html" class="nav-back" style="margin-bottom: 0;"><i class="fas fa-arrow-left"></i> Return to Organ Curriculum</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Level 4 Lab</span>
+        </div>
+    </div>
+
+    <div class="header">
+        <span class="badge">Level 4 — Grand Classical Harmonization & Potency</span>
+        <h1>Level 4 Accords Workshop: Golden Amber & Potency Diagnostics</h1>
+        <p class="lead">
+            Comparing <strong>Vanillin vs. Ethyl Vanillin (3.5x potency)</strong> and evaluating how macrocyclic musks suspend heavy balsams.
+        </p>
+    </div>
+
+    <!-- ACCORD SELECTION TABS -->
+    <div class="accord-grid">
+        <div class="accord-tab active" onclick="selectAccord('ambre83')">
+            <div class="tab-tag">The Archetype Origin</div>
+            <div class="tab-title">The Historic Ambre 83 Base</div>
+            <div class="tab-desc">Labdanum + Benzoin Siam + Ethyl Vanillin. The golden balsamic synergy behind every classical amber in history.</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('shalimarCushion')">
+            <div class="tab-tag">Guerlain Legend (1925)</div>
+            <div class="tab-title">The Shalimar Velvet Cushion</div>
+            <div class="tab-desc">Ethyl Vanillin + Benzoin + Ethylene Brassylate. Burnt caramel in a powdery macrocyclic musk cocoon.</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('sacredIncense')">
+            <div class="tab-tag">Cathedral Smoke</div>
+            <div class="tab-title">Sacred Stone & Olibanum</div>
+            <div class="tab-desc">Frankincense + Benzoin + Iso E Super. Cold gothic stone church smoke balanced by weeping honey resin tears.</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('modernNoir')">
+            <div class="tab-tag">21st-Century Niche</div>
+            <div class="tab-title">The Modern Amber Noir</div>
+            <div class="tab-desc">Clearwood® + Ethyl Vanillin + Ethylene Brassylate. Clean crystalline amber trail without greasy tar or vintage dust.</div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE ACCORD STAGE -->
+    <div class="card">
+        <div class="stage-box">
+            <div class="stage-header">
+                <div>
+                    <span class="stage-badge" id="accordArchetype">ACCORD ARCHETYPE: HISTORIC AMBER</span>
+                    <div class="stage-title" id="accordTitle">The Historic Ambre 83 Base</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Recommended Ratio:</div>
+                    <div style="font-size: 1.1rem; color: #fbd38d; font-family: 'Space Mono', monospace; font-weight: 700;" id="accordRatio">45% Benzoin (50%) : 35% Vanillin/EtV : 20% Labdanum (10%)</div>
+                </div>
+            </div>
+
+            <!-- DYNAMIC FORMULATION BARS -->
+            <div id="recipeBars"></div>
+
+            <div class="sensory-fusion">
+                <div class="fusion-pane">
+                    <h4><i class="fas fa-eye" style="margin-right: 6px;"></i> The Olfactory Metamorphosis</h4>
+                    <p id="accordFusionText">
+                        Labdanum brings dark amber leather and ancient resinous bite; Benzoin Siam brings honeyed marzipan and toasted vanilla tears; Ethyl Vanillin brings torched crème brûlée sugar. Fused together, they transcend individual materials to create the universal golden definition of Amber: thick, comforting, balsamic, and radiating like polished honey.
+                    </p>
+                </div>
+                <div class="fusion-pane">
+                    <h4><i class="fas fa-flask" style="margin-right: 6px;"></i> Historical Context & Usage</h4>
+                    <p id="accordHistoryText">
+                        Formulated in the late 19th century by the legendary De Laire fabrique under the name <em>Ambre 83</em>. It was sold as a pre-blended specialty base to every master perfumer in Paris, forming the DNA of <em>Shalimar</em>, <em>Habanita</em>, and <em>Tabu</em>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONCENTRATION SHIFT BOX (Potency & Dilution Diagnostics) -->
+            <div class="dilution-comparison">
+                <div class="dil-title">
+                    <i class="fas fa-balance-scale"></i> Critical Potency Diagnostic: Vanillin vs. Ethyl Vanillin (3.5x Impact)
+                </div>
+                <div class="dil-grid">
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #ecc94b;" id="lblDilNeat">Test A: Standard Methyl Vanillin</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilNeat"></p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #68d391;" id="lblDilTen">Test B: Ethyl Vanillin (10% Solution)</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilTen"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LABORATORY TEST PROTOCOL -->
+            <div class="smelling-strip-box">
+                <div class="strip-title"><i class="fas fa-vial"></i> Bench Experiment: The Tri-Strip Golden Glow</div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px;" id="accordBenchInstructions"></p>
+            </div>
+
+            <!-- MODERN TWISTS & CLASSICAL REPLACEMENTS -->
+            <div style="background: rgba(221, 107, 32, 0.05); border: 1px solid rgba(221, 107, 32, 0.3); border-radius: 12px; padding: 18px; margin-top: 18px;">
+                <div style="color: #fbd38d; font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-magic"></i> Modern Twist: Transforming Classical Materials
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px;">
+                    How 21st-century perfumers modernize vintage nitro-musks and thick amber resins:
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #e53e3e;">
+                        <strong style="color: #feb2b2;">Classical 19th/20th-C. Predecessor:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Nitro-Musks (Musk Ketone, Musk Xylene, Deer Musk):</strong> Toxic, bioaccumulative, and completely banned by modern IFRA standards; heavy animalic undertones that could feel powdery and stuffy.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #ecc94b;">
+                        <strong style="color: #fbd38d;">Modern Common Replacement:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Ethylene Brassylate / Velvione / Cosmone / Muscone / Muscenone:</strong> Safe, biodegradable macrocyclic and alicyclic musks delivering soft cashmere silk, intimate second-skin radiation, and velvety aeration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div style="font-size: 0.85rem; color: var(--text-dim);">
+                Ready to bottle these chords into a full 15% Grand Classical Amber?
+            </div>
+            <a href="level_4_perfume_studio.html" class="btn btn-amber">
+                <i class="fas fa-spray-can"></i> Open Level 4 Compounding Studio
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const accords = {
+        ambre83: {
+            archetype: "ACCORD ARCHETYPE: HISTORIC AMBRE 83",
+            title: "The Historic Ambre 83 Base",
+            ratio: "45% Benzoin (50%) : 35% Ethyl Vanillin (10%) : 20% Labdanum (10%)",
+            materials: [
+                { name: "🍯 Benzoin Siam 50% (Golden Balsam)", pct: 45, color: "var(--amber)", parts: "45.0 parts" },
+                { name: "🍨 Ethyl Vanillin 10% (3.5x Caramel Vanilla)", pct: 35, color: "var(--vanilla)", parts: "35.0 parts" },
+                { name: "🔥 Labdanum 10% in TEC (Dark Rockrose Leather)", pct: 20, color: "#c53030", parts: "20.0 parts" }
+            ],
+            fusion: "Labdanum brings dark amber leather and ancient resinous bite; Benzoin Siam brings honeyed marzipan and toasted vanilla tears; Ethyl Vanillin brings torched crème brûlée sugar. Fused together, they transcend individual materials to create the universal golden definition of Amber: thick, comforting, balsamic, and radiating like polished honey.",
+            history: "Formulated in the late 19th century by the legendary De Laire fabrique under the name Ambre 83. It was sold as a pre-blended specialty base to every master perfumer in Paris, forming the DNA of Shalimar, Habanita, and Tabu.",
+            lblNeat: "Potency Test: Standard Vanillin",
+            dilNeat: "Standard Vanillin produces a sweet, powdery, pastry-like aroma. In heavy resins, it tends to get buried beneath the dark leather of Labdanum and requires higher dosage.",
+            lblTen: "Potency Test: Ethyl Vanillin (at 10%)",
+            dilTen: "Ethyl Vanillin is 3.5x more potent with a torched dark caramel facet. Even diluted to 10%, it slices effortlessly through thick balsamic resins, creating an intense, radiating golden glow.",
+            bench: "Dip Strip 1 in Benzoin Siam 50%, Strip 2 in Ethyl Vanillin 10%, and Strip 3 in Labdanum 10%. Overlap them and inhale deeply. Notice how the sticky bitter leather of the labdanum is completely swallowed by the golden sweetness of the benzoin and vanilla!"
+        },
+        shalimarCushion: {
+            archetype: "ACCORD ARCHETYPE: GUERLAIN AMBER COCOON",
+            title: "The Shalimar Velvet Cushion Accord",
+            ratio: "40% Ethylene Brassylate : 35% Benzoin (50%) : 25% Ethyl Vanillin (10%)",
+            materials: [
+                { name: "🟣 Ethylene Brassylate (Macrocyclic Musk)", pct: 40, color: "var(--musk)", parts: "40.0 parts" },
+                { name: "🍯 Benzoin Siam 50% in TEC (Honey Balsam)", pct: 35, color: "var(--amber)", parts: "35.0 parts" },
+                { name: "🍨 Ethyl Vanillin 10% in DPG (Dark Caramel)", pct: 25, color: "var(--vanilla)", parts: "25.0 parts" }
+            ],
+            fusion: "Heavy vanillin and sticky benzoin resins can feel heavy and suffocating on skin. Overdosing Ethylene Brassylate acts like an acoustic spring cushion: it wraps the sweet caramelized vanilla inside a cloud of clean cashmere fur, allowing the heavy balsamic sillage to float in 3D air for 24+ hours.",
+            history: "The secret to the legendary sillage of Jacques Guerlain's 1925 Shalimar. Guerlain used animalic and synthetic musks to aerate the unprecedented overdose of Ethyl Vanillin.",
+            lblNeat: "Binary Pair: Benzoin 50% + Ethyl Vanillin 10%",
+            dilNeat: "Without musk, Benzoin + Ethyl Vanillin forms a dense, sticky, food-like caramel candy. It smells like a kitchen confectionery rather than high French perfumery.",
+            lblTen: "Triad Addition: Ethylene Brassylate (Musk)",
+            dilTen: "Adding macrocyclic musk (Ethylene Brassylate) immediately transforms the kitchen confection into a sensual, warm skin-scent that diffuses in three dimensions.",
+            bench: "Pinch three strips: Ethylene Brassylate 10%, Benzoin Siam 50%, and Ethyl Vanillin 10%. Fan them across your face. The musk removes all stickiness, leaving a plush, addictive skin-scent halo."
+        },
+        sacredIncense: {
+            archetype: "ACCORD ARCHETYPE: GOTHIC CATHEDRAL STONE",
+            title: "Sacred Stone & Olibanum Accord",
+            ratio: "45% Frankincense EO : 35% Iso E Super : 20% Benzoin (50%)",
+            materials: [
+                { name: "⛪ Frankincense EO (Sacred Lemony Smoke)", pct: 45, color: "var(--smoke)", parts: "45.0 parts" },
+                { name: "🌲 Iso E Super (Velvet Cedar)", pct: 35, color: "#a0aec0", parts: "35.0 parts" },
+                { name: "🍯 Benzoin Siam 50% (Warm Balsam)", pct: 20, color: "var(--amber)", parts: "20.0 parts" }
+            ],
+            fusion: "Frankincense on its own has sharp lemony monoterpenes and cold mineral smoke that can feel austere and dry. Benzoin Siam adds weeping resin sweetness beneath the smoke, while Iso E Super provides the cold, acoustic echo of ancient stone pillars in a gothic cathedral.",
+            history: "The structural accord behind cult incense perfumes like Comme des Garçons Series 3: Incense Avignon and Heeley Cardinal.",
+            lblNeat: "Binary Pair: Frankincense + Iso E Super",
+            dilNeat: "Frankincense and Iso E Super produce a stark, cold, ascetic cedar smoke that smells purely mineral and dry.",
+            lblTen: "The Balance: Adding Benzoin Siam (50%)",
+            bench: "Combine 45.0 parts Frankincense 10%, 35.0 parts Iso E Super, and 20.0 parts Benzoin Siam 50% (e.g. 0.45g + 0.35g + 0.20g). Swirl and apply to a smelling strip. Experience the cold, meditative serenity of candlelit stone chapels."
+        },
+        modernNoir: {
+            archetype: "ACCORD ARCHETYPE: 21ST-CENTURY AMBER NOIR",
+            title: "The Modern Amber Noir Accord",
+            ratio: "40% Ethylene Brassylate : 35% Clearwood® : 25% Ethyl Vanillin (10%)",
+            materials: [
+                { name: "🟣 Ethylene Brassylate (Clean Skin Musk)", pct: 40, color: "var(--musk)", parts: "40.0 parts" },
+                { name: "🍂 Clearwood® (Biotech Woody Cocoa)", pct: 35, color: "var(--gold)", parts: "35.0 parts" },
+                { name: "🍨 Ethyl Vanillin 10% (Gourmand Caramel)", pct: 25, color: "var(--vanilla)", parts: "25.0 parts" }
+            ],
+            fusion: "By stripping away dirty animalic notes and dense tar resinoids, this contemporary chord pairs clean biotech Patchoulol (Clearwood) with torched Ethyl Vanillin and crystalline macrocyclic musk. The result is modern, nocturnal, and transparent—smelling like luxury cashmere sweaters and roasted cocoa beans.",
+            history: "The signature DNA of modern niche ambers (Maison Francis Kurkdjian Grand Soir, Tom Ford Noir Extreme).",
+            lblNeat: "Bench Comparison: Dark Indonesian Patchouli vs. Clearwood",
+            dilNeat: "Dark Indonesian patchouli makes this accord earthy, damp, and vintage with iron cellar notes.",
+            lblTen: "Biotech Precision: Clearwood (30-40% Patchoulol)",
+            dilTen: "Clearwood strips away the damp cellar dirt, highlighting pure clean wood and dry cocoa that blends seamlessly into Ethyl Vanillin and clean musk.",
+            bench: "Dip Clearwood, Ethylene Brassylate, and Ethyl Vanillin 10%. Smell how the dry woody cocoa of the biotech patchouli bonds directly with the caramelized ethyl vanillin without any cloying stickiness."
+        }
+    };
+
+    function selectAccord(key) {
+        const tabs = document.querySelectorAll('.accord-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const acc = accords[key];
+        document.getElementById('accordArchetype').textContent = acc.archetype;
+        document.getElementById('accordTitle').textContent = acc.title;
+        document.getElementById('accordRatio').textContent = acc.ratio;
+        document.getElementById('accordFusionText').textContent = acc.fusion;
+        document.getElementById('accordHistoryText').textContent = acc.history;
+        document.getElementById('lblDilNeat').textContent = acc.lblNeat;
+        document.getElementById('txtDilNeat').textContent = acc.dilNeat;
+        document.getElementById('lblDilTen').textContent = acc.lblTen;
+        document.getElementById('txtDilTen').textContent = acc.dilTen;
+        document.getElementById('accordBenchInstructions').textContent = acc.bench;
+
+        const container = document.getElementById('recipeBars');
+        container.innerHTML = '';
+
+        acc.materials.forEach(m => {
+            const el = document.createElement('div');
+            el.className = 'bar-container';
+            el.innerHTML = `
+                <div class="bar-label">
+                    <span>${m.name}</span>
+                    <span class="mono" style="color: ${m.color}; font-weight: 700;">${m.parts} (${m.pct}%)</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: ${m.pct}%; background: ${m.color};"></div>
+                </div>
+            `;
+            container.appendChild(el);
+        });
+    }
+
+    selectAccord('ambre83');
+</script>
+
+</body>
+</html>

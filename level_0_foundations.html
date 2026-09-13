@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 0: Foundations & Cognitive Relationship Graph | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(56, 178, 172, 0.35);
+            --cyan: #38b2ac;
+            --cyan-bright: #81e6d9;
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --blue: #63b3ed;
+            --purple: #b794f4;
+            --green: #48bb78;
+            --red: #fc8181;
+            --orange: #ed8936;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(56, 178, 172, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cyan-bright);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: #fff; transform: translateX(-4px); }
+
+        .hero { margin-bottom: 35px; }
+        .badge {
+            display: inline-block;
+            background: rgba(56, 178, 172, 0.15);
+            color: var(--cyan-bright);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-cyan);
+        }
+        h1 { font-size: 2.3rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .lead { font-size: 1.1rem; color: var(--text-dim); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+            margin-bottom: 26px;
+            backdrop-filter: blur(12px);
+        }
+        .card-cyan { border-color: var(--border-cyan); }
+
+        h2 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .step-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--cyan);
+            color: #000;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* 1. COGNITIVE RELATIONSHIP GRAPH STYLES */
+        .graph-viewport {
+            background: rgba(10, 11, 15, 0.95);
+            border: 1px solid var(--border-cyan);
+            border-radius: 14px;
+            padding: 24px;
+            position: relative;
+            overflow-x: auto;
+        }
+        .graph-diagram {
+            min-width: 780px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        .graph-lane {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 18px;
+            transition: all 0.25s ease;
+        }
+        .graph-lane:hover {
+            border-color: var(--cyan);
+            background: rgba(56,178,172,0.04);
+        }
+        .stage-pill {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            border-left: 4px solid var(--cyan);
+        }
+        .stage-pill-num { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--cyan-bright); }
+        .stage-pill-name { font-size: 0.98rem; font-weight: 700; color: #fff; }
+
+        .concept-nodes {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .c-node {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            transition: all 0.2s;
+        }
+        .c-node:hover {
+            transform: translateY(-2px);
+            border-color: var(--gold);
+        }
+        .c-arrow {
+            color: var(--cyan-bright);
+            font-size: 0.78rem;
+        }
+
+        .node-tag-family { border-color: rgba(99, 179, 237, 0.4); color: var(--blue); }
+        .node-tag-archetype { border-color: rgba(212, 175, 55, 0.4); color: var(--gold); }
+        .node-tag-odor { border-color: rgba(183, 148, 244, 0.4); color: var(--purple); }
+        .node-tag-raw { border-color: rgba(72, 187, 120, 0.4); color: var(--green); }
+        .node-tag-accord { border-color: rgba(237, 137, 54, 0.4); color: var(--orange); }
+        .node-tag-base { border-color: rgba(252, 129, 129, 0.4); color: var(--red); }
+        .node-tag-fragrance { border-color: rgba(56, 178, 172, 0.4); color: var(--cyan-bright); }
+
+        /* 2. THE 4 BUILDING BLOCKS */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin: 20px 0;
+        }
+        @media (max-width: 800px) { .tier-grid { grid-template-columns: 1fr 1fr; } }
+        .tier-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            position: relative;
+        }
+        .tier-level {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--cyan-bright);
+            margin-bottom: 6px;
+        }
+        .tier-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .tier-desc {
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            line-height: 1.45;
+        }
+        .tier-example {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.78rem;
+            color: var(--gold-bright);
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* 3. THE THREE-TIER TAXONOMY PYRAMID */
+        .taxo-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) { .taxo-box { grid-template-columns: 1fr; } }
+        .taxo-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .taxo-tag { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+        .taxo-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin: 4px 0 8px; }
+        .taxo-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.45; }
+
+        /* 4. INTERACTIVE 5-STAGE LIFECYCLE EXPLORER */
+        .lifecycle-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        @media (max-width: 860px) { .lifecycle-container { grid-template-columns: 1fr; } }
+        .cycle-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .cycle-btn:hover {
+            border-color: var(--cyan);
+            transform: translateY(-2px);
+        }
+        .cycle-btn.active {
+            border-color: var(--cyan);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(56,178,172,0.18));
+            box-shadow: 0 4px 16px rgba(56, 178, 172, 0.2);
+        }
+        .cycle-step { font-size: 0.7rem; font-weight: 700; color: var(--cyan-bright); text-transform: uppercase; }
+        .cycle-title { font-size: 0.95rem; font-weight: 700; color: #fff; margin-top: 2px; }
+
+        .stage-detail {
+            background: rgba(0,0,0,0.35);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            margin-top: 16px;
+        }
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+        .detail-title { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .detail-tag { font-size: 0.75rem; color: var(--cyan-bright); text-transform: uppercase; font-weight: 700; }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        @media (max-width: 680px) { .detail-grid { grid-template-columns: 1fr; } }
+        .detail-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .detail-pane h4 { font-size: 0.85rem; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+        .detail-pane p { font-size: 0.86rem; color: var(--text-dim); margin: 0; line-height: 1.5; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-cyan {
+            background: var(--cyan);
+            color: #000;
+            font-weight: 700;
+        }
+        .mono { font-family: 'Space Mono', monospace; }
+
+        /* FRAGRANCE WHEEL & ARCHETYPE STUDIO */
+        .wheel-studio-grid {
+            display: grid;
+            grid-template-columns: 360px 1fr;
+            gap: 28px;
+            align-items: center;
+            margin-top: 20px;
+        }
+        @media (max-width: 900px) {
+            .wheel-studio-grid { grid-template-columns: 1fr; }
+        }
+        .wheel-container {
+            position: relative;
+            width: 330px;
+            height: 330px;
+            margin: 0 auto;
+        }
+        .wheel-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        .wheel-slice {
+            cursor: pointer;
+            transition: all 0.25s ease;
+            transform-origin: 175px 175px;
+        }
+        .wheel-slice:hover {
+            filter: brightness(1.25);
+            transform: scale(1.025);
+        }
+        .wheel-slice.active {
+            filter: brightness(1.35) drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+            stroke: #fff;
+            stroke-width: 2.5px;
+        }
+        .wheel-center-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #121217;
+            border: 2px solid var(--border-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            pointer-events: none;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+        .hub-title { font-size: 0.68rem; text-transform: uppercase; color: var(--gold); font-weight: 700; letter-spacing: 0.5px; }
+        .hub-count { font-size: 1.15rem; font-weight: 800; color: #fff; }
+
+        .archetype-mod-console {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .morph-btn-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .morph-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .morph-btn:hover {
+            border-color: var(--gold);
+            color: #fff;
+        }
+        .morph-btn.active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-bright);
+            color: #fff;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+        }
+        .morph-panel {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .morph-axis-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .morph-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .morph-blueprint {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+            font-size: 0.82rem;
+        }
+        @media (max-width: 600px) { .morph-blueprint { grid-template-columns: 1fr; } }
+        .blueprint-card {
+            background: rgba(0,0,0,0.35);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Curriculum Hub</a>
+        <div style="display: flex; gap: 16px; align-items: center;">
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.88rem; font-weight: 600;"><i class="fas fa-book-open"></i> Technical Glossary</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Orientation Level</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <span class="badge">Level 0 • Foundation Core</span>
+        <h1>Foundations & Cognitive Relationship Graph</h1>
+        <p class="lead">
+            How a perfumer thinks at every stage of creation: connecting <strong>Taxonomy</strong> (Family, Archetype, Odor Facet), <strong>Physical Matter</strong> (Raw Material, Accord, Base), and the <strong>5-Stage Life Cycle</strong>.
+        </p>
+    </div>
+
+    <!-- 1. THE UNIFIED COGNITIVE RELATIONSHIP GRAPH -->
+    <div class="card card-cyan">
+        <h2><span class="step-circle"><i class="fas fa-project-diagram"></i></span> The Cognitive Relationship Map: How to Think in Each Stage</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 18px;">
+            This graph maps how mental concepts and physical matter interact at every stage of the formulation life cycle:
+        </p>
+
+        <div class="graph-viewport">
+            <div class="graph-diagram">
+                
+                <!-- STAGE 1 LANE -->
+                <div class="graph-lane">
+                    <div class="stage-pill" style="border-left-color: var(--blue);">
+                        <div class="stage-pill-num">Stage 1 Life Cycle</div>
+                        <div class="stage-pill-name">The Creative Brief</div>
+                    </div>
+                    <div class="concept-nodes">
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">Drives:</span>
+                        <div class="c-node node-tag-family"><i class="fas fa-globe"></i> Fragrance Family (e.g. Fougère / Amber)</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node node-tag-archetype"><i class="fas fa-landmark"></i> Historical Archetype (e.g. 1882 Fougère Royale)</div>
+                    </div>
+                </div>
+
+                <!-- STAGE 2 LANE -->
+                <div class="graph-lane">
+                    <div class="stage-pill" style="border-left-color: var(--gold);">
+                        <div class="stage-pill-num">Stage 2 Life Cycle</div>
+                        <div class="stage-pill-name">Creative & Technical Objectives</div>
+                    </div>
+                    <div class="concept-nodes">
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">Answers Brief with:</span>
+                        <div class="c-node node-tag-odor"><i class="fas fa-bullseye"></i> <strong>What to Express:</strong> Emotional Persona & Olfactory Texture (Intimate Cocoon vs Radiant Dew)</div>
+                        <i class="fas fa-plus c-arrow"></i>
+                        <div class="c-node"><i class="fas fa-tachometer-alt"></i> Sillage Radius & 8h+ Longevity Goals</div>
+                        <i class="fas fa-plus c-arrow"></i>
+                        <div class="c-node"><i class="fas fa-shield-alt"></i> Proactive Safety/Stability Boundaries (IFRA & Discoloration Awareness)</div>
+                    </div>
+                </div>
+
+                <!-- STAGE 3 LANE -->
+                <div class="graph-lane">
+                    <div class="stage-pill" style="border-left-color: var(--purple);">
+                        <div class="stage-pill-num">Stage 3 Life Cycle</div>
+                        <div class="stage-pill-name">Scent Mind-Mapping</div>
+                    </div>
+                    <div class="concept-nodes">
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">Clusters by:</span>
+                        <div class="c-node node-tag-odor"><i class="fas fa-eye"></i> Odor Facets (Zest, Honey, Marzipan)</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node node-tag-raw"><i class="fas fa-vial"></i> Raw Materials (Monads)</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node node-tag-accord"><i class="fas fa-link"></i> Accords (1+1=3 Chords)</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node node-tag-base"><i class="fas fa-cubes"></i> Specialty Bases (e.g. Ambre 83)</div>
+                    </div>
+                </div>
+
+                <!-- STAGE 4 LANE -->
+                <div class="graph-lane">
+                    <div class="stage-pill" style="border-left-color: var(--cyan);">
+                        <div class="stage-pill-num">Stage 4 Life Cycle</div>
+                        <div class="stage-pill-name">Formulation (100.0 Parts)</div>
+                    </div>
+                    <div class="concept-nodes">
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">Transforms:</span>
+                        <div class="c-node node-tag-raw"><i class="fas fa-calculator"></i> 100.0 Parts Formula (% by Weight)</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node"><i class="fas fa-weight-hanging"></i> Analytical Scale Mass (0.001g)</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node node-tag-fragrance"><i class="fas fa-vial"></i> Trial Concentrate Compounding</div>
+                    </div>
+                </div>
+
+                <!-- STAGE 5 LANE -->
+                <div class="graph-lane">
+                    <div class="stage-pill" style="border-left-color: var(--orange);">
+                        <div class="stage-pill-num">Stage 5 Life Cycle</div>
+                        <div class="stage-pill-name">Testing & Evaluation</div>
+                    </div>
+                    <div class="concept-nodes">
+                        <span style="font-size: 0.8rem; color: var(--text-dim);">Evaluates:</span>
+                        <div class="c-node"><i class="fas fa-stopwatch"></i> 3 Evaporation Windows (0m Flash ➔ 30m Heart ➔ 4h+ Drydown)</div>
+                        <i class="fas fa-check c-arrow"></i>
+                        <div class="c-node"><i class="fas fa-flask"></i> Skin vs. Blotter Performance</div>
+                        <i class="fas fa-arrow-right c-arrow"></i>
+                        <div class="c-node node-tag-fragrance"><i class="fas fa-wine-bottle"></i> Finished Flacon (15% EdP in 96% Ethanol)</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-top: 16px; font-size: 0.85rem; color: var(--text-dim);">
+            <strong style="color: var(--cyan-bright);"><i class="fas fa-lightbulb"></i> How to use this mental roadmap:</strong>
+            When designing a perfume, never jump straight to the weighing scale. Ask: <em>"What is the Brief?"</em> ➔ <em>"What Family & Archetype does that belong to?"</em> ➔ <em>"What are the Technical Objectives to solve its classical flaws?"</em> ➔ <em>"How do my Raw Materials & Accords mind-map into roles?"</em> ➔ <em>"Did testing on blotters confirm balance?"</em> ➔ <strong>Only then do you compound!</strong>
+        </div>
+
+        <!-- THE STUDENT DECISION ROADMAP TABLE -->
+        <div style="margin-top: 20px; overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--border); color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem;">
+                        <th style="padding: 10px 12px; text-align: left;">Development Stage</th>
+                        <th style="padding: 10px 12px; text-align: left;">What Question Does Student Ask?</th>
+                        <th style="padding: 10px 12px; text-align: left;">Which Concepts Connect Here?</th>
+                        <th style="padding: 10px 12px; text-align: left;">Tangible Deliverable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 10px 12px; font-weight: 700; color: var(--blue);">Stage 1: Briefing</td>
+                        <td style="padding: 10px 12px; color: var(--text-main);">"Who is wearing this, where, and what emotion should it evoke?"</td>
+                        <td style="padding: 10px 12px; color: var(--text-dim);">Fragrance Family (Macro Genus) ➔ Historical Archetype (Chassis)</td>
+                        <td style="padding: 10px 12px; font-family: 'Space Mono', monospace; color: var(--gold-bright);">Creative Brief Doc</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 10px 12px; font-weight: 700; color: var(--gold);">Stage 2: Objectives</td>
+                        <td style="padding: 10px 12px; color: var(--text-main);">"What should the user feel, how long must it project, and what chemical risks (discoloration, maceration shift) must we anticipate?"</td>
+                        <td style="padding: 10px 12px; color: var(--text-dim);">Creative Sensation (Airy, Velvety, Intimate) + Volatility Targets (8h+) + Stability (Schiff bases, Vanillin darkening, IFRA limits)</td>
+                        <td style="padding: 10px 12px; font-family: 'Space Mono', monospace; color: var(--gold-bright);">Creative & Technical Spec Doc</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 10px 12px; font-weight: 700; color: var(--purple);">Stage 3: Mind-Mapping</td>
+                        <td style="padding: 10px 12px; color: var(--text-main);">"How do my materials cluster into structural architectural roles?"</td>
+                        <td style="padding: 10px 12px; color: var(--text-dim);">Odor Facets ➔ Raw Materials (Monads) ➔ Accords (1+1=3) ➔ Specialty Bases</td>
+                        <td style="padding: 10px 12px; font-family: 'Space Mono', monospace; color: var(--gold-bright);">Scent Tree Architecture</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <td style="padding: 10px 12px; font-weight: 700; color: var(--cyan);">Stage 4: Formulation</td>
+                        <td style="padding: 10px 12px; color: var(--text-main);">"How do I write a balanced 100.0 Parts formula and convert to grams on my scale?"</td>
+                        <td style="padding: 10px 12px; color: var(--text-dim);">100.0 Parts Total (% by weight) ➔ Dilution Dosing ➔ Bench Trial Compounding (0.001g)</td>
+                        <td style="padding: 10px 12px; font-family: 'Space Mono', monospace; color: var(--cyan-bright);">100.0 Parts Formula & Concentrate</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px 12px; font-weight: 700; color: var(--orange);">Stage 5: Testing & Evaluation</td>
+                        <td style="padding: 10px 12px; color: var(--text-main);">"How does the formulated blend evolve across time on blotter and skin?"</td>
+                        <td style="padding: 10px 12px; color: var(--text-dim);">3 Evaporation Windows (0m, 30m, 4h+) ➔ Wearer Feedback ➔ Bottling into 15% EdP Flacon</td>
+                        <td style="padding: 10px 12px; font-family: 'Space Mono', monospace; color: var(--gold-bright);">Evaluation Log & Flacon</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 16px; text-align: right;">
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+                <i class="fas fa-book-open"></i> Explore Full Perfumery Glossary & Technical Lexicon ➔
+            </a>
+        </div>
+    </div>
+
+    <!-- 2. THE 4 PHYSICAL BUILDING BLOCKS -->
+    <div class="card">
+        <h2><span class="step-circle">2</span> The 4 Physical Building Blocks</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem;">
+            How raw materials transform step-by-step into a commercial finished flacon:
+        </p>
+
+        <div class="tier-grid">
+            <div class="tier-card">
+                <div class="tier-level">Level 1 Unit</div>
+                <div class="tier-title">Raw Material</div>
+                <p class="tier-desc">The foundational discrete ingredient on the organ: whether a pure isolate (PEA), a synthetic reaction mixture of isomers (Iso E Super, Cashmeran), or a complex natural extract.</p>
+                <div class="tier-example">e.g. Bergamot FCF, Rose (PEA), Iso E Super, Coumarin</div>
+            </div>
+
+            <div class="tier-card">
+                <div class="tier-level">Level 2 Unit (1 + 1 = 3)</div>
+                <div class="tier-title">Accord (Chord)</div>
+                <p class="tier-desc">2 to 4 materials balanced so precisely they fuse into an indivisible third identity.</p>
+                <div class="tier-example">e.g. Lavender + Coumarin = Shaving Soap</div>
+            </div>
+
+            <div class="tier-card">
+                <div class="tier-level">Level 3 Unit</div>
+                <div class="tier-title">Specialty Base</div>
+                <p class="tier-desc">A complex, pre-compounded micro-formula used as a modular brick inside larger perfumes.</p>
+                <div class="tier-example">e.g. Ambre 83, De Laire Mousse de Saxe</div>
+            </div>
+
+            <div class="tier-card">
+                <div class="tier-level">Level 4 Unit</div>
+                <div class="tier-title">Finished Fragrance</div>
+                <p class="tier-desc">The complete 100.0-part concentrate diluted in 96% alcohol to an exact concentration standard.</p>
+                <div class="tier-example">e.g. 15% EdP, 10% EdT, 5% Cologne</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. THE 3-TIER DESCRIPTIVE TAXONOMY -->
+    <div class="card">
+        <h2><span class="step-circle">3</span> The 3 Levels of Scent Taxonomy</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem;">
+            Never confuse an **odor facet** with a **historical archetype** or an overarching **fragrance family**:
+        </p>
+
+        <div class="taxo-box">
+            <div class="taxo-pane">
+                <div class="taxo-tag">Tier 1 • Granular Perception</div>
+                <div class="taxo-title">Odor Facet & Descriptors</div>
+                <p class="taxo-desc">
+                    The specific sensory adjectives you perceive at the smelling strip. A single molecule often has 3 to 4 distinct facets.
+                </p>
+                <div style="margin-top: 12px; font-size: 0.8rem; color: var(--gold-bright); font-family: 'Space Mono', monospace;">
+                    • Coumarin: Toasted almond, sweet hay, warm marzipan<br>
+                    • IBQ: Green peat, smoked hide, rubber
+                </div>
+            </div>
+
+            <div class="taxo-pane" style="border-color: rgba(212, 175, 55, 0.35);">
+                <div class="taxo-tag" style="color: var(--gold-bright);">Tier 2 • Historical Blueprint</div>
+                <div class="taxo-title">Fragrance Archetype</div>
+                <p class="taxo-desc">
+                    The landmark historical formula skeletons that founded entire traditions through chemical breakthroughs.
+                </p>
+                <div style="margin-top: 12px; font-size: 0.8rem; color: var(--gold-bright); font-family: 'Space Mono', monospace;">
+                    • 1882 Fougère Royale (Lavender + Coumarin)<br>
+                    • 1917 Chypre de Coty (Bergamot + Oakmoss)<br>
+                    • 1925 Shalimar (Amber & Ethyl Vanillin)
+                </div>
+            </div>
+
+            <div class="taxo-pane">
+                <div class="taxo-tag">Tier 3 • Macro Classification</div>
+                <div class="taxo-title">Fragrance Family</div>
+                <p class="taxo-desc">
+                    The broad commercial genus grouping perfumes by dominant structural behavior and market territory.
+                </p>
+                <div style="margin-top: 12px; font-size: 0.8rem; color: var(--gold-bright); font-family: 'Space Mono', monospace;">
+                    • Citrus / Cologne<br>
+                    • Aromatic Fougère<br>
+                    • Chypre & Leather<br>
+                    • Amber (Classical Balsamic)
+                </div>
+            </div>
+        </div>
+
+        <!-- MODERNIZATION TRANSLATION MATRIX -->
+        <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08);">
+            <h3 style="font-size: 1.05rem; color: var(--cyan-bright); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-exchange-alt"></i> The Modernization Matrix: Classic Naturals ➔ 21st-Century Synthetics
+            </h3>
+            <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 14px;">
+                Modern perfumery rarely uses heavy, dirty, or restricted vintage materials in their raw state. Across every level of our curriculum, students learn to substitute classical precursors with radiant modern equivalents:
+            </p>
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 0.84rem; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border); color: #fff; background: rgba(255,255,255,0.03);">
+                            <th style="padding: 10px 12px;">Level</th>
+                            <th style="padding: 10px 12px;">Classical Precursor</th>
+                            <th style="padding: 10px 12px; color: #feb2b2;">Historical Defect / Risk</th>
+                            <th style="padding: 10px 12px; color: #68d391;">Modern Common Replacement</th>
+                            <th style="padding: 10px 12px;">Modern Aesthetic Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 10px 12px; font-weight: 700; color: var(--gold);">Level 1</td>
+                            <td style="padding: 10px 12px; color: var(--text-main);">Raw Galbanum Resinoid</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Bitter, muddy resin; smells like swampy weeds if overdosed.</td>
+                            <td style="padding: 10px 12px; font-weight: 700; color: #68d391;">Cis-3-Hexenol / Dynascone / Allyl Amyl Glycolate / Galbex 183</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Electric dewdrop realism, metallic pineapple freshness, sparkling modern calyx.</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 10px 12px; font-weight: 700; color: var(--purple);">Level 2</td>
+                            <td style="padding: 10px 12px; color: var(--text-main);">Natural Oakmoss (Atranorin) & Indolic Jasmine Paste</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Severe IFRA dermal sensitization bans; heavy, dense, opaque fog.</td>
+                            <td style="padding: 10px 12px; font-weight: 700; color: #d6bcfa;">Evernyl (Veramoss) + Hedione (High Cis)</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">100% IFRA compliance, salty crystalline ocean-lichen freshness, aerated floral wind.</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 10px 12px; font-weight: 700; color: var(--red);">Level 3</td>
+                            <td style="padding: 10px 12px; color: var(--text-main);">Raw Birch Tar, Animal Castoreum & Dirty Iron Patchouli</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Phenolic campfire smoke, barnyard animalic grime, heavy dark cellar mud.</td>
+                            <td style="padding: 10px 12px; font-weight: 700; color: #feb2b2;">Isobutyl Quinoline (IBQ 1%) + Clearwood® + Florol</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Supple green luxury suede, iron-free clean cocoa-wood, dewy luminous petal radiance.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 12px; font-weight: 700; color: var(--amber);">Level 4</td>
+                            <td style="padding: 10px 12px; color: var(--text-main);">Nitro-Musks (Musk Ketone, Musk Xylene) & Deer Musk Abs</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Toxic, bioaccumulative, banned by IFRA; stuffy vintage powder.</td>
+                            <td style="padding: 10px 12px; font-weight: 700; color: #fbd38d;">Ethylene Brassylate / Velvione / Cosmone / Muscone / Muscenone</td>
+                            <td style="padding: 10px 12px; color: var(--text-dim);">Skin-safe biodegradable macrocyclics, plush cashmere aura, luminous second-skin radiance.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 3B. THE MODERN FRAGRANCE WHEEL & ARCHETYPE MODIFIER STUDIO -->
+        <div style="margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.08);">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+                <div>
+                    <h3 style="font-size: 1.15rem; color: #fff; margin: 0; display: flex; align-items: center; gap: 10px;">
+                        <span style="color: var(--gold);"><i class="fas fa-dharmachakra"></i></span> The Modern Fragrance Wheel (Featuring Amber) & Archetype Morphing
+                    </h3>
+                    <p style="font-size: 0.88rem; color: var(--text-dim); margin-top: 4px;">
+                        The contemporary fragrance wheel has permanently replaced the outdated Eurocentric term <em>"Oriental"</em> with <strong>Amber</strong>. Explore how a single historical archetype can be structurally mutated across family boundaries.
+                    </p>
+                </div>
+                <div style="font-size: 0.75rem; background: rgba(212, 175, 55, 0.12); color: var(--gold-bright); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                    <i class="fas fa-check"></i> Modern Industry Standard: Amber Class
+                </div>
+            </div>
+
+            <div class="wheel-studio-grid">
+                <!-- SVG FRAGRANCE WHEEL -->
+                <div class="wheel-container">
+                    <svg class="wheel-svg" viewBox="0 0 350 350">
+                        <!-- Slices (Center: 175, 175. Radius: 150) -->
+                        <!-- 1. Citrus / Fresh (Top: -90° to -18° -> 270° to 342°) -->
+                        <path id="wheel-citrus" class="wheel-slice active" fill="#ecc94b" fill-opacity="0.75" stroke="#ecc94b" stroke-width="1.5"
+                            d="M 175 175 L 175 25 A 150 150 0 0 1 317.6 128.6 Z" onclick="selectFamily('citrus')" />
+                        
+                        <!-- 2. Floral (342° to 54°) -->
+                        <path id="wheel-floral" class="wheel-slice" fill="#ed64a6" fill-opacity="0.75" stroke="#ed64a6" stroke-width="1.5"
+                            d="M 175 175 L 317.6 128.6 A 150 150 0 0 1 296.3 263.1 Z" onclick="selectFamily('floral')" />
+                        
+                        <!-- 3. Amber (Classical Balsamic & Resin, replaces Oriental) (54° to 126°) -->
+                        <path id="wheel-amber" class="wheel-slice" fill="#dd6b20" fill-opacity="0.75" stroke="#dd6b20" stroke-width="1.5"
+                            d="M 175 175 L 296.3 263.1 A 150 150 0 0 1 175 325 Z" onclick="selectFamily('amber')" />
+                        
+                        <!-- 4. Woody (126° to 198°) -->
+                        <path id="wheel-woody" class="wheel-slice" fill="#38a169" fill-opacity="0.75" stroke="#38a169" stroke-width="1.5"
+                            d="M 175 175 L 175 325 A 150 150 0 0 1 53.7 263.1 Z" onclick="selectFamily('woody')" />
+                        
+                        <!-- 5. Fougère & Aromatic (Center Universal Cross-Class) (198° to 270°) -->
+                        <path id="wheel-fougere" class="wheel-slice" fill="#9f7aea" fill-opacity="0.75" stroke="#9f7aea" stroke-width="1.5"
+                            d="M 175 175 L 53.7 263.1 A 150 150 0 0 1 175 25 Z" onclick="selectFamily('fougere')" />
+
+                        <!-- Wheel Labels (Radial Text) -->
+                        <text x="240" y="85" fill="#121217" font-size="11" font-weight="800" text-anchor="middle">CITRUS / FRESH</text>
+                        <text x="270" y="200" fill="#121217" font-size="11" font-weight="800" text-anchor="middle">FLORAL</text>
+                        <text x="220" y="285" fill="#fff" font-size="11" font-weight="800" text-anchor="middle">AMBER</text>
+                        <text x="125" y="285" fill="#fff" font-size="11" font-weight="800" text-anchor="middle">WOODY</text>
+                        <text x="95" y="140" fill="#fff" font-size="11" font-weight="800" text-anchor="middle">FOUGÈRE</text>
+                    </svg>
+                    
+                    <div class="wheel-center-hub">
+                        <div class="hub-title">FAMILY</div>
+                        <div class="hub-count" id="activeFamilyName" style="color: #ecc94b;">CITRUS</div>
+                    </div>
+                </div>
+
+                <!-- ARCHETYPE MODIFIER WORKBENCH -->
+                <div class="archetype-mod-console">
+                    <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 6px;">
+                        Interactive Archetype Transformation Engine
+                    </div>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
+                        How Archetypes Morph Across Wheel Territories:
+                    </div>
+
+                    <div class="morph-btn-group">
+                        <button class="morph-btn active" onclick="morphArchetype('fougere_morph')">Morph 1: The Fougère Shift</button>
+                        <button class="morph-btn" onclick="morphArchetype('chypre_morph')">Morph 2: The Chypre Shift</button>
+                        <button class="morph-btn" onclick="morphArchetype('cologne_morph')">Morph 3: The Eau de Cologne Shift</button>
+                        <button class="morph-btn" onclick="morphArchetype('amber_morph')">Morph 4: The Amber Shift</button>
+                    </div>
+
+                    <div class="morph-panel" id="morphPanel">
+                        <!-- Injected via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. THE 5-STAGE DEVELOPMENT LIFE CYCLE EXPLORER -->
+    <div class="card card-cyan">
+        <h2><span class="step-circle">4</span> Interactive 5-Stage Life Cycle Explorer</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem;">
+            Click each stage below to examine its inputs, outputs, and student decision rules:
+        </p>
+
+        <div class="lifecycle-container">
+            <div class="cycle-btn active" onclick="showStage('briefing')">
+                <div class="cycle-step">Stage 1</div>
+                <div class="cycle-title">Briefing</div>
+            </div>
+            <div class="cycle-btn" onclick="showStage('objectives')">
+                <div class="cycle-step">Stage 2</div>
+                <div class="cycle-title">Objectives</div>
+            </div>
+            <div class="cycle-btn" onclick="showStage('mindmap')">
+                <div class="cycle-step">Stage 3</div>
+                <div class="cycle-title">Mind-Mapping</div>
+            </div>
+            <div class="cycle-btn" onclick="showStage('formulation')">
+                <div class="cycle-step">Stage 4</div>
+                <div class="cycle-title">Formulation</div>
+            </div>
+            <div class="cycle-btn" onclick="showStage('testing')">
+                <div class="cycle-step">Stage 5</div>
+                <div class="cycle-title">Testing & Flacon</div>
+            </div>
+        </div>
+
+        <div class="stage-detail" id="stageDisplay">
+            <!-- Dynamic Injection -->
+        </div>
+    </div>
+
+    <!-- 5. STUDENT FOUNDATION FAQS -->
+    <div class="card" style="border-color: rgba(212, 175, 55, 0.35);">
+        <h2><span class="step-circle" style="background: var(--gold);"><i class="fas fa-question"></i></span> Student Foundations FAQ: Key Questions & Answers</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 20px;">
+            Common doubts and misconceptions beginners have when stepping into perfumery:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+            
+            <!-- Q1 -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+                <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="color: var(--cyan-bright); font-size: 0.9rem;"></i>
+                    1. Is it possible to build a real perfume if I haven't studied raw materials or mixing before?
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin: 0;">
+                    <strong style="color: var(--gold-bright);">Yes, absolutely!</strong> Traditional perfumery schools often force students to memorize 100+ raw materials for 6 months before touching a formula, leading to sensory fatigue and frustration. In our <strong>Progressive Spiral Curriculum</strong>, you learn to formulate immediately at <strong>Level 1 with only 5 bottles</strong>. Because those 5 materials represent the essential structural poles (Citrus Top, Floral Heart, Cedar Backbone, Vanilla Sweetness, and Green Dew), you can compound a balanced, complete 15% Eau de Parfum on your very first day. You don't need to know all materials to compose great perfume—you only need to understand the structural role of the materials in front of you.
+                </p>
+            </div>
+
+            <!-- Q2 -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+                <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="color: var(--cyan-bright); font-size: 0.9rem;"></i>
+                    2. Why can't I just mix materials that smell good together? Why follow the 5-stage life cycle?
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin: 0;">
+                    Perfume is dynamic chemistry across space and time, not a static painting. Mixing randomly creates three severe failures:
+                    <br>• <strong>Olfactory Mud & Vanishing Scent:</strong> Unstructured materials clash for the exact same evaporation window, canceling each other out, or evaporate in 20 minutes without an architectural backbone (Hedione, Iso E Super).
+                    <br>• <strong>Answering the Brief — What to Express (Stage 2):</strong> Before asking <em>"How do I formulate?"</em>, you must answer the client's brief: <strong>What do we want to express?</strong> (e.g. An intimate cashmere cocoon of quiet luxury vs. an electrifying morning dewdrop). Stage 2 defines the desired emotional experience, tactile texture (powdery, dewy, velvety), and technical targets (sillage throw, 8h+ longevity).
+                    <br>• <strong>The 'How' Lives in Mind-Mapping & Formulation (Stages 3 & 4):</strong> While technical awareness starts in Stage 2 (noticing potential discoloration like Vanillin browning or maceration shifts), the actual <em>technical 'how'</em> happens during <strong>Mind-Mapping (Stage 3)</strong> and <strong>Formulation (Stage 4)</strong>—where you select specific molecules to carry the idea, prevent chemical clashes, and balance 100.0 parts by weight on the analytical scale.
+                    <br>Following the <strong>5-Stage Life Cycle</strong> ensures you know <em>what to express</em> before committing your formulas to the bench.
+                </p>
+            </div>
+
+            <!-- Q3 -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+                <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="color: var(--cyan-bright); font-size: 0.9rem;"></i>
+                    3. What is the real difference between an Accord, a Specialty Base, and a Finished Fragrance?
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin: 0;">
+                    Think of them as modular physical units:
+                    <br>• A <strong>Raw Material</strong> is the foundational discrete ingredient on your bench. It can be a single chemical isolate (e.g. Phenylethyl alcohol, Coumarin), a synthetic chemical mixture of isomers/congeners synthesized together (e.g. Iso E Super, Hedione, Cashmeran, Ethylene Brassylate), or a complex multi-component botanical oil or resin (e.g. Bergamot FCF, Labdanum).
+                    <br>• An <strong>Accord</strong> is a balanced micro-chassis of 2 to 4 raw materials fused into an indivisible third identity (e.g. Lavender + Coumarin = clean barbershop shaving lather).
+                    <br>• A <strong>Specialty Base</strong> is a pre-compounded complex accord (like <em>Ambre 83</em>) created by fragrance houses as an off-the-shelf structural brick so perfumers don't have to rebuild complex ambers or vintage mosses from scratch in every formula.
+                    <br>• A <strong>Finished Fragrance</strong> is the completed 100.0-part architectural symphony containing top, heart, and base accords, diluted in 96% alcohol (e.g., 15% Eau de Parfum).
+                </p>
+            </div>
+
+            <!-- Q4 -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+                <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="color: var(--cyan-bright); font-size: 0.9rem;"></i>
+                    4. Why do professional perfumers formulate out of parts (100, 1,000, or 10,000) instead of counting drops?
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin: 0;">
+                    Counting 'drops' is unpredictable and unscientific: viscosity and surface tension vary radically across materials. A cold, sticky drop of Labdanum resinoid can weigh 3 to 4 times more than a warm, runny drop of Bergamot citrus oil! If you formulate in drops, your perfume can never be replicated accurately.
+                    <br><br>
+                    Instead, professional perfumery formulates strictly in <strong>parts by weight</strong> on analytical digital balances ($0.001\text{g}$ precision):
+                    <br>• <strong>100.0 Parts Total (% by weight):</strong> The pedagogical gold standard used in our course. Ratios translate directly into intuitive percentages, making it effortless to balance structure and audit IFRA limits.
+                    <br>• <strong>1,000 Parts Total (Permille standard):</strong> The traditional European fragrance house standard (Givaudan, Firmenich, IFF). Scaling out of 1,000 allows perfumers to specify trace materials down to whole numbers (e.g., 2 parts out of 1,000 rather than 0.2%) without drowning in decimal points.
+                    <br>• <strong>10,000 Parts Total (Ultra-trace industrial standard):</strong> Used for complex commercial fine fragrances containing hyper-potent captives, pyrazines, sulfur compounds, or high-impact trace aldehydes where an ingredient must be precisely controlled down to parts-per-ten-thousand ($0.01\%$).
+                    <br><br>
+                    Whether using 100, 1,000, or 10,000 parts, mass-based formulation allows you to instantly scale a trial from a 5.00g bench vial to a 10.00g flacon, or a 500-kilogram industrial batch with zero mathematical error.
+                </p>
+            </div>
+
+            <!-- Q5 -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+                <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="color: var(--cyan-bright); font-size: 0.9rem;"></i>
+                    5. Why do some materials need to be diluted to 10% or 1% before mixing? Which solvents should I use, and what are the myths?
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin: 0;">
+                    Aroma chemicals differ by orders of magnitude in their olfactory impact thresholds. Ultra-powerful molecules like <strong>Cis-3-Hexenol</strong> (green leaf stem) or <strong>Isobutyl Quinoline / IBQ</strong> (peaty leather) will completely paralyze the nose and ruin a blend if dosed neat (100%). By preparing a <strong>1% or 10% working dilution</strong>, a single drop or 0.05g on your scale delivers a delicate dewy petal or a buttery suede whisper, rather than a choking chemical fire.
+                    <br><br>
+                    <strong style="color: var(--gold-bright);">The Big Three Perfumery Solvents:</strong>
+                    <br>• <strong>DPG (Dipropylene Glycol):</strong> The universal workhorse solvent. Highly polar, odorless, and water-soluble. Exceptional at dissolving crystalline powders (Vanillin, Coumarin, Evernyl, Ambroxan) and diluting volatile liquids. <em>Note:</em> DPG struggles to dissolve very sticky, non-polar natural tree resins and heavy terpene mixtures.
+                    <br>• <strong>TEC (Triethyl Citrate):</strong> An ester derived from citric acid. Virtually odorless, biodegradable, and slightly less polar than DPG. The undisputed king for dissolving stubborn, rock-hard natural resins, gums, and absolutes (e.g. Labdanum, Benzoin, Myrrh). Also widely used in clean/eco-certified perfumery.
+                    <br>• <strong>IPM (Isopropyl Myristate):</strong> An oily, fast-spreading ester with a non-greasy, silky skin-feel. Non-polar, making it ideal for non-alcoholic roll-ons, oil-based perfumes, and reed diffusers. <em>Watch out:</em> IPM has limited solubility in high-water hydroalcoholic blends and can turn cloudy if alcohol proof is too low.
+                    <br><br>
+                    <strong style="color: var(--cyan-bright);">Myths vs. Reality: What Solvents Really Do (and Don't Do):</strong>
+                    <br>❌ <em>Myth: "Adding DPG or TEC acts as a magic 'fixative' that makes your perfume last 12+ hours."</em>
+                    <br>✔️ <strong>Reality:</strong> Solvents are neutral carriers, NOT fixatives! While heavy glycols slightly lower the vapor pressure of volatile top notes through molecular drag, they cannot transform a 30-minute citrus into an 8-hour base note. Real tenacity comes strictly from the chemical weight and evaporation half-life of your aroma materials (e.g. Iso E Super, Ambroxan, Labdanum), never the solvent.
+                    <br>❌ <em>Myth: "Solvents are completely odorless and invisible to the nose."</em>
+                    <br>✔️ <strong>Reality:</strong> At high concentrations (over 20–30% of the total concentrate), DPG and TEC introduce a slight physical "dampening" or muting effect on top notes, somewhat flattening their sparkling projection, and can impart a faint sweet-chemical or metallic undertone if old or oxidized.
+                    <br><br>
+                    <strong style="color: var(--green);">When to Use MORE vs. LESS Solvent:</strong>
+                    <br>• <strong>Use MORE Solvent (High Dilution, e.g. 1% or 0.1%):</strong> For trace powerhouses (Pyrazines, Aldehydes C-10/C-12, Damascenone, Geosmin, IBQ, Birch Tar) where your analytical scale ($0.001\text{g}$) cannot physically measure a small enough neat quantity for a 5g or 10g batch.
+                    <br>• <strong>Use LESS Solvent (Neat or High Concentration, 50% to 100%):</strong> For structural bulk materials (Hedione, Iso E Super, PEA, Bergamot, Florol). Avoid over-diluting your entire concentrate with DPG/TEC—excess carrier solvent "dilutes" your finished fragrance twice over once final perfumer's alcohol (ethanol) is added, reducing sillage throw and making the fragrance feel muddy.
+                </p>
+            </div>
+
+            <!-- Q6 -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 18px;">
+                <h3 style="font-size: 1.05rem; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check-circle" style="color: var(--cyan-bright); font-size: 0.9rem;"></i>
+                    6. Why is a single raw material described with multiple odor facets?
+                </h3>
+                <p style="font-size: 0.88rem; color: var(--text-dim); line-height: 1.55; margin: 0;">
+                    Raw aroma materials are not single-color paint swatches; they are <strong>multi-faceted prisms</strong>. Whether a discrete organic molecule or a complex natural botanical extract, almost every material triggers multiple olfactory receptor pathways simultaneously. 
+                    <br><br>
+                    Mastering these secondary and tertiary facets is the perfumer's superpower: it allows a single bottle to act as an invisible <strong>"chameleon bridge"</strong> linking completely different fragrance families.
+                    <br><br>
+                    <strong style="color: var(--gold-bright);">Classic Multi-Faceted Examples & Their Bridging Powers:</strong>
+                    <br>• <strong>Coumarin:</strong>
+                    <br>— <em>Facets:</em> Toasted almond, sweet tonka marzipan, sun-dried warm hay, and fresh herbal shaving foam.
+                    <br>— <em>Bridging Function:</em> Connects the herbal-citrus top of a <strong>Fougère</strong> (via its hay/herbal facet) to the rich vanilla-labdanum heart of an <strong>Amber</strong> (via its sweet toasted almond facet).
+                    <br><br>• <strong>Bergamot FCF:</strong>
+                    <br>— <em>Facets:</em> Sparkling zesty lime, bitter-earl-grey tea tannins, spicy floral lavender (due to high linalyl acetate), and a subtle peppery woodiness.
+                    <br>— <em>Bridging Function:</em> Bridges an airy citrus opening into a floral heart (via linalool/linalyl acetate) while simultaneously anchoring into a woody chypre base (via its bitter-tea peel facet).
+                    <br><br>• <strong>Labdanum Resinoid (Rockrose):</strong>
+                    <br>— <em>Facets:</em> Sticky golden amber, dark worn saddlery leather, plum wine sweetness, smoky cellar dampness, and warm animalic musk.
+                    <br>— <em>Bridging Function:</em> Provides the leathery dark contrast in a <strong>Chypre</strong>, the sacred meditative smoke in an <strong>Incense Accord</strong>, and the rich balsamic glue in <strong>Ambre 83</strong>.
+                    <br><br>• <strong>Patchouli (or fractionated Clearwood®):</strong>
+                    <br>— <em>Facets:</em> Damp cellar earth, dark bitter chocolate / cocoa powder, dry camphoraceous wood, and warm leafy herbal tea.
+                    <br>— <em>Bridging Function:</em> Its earthy facet roots mossy Chypres; its chocolate-cocoa facet bridges gourmand ambers (like Angel); its dry woodiness stabilizes clean modern woody florals.
+                    <br><br>• <strong>Isobutyl Quinoline (IBQ):</strong>
+                    <br>— <em>Facets:</em> Green snappy galbanum stem, peaty islay-whisky birch tar, bitter vetiver earth, and raw cured leather jacket.
+                    <br>— <em>Bridging Function:</em> Bridges the razor-sharp green top notes of 1940s vintage chypres (Cellier's <em>Bandit</em>) directly into smoky mossy leather bases.
+                    <br><br>• <strong>Phenylethyl Alcohol (PEA):</strong>
+                    <br>— <em>Facets:</em> Sweet honeyed garden rose petal, crisp green stem water, and a warm waxy/yeasty wine cellar undertone.
+                    <br>— <em>Bridging Function:</em> Bridges fresh citrus top notes into heavy balsamic drydowns without ever smelling sharp or synthetic.
+                    <br><br>
+                    <em>Perfumery Rule of Thumb:</em> When an accord feels disconnected or jarring, look for a material that shares a facet with <strong>both</strong> sides to weld the transition together seamlessly.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CALL TO ACTION -->
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+        <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 14px;">
+            Now that you have the cognitive roadmap and answers to core foundation questions, step into Level 1 and open your first 5 bottles!
+        </p>
+        <a href="index.html" class="btn btn-cyan">
+            <i class="fas fa-play"></i> Enter Level 1: The 5-Bottle Monolith
+        </a>
+    </div>
+
+</div>
+
+<script>
+    const stages = {
+        briefing: {
+            title: "Stage 1: The Creative Brief",
+            tag: "The Narrative Spark & Wearing Scenario",
+            leftH: "What is a Perfumery Brief?",
+            leftP: "A brief is the creative compass. It defines the emotional mood, wearing scenario, target season, and personality of the perfume (e.g. 'A crisp Italian citrus grove at sunrise' or 'An uncompromising black peaty leather jacket'). Without a clear brief, formulation wanders aimlessly.",
+            rightH: "Relationship to Scent Taxonomy",
+            rightP: "The brief determines the target Fragrance Family and Archetype. If the brief calls for vintage European gentleman grooming, the perfumer immediately selects the Fougère archetype. If the brief asks for Mediterranean chiaroscuro light and shadow, the perfumer selects the Chypre archetype."
+        },
+        objectives: {
+            title: "Stage 2: Creative & Technical Objectives",
+            tag: "What to Express: Emotion, Intent & Performance Boundaries",
+            leftH: "Answering the Brief: What to Express?",
+            leftP: "Stage 2 translates the poetic brief into concrete creative intent: What emotional impression should the wearer project? Is it an intimate cashmere cocoon of quiet luxury, or an explosive alpine morning dew? It defines the personality, tactile texture (velvety, powdery, dewy), and target sillage radius (personal intimate skin aura vs. atmospheric room filler).",
+            rightH: "Technical Targets & Boundaries (The 'How' follows in Stages 3 & 4)",
+            rightP: "Establishing non-negotiable physical parameters: (1) Longevity target (e.g. 8+ hours on skin). (2) IFRA safety ceilings. (3) Proactive chemical awareness: anticipating discoloration (e.g. Vanillin browning) or maceration shifts. Note: While these boundaries are noted here, the actual chemical 'how' (molecule selection and dosage) takes physical shape in Scent Mind-Mapping (Stage 3) and Formulation (Stage 4)."
+        },
+        mindmap: {
+            title: "Stage 3: Scent Architecture Mind-Mapping",
+            tag: "Structural Note Clustering",
+            leftH: "The Skeleton, Flesh, & Modifier Nodes",
+            leftP: "Before touching bottles, the perfumer clusters raw materials into functional structural roles: Top Spark (Citrus), Floral Heart Body (Rose/Florol), Architectural Backbone (Iso E Super), and Tenacious Anchor (Coumarin/Labdanum).",
+            rightH: "Preventing Olfactory Mud",
+            rightP: "Mind-mapping ensures that every single molecule has a clear architectural purpose. If two materials fight for the same frequency without synergy, the mind-map reveals the conflict before expensive materials are wasted."
+        },
+        formulation: {
+            title: "Stage 4: Formulation (100.0 Parts)",
+            tag: "Formula Composition & Precision Weighing",
+            leftH: "The 100.0 Parts Total Standard",
+            leftP: "Directly following the mind-map architecture, the perfumer composes the formula out of 100.0 Parts Total (% by weight). This establishes exact ratios for every raw material, accord, and working dilution (e.g. 10% Coumarin, 1% IBQ).",
+            rightH: "Analytical Scale Compounding",
+            rightP: "Using a 0.001g digital scale, parts are converted into gram masses for the bench trial (e.g. 5.00g or 10.00g total concentrate). Materials are weighed drop-by-drop with pipettes into an amber glass vial to compound the trial concentrate."
+        },
+        testing: {
+            title: "Stage 5: Testing, Evaluation & Flacon Bottling",
+            tag: "Temporal Diagnostics & Alcohol Dilution",
+            leftH: "Testing the 3 Evaporation Windows",
+            leftP: "The compounded trial concentrate is dipped onto paper blotters and evaluated across 3 standardized temporal windows: 0–15 Minutes (Opening volatile flash), 30 Min–2 Hours (Heart transition), and 4–12+ Hours (Balsamic drydown on skin).",
+            rightH: "Finished Flacon Dilution & Maceration",
+            rightP: "Once testing confirms aesthetic harmony and tenacity, the concentrate is diluted in 96% Perfumer's Alcohol (e.g. 15% Eau de Parfum), bottled into a spray flacon, and allowed to macerate for 48 hours to marry the scent."
+        }
+    };
+
+    function showStage(key) {
+        const btns = document.querySelectorAll('.cycle-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const s = stages[key];
+        const display = document.getElementById('stageDisplay');
+        display.innerHTML = `
+            <div class="detail-header">
+                <div class="detail-title">${s.title}</div>
+                <div class="detail-tag">${s.tag}</div>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-pane">
+                    <h4>${s.leftH}</h4>
+                    <p>${s.leftP}</p>
+                </div>
+                <div class="detail-pane">
+                    <h4>${s.rightH}</h4>
+                    <p>${s.rightP}</p>
+                </div>
+            </div>
+        `;
+    }
+
+    showStage('briefing');
+
+    // FRAGRANCE WHEEL & ARCHETYPE MORPHING LOGIC
+    const familyData = {
+        citrus: {
+            name: "CITRUS / FRESH",
+            color: "#ecc94b",
+            desc: "Highly volatile, sparkling top notes derived from citrus peels, zesty aldehydes, and aromatic green stems. Provides instantaneous sillage and radiant projection.",
+            archetype: "1709 Farina Eau de Cologne",
+            materials: "Bergamot FCF, Lemon, Sweet Orange, Cis-3-Hexenol (1%)"
+        },
+        floral: {
+            name: "FLORAL",
+            color: "#ed64a6",
+            desc: "The heart and emotional flesh of perfumery. Spans transparent watery blooms, opulent red roses, and solar white jasmine/tuberose.",
+            archetype: "1886 Paul Parquet Floral Bouquets / Guerlain Apres L'Ondee",
+            materials: "Phenylethyl Alcohol (PEA), Florol, Hedione, Geraniol"
+        },
+        amber: {
+            name: "AMBER",
+            color: "#dd6b20",
+            desc: "Formerly labeled 'Oriental'. Rich, warm, balsamic, and sweet. Characterized by vanilla, labdanum resin, benzoin, and cozy second-skin musks with extraordinary tenacity.",
+            archetype: "1925 Shalimar / De Laire Ambre 83",
+            materials: "Vanillin, Ethyl Vanillin, Labdanum Resinoid, Benzoin Siam, Ethylene Brassylate"
+        },
+        woody: {
+            name: "WOODY",
+            color: "#38a169",
+            desc: "Dry, damp, smokey, or crystalline foundational trunks. Delivers masculine backbone, modern atmospheric transparency, and earthy depth.",
+            archetype: "1917 Coty Chypre (Patchouli floor) / 1970 Vetiver soliflores",
+            materials: "Iso E Super, Patchouli / Clearwood®, Cedramber, Vetiver"
+        },
+        fougere: {
+            name: "FOUGÈRE",
+            color: "#9f7aea",
+            desc: "The universal bridge sitting at the crossroad of all families. The classic triad of herbal Lavender, sweet Coumarin hay, and bitter-forest Evernyl moss.",
+            archetype: "1882 Fougère Royale (Houbigant)",
+            materials: "French Lavender EO, Coumarin (10%), Evernyl (Veramoss)"
+        }
+    };
+
+    function selectFamily(famKey) {
+        document.querySelectorAll('.wheel-slice').forEach(s => s.classList.remove('active'));
+        const slice = document.getElementById('wheel-' + famKey);
+        if (slice) slice.classList.add('active');
+
+        const fam = familyData[famKey];
+        const hub = document.getElementById('activeFamilyName');
+        hub.textContent = fam.name.split('/')[0].trim();
+        hub.style.color = fam.color;
+
+        // Auto-suggest corresponding morph
+        if (famKey === 'fougere') morphArchetype('fougere_morph');
+        else if (famKey === 'citrus') morphArchetype('cologne_morph');
+        else if (famKey === 'amber') morphArchetype('amber_morph');
+        else if (famKey === 'woody') morphArchetype('chypre_morph');
+        else if (famKey === 'floral') morphArchetype('cologne_morph');
+    }
+
+    const morphs = {
+        fougere_morph: {
+            archetype: "Historical Archetype: 1882 Fougère Royale",
+            skeleton: "Lavender (Aromatic) + Coumarin (Amber Sweet) + Oakmoss/Evernyl (Woody Earth)",
+            variations: [
+                {
+                    targetFamily: "➔ Morph to CITRUS / FRESH Fougère",
+                    desc: "Inject 35% Bergamot FCF + Mandarin and drop Coumarin to 5%. Turns vintage shaving lather into an invigorating modern sports cologne.",
+                    examples: "e.g. Drakkar Noir / Cool Water opening"
+                },
+                {
+                    targetFamily: "➔ Morph to AMBER Fougère",
+                    desc: "Overdose Coumarin (15%), add 10% Ethyl Vanillin and Amberketal. The aromatic barbershop top melts into a warm golden nightclub amber.",
+                    examples: "e.g. Jean Paul Gaultier Le Male"
+                },
+                {
+                    targetFamily: "➔ Morph to WOODY / LEATHER Fougère",
+                    desc: "Add 1.5% Isobutyl Quinoline (1% dil) and 20% Patchouli. Moves the provencal herbal lavender into dark green equestrian saddle leather.",
+                    examples: "e.g. Ralph Lauren Polo Green / Azzaro Pour Homme"
+                },
+                {
+                    targetFamily: "➔ Morph to FLORAL Fougère",
+                    desc: "Introduce 15% Hedione and 8% Florol. The mossy barbershop transforms into an airy, unisex morning botanical greenhouse.",
+                    examples: "e.g. Chanel Boy / Maison Margiela At The Barber's"
+                }
+            ]
+        },
+        chypre_morph: {
+            archetype: "Historical Archetype: 1917 Chypre de Coty",
+            skeleton: "Bergamot (Citrus) + Floral Heart + Labdanum (Amber) + Oakmoss/Patchouli (Wood)",
+            variations: [
+                {
+                    targetFamily: "➔ Morph to FLORAL / NEO-CHYPRE",
+                    desc: "Replace raw oakmoss with 1% Evernyl, substitute iron-heavy patchouli with Clearwood®, and overdose Hedione + Florol. Creates the radiant, luminous modern floral chypre.",
+                    examples: "e.g. Chanel Coco Mademoiselle / Dior Miss Dior (Modern)"
+                },
+                {
+                    targetFamily: "➔ Morph to LEATHER / WOODY Chypre",
+                    desc: "Add 2% Isobutyl Quinoline (1%) and increase Labdanum to 20%. The contrast shifts into an austere, smoked peat and riding jacket signature.",
+                    examples: "e.g. Robert Piguet Bandit / Cabochard / Tom Ford Tuscan Leather"
+                },
+                {
+                    targetFamily: "➔ Morph to AMBER Chypre",
+                    desc: "Amplify Labdanum with Benzoin Siam and 5% Vanillin. The bitter forest floor softens into a deep balsamic golden sunset.",
+                    examples: "e.g. Guerlain Mitsouko / Clinique Aromatics Elixir"
+                },
+                {
+                    targetFamily: "➔ Morph to FRESH / GREEN Chypre",
+                    desc: "Dose 2% Cis-3-Hexenol (1%) and 0.5% Dynascone behind the bergamot. The oakmoss becomes snappy spring foliage and crisp snapped galbanum stems.",
+                    examples: "e.g. Chanel No. 19 / Cristalle"
+                }
+            ]
+        },
+        cologne_morph: {
+            archetype: "Historical Archetype: 1709 Farina Eau de Cologne",
+            skeleton: "Bergamot + Lemon + Petitgrain + Neroli (Citrus Core, 30m lifespan)",
+            variations: [
+                {
+                    targetFamily: "➔ Morph to WOODY Monolith Cologne",
+                    desc: "Anchor the citrus with 32% Iso E Super and 5% Cedramber. Citrus stays sparkling for 8+ hours without becoming thick.",
+                    examples: "e.g. Escentric Molecules Molecule 01 + Mandarin / Dior Cologne Royale"
+                },
+                {
+                    targetFamily: "➔ Morph to AMBER Cologne",
+                    desc: "Underpin the citrus explosion with 6% Vanillin (10%) and 15% Ethylene Brassylate. Turns a fleeting splash into a comforting cashmere skin warmth.",
+                    examples: "e.g. Atelier Cologne Vanille Insensée"
+                },
+                {
+                    targetFamily: "➔ Morph to AROMATIC Fougère Cologne",
+                    desc: "Add 10% French Lavender EO and 3% Coumarin. Creates the timeless barbershop splash tradition.",
+                    examples: "e.g. 4711 Echt Kölnisch Wasser / Penhaligon's Sartorial"
+                },
+                {
+                    targetFamily: "➔ Morph to FLORAL Cologne",
+                    desc: "Overdose Hedione to 30% and add 8% Rose PEA. Turns simple citrus peel into an expansive floral orchard after a rain shower.",
+                    examples: "e.g. Eau Sauvage (1966)"
+                }
+            ]
+        },
+        amber_morph: {
+            archetype: "Historical Archetype: 1925 Shalimar / Ambre 83",
+            skeleton: "Labdanum Resinoid + Benzoin + Vanillin / Ethyl Vanillin (Sweet Balsamic Core)",
+            variations: [
+                {
+                    targetFamily: "➔ Morph to WOODY Amber (Modern Ambergris)",
+                    desc: "Substitute heavy benzoin with 25% Iso E Super, Cedramber, and 2% Ambroxan. The sticky dessert becomes a mineral, airy, dry-cedar trail.",
+                    examples: "e.g. Maison Francis Kurkdjian Baccarat Rouge 540 / Le Labo Another 13"
+                },
+                {
+                    targetFamily: "➔ Morph to FRESH / CITRUS Amber",
+                    desc: "Overdose Bergamot FCF to 25% and introduce 15% Hedione. Turns dark church resins into a luminous Mediterranean golden hour breeze.",
+                    examples: "e.g. Chanel Allure Homme Edition Blanche"
+                },
+                {
+                    targetFamily: "➔ Morph to FLORAL Amber",
+                    desc: "Fuse 20% Rose PEA and Florol with the vanilla-benzoin core. Produces the romantic 'Rose-Amber' pillar of modern oriental perfumery.",
+                    examples: "e.g. Tom Ford Noir de Noir / Guerlain Habit Rouge"
+                },
+                {
+                    targetFamily: "➔ Morph to LEATHER Amber",
+                    desc: "Introduce 1.5% Isobutyl Quinoline (1%) and 10% Birch Tar dilution. Transforms cozy vanilla into a dark, smoky, resinous biker jacket.",
+                    examples: "e.g. Serge Lutens Cuir Mauresque"
+                }
+            ]
+        }
+    };
+
+    function morphArchetype(key) {
+        document.querySelectorAll('.morph-btn').forEach(b => b.classList.remove('active'));
+        if (event && event.currentTarget) event.currentTarget.classList.add('active');
+
+        const m = morphs[key];
+        const panel = document.getElementById('morphPanel');
+        panel.innerHTML = `
+            <div class="morph-axis-tag" style="color: var(--gold-bright);">${m.archetype}</div>
+            <div style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 12px; font-family: 'Space Mono', monospace;">
+                Skeleton Formula: <span style="color: #fff;">${m.skeleton}</span>
+            </div>
+            <div class="morph-blueprint">
+                ${m.variations.map(v => `
+                    <div class="blueprint-card">
+                        <div style="font-weight: 700; color: var(--cyan-bright); margin-bottom: 4px;">${v.targetFamily}</div>
+                        <p style="color: var(--text-dim); margin: 0 0 6px 0; font-size: 0.8rem; line-height: 1.4;">${v.desc}</p>
+                        <div style="font-size: 0.72rem; color: var(--gold); font-style: italic;">${v.examples}</div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    morphArchetype('fougere_morph');
+</script>
+
+</body>
+</html>

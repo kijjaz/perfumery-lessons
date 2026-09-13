@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 2-Bottle Playground • Level 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --gold-bright: #f9d71c;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; margin-bottom: 30px; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .playground-box {
+            background: rgba(15, 15, 20, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .slider-row {
+            margin: 25px 0 15px;
+        }
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        input[type=range] {
+            width: 100%;
+            accent-color: var(--gold);
+            cursor: pointer;
+            height: 8px;
+        }
+        .recipe-display {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .recipe-val { font-size: 1.4rem; font-weight: 800; color: var(--gold); }
+        .recipe-name { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; margin-top: 4px; }
+        .prompt-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .pair-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .pair-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .pair-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold-bright);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Level 2 Playground</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <span class="badge">Level 2: The Accord Playground</span>
+        <h1>The Two-Bottle Dialogue</h1>
+        <p class="lead">Take any two bottles from your desk. Pair them together. Observe which facet emerges, which recedes, and what new identity is born.</p>
+    </div>
+
+    <div class="card">
+        <h2><span class="step-number">1</span> Choose Any 2 Bottles to Compare</h2>
+        <p>You do not need a formula. Choose any pair that you are curious to smell together (Systematic Two-Bottle Exploration):</p>
+
+        <div class="pair-selector">
+            <button class="pair-btn active" onclick="selectPair('citrus-rose')">🍋 Citrus + 🌹 Rose</button>
+            <button class="pair-btn" onclick="selectPair('rose-wood')">🌹 Rose + 🌲 Wood</button>
+            <button class="pair-btn" onclick="selectPair('citrus-wood')">🍋 Citrus + 🌲 Wood</button>
+            <button class="pair-btn" onclick="selectPair('rose-green')">🌹 Rose + 🌿 Green Leaf</button>
+            <button class="pair-btn" onclick="selectPair('wood-vanilla')">🌲 Wood + 🍦 Vanilla</button>
+        </div>
+
+        <div class="playground-box">
+            <h3 id="pairTitle" style="color: #fff; margin-bottom: 6px;">Dialogue: Citrus & Rose</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Move the balance slider to choose your trial parts ratio (10.0 Parts Total):</p>
+
+            <div class="slider-row">
+                <div class="slider-labels">
+                    <span id="nameA" style="color: #ecc94b;">Citrus (Peel)</span>
+                    <span id="nameB" style="color: #f687b3;">Rose (Petal)</span>
+                </div>
+                <input type="range" id="ratioSlider" min="1" max="9" value="5" oninput="updateRatio()">
+            </div>
+
+            <div class="recipe-display">
+                <div>
+                    <div class="recipe-val" id="valA">5.0 parts</div>
+                    <div class="recipe-name" id="labelA">Bottle A</div>
+                </div>
+                <div style="font-size: 1.5rem; color: var(--border); line-height: 40px;">:</div>
+                <div>
+                    <div class="recipe-val" id="valB">5.0 parts</div>
+                    <div class="recipe-name" id="labelB">Bottle B</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <h2><span class="step-number">2</span> Your Nose is the Only Judge</h2>
+        <p>
+            Weigh out these parts into a small clean vial (e.g. 0.50g of each on an analytical scale), swirl gently, and dip a fresh paper smelling strip. 
+        </p>
+        <p style="color: var(--text-dim); font-style: italic;">
+            *Notice that we do NOT tell you what this smells like or which balance is "correct". Perfumery is your personal sensory dialogue.*
+        </p>
+
+        <div class="prompt-box">
+            <h4 style="color: var(--gold); margin-bottom: 8px;"><i class="fas fa-question-circle"></i> Questions to ask your nose:</h4>
+            <ul style="margin-left: 20px; font-size: 0.95rem; line-height: 1.6;">
+                <li>Can you still pick out Bottle A and Bottle B individually, or did they merge into a completely new third identity (an accord)?</li>
+                <li>Which of the two speaks first when you wave the strip in front of your nose?</li>
+                <li>Smell the strip again in 30 minutes. Has the conversation shifted? Who is still talking?</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const pairs = {
+            'citrus-rose': { title: 'Dialogue: Citrus & Rose', nameA: 'Citrus (Peel)', nameB: 'Rose (Petal)', colorA: '#ecc94b', colorB: '#f687b3' },
+            'rose-wood': { title: 'Dialogue: Rose & Wood', nameA: 'Rose (Petal)', nameB: 'Wood (Cedar)', colorA: '#f687b3', colorB: '#b7791f' },
+            'citrus-wood': { title: 'Dialogue: Citrus & Wood', nameA: 'Citrus (Peel)', nameB: 'Wood (Cedar)', colorA: '#ecc94b', colorB: '#b7791f' },
+            'rose-green': { title: 'Dialogue: Rose & Green Leaf', nameA: 'Rose (Petal)', nameB: 'Green Leaf (Sap)', colorA: '#f687b3', colorB: '#48bb78' },
+            'wood-vanilla': { title: 'Dialogue: Wood & Vanilla', nameA: 'Wood (Cedar)', nameB: 'Vanilla (Balsam)', colorA: '#b7791f', colorB: '#dd6b20' }
+        };
+
+        let currentPair = 'citrus-rose';
+
+        function selectPair(pairKey) {
+            currentPair = pairKey;
+            const btns = document.querySelectorAll('.pair-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const p = pairs[pairKey];
+            document.getElementById('pairTitle').textContent = p.title;
+            document.getElementById('nameA').textContent = p.nameA;
+            document.getElementById('nameB').textContent = p.nameB;
+            document.getElementById('nameA').style.color = p.colorA;
+            document.getElementById('nameB').style.color = p.colorB;
+            document.getElementById('labelA').textContent = p.nameA;
+            document.getElementById('labelB').textContent = p.nameB;
+
+            updateRatio();
+        }
+
+        function updateRatio() {
+            const slider = document.getElementById('ratioSlider');
+            const a = parseInt(slider.value);
+            const b = 10 - a;
+            document.getElementById('valA').textContent = `${a}.0 parts`;
+            document.getElementById('valB').textContent = `${b}.0 parts`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 Accords Workshop: The Foundation Chords & Pairwise Lab | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+            --green: #48bb78;
+            --rose: #ed64a6;
+            --citrus: #ecc94b;
+            --wood: #a0aec0;
+            --vanilla: #f6ad55;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(72, 187, 120, 0.04) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+        
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: 0.2s;
+        }
+        .nav-back:hover { color: var(--gold-bright); transform: translateX(-4px); }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-bright);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-gold);
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ACCORD SELECTOR TABS */
+        .accord-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .accord-tab {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: left;
+        }
+        .accord-tab:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .accord-tab.active {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(212,175,55,0.12));
+            box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+        }
+        .tab-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .tab-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .tab-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        /* INTERACTIVE ACCORD STAGE */
+        .stage-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 12px;
+        }
+        .stage-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold-bright);
+        }
+        .stage-badge {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.06);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-dim);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .bar-container { margin-bottom: 14px; }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        .bar-bg {
+            height: 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+
+        .sensory-fusion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 18px;
+        }
+        .fusion-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .fusion-pane h4 {
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .fusion-pane p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* CONCENTRATION SHIFT BOX */
+        .dilution-comparison {
+            background: rgba(212, 175, 55, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 18px;
+        }
+        .dil-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dil-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            font-size: 0.82rem;
+        }
+
+        .smelling-strip-box {
+            background: linear-gradient(135deg, rgba(72,187,120,0.06), rgba(22,22,27,0.9));
+            border: 1px solid rgba(72,187,120,0.25);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 18px;
+        }
+        .strip-title {
+            color: #68d391;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: var(--gold-bright);
+            transform: translateY(-2px);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Return to Organ Curriculum</a>
+
+    <div class="header">
+        <span class="badge">Level 1 — Practical Harmonization & Dilution</span>
+        <h1>Level 1 Accords Workshop: Foundation Chords & The Dilution Key</h1>
+        <p class="lead">
+            Learn why <strong>10:1 Neat</strong> vs. <strong>10:1 at 1% or 10%</strong> completely changes scent physics. Master the 4 foundation chords using your 5 starter bottles.
+        </p>
+    </div>
+
+    <!-- PEDAGOGICAL CONCEPT: WHAT IS AN ACCORD -->
+    <div class="card" style="border-color: var(--border-gold);">
+        <h2><i class="fas fa-sliders-h" style="color: var(--gold);"></i> The Systematic Impact & Dilution Principle</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 12px;">
+            An <strong>Accord</strong> is born when two or more aromatic molecules intertwine to produce an indivisible third scent ($1 + 1 = 3$). But perfumery is also governed by <strong>molecular impact thresholds</strong>: combining Rose with Cis-3-Hexenol <em>Neat</em> produces a chemical disaster, while combining Rose with Cis-3-Hexenol <em>at 1%</em> produces a living flower drenched in morning dew!
+        </p>
+    </div>
+
+    <!-- ACCORD SELECTION TABS -->
+    <div class="accord-grid">
+        <div class="accord-tab active" onclick="selectAccord('livingRose')">
+            <div class="tab-tag">Floral Realism</div>
+            <div class="tab-title">The Living Garden Rose</div>
+            <div class="tab-desc">Rose (PEA) + Green Leaf (Cis-3-Hexenol). Discover the dramatic difference between Neat vs. 1% dilution.</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('roseWood')">
+            <div class="tab-tag">Modern Woody Floral</div>
+            <div class="tab-title">The Rose-Wood Monolith</div>
+            <div class="tab-desc">Rose (PEA) + Iso E Super. Testing high cedar (1:2) vs. floral dominant (2:1).</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('earlGrey')">
+            <div class="tab-tag">Aromatic Infusion</div>
+            <div class="tab-title">Earl Grey Tea Spark</div>
+            <div class="tab-desc">Bergamot FCF + Iso E Super + Vanillin. Vanillin Neat (smothers tea) vs. Vanillin at 10% (steeped tea warmth).</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('grojsmanHug')">
+            <div class="tab-tag">Sensual Cashmere</div>
+            <div class="tab-title">The Grojsman Velvet Hug</div>
+            <div class="tab-desc">Iso E Super + Rose (PEA) + Vanillin. Sophia Grojsman's famous 1990s comfort accord.</div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE ACCORD STAGE -->
+    <div class="card">
+        <div class="stage-box">
+            <div class="stage-header">
+                <div>
+                    <span class="stage-badge" id="accordArchetype">ACCORD ARCHETYPE: FLORAL BOTANIC</span>
+                    <div class="stage-title" id="accordTitle">The Living Garden Rose Accord</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Recommended Ratio:</div>
+                    <div style="font-size: 1.1rem; color: var(--gold); font-family: 'Space Mono', monospace; font-weight: 700;" id="accordRatio">96.0% Rose : 4.0% Green (1%)</div>
+                </div>
+            </div>
+
+            <!-- DYNAMIC FORMULATION BARS -->
+            <div id="recipeBars"></div>
+
+            <div class="sensory-fusion">
+                <div class="fusion-pane">
+                    <h4><i class="fas fa-eye" style="margin-right: 6px;"></i> The Olfactory Metamorphosis</h4>
+                    <p id="accordFusionText">
+                        Neat Rose (PEA) on a smelling strip smells like dried petals, honeyed water, or potpourri. But adding exactly 4% of Cis-3-Hexenol 1% instantly creates the tactile illusion of crisp, snapped flower stems and dew dripping from thorny leaves.
+                    </p>
+                </div>
+                <div class="fusion-pane">
+                    <h4><i class="fas fa-flask" style="margin-right: 6px;"></i> Historical Context & Usage</h4>
+                    <p id="accordHistoryText">
+                        Used across hyper-realistic soliflores like Jean-Claude Ellena’s <em>Rose Ikebana</em> and Frédéric Malle’s <em>Une Rose</em> to strip away powdery granny notes and restore modern botanical realism.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONCENTRATION SHIFT BOX (Neat vs Dilution) -->
+            <div class="dilution-comparison">
+                <div class="dil-title">
+                    <i class="fas fa-balance-scale"></i> Critical Bench Lesson: Working Neat vs. Working Dilution
+                </div>
+                <div class="dil-grid">
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #e53e3e;" id="lblDilNeat">Ratio: Rose 10 : Cis-3-Hexenol Neat 1</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilNeat">
+                            Neat Cis-3-Hexenol has an odor detection threshold in parts per billion. At 1 part neat to 10 parts rose, the violent bitter lawnmower green completely destroys the rose, smelling like chemical gas or rotting cut weeds.
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #68d391;" id="lblDilTen">Ratio: Rose 10 : Cis-3-Hexenol (at 1%) 0.4</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilTen">
+                            Pre-diluted to 1% in DPG, the active impact is tamed to 0.004 real parts. The green does not overpower; instead, it marries into the top of the rose, creating the sensation of walking through an English rose garden at sunrise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODERN TWISTS & CLASSICAL REPLACEMENTS -->
+            <div style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 18px; margin-top: 18px;">
+                <div style="color: var(--gold-bright); font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-magic"></i> Modern Twist: Transforming Classical Materials
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px;">
+                    How 21st-century perfumery modernizes classical, heavy botanical notes using clean synthetic isolates:
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #e53e3e;">
+                        <strong style="color: #feb2b2;">Classical 19th-C. Predecessor:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Natural Galbanum Resinoid / Heavy Rose Otto:</strong> Classical greens were resinous, pungent, and prone to turning bitter or dusty-antique over time.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <strong style="color: #68d391;">Modern Common Replacement:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Cis-3-Hexenol (1%) / Dynascone / Allyl Amyl Glycolate / Galbex 183:</strong> Crisp, sparkling, metallic-pineapple dewy stems that give instant electric radiance without bitter resin sludge.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div style="font-size: 0.85rem; color: var(--text-dim);">
+                Ready to plug these chords into a full 15% Eau de Parfum?
+            </div>
+            <a href="level_1_perfume_studio.html" class="btn btn-gold">
+                <i class="fas fa-spray-can"></i> Open Level 1 Compounding Studio
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const accords = {
+        livingRose: {
+            archetype: "ACCORD ARCHETYPE: FLORAL REALISM",
+            title: "The Living Garden Rose Accord",
+            ratio: "96.0% Rose : 4.0% Green (1%)",
+            materials: [
+                { name: "🌹 Rose (PEA / Phenylethyl Alcohol)", pct: 96, color: "var(--rose)", parts: "96.0 parts" },
+                { name: "🌿 Green Leaf (Cis-3-Hexenol 1% in DPG)", pct: 4, color: "var(--green)", parts: "4.0 parts" }
+            ],
+            fusion: "Neat Rose (PEA) on its own can smell somewhat dusty, jammy, or like dried drawer sachet potpourri. Adding 4% of Cis-3-Hexenol (1% dilution) mimics the broken sap of thorns and wet green calyxes, turning flat floral sweetness into a 3D living flower drenched in morning dew.",
+            history: "Pioneered in modern botanic niche perfumery (e.g. Frédéric Malle Une Rose). Perfumers discovered that real roses emit volatile green hexenyl acetates the instant they are picked in the morning.",
+            lblNeat: "Impact Test: Rose 10 : Green Leaf Neat 1",
+            dilNeat: "Neat Cis-3-Hexenol has an olfactory detection threshold measured in parts per billion. At 1 part neat to 10 parts rose, the violent bitter lawnmower green completely obliterates the rose, smelling like choking chemical weed killer.",
+            lblTen: "Dilution Test: Rose 10 : Green Leaf (at 1%) 0.4",
+            dilTen: "Pre-diluted to 1% in DPG, the active impact is calibrated to 0.004 real parts. The green does not bully the rose; it creates the pure botanical realism of cold dew on rose petals.",
+            bench: "Dip Strip A in Rose (PEA). Dip Strip B 1cm into Cis-3-Hexenol (1% dilution). Fan Strip B 10cm away and Strip A 5cm away. The brain fuses the green stem snap directly onto the flower petal."
+        },
+        roseWood: {
+            archetype: "ACCORD ARCHETYPE: WOODY FLORAL PILLAR",
+            title: "The Modern Rose-Wood Pillar",
+            ratio: "45.0% Rose : 55.0% Iso E Super",
+            materials: [
+                { name: "🌲 Iso E Super (Velvet Cedar)", pct: 55, color: "var(--wood)", parts: "55.0 parts" },
+                { name: "🌹 Rose (PEA / Phenylethyl Alcohol)", pct: 45, color: "var(--rose)", parts: "45.0 parts" }
+            ],
+            fusion: "Rose on its own is water-soluble, delicate, and evaporates quickly from skin. Iso E Super wraps around the phenylethyl alcohol molecule, dampening its sharp alcohol edge and anchoring it in a velvety, cashmere cedar cocoon that radiates off skin for 10+ hours.",
+            history: "The structural foundation of Sophia Grojsman’s 1990 masterpiece Lancôme Trésor and Christian Dior's Fahrenheit. Overdosing cedarwood aromachemicals behind florals defined the entire 1990s fragrance era.",
+            lblNeat: "Balance Test: Rose Dominant (Rose 10 : Iso E Super 3)",
+            dilNeat: "At low wood levels, the fragrance smells like classical Victorian bath soap or traditional toilet water. It lacks sillage, projecting only a few inches before fading.",
+            lblTen: "Balance Test: Modern Monolith (Rose 10 : Iso E Super 12)",
+            dilTen: "Overdosing Iso E Super past the rose creates the famous transparent cloud effect. The cedar lifts the flower into a 10-foot room-filling sillage without becoming heavy or dense.",
+            bench: "Dip Strip A in Rose (PEA) and Strip B in Iso E Super. Hold them together like a fan. Sniff immediately, then set them aside and sniff 4 hours later. The cedar keeps the rose petal breathing long after pure rose would have vanished."
+        },
+        earlGrey: {
+            archetype: "ACCORD ARCHETYPE: CITRUS-TEA INFUSION",
+            title: "Earl Grey Tea Spark Accord",
+            ratio: "60.0% Bergamot : 35.0% Iso E : 5.0% Vanillin (10%)",
+            materials: [
+                { name: "🍋 Bergamot FCF (Italy)", pct: 60, color: "var(--citrus)", parts: "60.0 parts" },
+                { name: "🌲 Iso E Super (Cedar Silhouette)", pct: 35, color: "var(--wood)", parts: "35.0 parts" },
+                { name: "🍦 Vanillin (10% in DPG)", pct: 5, color: "var(--vanilla)", parts: "5.0 parts" }
+            ],
+            fusion: "Pure Bergamot oil evaporates in 20 minutes with high citrus volatility. When blended with dry cedar (Iso E Super) and a whisper of sweet Vanillin (10%), the citrus peel undergoes a dramatic sensory shift: it smells like dried bergamot rinds smoked over black tea leaves.",
+            history: "The secret behind luxurious hotel lobby scents and iconic colognes like Le Labo Thé Noir 29 and Guerlain Habit Rouge top notes. Bergamot is the actual botanical oil used to flavor genuine Earl Grey tea.",
+            lblNeat: "Dilution Test: Vanillin Crystals Neat vs Bergamot",
+            dilNeat: "If pure crystal vanillin is added at 1 part to 10 parts bergamot, the blend smells like lemon meringue pie or cupcake frosting. The zesty dryness of the tea is completely drowned in sugar.",
+            bench: "Combine 60.0 parts Bergamot FCF, 35.0 parts Iso E Super, and 5.0 parts Vanillin 10% (e.g. 0.60g + 0.35g + 0.05g on analytical scale). The sweet pastry facet of vanillin disappears entirely into the bergamot, leaving only warm, steeped Earl Grey tea aroma."
+        },
+        grojsmanHug: {
+            archetype: "ACCORD ARCHETYPE: SENSUAL CASHMERE COMFORT",
+            title: "The Grojsman Velvet Hug Accord",
+            ratio: "60.0% Iso E : 25.0% Rose : 15.0% Vanillin (10%)",
+            materials: [
+                { name: "🌲 Iso E Super (Transparent Wood)", pct: 60, color: "var(--wood)", parts: "60.0 parts" },
+                { name: "🌹 Rose (PEA / Soft Petals)", pct: 25, color: "var(--rose)", parts: "25.0 parts" },
+                { name: "🍦 Vanillin (10% in DPG)", pct: 15, color: "var(--vanilla)", parts: "15.0 parts" }
+            ],
+            fusion: "Iso E Super, Rose, and Vanillin unite to create an addictive, skin-like warmth often called 'The Perfumer's Cashmere Sweater'. The woody note prevents the vanilla from smelling like cake batter, while the vanilla cushions the cedarwood sharpness into pillowy velvet.",
+            history: "Master perfumer Sophia Grojsman revolutionized the fragrance world by inventing 'monolithic chords' that occupy 80% of a formula's weight (used in Calvin Klein Eternity, Lancôme Trésor, and Yves Saint Laurent Paris).",
+            lblNeat: "Pairwise Diagnosis: Iso E Super + Vanillin 10%",
+            dilNeat: "Smelling Iso E Super and Vanillin together creates warm toasted paper and blonde wood shavings. It lacks life or heartbeat.",
+            lblTen: "Pairwise Diagnosis: Adding Rose (PEA)",
+            dilTen: "Adding Rose injects floral moisture and body into the dry wood-vanilla pair, creating the sensation of warm human skin and soft pink petals.",
+            bench: "Dip three strips: one deep in Iso E Super, one shallow in Rose, and one touching just the tip of Vanillin 10%. Pinch all three together at the base. This chord produces instant comfort and intimate sillage."
+        }
+    };
+
+    function selectAccord(key) {
+        const tabs = document.querySelectorAll('.accord-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const acc = accords[key];
+        document.getElementById('accordArchetype').textContent = acc.archetype;
+        document.getElementById('accordTitle').textContent = acc.title;
+        document.getElementById('accordRatio').textContent = acc.ratio;
+        document.getElementById('accordFusionText').textContent = acc.fusion;
+        document.getElementById('accordHistoryText').textContent = acc.history;
+        document.getElementById('lblDilNeat').textContent = acc.lblNeat;
+        document.getElementById('txtDilNeat').textContent = acc.dilNeat;
+        document.getElementById('lblDilTen').textContent = acc.lblTen;
+        document.getElementById('txtDilTen').textContent = acc.dilTen;
+        document.getElementById('accordBenchInstructions').textContent = acc.bench;
+
+        const container = document.getElementById('recipeBars');
+        container.innerHTML = '';
+
+        acc.materials.forEach(m => {
+            const el = document.createElement('div');
+            el.className = 'bar-container';
+            el.innerHTML = `
+                <div class="bar-label">
+                    <span>${m.name}</span>
+                    <span class="mono" style="color: ${m.color}; font-weight: 700;">${m.parts} (${m.pct}%)</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: ${m.pct}%; background: ${m.color};"></div>
+                </div>
+            `;
+            container.appendChild(el);
+        });
+    }
+
+    selectAccord('livingRose');
+</script>
+
+</body>
+</html>

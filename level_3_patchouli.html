@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patchouli Oil • Level 3 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-patch: #9c4221;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(156, 66, 33, 0.2);
+            color: #fbd38d;
+            border: 1px solid rgba(251, 211, 141, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-patch);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #feebc8;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 3 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-seedling"></i> Deep Earth, Wine & Dark Cocoa</span>
+        <h1>Patchouli Oil (Iron-Free / Molecular Distilled)</h1>
+        <p class="lead">The damp, dark, cellar earth that anchors the Great Chypre and pairs magically with Rose.</p>
+    </div>
+
+    <!-- WHY COMPOSE WITH PATCHOULI -->
+    <div class="card" style="border-color: rgba(156, 66, 33, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(156,66,33,0.08));">
+        <h2><i class="fas fa-lightbulb" style="color: #fbd38d; margin-right: 10px;"></i> What Does Patchouli Bring to the Table?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Eternal Rose-Patchouli Bond</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Patchouli and Rose share an instinctive chemical affinity. Patchouli's earthy dark base grounds the delicate rose petals, turning light floral water into an intoxicating, opulent evening perfume.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. The Foundation of the Great Chypre</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Alongside Labdanum and Evernyl, Patchouli forms the 3-part shadow chassis of François Coty’s 1917 Chypre. Without Patchouli, the contrast against Bergamot is flat.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The Cocoa & Vintage Wine Facet</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Good aged patchouli smells like a cool French wine cellar, dark bitter chocolate, and ancient camphoraceous wood—rich and tactile.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. Molecular Fractionation (Clear Heart)</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Modern perfumery uses Patchouli Heart or Iron-Free distillates to remove the dirty head-shop terpene noise, leaving pure velvet wood and clean earth.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(156, 66, 33, 0.4);">
+        <h2><i class="fas fa-gem" style="color: #fbd38d; margin-right: 10px;"></i> The Multi-Facet Reality of Patchouli</h2>
+        <p>Patchouli is not just a 1960s hippie oil—it is an intricate aromatic landscape:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #fbd38d; text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Damp Soil & Forest Roots</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Rich, humid potting soil, mossy tree roots, and deep forest floor.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ecc94b; text-transform: uppercase; font-weight: 700;">Facet 2 (Gourmand)</div>
+                <strong style="color: #fff;">Dark Cocoa & Wine Cellar</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Bitter 85% chocolate powder and cool, stone-walled wine cellars.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #4ba6a6; text-transform: uppercase; font-weight: 700;">Facet 3 (Aromatic)</div>
+                <strong style="color: #fff;">Camphoraceous Herb</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Cool minty-camphor flash in the top note (mint family relative).</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #b7791f; text-transform: uppercase; font-weight: 700;">Facet 4 (Texture)</div>
+                <strong style="color: #fff;">Aged Teakwood Polish</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Dense, oily tropical hardwood and beeswax furniture wax.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- THE PATCHOULI SPECTRUM & BIOTECH CLEARWOOD -->
+    <div class="card" style="border-color: rgba(156, 66, 33, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(156,66,33,0.08));">
+        <h2><i class="fas fa-dna" style="color: #fbd38d; margin-right: 10px;"></i> The Patchouli Spectrum & Biotech Clearwood</h2>
+        <p>
+            Not all patchouli is created equal. Understanding the distillation grades—and modern biotechnology—is critical for modern luxury formulation:
+        </p>
+
+        <div style="margin: 18px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. Traditional Dark Patchouli EO</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Distilled in rustic iron stills in Indonesia. Deep brown in color, heavy in rusty metallic notes, dirty earth, and medicinal camphor. Great for vintage amber bases, but too heavy for modern luxury.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Light & Iron-Free Patchouli EO</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Distilled in stainless steel or treated to remove iron ions. Amber-gold in color, softer and cleaner, highlighting the rich woody-cocoa heart without the harsh iron tang.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. Molecular Distilled / Patchouli Heart</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Fractionated under high vacuum to strip away the harsh top terpenes. Concentrates pure <strong>Patchoulol</strong>, creating a transparent, velvety woody-amber foundation *(the secret of Chanel Coco Mademoiselle)*.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. Biotech Clearwood® (Firmenich)</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Invented with Amyris to stabilize volatile Indonesian agricultural commodity pricing. Produced via yeast carbohydrate fermentation (<em>Saccharomyces cerevisiae</em>). According to Firmenich's official SDS, Clearwood is <strong>30.0% – 40.0% Patchoulol</strong>, <strong>15.0% – 20.0% α-Guaiene</strong>, and <strong>5.0% – 7.5% β-Caryophyllene</strong>. It intentionally mirrors the 30-40% patchoulol ratio of natural oil, but with <em>zero agricultural dirt, iron rust, or moldy camphor</em>! (Contrast with the 2024 crystalline isolate <strong>Clearwood® PRISMA</strong> at 90-99% patchoulol).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <div class="sensory-box">
+            "Patchouli smells like kneeling on damp, rich garden soil in late autumn, clutching a piece of bitter dark chocolate while the smell of dried leaves fills the crisp air."
+        </div>
+    </div>
+
+    <!-- LATERAL DOORS IN LEVEL 3 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 3?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_3_labdanum.html" class="portal-door">
+                <div class="door-tag">The Great Chypre Partner</div>
+                <div class="door-title">🔥 Labdanum Resinoid</div>
+                <div class="door-desc">Combine Patchouli's cool damp earth with Labdanum's warm resin for the foundation of Coty's 1917 Chypre.</div>
+            </a>
+
+            <a href="level_3_ibq.html" class="portal-door">
+                <div class="door-tag">Earth & Leather</div>
+                <div class="door-title">🧥 Isobutyl Quinoline (IBQ)</div>
+                <div class="door-desc">Lock Patchouli's damp soil into IBQ's bitter green leather for an aristocratic vintage leather chypre.</div>
+            </a>
+
+            <a href="level_1_rose.html" class="portal-door">
+                <div class="door-tag">The Eternal Romance</div>
+                <div class="door-title">🌹 The Living Rose</div>
+                <div class="door-desc">See how 1 drop of Patchouli transforms light, innocent rose petals into a dark, seductive masterpiece.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

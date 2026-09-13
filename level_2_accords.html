@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Accords Workshop: The Jean Carles Pairwise Lab | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-purple: rgba(159, 122, 234, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --purple: #9f7aea;
+            --teal: #4ba6a6;
+            --green: #48bb78;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(159, 122, 234, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(75, 166, 166, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+        
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--purple);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: 0.2s;
+        }
+        .nav-back:hover { color: #d6bcfa; transform: translateX(-4px); }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(159, 122, 234, 0.15);
+            color: #d6bcfa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-purple);
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* JEAN CARLES PAIRWISE EXPLORER */
+        .carles-banner {
+            background: linear-gradient(135deg, rgba(159,122,234,0.1), rgba(22,22,27,0.9));
+            border: 1px solid var(--border-purple);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .triangle-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .pair-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 14px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .pair-btn:hover {
+            border-color: var(--purple);
+            transform: translateY(-2px);
+        }
+        .pair-btn.active {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(159,122,234,0.18));
+            box-shadow: 0 4px 14px rgba(159, 122, 234, 0.2);
+        }
+        .pair-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #d6bcfa;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .pair-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* STAGE DETAILS */
+        .stage-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+
+        .sensory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 18px 0;
+        }
+        .sensory-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .sensory-pane h4 {
+            font-size: 0.85rem;
+            color: var(--purple);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .sensory-pane p {
+            font-size: 0.86rem;
+            color: var(--text-dim);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* CONCENTRATION SHIFT BOX (Neat vs 10%) */
+        .dilution-comparison {
+            background: rgba(212, 175, 55, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 14px;
+        }
+        .dil-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dil-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            font-size: 0.82rem;
+        }
+
+        .bench-instruction {
+            background: rgba(75, 166, 166, 0.08);
+            border: 1px solid rgba(75, 166, 166, 0.3);
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 16px;
+            font-size: 0.86rem;
+            color: var(--text-dim);
+        }
+        .bench-instruction strong { color: #81e6d9; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-purple {
+            background: var(--purple);
+            color: #fff;
+        }
+        .btn-purple:hover {
+            background: #b794f4;
+            transform: translateY(-2px);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <a href="index.html" class="nav-back" style="margin-bottom: 0;"><i class="fas fa-arrow-left"></i> Return to Organ Curriculum</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Level 2 Lab</span>
+        </div>
+    </div>
+
+    <div class="header">
+        <span class="badge">Level 2 — Systematic Pairwise & Dilution Method</span>
+        <h1>Level 2 Accords Workshop: The Fougère Triad & Pairwise Lab</h1>
+        <p class="lead">
+            Never evaluate a complex triad all at once. By analyzing pairwise blends and comparing <strong>working dilutions</strong> (e.g. Coumarin Neat vs. Coumarin at 10%), students uncover how olfactory harmony is actually born.
+        </p>
+    </div>
+
+    <!-- PAIRWISE TRIANGULATION EXPLANATION -->
+    <div class="carles-banner">
+        <h3 style="color: #d6bcfa; font-size: 1.05rem; margin-bottom: 6px;">
+            <i class="fas fa-balance-scale" style="margin-right: 8px;"></i> Systematic Accord Triangulation Principle
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0; line-height: 1.5;">
+            To master the 1882 Fougère Triad (<strong>Lavender + Coumarin + Evernyl</strong>) and cross-level harmony, test each binary pair systematically. We also revisit the **Level 1 Earl Grey Tea Accord** to answer a profound formulation question: <em>What happens when Vanillin is substituted with Coumarin?</em>
+        </p>
+    </div>
+
+    <!-- PAIRWISE SELECTOR BUTTONS -->
+    <div class="triangle-nav">
+        <div class="pair-btn active" onclick="selectPair('lav_cou')">
+            <div class="pair-tag">Pair 1 (A + B)</div>
+            <div class="pair-title">Lavender + Coumarin</div>
+        </div>
+        <div class="pair-btn" onclick="selectPair('lav_eve')">
+            <div class="pair-tag">Pair 2 (A + C)</div>
+            <div class="pair-title">Lavender + Evernyl</div>
+        </div>
+        <div class="pair-btn" onclick="selectPair('cou_eve')">
+            <div class="pair-tag">Pair 3 (B + C)</div>
+            <div class="pair-title">Coumarin + Evernyl</div>
+        </div>
+        <div class="pair-btn" onclick="selectPair('tea_revisit')">
+            <div class="pair-tag">Tea Revisit (L1 ⇄ L2)</div>
+            <div class="pair-title">Vanilla vs Coumarin Tea</div>
+        </div>
+        <div class="pair-btn" onclick="selectPair('triad')">
+            <div class="pair-tag">The Triad (A + B + C)</div>
+            <div class="pair-title">The Complete Fougère</div>
+        </div>
+    </div>
+
+    <!-- ACTIVE EXPERIMENT DISPLAY -->
+    <div class="card">
+        <div class="stage-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px; margin-bottom: 16px;">
+                <div>
+                    <span style="font-size: 0.75rem; color: var(--purple); font-weight: 700; text-transform: uppercase;" id="expTag">BINARY ACCORD PAIR 1</span>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-top: 2px;" id="expTitle">Lavender Oil + Coumarin</h3>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Diagnostic Focus:</div>
+                    <div style="font-size: 1.05rem; color: var(--gold); font-family: 'Space Mono', monospace; font-weight: 700;" id="expFocus">The Sweetness-Herbal Axis</div>
+                </div>
+            </div>
+
+            <div class="sensory-grid">
+                <div class="sensory-pane">
+                    <h4><i class="fas fa-wind"></i> What You Feel & Smell</h4>
+                    <p id="expSensation">
+                        Lavender alone is sharp, dry, and camphoraceous. Coumarin alone is warm, toasted almond marzipan. Fused together, the medicinal camphor melts into sweet marzipan, forming an unmistakable aristocratic scent of warm shaving lather and hot steam towels.
+                    </p>
+                </div>
+                <div class="sensory-pane">
+                    <h4><i class="fas fa-exclamation-triangle"></i> The Fragrance Architecture Flaw</h4>
+                    <p id="expDefect">
+                        While nostalgic and clean, this pair is dangerously top-heavy and sweet. It lacks an earthy floor. Left on its own, it smells like edible almond candy and floats away without tenacity.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DILUTION & CONCENTRATION COMPARISON -->
+            <div class="dilution-comparison" id="dilutionSection">
+                <div class="dil-title" id="dilTitleHeader">
+                    <i class="fas fa-flask"></i> Crucial Dilution Lesson: Coumarin Neat vs. Coumarin (10% Dilution)
+                </div>
+                <div class="dil-grid">
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #e53e3e;" id="lblDilNeat">Ratio: Lavender 10 : Coumarin Neat 1</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilNeat">
+                            Coumarin crystals neat are immensely powerful. At 1 part neat to 10 parts lavender, the heavy almond-vanilla suffocates the fresh floral lavender in 15 minutes, turning the blend into cloying bakery marzipan.
+                        </p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #68d391;" id="lblDilTen">Ratio: Lavender 10 : Coumarin (at 10%) 1</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilTen">
+                            Dosing Coumarin at 10% in DPG allows a 1:100 real active ratio. Here, coumarin doesn't smother the lavender—it merely cushions its sharp camphoric spikes like a silk pillow, preserving the breezy provencal herb clarity!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BENCH PROTOCOL -->
+            <div class="bench-instruction">
+                <strong><i class="fas fa-vial"></i> Bench Testing Protocol:</strong>
+                <span id="expBench">Take Strip A dipped in Lavender Oil and Strip B dipped in Coumarin (10% solution). Overlap them by 2 cm and hold 5 cm beneath your nose. Inhale slowly and notice how the camphor sharpness vanishes!</span>
+            </div>
+
+            <!-- MODERN TWISTS & CLASSICAL REPLACEMENTS -->
+            <div style="background: rgba(159, 122, 234, 0.05); border: 1px solid rgba(159, 122, 234, 0.3); border-radius: 12px; padding: 18px; margin-top: 18px;">
+                <div style="color: #d6bcfa; font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-magic"></i> Modern Twist: Transforming Classical Materials
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px;">
+                    How 21st-century perfumers modernize heavy 19th-century fougère and tea materials:
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #e53e3e;">
+                        <strong style="color: #feb2b2;">Classical 19th-C. Predecessor:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Natural Oakmoss Abs (Atranorin) / Dense Jasmine Paste:</strong> Natural oakmoss is heavily restricted under IFRA for severe skin sensitization; classical jasmine extracts were thick, indolic, and opaque.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <strong style="color: #d6bcfa;">Modern Common Replacement:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Evernyl (Veramoss) + Hedione (High Cis):</strong> Evernyl delivers salty forest lichen purity with 100% IFRA compliance, while Hedione blows transparent sunlight and wind through the dense fougère heart.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div style="font-size: 0.85rem; color: var(--text-dim);">
+                Mastered these pairs? Bottle your formula in the studio:
+            </div>
+            <a href="level_2_perfume_studio.html" class="btn btn-purple">
+                <i class="fas fa-spray-can"></i> Open Level 2 Compounding Studio
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const pairs = {
+        lav_cou: {
+            tag: "BINARY ACCORD PAIR 1 (A + B)",
+            title: "Lavender + Coumarin",
+            focus: "The Sweetness-Herbal Axis",
+            sensation: "French Lavender alone is sharp, dry, and camphoraceous. Coumarin alone is warm, toasted almond marzipan. Fused together, the medicinal camphor melts into sweet marzipan, forming an unmistakable aristocratic scent of warm shaving lather and hot steam towels.",
+            defect: "While nostalgic and clean, this pair is dangerously top-heavy and sweet. It lacks an earthy floor. Left on its own, it smells like edible almond candy and floats away without tenacity.",
+            dilTitle: "Crucial Dilution Lesson: Coumarin Neat vs. Coumarin (10% Dilution)",
+            lblNeat: "Ratio: Lavender 10 : Coumarin Neat 1",
+            dilNeat: "Coumarin crystals neat are immensely powerful. At 1 part neat to 10 parts lavender, the heavy almond-vanilla suffocates the fresh floral lavender in 15 minutes, turning the blend into cloying bakery marzipan.",
+            lblTen: "Ratio: Lavender 10 : Coumarin (at 10%) 1",
+            dilTen: "Dosing Coumarin at 10% in DPG allows a 1:100 real active ratio. Here, coumarin doesn't smother the lavender—it merely cushions its sharp camphoric spikes like a silk pillow, preserving the breezy provencal herb clarity!",
+            bench: "Take Strip A dipped in French Lavender and Strip B dipped in Coumarin 10%. Overlap tips by 2cm and smell 5cm away. The herbal camphor softens instantly into luxurious shaving foam."
+        },
+        lav_eve: {
+            tag: "BINARY ACCORD PAIR 2 (A + C)",
+            title: "Lavender + Evernyl (Oakmoss Sub)",
+            focus: "The Cold Forest Floor Axis",
+            sensation: "Sharp alpine lavender clashes directly into the salty, bitter lichen-moss of Evernyl. There is zero sweetness here. It smells of frozen granite stone, crushed pine needles, and mountain mist at dawn.",
+            defect: "This pairing is invigorating and dry, but completely sterile and austere. Without a warm sweet material, it smells like antiseptic hospital soap or bitter botanical medicine.",
+            dilTitle: "Crucial Dilution Lesson: Evernyl Neat vs. Evernyl (10% Dilution)",
+            lblNeat: "Impact: Evernyl Neat",
+            dilNeat: "Evernyl neat at 1:10 lavender is intensely phenolic, woody, and bitter. It completely flattens the floral sparkle of lavender, turning it into dry dead bark.",
+            lblTen: "Impact: Evernyl at 10% Dilution",
+            dilTen: "Evernyl at 10% dilution provides transparent salty moss realism without obliterating lavender's linalyl acetate radiance.",
+            bench: "Overlap a strip of French Lavender with a strip of Evernyl 10%. Inhale the clean alpine austerity. Note down how desperately this pair cries out for warmth!"
+        },
+        cou_eve: {
+            tag: "BINARY ACCORD PAIR 3 (B + C)",
+            title: "Coumarin + Evernyl (Oakmoss Sub)",
+            focus: "The Tenacious Caramel-Moss Base",
+            sensation: "Coumarin’s toasted almond-hay locks with Evernyl’s phenolic lichen structure. Evernyl reveals its famous 'spun-sugar caramel' facet, marrying with coumarin into a rich, deep, forest floor confection.",
+            defect: "This base accord is extremely tenacious, lasting 24+ hours on skin. However, it is heavy, dense, and motionless. It has zero top note, no air, and cannot project into the room on its own.",
+            dilTitle: "Crucial Dilution Lesson: Concentration Synergy",
+            lblNeat: "Neat Combination",
+            dilNeat: "Using both neat results in a sticky brown sludge aroma that smells like overcooked caramel on damp wood.",
+            lblTen: "10% Working Solutions",
+            dilTen: "Both materials at 10% dilution create a gossamer-thin base cushion that holds flowers and citruses without dragging them down.",
+            bench: "Pinch together a strip of Coumarin 10% and Evernyl 10%. Inhale. Notice how the salty lichen prevents the coumarin from smelling like edible food."
+        },
+        tea_revisit: {
+            tag: "CROSS-LEVEL STUDY (LEVEL 1 ⇄ LEVEL 2)",
+            title: "Revisiting Tea: Vanillin vs. Coumarin",
+            focus: "Steeped Black Tea vs. Sun-Dried Herbal Tea",
+            sensation: "In Level 1, we made the Earl Grey Tea Accord using Bergamot + Iso E Super + Vanillin 10% (steeped, creamy black tea with sweet steam). Now replace Vanillin with Coumarin (10%): the sweet pastry cream disappears! Instead, Coumarin's sun-cured sweetgrass and dried hay facets transform the blend into dry, astringent, unflavored sencha leaves and toasted green rooibos drying in wicker baskets.",
+            defect: "Coumarin lacks vanillin's melting edible gourmand cushion. If overdosed, it tilts the tea towards bitter tobacco leaf or dry animal barn straw.",
+            dilTitle: "The Molecular Replacement Comparison (Vanillin vs Coumarin at 10%)",
+            lblNeat: "Version A: Bergamot + Iso E Super + Vanillin (10%)",
+            dilNeat: "Result: English Earl Grey Tea with warm milk and sugar cube. Warm, round, cozy, and slightly gourmand.",
+            lblTen: "Version B: Bergamot + Iso E Super + Coumarin (10%)",
+            dilTen: "Result: Japanese Roasted Sencha / Herbal Hay Infusion. Dry, crisp, aristocratic, and completely non-edible. Far more masculine and modern!",
+            bench: "Prepare two test strips of Bergamot + Iso E Super. Dip the tip of Strip 1 into Vanillin (10%). Dip the tip of Strip 2 into Coumarin (10%). Smell side by side. Observe how Vanillin makes it 'drinkable dessert', while Coumarin makes it 'crisp botanical tea leaves'!"
+        },
+        triad: {
+            tag: "THE COMPLETE 1882 TRIAD (A + B + C)",
+            title: "The Classical Fougère Accord",
+            focus: "Indivisible Barbershop Synthesis",
+            sensation: "Lavender (Aromatic Head) + Coumarin (Sweet Heart) + Evernyl (Moss Anchor). The three forces lock in dynamic equilibrium: Evernyl anchors Coumarin, Coumarin softens Lavender, and Lavender lifts Evernyl. You no longer smell three chemicals—you smell 'Clean Shaven Gentleman'.",
+            defect: "None. This is the immortal foundation of masculine perfumery that has survived for over 140 years.",
+            dilTitle: "The Master Ratio Standard",
+            lblNeat: "Vintage Powerhouse (Neat Crystals)",
+            dilNeat: "In historical formulas, Coumarin and Oakmoss were overdosed, creating heavy, dense, opaque vintage colognes (1970s powerhouse era).",
+            lblTen: "Modern Transparent Standard (10% Dilutions)",
+            dilTen: "Modern perfumery uses diluted working solutions + Hedione (introduced in Level 2) to blow sunlight and wind through the triad.",
+            bench: "Fan three strips together: Lavender, Coumarin 10%, and Evernyl 10%. Experience the complete 1882 Fougère Royale harmony in real life!"
+        }
+    };
+
+    function selectPair(key) {
+        const btns = document.querySelectorAll('.pair-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const p = pairs[key];
+        document.getElementById('expTag').textContent = p.tag;
+        document.getElementById('expTitle').textContent = p.title;
+        document.getElementById('expFocus').textContent = p.focus;
+        document.getElementById('expSensation').textContent = p.sensation;
+        document.getElementById('expDefect').textContent = p.defect;
+        document.getElementById('dilTitleHeader').innerHTML = `<i class="fas fa-flask"></i> ${p.dilTitle}`;
+        document.getElementById('lblDilNeat').textContent = p.lblNeat;
+        document.getElementById('txtDilNeat').textContent = p.dilNeat;
+        document.getElementById('lblDilTen').textContent = p.lblTen;
+        document.getElementById('txtDilTen').textContent = p.dilTen;
+        document.getElementById('expBench').textContent = p.bench;
+    }
+
+    selectPair('lav_cou');
+</script>
+
+</body>
+</html>

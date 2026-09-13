@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Perfumery Glossary & Technical Lexicon | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --cyan: #38b2ac;
+            --cyan-bright: #81e6d9;
+            --purple: #9f7aea;
+            --blue: #63b3ed;
+            --green: #48bb78;
+            --red: #fc8181;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 12% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 88% 85%, rgba(56, 178, 172, 0.04) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: var(--gold-bright); transform: translateX(-4px); }
+
+        .hero { margin-bottom: 30px; }
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-bright);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-gold);
+        }
+        h1 { font-size: 2.3rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        /* SEARCH & FILTER BAR */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 26px;
+            flex-wrap: wrap;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 260px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px 12px 42px;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .search-box input:focus {
+            border-color: var(--gold);
+        }
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+        }
+
+        .filter-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover { border-color: var(--gold); color: #fff; }
+        .filter-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold-bright);
+        }
+
+        /* GLOSSARY CARD GRID */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+        .term-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(12px);
+        }
+        .term-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateX(4px);
+        }
+        .term-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+        .term-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .term-cat {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .cat-lifecycle { color: var(--cyan-bright); border-color: rgba(56, 178, 172, 0.35); background: rgba(56, 178, 172, 0.08); }
+        .cat-taxonomy { color: var(--gold-bright); border-color: rgba(212, 175, 55, 0.35); background: rgba(212, 175, 55, 0.08); }
+        .cat-blocks { color: var(--purple); border-color: rgba(159, 122, 234, 0.35); background: rgba(159, 122, 234, 0.08); }
+        .cat-science { color: var(--blue); border-color: rgba(99, 179, 237, 0.35); background: rgba(99, 179, 237, 0.08); }
+        .cat-regulatory { color: var(--red); border-color: rgba(252, 129, 129, 0.35); background: rgba(252, 129, 129, 0.08); }
+
+        .term-def {
+            font-size: 0.92rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+        .term-example {
+            font-size: 0.82rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #cbd5e0;
+            font-family: 'Space Mono', monospace;
+            border-left: 3px solid var(--gold);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Curriculum Hub</a>
+        <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Reference Library</span>
+    </div>
+
+    <div class="hero">
+        <span class="badge">Technical Reference • Lexicon</span>
+        <h1>Comprehensive Perfumery Glossary</h1>
+        <p class="lead">
+            The standard technical vocabulary for fragrance development, odor taxonomy, chemical building blocks, and sensory evaluation.
+        </p>
+    </div>
+
+    <!-- SEARCH & FILTER CONTROLS -->
+    <div class="controls">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search terms (e.g. Accord, Chiaroscuro, Tenacity, IFRA)..." oninput="filterTerms()">
+        </div>
+        <button class="filter-btn active" onclick="setCategory('all')">All Terms (<span id="countAll">0</span>)</button>
+        <button class="filter-btn" onclick="setCategory('lifecycle')">Life Cycle</button>
+        <button class="filter-btn" onclick="setCategory('taxonomy')">Taxonomy & Archetypes</button>
+        <button class="filter-btn" onclick="setCategory('blocks')">Physical Units</button>
+        <button class="filter-btn" onclick="setCategory('science')">Sensory & Physics</button>
+        <button class="filter-btn" onclick="setCategory('regulatory')">Compliance</button>
+    </div>
+
+    <!-- GLOSSARY LIST -->
+    <div class="glossary-grid" id="termsContainer">
+        <!-- Rendered via JS -->
+    </div>
+
+</div>
+
+<script>
+    const glossary = [
+        // PHYSICAL BUILDING BLOCKS
+        {
+            term: "Raw Material (Monad)",
+            cat: "blocks",
+            catName: "Physical Unit",
+            def: "The foundational discrete ingredient on the perfumer's organ. It can be a single chemical isolate (e.g. Phenylethyl Alcohol / PEA, Vanillin), a synthetic isomeric reaction mixture sold as a single commercial product (e.g. Iso E Super, Hedione, Cashmeran, Ethylene Brassylate), or a complex multi-component natural botanical extract (e.g. Bergamot FCF, Lavender EO).",
+            ex: "Examples: Phenylethyl Alcohol (pure isolate), Iso E Super (isomeric mixture), Bergamot FCF (cold-pressed natural extract)."
+        },
+        {
+            term: "Accord (Chord)",
+            cat: "blocks",
+            catName: "Physical Unit",
+            def: "A synergistic blend of 2 to 4 raw materials calibrated in precise ratios so they lose their individual identities and fuse into an indivisible third scent (1 + 1 = 3).",
+            ex: "Example: Lavender + Coumarin = Shaving Foam; Bergamot + Iso E Super = Earl Grey Tea."
+        },
+        {
+            term: "Specialty Base",
+            cat: "blocks",
+            catName: "Physical Unit",
+            def: "A complex, multi-component micro-formula created by fragrance houses to serve as a standardized, modular building block or to replicate captive naturals and historical accords.",
+            ex: "Example: Ambre 83 (historic golden amber resin), De Laire Mousse de Saxe (smoky licorice moss)."
+        },
+        {
+            term: "Finished Fragrance (Flacon)",
+            cat: "blocks",
+            catName: "Physical Unit",
+            def: "The complete 100.0-part concentrate weighed out and diluted into 96% Perfumer's Alcohol (Ethanol) to a regulated commercial concentration tier (EdC, EdT, EdP, Extrait).",
+            ex: "Standard: 15% Eau de Parfum (1.50g concentrate + 8.50g 96% Ethanol for a 10.0g flacon)."
+        },
+
+        // TAXONOMY & ARCHETYPES
+        {
+            term: "Odor Facet (Descriptor)",
+            cat: "taxonomy",
+            catName: "Taxonomy",
+            def: "A specific perceptual sensory adjective detected on a smelling strip. Aroma materials are multi-faceted prisms: Coumarin possesses almond, hay, and barbershop facets; Bergamot possesses zesty lime, bitter tea peel, and floral lavender facets; Labdanum possesses amber, dark leather, and plum wine facets. Perfumers use these overlapping secondary facets as 'bridges' to seamlessly unite disparate fragrance families.",
+            ex: "Bridging Example: Coumarin's dry hay facet connects into Fougères, while its toasted almond facet anchors into Ambers."
+        },
+        {
+            term: "Fragrance Archetype",
+            cat: "taxonomy",
+            catName: "Taxonomy",
+            def: "A historic formula skeleton born from a breakthrough technical pairing that founded a permanent tradition in perfumery history.",
+            ex: "Example: 1882 Fougère Royale (Lavender+Coumarin), 1917 Coty Chypre (Bergamot+Oakmoss), 1925 Shalimar (Amber+Ethyl Vanillin)."
+        },
+        {
+            term: "Fragrance Family",
+            cat: "taxonomy",
+            catName: "Taxonomy",
+            def: "The broad commercial genus that groups perfumes by dominant structural behavior and market territory (Citrus, Floral, Aromatic Fougère, Woody, Chypre, Leather, Amber).",
+            ex: "Note: In 2021, the global industry officially retired 'Oriental' in favor of the chemically accurate term 'Amber'."
+        },
+        {
+            term: "Chiaroscuro",
+            cat: "taxonomy",
+            catName: "Taxonomy",
+            def: "The aesthetic technique of extreme contrast between blinding, sparkling citrus light (top notes) and pitch-black, earthy shadows (base resins and mosses), quintessential to the Chypre family.",
+            ex: "Example: Coty 1917 Chypre (25% Bergamot crashing directly into damp Patchouli, Labdanum, and Evernyl)."
+        },
+
+        // LIFE CYCLE
+        {
+            term: "Creative Brief",
+            cat: "lifecycle",
+            catName: "Life Cycle",
+            def: "Stage 1 of the development cycle. The creative compass defining the emotional narrative, wearer persona, intended atmosphere, and seasonal climate before any bottle is opened.",
+            ex: "Directive: Determines the target Fragrance Family and historical archetype."
+        },
+        {
+            term: "Creative & Technical Objectives",
+            cat: "lifecycle",
+            catName: "Life Cycle",
+            def: "Stage 2 of the development cycle. Answering the client's brief by establishing 'What to Express': defining the emotional persona, olfactory tactile texture (dewy, powdery, velvety), and target sillage radius, alongside key technical performance goals (8h+ curve, IFRA compliance, and discoloration awareness). The technical 'how' (specific molecule selection and ratios) is subsequently mapped out in Stages 3 and 4.",
+            ex: "Intent: Defining 'What to express' (intimate cashmere cocoon) before engineering the 'how' in the mind-map and 100-part formula."
+        },
+        {
+            term: "Scent Mind-Mapping",
+            cat: "lifecycle",
+            catName: "Life Cycle",
+            def: "Stage 3 of the development cycle. The structural organization of ingredients into architectural nodes: Top Spark, Floral Body, Backbone Skeleton, and Tenacious Anchor to prevent olfactory mud.",
+            ex: "Hierarchy: Bergamot (Top) ➔ Rose PEA (Heart) ➔ Iso E Super (Backbone) ➔ Coumarin (Anchor)."
+        },
+        {
+            term: "Formulation by Parts (100, 1,000, 10,000)",
+            cat: "lifecycle",
+            catName: "Life Cycle",
+            def: "Stage 4 of the development cycle. Composing formulas strictly by weight parts rather than drops. Courses utilize 100.0 parts (% by weight) for intuitive learning. Commercial fragrance houses standardly formulate in 1,000 parts (permille) or 10,000 parts for ultra-trace materials (pyrazines, high-impact aldehydes, sulfur fractions) without excessive decimals.",
+            ex: "Scalability: 100.0 parts (factor 0.10) compounds a 10.00g lab flacon; 1,000 parts scales cleanly to 1.000 kg with identical precision."
+        },
+        {
+            term: "Testing & Flacon Evaluation",
+            cat: "lifecycle",
+            catName: "Life Cycle",
+            def: "Stage 5 of the development cycle. Evaluating the compounded trial concentrate on smelling strips across 3 temporal windows (0m flash, 30m heart, 4h+ drydown), checking skin performance, and diluting into 96% alcohol for the finished 15% EdP flacon.",
+            ex: "Protocol: Diagnostic checks at 0 min, 30 min, 4 hours, followed by alcohol bottling and 48-hour maceration."
+        },
+
+        // SENSORY & PHYSICS
+        {
+            term: "Tenacity",
+            cat: "science",
+            catName: "Sensory & Physics",
+            def: "The persistence and physical lifespan of an aroma chemical on a smelling strip or warm human skin before it completely evaporates.",
+            ex: "Range: Bergamot (1 to 2 hours) vs. Labdanum Resinoid (300+ hours)."
+        },
+        {
+            term: "Atmospheric Dispersion",
+            cat: "science",
+            catName: "Sensory & Physics",
+            def: "The ability of a transparent, high-diffusion molecule to blow air and space through a dense formula, projecting scent into the surrounding room without adding thick sweetness.",
+            ex: "Key materials: Hedione (High Cis), Iso E Super, Ethylene Brassylate."
+        },
+        {
+            term: "Sensory Cushion",
+            cat: "science",
+            catName: "Sensory & Physics",
+            def: "A smooth, non-aggressive intermediate material (such as macrocyclic musks or phenylethyl alcohol) that softens the abrasive edges of sharp chemicals or heavy resins.",
+            ex: "Example: Ethylene Brassylate cushioning the intense, torched sweetness of Ethyl Vanillin."
+        },
+        {
+            term: "Temporal Blotter Diagnostics",
+            cat: "science",
+            catName: "Sensory & Physics",
+            def: "A modern empirical testing protocol that evaluates smelling strips across 3 standardized temporal evaporation windows (0m flash, 30m heart, 4h+ tenacity) and tests concentration impact (Neat vs. 10% / 1% working dilutions).",
+            ex: "Practice: Evaluating blotters systematically at 0 min, 30 min, 4 hours, and 24 hours to track evaporation curves."
+        },
+        {
+            term: "Working Dilution",
+            cat: "science",
+            catName: "Sensory & Physics",
+            def: "Pre-diluting high-impact aroma chemicals (e.g. 10%, 1%, or 0.1%) in neutral solvents (DPG, TEC, IPM). This brings hyper-potent molecules into a measurable range for analytical balances (0.001g) without nose-blinding overdoses.",
+            ex: "Crucial dilutions: Cis-3-Hexenol at 1%, Isobutyl Quinoline (IBQ) at 1%, Coumarin at 10%."
+        },
+        {
+            term: "Perfumery Solvents (DPG, TEC, IPM)",
+            cat: "science",
+            catName: "Sensory & Physics",
+            def: "Neutral odorless carrier liquids used for dilutions and dissolving solids. DPG (Dipropylene Glycol) is polar and ideal for crystals/powders; TEC (Triethyl Citrate) is an ester ideal for stubborn botanical resins and absolutes; IPM (Isopropyl Myristate) is a non-greasy non-polar oil used for oil roll-ons. Solvents are carriers, NOT fixatives.",
+            ex: "Usage guideline: Use high dilution for trace powerhouses (pyrazines, IBQ); keep solvent minimal for structural bulk (Iso E Super, Hedione) to avoid dampening projection."
+        },
+
+        // REGULATORY & SAFETY
+        {
+            term: "IFRA (International Fragrance Association)",
+            cat: "regulatory",
+            catName: "Regulatory",
+            def: "The global self-regulatory body that sets scientific safety standards and maximum permissible dermal exposure limits (under the 51st Amendment) based on RIFM dermatological testing.",
+            ex: "Application: Category 4 (Fine Fragrance hydroalcoholic spray on skin)."
+        },
+        {
+            term: "FCF (Furocoumarin-Free)",
+            cat: "regulatory",
+            catName: "Regulatory",
+            def: "Cold-pressed citrus oils (especially Bergamot) that have undergone vacuum distillation to remove phototoxic bergapten, ensuring the oil does not cause dermal burns in sunlight.",
+            ex: "Industry Standard: Always specify Bergamot FCF in fine perfumery."
+        },
+        {
+            term: "Evernyl (Veramoss)",
+            cat: "regulatory",
+            catName: "Regulatory",
+            def: "Methyl atrarate: the synthetic molecule that replaced natural Oakmoss (Evernia prunastri). It provides salty moss earthiness without containing the IFRA-restricted allergen atranol.",
+            ex: "Advantage: Complies fully with IFRA Category 4 limits without discoloration or dermal sensitization."
+        }
+    ];
+
+    let currentCategory = 'all';
+
+    function renderTerms(list) {
+        const container = document.getElementById('termsContainer');
+        container.innerHTML = '';
+        if (list.length === 0) {
+            container.innerHTML = `<div style="text-align: center; padding: 40px; color: var(--text-dim);">No matching perfumery terms found.</div>`;
+            return;
+        }
+
+        list.forEach(t => {
+            const card = document.createElement('div');
+            card.className = 'term-card';
+            card.innerHTML = `
+                <div class="term-header">
+                    <div class="term-name">
+                        ${t.term}
+                    </div>
+                    <span class="term-cat cat-${t.cat}">${t.catName}</span>
+                </div>
+                <div class="term-def">${t.def}</div>
+                <div class="term-example">${t.ex}</div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function filterTerms() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const filtered = glossary.filter(item => {
+            const matchesCat = (currentCategory === 'all' || item.cat === currentCategory);
+            const matchesSearch = item.term.toLowerCase().includes(query) || 
+                                  item.def.toLowerCase().includes(query) || 
+                                  item.ex.toLowerCase().includes(query);
+            return matchesCat && matchesSearch;
+        });
+        renderTerms(filtered);
+    }
+
+    function setCategory(cat) {
+        currentCategory = cat;
+        const btns = document.querySelectorAll('.filter-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+        filterTerms();
+    }
+
+    // Initialize
+    document.getElementById('countAll').textContent = glossary.length;
+    renderTerms(glossary);
+</script>
+
+</body>
+</html>

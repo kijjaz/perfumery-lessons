@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Lavender Oil • Level 2 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-purple: #9f7aea;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(159, 122, 234, 0.15);
+            color: var(--accent-purple);
+            border: 1px solid rgba(159, 122, 234, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #e9d8fd;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 2 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-wind"></i> Natural Aromatic Herb</span>
+        <h1>French Lavender Oil</h1>
+        <p class="lead">The crisp, aristocratic cleanliness of high-altitude Mediterranean fields that unlocks the aromatic family.</p>
+    </div>
+
+    <!-- WHY COMPOSE LAVENDER FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(159, 122, 234, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(159,122,234,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-purple); margin-right: 10px;"></i> What Does Lavender Bring to the Table?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Clean Barbershop Spark</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Level 1 had sweetness and rose, but zero bracing herbal freshness. Lavender introduces camphoraceous cleanliness and crisp aromatic sophistication.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. The Secret Bridge to Citrus</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Natural lavender is 50% Linalyl Acetate (like bergamot!) and 30% Linalool. It seamlessly melds with Level 1's citrus and carries it deep into the heart.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The Fougère Engine Key</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Without lavender, you cannot make the legendary 1882 Fougère chassis. It is the vital Pillar 1 that counterbalances warm sweet coumarin.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. Natural 200-Molecule Symphony</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    High-altitude French lavender (*Lavandula angustifolia*) contains trace ocimenes and borneol, giving it an authentic sunlit herbal texture impossible to mimic with single synthetics alone.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- THE MODERN LAVENDER REVOLUTION: DHM & DIMETOL -->
+    <div class="card" style="border-color: rgba(49, 130, 206, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(49,130,206,0.06));">
+        <h2><i class="fas fa-bolt" style="color: #63b3ed; margin-right: 10px;"></i> The Modern Revolution: Replacing Lavender with DHM & Dimetol</h2>
+        <p>
+            In traditional 19th-century formulas, natural Lavender was irreplaceable. But in the 1980s, a seismic shift occurred in fine perfumery. Perfumers realized they could <strong>replace part or all of natural Lavender</strong> with two synthetic molecules: <strong>Dihydromyrcenol (DHM)</strong> and <strong>Dimetol</strong>.
+        </p>
+
+        <div style="margin: 18px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. Stripping the "Old-Fashioned" Baggage</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Natural lavender contains organic camphor, borneol, and herbal hay facets. To younger consumers, this often smells like mothballs, antique medicinal salves, or grandmother's linen drawer.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Isolating the "Electric Citrus-Lavender" Core</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    <strong>Dihydromyrcenol (DHM)</strong> isolates the sparkling lime-lavender ester facet, but makes it metallic, radiant, and hyper-clean. <strong>Dimetol</strong> provides a softer, smoother, ultra-fresh citrus-lavender aura without any medicinal bite.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The 1982 Milestone: Drakkar Noir</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Pierre Wargnye took the classical Fougère chassis and injected a shocking <strong>10% Dihydromyrcenol overdose</strong> into <em>Drakkar Noir (1982)</em>. It redefined modern masculine grooming into an electric, showered-clean powerhouse.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. The 1988 Culmination: Cool Water</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Pierre Bourdon replaced even more natural lavender with DHM and Dimetol in <em>Davidoff Cool Water (1988)</em>. Combined with Calone, it transformed the vintage barbershop into the first oceanic marine wave!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(159, 122, 234, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-purple); margin-right: 10px;"></i> The Multi-Facet Reality of Lavender & Its Modern Twins</h2>
+        <p>Compare natural lavender's facets with its modern synthetic replacements:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <div style="font-size: 0.7rem; color: var(--accent-purple); text-transform: uppercase; font-weight: 700;">Natural Symphony</div>
+                <strong style="color: #fff; font-size: 1.05rem;">French Lavender Oil</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 6px;">
+                    <strong>Facets:</strong> Bergamot sparkle (50% Linalyl Acetate) + Rosewood floral (30% Linalool) + <em>Camphor, Rosemary, Hay, Borneol</em>.<br>
+                    <span style="color: #e9d8fd;">Feels rustic, natural, warm, and vintage.</span>
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <div style="font-size: 0.7rem; color: #63b3ed; text-transform: uppercase; font-weight: 700;">Synthetic Powerhouse</div>
+                <strong style="color: #fff; font-size: 1.05rem;">Dihydromyrcenol (DHM)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 6px;">
+                    <strong>Facets:</strong> Metallic Lime + Electric Lavender + Shower-Gel Clean.<br>
+                    <span style="color: #bee3f8;">Zeros out all medicinal dust; creates radiant, athletic, ultra-modern projection.</span>
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <div style="font-size: 0.7rem; color: #4ba6a6; text-transform: uppercase; font-weight: 700;">Smooth Modern Elegance</div>
+                <strong style="color: #fff; font-size: 1.05rem;">Dimetol</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 6px;">
+                    <strong>Facets:</strong> Soft Lemony Lavender + Transparent Floral Green.<br>
+                    <span style="color: #b2f5ea;">Smoother and less metallic than DHM. Blends effortlessly into both masculine and feminine modern hearts.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <p>
+            Crush fresh lavender between your fingers on a hot summer afternoon in Provence. It is not sleepy or powdery—it is brisk, electric, aromatic, and deeply clean.
+        </p>
+        <div class="sensory-box">
+            "Lavender is the bridge between herbs and flowers. It has the fresh, herbal bite of rosemary and sage, but softens into the gentle floral heart of linalool."
+        </div>
+    </div>
+
+    <!-- LATERAL DOORS TO SIBLINGS IN LEVEL 2 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 2?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_2_coumarin.html" class="portal-door">
+                <div class="door-tag">The Fougère Partner</div>
+                <div class="door-title">🌾 Coumarin (Hay & Tonka)</div>
+                <div class="door-desc">When sharp lavender meets warm almond-hay coumarin, the famous barbershop shaving foam is born!</div>
+            </a>
+
+            <a href="level_2_hedione.html" class="portal-door">
+                <div class="door-tag">Add Atmospheric Bloom</div>
+                <div class="door-title">🌬️ Hedione (Acoustic Diffuser)</div>
+                <div class="door-desc">Lavender can feel dense. What happens when Hedione blows wind through the herbal needles?</div>
+            </a>
+
+            <a href="level_2_evernyl.html" class="portal-door">
+                <div class="door-tag">Anchor to the Forest</div>
+                <div class="door-title">🌲 Evernyl (Synthetic Oakmoss)</div>
+                <div class="door-desc">Lavender and bitter oakmoss form the backbone of classic French perfumery.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

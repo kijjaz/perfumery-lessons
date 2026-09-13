@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labdanum Resinoid • Level 3 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-amber: #c53030;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(197, 48, 48, 0.15);
+            color: #feb2b2;
+            border: 1px solid rgba(197, 48, 48, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-amber);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #fed7d7;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 3 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-fire"></i> Ancient Balsamic Amber</span>
+        <h1>Labdanum Resinoid (Cistus)</h1>
+        <p class="lead">The sacred, leathery, dark resin wept by Mediterranean rockroses that forms the amber soul of the Great Chypre.</p>
+    </div>
+
+    <!-- WHY COMPOSE WITH LABDANUM -->
+    <div class="card" style="border-color: rgba(197, 48, 48, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(197,48,48,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: #feb2b2; margin-right: 10px;"></i> What Does Labdanum Bring to the Table?</h2>
+        <div style="margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. Nature's Source of Real Ambrox</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Labdanum is the premier botanical origin of <strong>Ambrox / Ambroxan</strong> precursors (labdane diterpenes). Long before synthetic ambroxan was discovered, nature hid this radiant, warm, animalic ambergris molecule inside rockrose resin!
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. The Chypre Pillar Anchor</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    You cannot make François Coty's 1917 Chypre without Labdanum. It forms the warm, balsamic bridge between bright Bergamot sunlight and dark Evernyl oakmoss.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. ⚠️ The Bench Viscosity Protocol</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Neat Labdanum resinoid is <strong>as thick as roof tar</strong>. Never try to pipette it pure! On a student bench, it must always be pre-dissolved to a workable <strong>10% or 50% dilution in Triethyl Citrate (TEC) or 96% Ethanol</strong>.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. The Leather & Hide Crossover</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Labdanum has a distinctive animalic, tanned leather facet that bridges directly with <strong>Isobutyl Quinoline (IBQ)</strong> in legendary Leather-Chypres.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(197, 48, 48, 0.4);">
+        <h2><i class="fas fa-gem" style="color: #feb2b2; margin-right: 10px;"></i> The Multi-Facet Reality of Labdanum</h2>
+        <p>Labdanum is one of the most complex natural resins in all of perfumery:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #feb2b2; text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Dark Resinous Amber</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Ancient Mediterranean rockrose resin, dried plum, and sticky honeyed warmth.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ed8936; text-transform: uppercase; font-weight: 700;">Facet 2 (Leather)</div>
+                <strong style="color: #fff;">Tanned Animalic Hide</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Warm, slightly smoky goat-hair and saddle leather undertones.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700;">Facet 3 (Sacred)</div>
+                <strong style="color: #fff;">Temple Incense Smoke</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Frankincense smoke and dried amber crystals burned in stone sanctuaries.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #4ba6a6; text-transform: uppercase; font-weight: 700;">Facet 4 (Botanical)</div>
+                <strong style="color: #fff;">Dry Herbal Scrub</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Wild cistus shrub leaves baking under the harsh sun of Andalusian hills.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <div class="sensory-box">
+            "Labdanum is thick, dark, and primordial. It smells like sticky amber resin wept by sun-scorched mountain bushes, mixed with dried dates, church incense, and warm worn leather."
+        </div>
+    </div>
+
+    <!-- LATERAL DOORS IN LEVEL 3 -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Where do you want to wander next in Level 3?
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_3_ibq.html" class="portal-door">
+                <div class="door-tag">The Leather Crossover</div>
+                <div class="door-title">🧥 Isobutyl Quinoline (IBQ)</div>
+                <div class="door-desc">Combine Labdanum's animalic warmth with IBQ's bitter leather and green peat moss for iconic Leather-Chypres.</div>
+            </a>
+
+            <a href="level_3_florol.html" class="portal-door">
+                <div class="door-tag">The Transparent Light</div>
+                <div class="door-title">🌸 Florol (Dewy Petal)</div>
+                <div class="door-desc">See how modern white floral transparency illuminates Labdanum's dark sacred amber.</div>
+            </a>
+
+            <a href="level_3_patchouli.html" class="portal-door">
+                <div class="door-tag">The Great Chypre Earth</div>
+                <div class="door-title">🍂 Natural Patchouli Oil</div>
+                <div class="door-desc">Labdanum + Patchouli + Evernyl forms the timeless shadow chassis of 1917 François Coty Chypre.</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

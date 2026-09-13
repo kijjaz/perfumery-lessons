@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Perfume Studio: The Complete Fragrance Life Cycle | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-purple: rgba(159, 122, 234, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --purple: #9f7aea;
+            --teal: #4ba6a6;
+            --green: #48bb78;
+            --blue: #63b3ed;
+            --red: #fc8181;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(159, 122, 234, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(75, 166, 166, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--purple);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-link:hover { color: #d6bcfa; transform: translateX(-4px); }
+
+        .hero { margin-bottom: 30px; }
+        .badge {
+            display: inline-block;
+            background: rgba(159, 122, 234, 0.15);
+            color: #d6bcfa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-purple);
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        /* LIFECYCLE STEPPER BAR */
+        .lifecycle-stepper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) { .lifecycle-stepper { grid-template-columns: 1fr 1fr; } }
+        .step-pill {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-pill.active {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(159,122,234,0.12));
+        }
+        .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--purple);
+            font-family: 'Space Mono', monospace;
+        }
+        .step-pill.active .step-num {
+            background: var(--purple);
+            color: #fff;
+        }
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+        h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--purple);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        /* STYLE SELECTOR */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .style-btn {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .style-btn:hover {
+            border-color: var(--purple);
+            transform: translateY(-2px);
+        }
+        .style-btn.active {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(159,122,234,0.18));
+            box-shadow: 0 4px 16px rgba(159, 122, 234, 0.15);
+        }
+        .style-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #d6bcfa;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .style-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+        .style-family {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .brief-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 680px) { .brief-grid { grid-template-columns: 1fr; } }
+        .brief-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .pane-tag { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--purple); }
+        .pane-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin: 4px 0 6px; }
+
+        /* MIND-MAP VISUALIZER */
+        .mindmap-box {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 16px;
+        }
+        .mindmap-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #81e6d9;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .map-cluster {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+        }
+        .map-node {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .node-role { font-size: 0.68rem; text-transform: uppercase; font-weight: 700; color: var(--text-dim); }
+        .node-item { font-size: 0.88rem; font-weight: 700; color: #fff; margin: 2px 0; }
+        .node-function { font-size: 0.78rem; color: var(--text-dim); }
+
+        /* BENCH SLIDERS */
+        .slider-control { margin: 16px 0; }
+        .slider-header { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+        .part-display { font-family: 'Space Mono', monospace; font-weight: 700; color: var(--gold); }
+        input[type=range] { width: 100%; accent-color: var(--purple); cursor: pointer; height: 6px; }
+
+        .bench-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 18px;
+        }
+        .bench-table th, .bench-table td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .bench-table th {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .recipe-summary {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            text-align: center;
+        }
+        .f-val { font-size: 1.3rem; font-weight: 800; color: var(--gold); font-family: 'Space Mono', monospace; }
+        .f-name { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; margin-top: 3px; }
+
+        .instruction-box {
+            background: rgba(159, 122, 234, 0.08);
+            border: 1px solid rgba(159, 122, 234, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 16px;
+            font-size: 0.88rem;
+            color: var(--text-dim);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-purple {
+            background: var(--purple);
+            color: #fff;
+        }
+        .btn-purple:hover {
+            background: #b794f4;
+            transform: translateY(-2px);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Return to Curriculum Constellation</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Level 2 Capstone Studio</span>
+        </div>
+    </div>
+
+    <div class="hero">
+        <span class="badge">Professional Fragrance Life Cycle • 9 Bottles Total</span>
+        <h1>Level 2 Perfume Studio: The Aromatic & Solar Archetypes</h1>
+        <p class="lead">
+            By adding Lavender, Hedione, Coumarin, and Evernyl to your starter organ, apply the full professional development life cycle to bottle a complete 15% Eau de Parfum!
+        </p>
+    </div>
+
+    <!-- DEVELOPMENT LIFECYCLE STEPPER BAR -->
+    <div class="lifecycle-stepper" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="step-pill active">
+            <div class="step-num">1</div>
+            <div class="step-label">Briefing</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">2</div>
+            <div class="step-label">Objectives</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">3</div>
+            <div class="step-label">Mind-Mapping</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">4</div>
+            <div class="step-label">Formulation</div>
+        </div>
+        <div class="step-pill active">
+            <div class="step-num">5</div>
+            <div class="step-label">Testing & Flacon</div>
+        </div>
+    </div>
+
+    <!-- STAGE 1 & 2: BRIEFING & ARCHETYPE OBJECTIVES -->
+    <div class="card" style="border-color: var(--border-purple);">
+        <h2><span class="step-number">1</span> Stage 1: The Creative Brief & Objectives</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 16px;">
+            Choose a Level 2 commercial direction to review its client brief and technical solution:
+        </p>
+
+        <div class="style-grid">
+            <button class="style-btn active" onclick="loadStyle('fougere')">
+                <div class="style-tag">Style 1 • The 1882 Fougère</div>
+                <div class="style-title">Solar Aromatic Fougère</div>
+                <div class="style-family">Family: Clean Grooming / Barbershop</div>
+            </button>
+            <button class="style-btn" onclick="loadStyle('tea')">
+                <div class="style-tag">Style 2 • The Zen Oasis</div>
+                <div class="style-title">Thé Vert & Blooming Jasmine</div>
+                <div class="style-family">Family: Transparent Green Tea</div>
+            </button>
+            <button class="style-btn" onclick="loadStyle('tonka')">
+                <div class="style-tag">Style 3 • Toasted Warmth</div>
+                <div class="style-title">Smoked Tonka & Lavender</div>
+                <div class="style-family">Family: Aromatic Amber Gourmand</div>
+            </button>
+        </div>
+
+        <div class="brief-grid">
+            <div class="brief-pane">
+                <div class="pane-tag">Stage 1: The Creative Brief</div>
+                <div class="pane-title" id="archSkelTitle">The 1882 Fougère Royale Heritage</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);" id="archSkelDesc">
+                    Capture the timeless elegance of European gentlemen's barbershops: hot towels, shaving soap lather, and crisp cut sweetgrass hay.
+                </p>
+            </div>
+            <div class="brief-pane" style="border-color: var(--border-purple);">
+                <div class="pane-tag" style="color: #d6bcfa;">Stage 2: Creative & Technical Objectives</div>
+                <div class="pane-title" id="archTwistTitle">Creative Mood & Technical Longevity/Stability</div>
+                <p style="font-size: 0.88rem; color: var(--text-dim);" id="archTwistDesc">
+                    <strong>Creative Goal:</strong> The user feels sunlit warmth, clean barbershop lather, and airy dignity. <br>
+                    <strong>Technical Goal:</strong> 8h+ tenacity via Hedione/Iso E Super foundation, zero photosensitivity (Bergamot FCF), and stable 10% Coumarin dosing to prevent bitter crystallization.
+                </p>
+            </div>
+        </div>
+
+        <!-- STAGE 3: SCENT ARCHITECTURE MIND-MAPPING -->
+        <div class="mindmap-box">
+            <div class="mindmap-title">
+                <i class="fas fa-project-diagram"></i> Stage 3: Scent Architecture Mind-Map (Structural Clustering)
+            </div>
+            <div class="map-cluster" id="mindMapNodes">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- STAGE 4: FORMULATION CONSOLE (100.0 PARTS TOTAL) -->
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">
+            <h2><span class="step-number">2</span> Stage 4: Formulation Console (100.0 Parts Total)</h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 0.85rem; color: var(--text-dim);">Batch Target:</span>
+                <select id="selBatchSize" onchange="calculateTotal()" style="background: rgba(255,255,255,0.06); color: var(--gold); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+                    <option value="5.0">5.00 g (Bench Trial)</option>
+                    <option value="10.0" selected>10.00 g (Standard Flacon)</option>
+                    <option value="20.0">20.00 g (Full Bottle)</option>
+                </select>
+            </div>
+        </div>
+        
+        <p style="color: var(--text-dim); margin-bottom: 16px; font-size: 0.9rem;">
+            Formulas are calibrated out of <strong>100.0 Parts</strong> (Percentage by weight). Fine-tune the parts to balance your concentrate.
+        </p>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌾 French Lavender Oil — Crisp Herbal Spark</span>
+                <span id="txtLav" class="part-display">20.0 parts (2.00 g)</span>
+            </div>
+            <input type="range" id="slLav" min="0" max="40" step="0.5" value="20.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌬️ Hedione (High Cis) — Transparent Atmospheric Floral Diffuser</span>
+                <span id="txtHed" class="part-display">22.0 parts (2.20 g)</span>
+            </div>
+            <input type="range" id="slHed" min="0" max="50" step="0.5" value="22.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🍂 Coumarin (10% in DPG) — Sweet Cut Grass & Barbershop Warmth</span>
+                <span id="txtCou" class="part-display">12.0 parts (1.20 g)</span>
+            </div>
+            <input type="range" id="slCou" min="0" max="30" step="0.5" value="12.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌲 Evernyl (10% in DPG) — Salt-Lichen Earthy Anchor</span>
+                <span id="txtEve" class="part-display">4.0 parts (0.40 g)</span>
+            </div>
+            <input type="range" id="slEve" min="0" max="15" step="0.5" value="4.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🌹 Rose (PEA) — Floral Bridge & Lather Body</span>
+                <span id="txtRose" class="part-display">8.0 parts (0.80 g)</span>
+            </div>
+            <input type="range" id="slRose" min="0" max="25" step="0.5" value="8.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🍋 Bergamot FCF — Solar Opening Spark</span>
+                <span id="txtCit" class="part-display">18.0 parts (1.80 g)</span>
+            </div>
+            <input type="range" id="slCit" min="0" max="35" step="0.5" value="18.0" oninput="calculateTotal()">
+        </div>
+
+        <div class="slider-control">
+            <div class="slider-header">
+                <span>🪵 Iso E Super — Velvety Transparent Foundation</span>
+                <span id="txtWood" class="part-display">16.0 parts (1.60 g)</span>
+            </div>
+            <input type="range" id="slWood" min="0" max="35" step="0.5" value="16.0" oninput="calculateTotal()">
+        </div>
+
+        <!-- LIVE LAB SHEET TABLE -->
+        <table class="bench-table">
+            <thead>
+                <tr>
+                    <th>Bottle Material</th>
+                    <th>Working Dilution</th>
+                    <th style="text-align: right;">Formula Parts</th>
+                    <th style="text-align: right;">Batch Mass (g)</th>
+                </tr>
+            </thead>
+            <tbody id="labTableBody">
+                <!-- Generated by JS -->
+            </tbody>
+        </table>
+
+        <!-- RECIPE TOTAL SUMMARY -->
+        <div class="recipe-summary">
+            <div>
+                <div class="f-val" id="dispTotalParts">100.0</div>
+                <div class="f-name">Total Formula Parts</div>
+            </div>
+            <div>
+                <div class="f-val" id="dispBatchWeight">10.00 g</div>
+                <div class="f-name">Target Batch Weight</div>
+            </div>
+            <div>
+                <div class="f-val" id="dispHedRatio">22.0%</div>
+                <div class="f-name">Hedione Ratio</div>
+            </div>
+            <div>
+                <div class="f-val" id="statusPill" style="color: var(--green);">BALANCED</div>
+                <div class="f-name">Formula Status</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 18px; text-align: right;">
+            <button class="btn" onclick="copyLabSheet()" style="background: rgba(255,255,255,0.06); color: var(--gold); border: 1px solid var(--border);">
+                <i class="fas fa-clipboard"></i> Copy Laboratory Sheet
+            </button>
+        </div>
+    </div>
+
+    <!-- STAGE 5: TESTING & BOTTLING -->
+    <div class="card" style="border-color: rgba(159, 122, 234, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(159,122,234,0.06));">
+        <h2><span class="step-number">3</span> Stage 5: Testing & Blotter Diagnostics</h2>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 14px;">
+            Evaluate the evaporation timeline on testing blotters before final bottling:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+                <strong style="color: #d6bcfa; font-size: 0.82rem; text-transform: uppercase;">0 to 15 Minutes (Opening)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;" id="testOpening">
+                    French Lavender and Bergamot create a sharp, invigorating herbal spark, instantly diffused by Hedione.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+                <strong style="color: var(--blue); font-size: 0.82rem; text-transform: uppercase;">30 Min to 2 Hours (Heart)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;" id="testHeart">
+                    Rose PEA bridges the herbal head to the coumarin base, creating the unmistakable clean lather of barbershop shaving cream.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 12px;">
+                <strong style="color: var(--green); font-size: 0.82rem; text-transform: uppercase;">4 to 8+ Hours (Drydown)</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;" id="testDrydown">
+                    Coumarin and Evernyl lock with Iso E Super into a salty-sweet lichen forest floor that clings tenaciously to skin.
+                </p>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span style="font-size: 0.84rem; color: var(--text-dim);">Want to evaluate the individual pairwise accords first?</span>
+            <a href="level_2_accords.html" style="color: #d6bcfa; text-decoration: none; font-weight: 700; font-size: 0.84rem;">
+                <i class="fas fa-vial"></i> Explore Level 2 Pairwise Lab
+            </a>
+        </div>
+    </div>
+
+    <!-- STAGE 5B: FINISHED FLACON DILUTION & BOTTLING -->
+    <div class="card" style="border-color: var(--border-purple);">
+        <h2><span class="step-number">4</span> Final Stage: Dilution & Bottling</h2>
+        <p style="color: var(--text-dim); font-size: 0.92rem;">
+            Dilute your concentrate in 96% perfumer's alcohol to bottle your Level 2 Eau de Parfum:
+        </p>
+
+        <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin: 16px 0; border: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <span style="font-weight: 600; color: #fff;">Select Concentration Standard:</span>
+                <select id="selConcentration" onchange="calculateDilution()" style="background: rgba(255,255,255,0.06); color: var(--gold); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-family: 'Space Mono', monospace; font-size: 0.85rem;">
+                    <option value="5">Eau de Cologne (5%)</option>
+                    <option value="10">Eau de Toilette (10% EdT)</option>
+                    <option value="15" selected>Eau de Parfum (15% EdP)</option>
+                    <option value="20">Eau de Parfum Intense (20% EdP)</option>
+                </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; text-align: center; font-family: 'Space Mono', monospace;">
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Perfume Concentrate</div>
+                    <div id="dispConcWeight" style="font-size: 1.1rem; color: var(--gold); font-weight: 700; margin-top: 4px;">1.50 g</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Perfumer's Alcohol (96%)</div>
+                    <div id="dispAlcoWeight" style="font-size: 1.1rem; color: var(--blue); font-weight: 700; margin-top: 4px;">8.50 g</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border);">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Finished Flacon</div>
+                    <div id="dispTotalBottle" style="font-size: 1.1rem; color: var(--green); font-weight: 700; margin-top: 4px;">10.00 g</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction-box" id="bottleInstructions">
+            Weigh out your perfume concentrate into an amber glass flacon. Add <strong>8.50 g Perfumer's Alcohol (96% Ethanol)</strong> to reach exactly <strong>15% EdP concentration</strong>. Affix your studio label:  
+            <strong style="color: var(--purple);">PERFUME-02: Solar Aromatic Fougère (15% EdP)</strong>.
+        </div>
+
+        <div style="margin-top: 24px; text-align: center;">
+            <a href="index.html" class="btn btn-purple" style="font-weight: 700; padding: 12px 30px;">
+                <i class="fas fa-check-circle"></i> Complete Level 2 & Advance to Level 3
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const materialsMeta = [
+        { id: 'slLav', name: 'French Lavender Oil', dil: 'Neat (100%)' },
+        { id: 'slHed', name: 'Hedione (High Cis)', dil: 'Neat (100%)' },
+        { id: 'slCou', name: 'Coumarin', dil: '10% in DPG' },
+        { id: 'slEve', name: 'Evernyl (Oakmoss Sub)', dil: '10% in DPG' },
+        { id: 'slRose', name: 'Rose (PEA) Floral Bridge', dil: 'Neat (100%)' },
+        { id: 'slCit', name: 'Bergamot FCF (Italy)', dil: 'Neat (100%)' },
+        { id: 'slWood', name: 'Iso E Super', dil: 'Neat (100%)' }
+    ];
+
+    const styles = {
+        fougere: {
+            skelTitle: "The 1882 Fougère Royale Heritage",
+            skelDesc: "Capture the timeless elegance of European gentlemen's barbershops: hot towels, shaving soap lather, and crisp cut sweetgrass hay.",
+            twistTitle: "Jean-Claude Ellena Transparency Solution",
+            twistDesc: "Modernize the dense, opaque 19th-century shaving foam. By overdosing Hedione (22%) and Bergamot FCF, air and sunlight flow through the herbal heart, making it radiant in warm weather.",
+            lav: 20.0, hed: 22.0, cou: 12.0, eve: 4.0, rose: 8.0, cit: 18.0, wood: 16.0,
+            bottleLabel: "PERFUME-02: Solar Aromatic Fougère (15% EdP)",
+            mindMap: [
+                { role: "Aromatic Spark", item: "French Lavender", fn: "Bracing camphoric opening and clean herbal head (20%)" },
+                { role: "Atmospheric Diffuser", item: "Hedione", fn: "Blown air and transparency that expands sillage (22%)" },
+                { role: "Sweet Heart", item: "Coumarin (10%)", fn: "Toasted almond marzipan and sweetgrass hay (12%)" },
+                { role: "Bitter Earth Anchor", item: "Evernyl (10%)", fn: "Salty oakmoss lichen preventing cloying sweetness (4%)" },
+                { role: "Floral Bridge", item: "Rose (PEA)", fn: "Connects the lavender head to the balsamic base (8%)" },
+                { role: "Sunlight Top", item: "Bergamot FCF", fn: "Zesty morning freshness lifting the herbs (18%)" },
+                { role: "Cedar Spine", item: "Iso E Super", fn: "Modern woody foundation providing 8-hour tenacity (16%)" }
+            ],
+            testOpening: "French Lavender and Bergamot create a sharp, invigorating herbal spark, instantly diffused by Hedione.",
+            testHeart: "Rose PEA bridges the herbal head to the coumarin base, creating the unmistakable clean lather of barbershop shaving cream.",
+            testDrydown: "Coumarin and Evernyl lock with Iso E Super into a salty-sweet lichen forest floor that clings tenaciously to skin."
+        },
+        tea: {
+            skelTitle: "The 1992 Thé Vert Heritage",
+            skelDesc: "Recreate the tranquil, meditative serenity of loose-leaf green tea steeping in an open pavilion surrounded by blooming jasmine.",
+            twistTitle: "Modern Minimalist Watercolor Solution",
+            twistDesc: "Overdose Hedione to 40% with Bergamot and subtle rose petals. The citrus steam floats weightless without heavy base sweetness.",
+            lav: 8.0, hed: 40.0, cou: 0.0, eve: 0.0, rose: 10.0, cit: 26.0, wood: 16.0,
+            bottleLabel: "PERFUME-02: Thé Vert Jasmine Oasis (15% EdP)",
+            mindMap: [
+                { role: "Zen Air Hero", item: "Hedione", fn: "40% massive overdose recreating atmospheric jasmine wind" },
+                { role: "Citrus Steam", item: "Bergamot FCF", fn: "Recreates the bright zesty steam of steeped Earl Grey (26%)" },
+                { role: "Tea Leaf Spine", item: "Iso E Super", fn: "Clean blonde wood and dried sencha leaves (16%)" },
+                { role: "Floral Dew", item: "Rose (PEA)", fn: "Soft watery petals rounding the bitter tea tannins (10%)" },
+                { role: "Herbal Camphor", item: "French Lavender", fn: "A touch of dry provencal herb mimicking tea astringency (8%)" }
+            ],
+            testOpening: "Crisp, radiant bergamot steam and airy jasmine breeze.",
+            testHeart: "Transparent green tea leaves steeping in lukewarm mineral water.",
+            testDrydown: "Clean blonde cedarwood and pure fresh skin aura."
+        },
+        tonka: {
+            skelTitle: "The Roasted Tonka Bean Heritage",
+            skelDesc: "Create an intoxicating evening fragrance of toasted marzipan, pipe tobacco, and warm spiced wool for cold nights.",
+            twistTitle: "Aromatic Tobacco Herb Solution",
+            twistDesc: "Prevent the heavy coumarin from smelling like kitchen bakery batter by cutting it with brisk French lavender and clean Hedione wind.",
+            lav: 18.0, hed: 20.0, cou: 24.0, eve: 4.0, rose: 6.0, cit: 10.0, wood: 18.0,
+            bottleLabel: "PERFUME-02: Smoked Tonka & Lavender (15% EdP)",
+            mindMap: [
+                { role: "Gourmand Core", item: "Coumarin (10%)", fn: "Toasted almond marzipan, sun-cured hay, and tobacco (24%)" },
+                { role: "Wind Diffuser", item: "Hedione", fn: "Prevents heavy tonka from sticking close to skin (20%)" },
+                { role: "Herbal Counterpart", item: "French Lavender", fn: "Aromatic cut that cuts through dense sweetness (18%)" },
+                { role: "Woody Anchor", item: "Iso E Super", fn: "Velvet cedar structure holding the warm tobacco (18%)" },
+                { role: "Citrus Top", item: "Bergamot FCF", fn: "Brief flash of sunlight before the warm drydown (10%)" },
+                { role: "Floral Flesh", item: "Rose (PEA)", fn: "Smooths the transition between herbs and tonka (6%)" },
+                { role: "Bitter Moss Balance", item: "Evernyl (10%)", fn: "Earthy lichen preventing sugar overload (4%)" }
+            ],
+            testOpening: "Bright flash of bergamot instantly overtaken by aromatic lavender and almond.",
+            testHeart: "Sweet blonde pipe tobacco, toasted marzipan, and warm wool sweaters.",
+            testDrydown: "Deep, addictive coumarin, salted lichen, and velvet cedarwood."
+        }
+    };
+
+    function loadStyle(styleKey) {
+        const btns = document.querySelectorAll('.style-btn');
+        btns.forEach(b => b.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const s = styles[styleKey];
+        document.getElementById('archSkelTitle').textContent = s.skelTitle;
+        document.getElementById('archSkelDesc').textContent = s.skelDesc;
+        document.getElementById('archTwistTitle').textContent = s.twistTitle;
+        document.getElementById('archTwistDesc').textContent = s.twistDesc;
+        document.getElementById('testOpening').textContent = s.testOpening;
+        document.getElementById('testHeart').textContent = s.testHeart;
+        document.getElementById('testDrydown').textContent = s.testDrydown;
+
+        // Render Mind-Map
+        const mmContainer = document.getElementById('mindMapNodes');
+        mmContainer.innerHTML = '';
+        s.mindMap.forEach(n => {
+            const nodeEl = document.createElement('div');
+            nodeEl.className = 'map-node';
+            nodeEl.innerHTML = `
+                <div class="node-role">${n.role}</div>
+                <div class="node-item">${n.item}</div>
+                <div class="node-function">${n.fn}</div>
+            `;
+            mmContainer.appendChild(nodeEl);
+        });
+
+        document.getElementById('slLav').value = s.lav;
+        document.getElementById('slHed').value = s.hed;
+        document.getElementById('slCou').value = s.cou;
+        document.getElementById('slEve').value = s.eve;
+        document.getElementById('slRose').value = s.rose;
+        document.getElementById('slCit').value = s.cit;
+        document.getElementById('slWood').value = s.wood;
+
+        calculateTotal();
+    }
+
+    function calculateTotal() {
+        const lav = parseFloat(document.getElementById('slLav').value);
+        const hed = parseFloat(document.getElementById('slHed').value);
+        const cou = parseFloat(document.getElementById('slCou').value);
+        const eve = parseFloat(document.getElementById('slEve').value);
+        const rose = parseFloat(document.getElementById('slRose').value);
+        const cit = parseFloat(document.getElementById('slCit').value);
+        const wood = parseFloat(document.getElementById('slWood').value);
+
+        const totalParts = lav + hed + cou + eve + rose + cit + wood;
+        const batchGrams = parseFloat(document.getElementById('selBatchSize').value);
+
+        const factor = batchGrams / (totalParts > 0 ? totalParts : 100);
+        document.getElementById('txtLav').textContent = `${lav.toFixed(1)} parts (${(lav * factor).toFixed(2)} g)`;
+        document.getElementById('txtHed').textContent = `${hed.toFixed(1)} parts (${(hed * factor).toFixed(2)} g)`;
+        document.getElementById('txtCou').textContent = `${cou.toFixed(1)} parts (${(cou * factor).toFixed(2)} g)`;
+        document.getElementById('txtEve').textContent = `${eve.toFixed(1)} parts (${(eve * factor).toFixed(2)} g)`;
+        document.getElementById('txtRose').textContent = `${rose.toFixed(1)} parts (${(rose * factor).toFixed(2)} g)`;
+        document.getElementById('txtCit').textContent = `${cit.toFixed(1)} parts (${(cit * factor).toFixed(2)} g)`;
+        document.getElementById('txtWood').textContent = `${wood.toFixed(1)} parts (${(wood * factor).toFixed(2)} g)`;
+
+        document.getElementById('sumParts').textContent = totalParts.toFixed(1);
+        document.getElementById('dispBatchWeight').textContent = `${batchGrams.toFixed(2)} g`;
+        
+        const hedRatio = totalParts > 0 ? ((hed / totalParts) * 100).toFixed(1) : 0;
+        document.getElementById('hedPct').textContent = `${hedRatio}%`;
+
+        const statusPill = document.getElementById('statusPill');
+        if (Math.abs(totalParts - 100.0) < 0.1) {
+            statusPill.textContent = "BALANCED (100%)";
+            statusPill.style.color = "var(--green)";
+        } else if (totalParts < 100.0) {
+            statusPill.textContent = `LOW (${totalParts.toFixed(1)}/100)`;
+            statusPill.style.color = "var(--gold)";
+        } else {
+            statusPill.textContent = `OVER (${totalParts.toFixed(1)}/100)`;
+            statusPill.style.color = "var(--red)";
+        }
+
+        // Render Table Body
+        const values = [lav, hed, cou, eve, rose, cit, wood];
+        const tbody = document.getElementById('labTableBody');
+        tbody.innerHTML = '';
+        materialsMeta.forEach((m, idx) => {
+            const p = values[idx];
+            const g = (p * factor).toFixed(3);
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="font-weight: 600; color: #fff;">${m.name}</td>
+                <td style="color: var(--text-dim);">${m.dil}</td>
+                <td style="text-align: right; font-family: 'Space Mono', monospace; color: var(--gold);">${p.toFixed(1)}</td>
+                <td style="text-align: right; font-family: 'Space Mono', monospace; color: #fff; font-weight: 700;">${g} g</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        calculateDilution();
+    }
+
+    function calculateDilution() {
+        const batchGrams = parseFloat(document.getElementById('selBatchSize').value);
+        const concPct = parseFloat(document.getElementById('selConcentration').value);
+        
+        const totalBottleGrams = batchGrams / (concPct / 100);
+        const alcoholGrams = totalBottleGrams - batchGrams;
+
+        document.getElementById('dispConcWeight').textContent = `${batchGrams.toFixed(2)} g`;
+        document.getElementById('dispAlcoWeight').textContent = `${alcoholGrams.toFixed(2)} g`;
+        document.getElementById('dispTotalBottle').textContent = `${totalBottleGrams.toFixed(2)} g`;
+
+        const activeBtn = document.querySelector('.style-btn.active');
+        const styleKey = activeBtn ? activeBtn.getAttribute('onclick').match(/'(.*)'/)[1] : 'fougere';
+        const labelName = styles[styleKey].bottleLabel;
+
+        document.getElementById('bottleInstructions').innerHTML = `
+            Weigh out your perfume concentrate into an amber glass flacon. Add <strong>${alcoholGrams.toFixed(2)} g Perfumer's Alcohol (96% Ethanol)</strong> to reach exactly <strong>${concPct}% concentration</strong>. Affix your studio label:  
+            <strong style="color: var(--purple);">${labelName}</strong>.
+        `;
+    }
+
+    function copyLabSheet() {
+        const batch = document.getElementById('selBatchSize').value;
+        const totalP = document.getElementById('sumParts').textContent;
+        let text = `=== ARTISAN PERFUMERY LAB SHEET ===\nLevel 2 Studio Formula (Target: ${batch}g)\n`;
+        const rows = document.querySelectorAll('#labTableBody tr');
+        rows.forEach(r => {
+            const cols = r.querySelectorAll('td');
+            text += `${cols[0].textContent} | ${cols[1].textContent} | Parts: ${cols[2].textContent} | Mass: ${cols[3].textContent}\n`;
+        });
+        text += `Total Parts: ${totalP} / 100.0\n`;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Laboratory formulation sheet copied to clipboard!");
+        });
+    }
+
+    loadStyle('fougere');
+</script>
+
+</body>
+</html>

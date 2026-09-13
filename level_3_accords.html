@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 Accords Workshop: The Chypre & Leather Pairwise Lab | Artisan Perfumery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --surface: rgba(22, 22, 27, 0.85);
+            --surface-card: rgba(30, 30, 38, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-red: rgba(197, 48, 48, 0.4);
+            --gold: #d4af37;
+            --gold-bright: #f3e5ab;
+            --red: #feb2b2;
+            --leather: #c53030;
+            --patchouli: #fbd38d;
+            --florol: #ed64a6;
+            --text-main: #f0f0f5;
+            --text-dim: #9ba1b0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(197, 48, 48, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .container { max-width: 980px; margin: 0 auto; }
+        
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #fc8181;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            transition: 0.2s;
+        }
+        .nav-back:hover { color: #feb2b2; transform: translateX(-4px); }
+
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 24px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(197, 48, 48, 0.15);
+            color: #feb2b2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-red);
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .lead { font-size: 1.05rem; color: var(--text-dim); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* PAIRWISE SELECTOR TABS */
+        .accord-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .accord-tab {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: left;
+        }
+        .accord-tab:hover {
+            border-color: #fc8181;
+            transform: translateY(-2px);
+        }
+        .accord-tab.active {
+            border-color: #fc8181;
+            background: linear-gradient(135deg, rgba(30,30,38,0.9), rgba(197,48,48,0.15));
+            box-shadow: 0 4px 16px rgba(197, 48, 48, 0.2);
+        }
+        .tab-tag {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #feb2b2;
+            margin-bottom: 4px;
+        }
+        .tab-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .tab-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        /* INTERACTIVE ACCORD STAGE */
+        .stage-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .stage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 12px;
+        }
+        .stage-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fed7d7;
+        }
+        .stage-badge {
+            font-size: 0.75rem;
+            background: rgba(255,255,255,0.06);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-dim);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .bar-container { margin-bottom: 14px; }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+        .bar-bg {
+            height: 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+
+        .sensory-fusion {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 18px;
+        }
+        .fusion-pane {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .fusion-pane h4 {
+            font-size: 0.85rem;
+            color: #feb2b2;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .fusion-pane p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* CONCENTRATION SHIFT BOX */
+        .dilution-comparison {
+            background: rgba(197, 48, 48, 0.05);
+            border: 1px solid rgba(197, 48, 48, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 18px;
+        }
+        .dil-title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #feb2b2;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dil-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            font-size: 0.82rem;
+        }
+
+        .smelling-strip-box {
+            background: linear-gradient(135deg, rgba(197,48,48,0.08), rgba(22,22,27,0.9));
+            border: 1px solid var(--border-red);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 18px;
+        }
+        .strip-title {
+            color: #feb2b2;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-red {
+            background: #c53030;
+            color: #fff;
+        }
+        .btn-red:hover {
+            background: #e53e3e;
+            transform: translateY(-2px);
+        }
+
+        .mono { font-family: 'Space Mono', monospace; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <a href="index.html" class="nav-back" style="margin-bottom: 0;"><i class="fas fa-arrow-left"></i> Return to Organ Curriculum</a>
+        <div style="display: flex; gap: 14px; align-items: center;">
+            <a href="level_0_foundations.html" style="color: #81e6d9; text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-graduation-cap"></i> Level 0 Foundations</a>
+            <a href="glossary.html" style="color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-book-open"></i> Glossary</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase;">Level 3 Lab</span>
+        </div>
+    </div>
+
+    <div class="header">
+        <span class="badge">Level 3 — Master Harmonization & Dilution</span>
+        <h1>Level 3 Accords Workshop: Chypre & Leather Pairwise Lab</h1>
+        <p class="lead">
+            With materials as potent as Isobutyl Quinoline (IBQ) and thick as Labdanum, learning <strong>Neat vs. 1% / 10% dilution</strong> is the difference between toxic tire fire and luxury Russian leather.
+        </p>
+    </div>
+
+    <!-- ACCORD SELECTION TABS -->
+    <div class="accord-grid">
+        <div class="accord-tab active" onclick="selectAccord('cotyChypre')">
+            <div class="tab-tag">The 1917 Masterpiece</div>
+            <div class="tab-title">The Coty Chypre Triad</div>
+            <div class="tab-desc">Bergamot + Evernyl + Labdanum + Patchouli. The ultimate chiaroscuro harmony of light and shadow.</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('banditLeather')">
+            <div class="tab-tag">Cellier Leather (1944)</div>
+            <div class="tab-title">The Peaty Suede Accord</div>
+            <div class="tab-desc">IBQ + Labdanum + Patchouli. Experience IBQ Neat (toxic rubber) vs. IBQ at 1% (buttery suede).</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('neoChypreHeart')">
+            <div class="tab-tag">Modern 21st-Century</div>
+            <div class="tab-title">The Neo-Chypre Petal Heart</div>
+            <div class="tab-desc">Florol + Clearwood + Hedione. Dewy watery lily softening iron-free patchouli (Coco Mademoiselle style).</div>
+        </div>
+
+        <div class="accord-tab" onclick="selectAccord('amberEarth')">
+            <div class="tab-tag">Ancient Foundation</div>
+            <div class="tab-title">The Amber-Patchouli Earth</div>
+            <div class="tab-desc">Labdanum (10% in TEC) + Patchouli. High viscosity neat tar vs. pre-dissolved solution handling.</div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE ACCORD STAGE -->
+    <div class="card">
+        <div class="stage-box">
+            <div class="stage-header">
+                <div>
+                    <span class="stage-badge" id="accordArchetype">ACCORD ARCHETYPE: HISTORICAL CHYPRE</span>
+                    <div class="stage-title" id="accordTitle">The Coty Chypre Triad</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: var(--text-dim);">Recommended Ratio:</div>
+                    <div style="font-size: 1.1rem; color: #feb2b2; font-family: 'Space Mono', monospace; font-weight: 700;" id="accordRatio">40% Bergamot : 25% Patchouli : 20% Labdanum : 15% Evernyl</div>
+                </div>
+            </div>
+
+            <!-- DYNAMIC FORMULATION BARS -->
+            <div id="recipeBars"></div>
+
+            <div class="sensory-fusion">
+                <div class="fusion-pane">
+                    <h4><i class="fas fa-eye" style="margin-right: 6px;"></i> The Olfactory Metamorphosis</h4>
+                    <p id="accordFusionText">
+                        Sunny, sparkling Italian Bergamot clashes violently with damp cellar Patchouli, resinous golden-leathery Labdanum, and bitter Lichen Evernyl. This extreme tension creates the legendary 'Chiaroscuro' (Italian for light-dark)—a dynamic sensation of sunlight piercing through a dense oak forest canopy.
+                    </p>
+                </div>
+                <div class="fusion-pane">
+                    <h4><i class="fas fa-flask" style="margin-right: 6px;"></i> Historical Context & Usage</h4>
+                    <p id="accordHistoryText">
+                        Invented in 1917 by François Coty in <em>Chypre de Coty</em>. It established an entire fragrance family that dominated the 20th century (Guerlain Mitsouko, Chanel No. 19, Aramis).
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONCENTRATION SHIFT BOX (Neat vs Dilution) -->
+            <div class="dilution-comparison">
+                <div class="dil-title">
+                    <i class="fas fa-balance-scale"></i> Critical Dilution Diagnostic: Neat vs. 1% / 10% Solutions
+                </div>
+                <div class="dil-grid">
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #e53e3e;" id="lblDilNeat">Test A: Working Neat</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilNeat"></p>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                        <strong style="color: #68d391;" id="lblDilTen">Test B: Working Dilution</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px;" id="txtDilTen"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LABORATORY TEST PROTOCOL -->
+            <div class="smelling-strip-box">
+                <div class="strip-title"><i class="fas fa-vial"></i> Bench Experiment: Pairwise Triangulation Technique</div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px;" id="accordBenchInstructions"></p>
+            </div>
+
+            <!-- MODERN TWISTS & CLASSICAL REPLACEMENTS -->
+            <div style="background: rgba(197, 48, 48, 0.05); border: 1px solid rgba(197, 48, 48, 0.3); border-radius: 12px; padding: 18px; margin-top: 18px;">
+                <div style="color: #feb2b2; font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-magic"></i> Modern Twist: Transforming Classical Materials
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 12px;">
+                    How 21st-century perfumery replaces heavy vintage moss, dirty patchouli, and raw leather tar:
+                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.82rem;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #e53e3e;">
+                        <strong style="color: #feb2b2;">Classical 19th/20th-C. Predecessor:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Raw Birch Tar / Crude Castoreum / Dirty Iron Patchouli:</strong> Classical vintage leathers and chypres smelled oily, phenolic, and barnyard-animalic, often dirtying the floral bouquet.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #68d391;">
+                        <strong style="color: #68d391;">Modern Common Replacement:</strong>
+                        <p style="color: var(--text-dim); margin-top: 4px; margin-bottom: 4px;">
+                            <strong>Isobutyl Quinoline (IBQ 1%) + Clearwood® + Florol:</strong> IBQ gives clean luxury green suede without burnt campfire smoke, Clearwood removes muddy iron/camphor dirt, and Florol adds dewy white-petal luminescence (the Neo-Chypre signature of <em>Coco Mademoiselle</em>).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+            <div style="font-size: 0.85rem; color: var(--text-dim);">
+                Ready to compound and bottle the Grand Chypre or Peaty Leather?
+            </div>
+            <a href="level_3_perfume_studio.html" class="btn btn-red">
+                <i class="fas fa-spray-can"></i> Open Level 3 Compounding Studio
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const accords = {
+        cotyChypre: {
+            archetype: "ACCORD ARCHETYPE: HISTORICAL CHYPRE",
+            title: "The Coty Chypre Triad",
+            ratio: "40% Bergamot : 25% Patchouli : 20% Labdanum : 15% Evernyl",
+            materials: [
+                { name: "🍋 Bergamot FCF (Sunlight Top)", pct: 40, color: "var(--gold)", parts: "40.0 parts" },
+                { name: "🍂 Clearwood® / Patchouli (Damp Earth)", pct: 25, color: "var(--patchouli)", parts: "25.0 parts" },
+                { name: "🔥 Labdanum 10% in TEC (Amber Leather)", pct: 20, color: "var(--leather)", parts: "20.0 parts" },
+                { name: "🌲 Evernyl 10% in DPG (Oakmoss Substitute)", pct: 15, color: "#48bb78", parts: "15.0 parts" }
+            ],
+            fusion: "Sunny, sparkling Italian Bergamot clashes violently with damp cellar Patchouli, resinous golden-leathery Labdanum, and bitter Lichen Evernyl. This extreme tension creates the legendary 'Chiaroscuro' (Italian for light-dark)—a dynamic sensation of sunlight piercing through a dense oak forest canopy.",
+            history: "Invented in 1917 by François Coty in Chypre de Coty. It established an entire fragrance family that dominated the 20th century (Guerlain Mitsouko, Chanel No. 19, Aramis).",
+            lblNeat: "Binary Pair: Labdanum + Patchouli (Neat)",
+            dilNeat: "Labdanum and patchouli neat form an impenetrable black wall of damp cellar mud and thick tar. Without Bergamot and Evernyl, it is suffocating and lacks any light.",
+            lblTen: "Binary Pair: Bergamot + Evernyl 10%",
+            dilTen: "Bergamot and Evernyl produce cold bitter citrus forest air. Adding the Labdanum-Patchouli base injects the dark shadow that completes the immortal Chypre contrast!",
+            bench: "Dip Strip 1 in Bergamot, Strip 2 in Evernyl 10%, Strip 3 in Labdanum 10%, and Strip 4 in Patchouli/Clearwood. Fan them in your hand. The top and bottom pull in opposite directions, creating the magnetic vibration unique to the Chypre family."
+        },
+        banditLeather: {
+            archetype: "ACCORD ARCHETYPE: SMOKED PEAT & SUEDE",
+            title: "The Peaty Suede Accord",
+            ratio: "15% IBQ (1%) : 45% Labdanum (10%) : 40% Patchouli",
+            materials: [
+                { name: "🔥 Labdanum 10% in TEC (Warm Amber Base)", pct: 45, color: "var(--leather)", parts: "45.0 parts" },
+                { name: "🍂 Clearwood® / Patchouli (Damp Cocoa Wood)", pct: 40, color: "var(--patchouli)", parts: "40.0 parts" },
+                { name: "🥋 IBQ (Isobutyl Quinoline 1% in DPG)", pct: 15, color: "#e53e3e", parts: "15.0 parts" }
+            ],
+            fusion: "Neat IBQ is brutal, smelling like diesel fumes, harsh rubber tires, and castoreum. But when wrapped in warm balsamic Labdanum and earthy Patchouli, the harsh industrial rubber softens into supple luxury suede, peaty Scottish single-malt whisky, and a vintage leather jacket.",
+            lblNeat: "The Catastrophe: Neat IBQ (100%)",
+            dilNeat: "Dosing neat IBQ (100%) at even 5% in a formula causes immediate olfactory fatigue. The entire room smells of burning tractor tires and smoked animal hides for 48 hours.",
+            lblTen: "The Masterstroke: IBQ at 1% Dilution",
+            dilTen: "Dosing IBQ pre-diluted to 1% allows you to add trace quinoline phenols without blowing out the labdanum. The bitter smoke transforms into soft, expensive handbag suede!",
+            bench: "Dip Strip A in Labdanum 10% and Strip B in IBQ 1%. Hold Strip A 5 cm from your nose and wave Strip B quickly past it. Notice how the labdanum instantly transforms the bitter quinoline into expensive suede leather!"
+        },
+        neoChypreHeart: {
+            archetype: "ACCORD ARCHETYPE: LUMINOUS CONTEMPORARY FLORAL",
+            title: "The Neo-Chypre Petal Heart",
+            ratio: "50% Florol : 30% Clearwood® : 20% Hedione",
+            materials: [
+                { name: "🌸 Florol (Dewy Transparent Lily)", pct: 50, color: "var(--florol)", parts: "50.0 parts" },
+                { name: "🍂 Clearwood® (Iron-Free Patchouli)", pct: 30, color: "var(--patchouli)", parts: "30.0 parts" },
+                { name: "🌬️ Hedione (Atmospheric Diffuser)", pct: 20, color: "#4ba6a6", parts: "20.0 parts" }
+            ],
+            fusion: "Traditional patchouli is dark, camphoric, and heavy with iron impurities from old Indonesian distillation stills. Using biotech Clearwood and pairing it with watery, dewy Florol petals and Hedione wind removes all dirty cellar mold, leaving a clean, luminous, champagne-like modern sillage.",
+            history: "The structural innovation created by Jacques Polge in Chanel Coco Mademoiselle (2001) and Narciso Rodriguez for Her, proving that Chypres could be youthful, fresh, and crystalline.",
+            lblNeat: "Traditional Comparison: Dark Patchouli + Rose",
+            dilNeat: "Traditional dark patchouli and rose produces a dense, heavy Victorian chypre heart reminiscent of vintage 1970s perfumes.",
+            lblTen: "Biotech Shift: Clearwood + Florol",
+            dilTen: "Replacing dark patchouli with biotech Clearwood (30-40% patchoulol) and Florol creates an ethereal, translucent floral heart that feels weightless and modern.",
+            bench: "Combine Florol, Clearwood, and Hedione in equal parts in a test tube. The blend smells like walking into a luxury five-star hotel boutique—chic, transparent, and completely free of vintage dust."
+        },
+        amberEarth: {
+            archetype: "ACCORD ARCHETYPE: BALSAMIC TENACITY ANCHOR",
+            title: "The Amber-Patchouli Earth Accord",
+            ratio: "60% Labdanum (10%) : 40% Patchouli",
+            materials: [
+                { name: "🔥 Labdanum 10% in TEC (Golden Rockrose)", pct: 60, color: "var(--leather)", parts: "60.0 parts" },
+                { name: "🍂 Natural Patchouli Oil / Clearwood", pct: 40, color: "var(--patchouli)", parts: "40.0 parts" }
+            ],
+            fusion: "Labdanum is rich in natural labdane diterpenes and ambrox precursors, while patchouli is rich in patchoulol. Fused together, they form a chewy, balsamic, deeply tenacious anchor that clings to fabric and wool for weeks, evoking ancient Mediterranean trading ships and antique libraries.",
+            history: "Used as a sacred incense base in ancient Egypt (Kyphi) and by classical European apothecaries. It forms the indestructible resinous anchor note of vintage Guerlain and Caron perfumes.",
+            lblNeat: "Bench Viscosity Trap: Raw Labdanum Resinoid",
+            dilNeat: "Raw neat labdanum is as thick as roofing tar and cannot be pipetted or measured accurately. It sticks to glass pipettes and ruins drop calibration.",
+            lblTen: "Laboratory Protocol: 10% or 50% in TEC / Ethanol",
+            dilTen: "Pre-dissolving Labdanum in Triethyl Citrate (TEC) allows free-flowing liquid dispensing that blends seamlessly into the ethanol solution without forming insoluble resin chunks.",
+            bench: "Apply one drop of Labdanum 10% and one drop of Patchouli onto a single strip. Smell it immediately, then smell it on Day 3. Notice how the two materials become completely inseparable over time."
+        }
+    };
+
+    function selectAccord(key) {
+        const tabs = document.querySelectorAll('.accord-tab');
+        tabs.forEach(t => t.classList.remove('active'));
+        event.currentTarget.classList.add('active');
+
+        const acc = accords[key];
+        document.getElementById('accordArchetype').textContent = acc.archetype;
+        document.getElementById('accordTitle').textContent = acc.title;
+        document.getElementById('accordRatio').textContent = acc.ratio;
+        document.getElementById('accordFusionText').textContent = acc.fusion;
+        document.getElementById('accordHistoryText').textContent = acc.history;
+        document.getElementById('lblDilNeat').textContent = acc.lblNeat;
+        document.getElementById('txtDilNeat').textContent = acc.dilNeat;
+        document.getElementById('lblDilTen').textContent = acc.lblTen;
+        document.getElementById('txtDilTen').textContent = acc.dilTen;
+        document.getElementById('accordBenchInstructions').textContent = acc.bench;
+
+        const container = document.getElementById('recipeBars');
+        container.innerHTML = '';
+
+        acc.materials.forEach(m => {
+            const el = document.createElement('div');
+            el.className = 'bar-container';
+            el.innerHTML = `
+                <div class="bar-label">
+                    <span>${m.name}</span>
+                    <span class="mono" style="color: ${m.color}; font-weight: 700;">${m.parts} (${m.pct}%)</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar-fill" style="width: ${m.pct}%; background: ${m.color};"></div>
+                </div>
+            `;
+            container.appendChild(el);
+        });
+    }
+
+    selectAccord('cotyChypre');
+</script>
+
+</body>
+</html>

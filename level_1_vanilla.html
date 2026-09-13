@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warm Balsam & Vanilla • Level 1 Scent Node</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --gold: #d4af37;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --accent-vanilla: #f6e05e;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 860px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .level-indicator { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { margin-bottom: 35px; }
+        .tag {
+            display: inline-block;
+            background: rgba(246, 224, 94, 0.15);
+            color: var(--accent-vanilla);
+            border: 1px solid rgba(246, 224, 94, 0.3);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .lead { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 30px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: #000;
+            font-weight: 800;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        h2 { font-size: 1.35rem; color: #fff; margin-bottom: 14px; display: flex; align-items: center; }
+        .sensory-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-vanilla);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 20px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #fefcbf;
+        }
+        .portal-drawer {
+            background: rgba(20, 20, 26, 0.9);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        .portal-header {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .portal-door {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+        .portal-door:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+        }
+        .door-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; font-weight: 700; }
+        .door-title { font-size: 1.05rem; font-weight: 700; margin: 4px 0 6px; color: #fff; }
+        .door-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-th-large"></i> Constellation Hub</a>
+        <span class="level-indicator">Level 1 • Scent Node</span>
+    </div>
+
+    <div class="hero">
+        <span class="tag"><i class="fas fa-cookie-bite"></i> The Balsamic Anchor</span>
+        <h1>Warm Balsam & Vanilla</h1>
+        <p class="lead">Sweet resinous warmth, creamy comfort, and acoustic softness that slows evaporation and rounds sharp edges.</p>
+    </div>
+
+    <!-- WHY COMPOSE VANILLA FROM RAW MATERIALS -->
+    <div class="card" style="border-color: rgba(246, 224, 94, 0.35); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(246,224,94,0.06));">
+        <h2><i class="fas fa-lightbulb" style="color: var(--accent-vanilla); margin-right: 10px;"></i> Why Compose Vanilla from Raw Materials?</h2>
+        <p style="margin-bottom: 15px; color: var(--text-dim);">
+            Why can't a perfumer just pour culinary vanilla extract from the kitchen into perfumer's alcohol?
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. The Kitchen Extract Trap</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Culinary vanilla extract contains 65% water, sugar, and sticky resins. In 96% ethanol, the water turns cloudy (the louching effect) and the sugar clogs the spray nozzle, leaving a sticky film on skin.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. Synthetic Vanillin = Projection & Tenacity</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Synthesized in 1874 by Tiemann & Haarmann, pure <strong>Vanillin crystals</strong> give transparent, radiant projection without muddiness. <strong>Ethyl Vanillin</strong> is 3 to 4 times stronger, allowing minimal dosage with maximum trail.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. Controlling the Dessert Sweetness</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    By building vanilla drop-by-drop with woods and resins, you decide whether it smells like a child's ice cream or an aristocratic, smoky leather amber (*Shalimar*).
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. Natural Vanilla Absolute Soul</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Real cured vanilla beans (*Vanilla planifolia*) contain trace guaiacol, phenols, and balsamic esters. Adding a trace of natural absolute gives the synthetic crystals a dark, mysterious, leather-woody soul.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-FACET PRISM -->
+    <div class="card" style="border-color: rgba(246, 224, 94, 0.4);">
+        <h2><i class="fas fa-gem" style="color: var(--accent-vanilla); margin-right: 10px;"></i> The Multi-Facet Reality of Vanilla</h2>
+        <p>Never treat Vanilla as just bakery sugar. It is a multi-dimensional balsamic prism:</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 15px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: var(--accent-vanilla); text-transform: uppercase; font-weight: 700;">Facet 1 (Dominant)</div>
+                <strong style="color: #fff;">Creamy Marshmallow Sweet</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Warm, powdery, comforting dessert sweetness that softens raw edges.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #b7791f; text-transform: uppercase; font-weight: 700;">Facet 2 (The Bean)</div>
+                <strong style="color: #fff;">Smoky Cured Wood</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Dark, fermented, wrinkled vanilla pod skin and dried oak barrels.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #feb2b2; text-transform: uppercase; font-weight: 700;">Facet 3 (Hidden)</div>
+                <strong style="color: #fff;">Medicinal Phenolic Leather</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Trace guaiacol gives real cured beans an animalic, leathery edge.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px;">
+                <div style="font-size: 0.7rem; color: #ed8936; text-transform: uppercase; font-weight: 700;">Facet 4 (Balsamic)</div>
+                <strong style="color: #fff;">Toasted Caramel & Benzoin</strong>
+                <p style="font-size: 0.82rem; color: var(--text-dim); margin-top: 4px;">Golden burnt sugar and golden resinous syrup that bonds with amber.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HELIOTROPIN IN VANILLA -->
+    <div class="card" style="border-color: rgba(246, 224, 94, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(246,224,94,0.06));">
+        <h2><i class="fas fa-magic" style="color: var(--accent-vanilla); margin-right: 10px;"></i> The Secret Partner: Why Add Heliotropin (Piperonal)?</h2>
+        <p>
+            In professional vanilla accords and gourmand flavors, perfumers almost never use Vanillin alone. They frequently add a touch of <strong>Heliotropin (Piperonal)</strong>. Here is why:
+        </p>
+
+        <div style="margin: 18px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">1. Turning "Flat Sweetness" into 3D Velvet Volume</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Vanillin is smooth, but on its own it can feel one-dimensional and flat—like simple white sugar. Heliotropin acts like an olfactory volume booster, expanding the vanilla from a flat linear note into a luxurious, fluffy, three-dimensional powdery cloud.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">2. The Almond & Cherry Blossom Bridge</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Heliotropin smells like a dreamscape of sweet almond, marzipan, cherry pie, and lilac blossom. It bridges vanilla into florals and adds mouth-watering complexity to gourmands.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">3. The Vintage Masterpiece DNA (L'Heure Bleue)</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    Jacques Guerlain’s iconic *L'Heure Bleue (1912)* and *Après L'Ondée (1906)* achieved their melancholy, powdery pastel glow by marrying an overdose of Heliotropin with Vanillin and Anisic Aldehyde.
+                </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 16px;">
+                <h4 style="color: #fff; margin-bottom: 6px;">4. French Bakery & Pastry Richness</h4>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0;">
+                    In luxury flavor creation and edible gourmands (like Dior *Hypnotic Poison*), Heliotropin turns flat vanilla into rich almond sponge cake and golden Parisian pastries.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCH SENSATION -->
+    <div class="card">
+        <h2><span class="step-number">1</span> What is this sensation?</h2>
+        <p>
+            Dip a blotter into Vanillin (10% in DPG or Alcohol).
+        </p>
+        <div class="sensory-box">
+            "Vanilla does not shout; it cushions. It feels like wrapping sharp wooden furniture in cashmere blankets. It has massive weight, holding down lighter top notes like a gravity well."
+        </div>
+    </div>
+
+    <!-- LATERAL & UPWARD PORTALS -->
+    <div class="portal-drawer">
+        <div class="portal-header">
+            <i class="fas fa-compass"></i> Explore Scent Connections
+        </div>
+        <div class="portal-grid">
+            
+            <a href="level_1_wood.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🌲 Woods & Roots</div>
+                <div class="door-desc">See how vanilla softens dry cedar into luxurious velvet cashmere.</div>
+            </a>
+
+            <a href="level_1_citrus.html" class="portal-door">
+                <div class="door-tag">Level 1 Sibling</div>
+                <div class="door-title">🍋 Citrus & Peels</div>
+                <div class="door-desc">Watch vanilla turn sharp lemon peel into a creamy lemon tart accord.</div>
+            </a>
+
+            <a href="level_2_coumarin.html" class="portal-door" style="border-color: rgba(237, 137, 54, 0.4);">
+                <div class="door-tag" style="color: #ed8936;">Level 2 Upward Link</div>
+                <div class="door-title">🌾 Coumarin (Sweet Hay)</div>
+                <div class="door-desc">Move beyond bakery sugar to toasted almond marzipan and dry tonka hay!</div>
+            </a>
+
+            <a href="level_3_labdanum.html" class="portal-door" style="border-color: rgba(197, 48, 48, 0.4);">
+                <div class="door-tag" style="color: #feb2b2;">Level 3 Upward Link</div>
+                <div class="door-title">🔥 Labdanum Resinoid</div>
+                <div class="door-desc">Combine vanilla with ancient rockrose resin to formulate classical golden Ambre!</div>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

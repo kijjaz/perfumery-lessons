@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass: The Mute Blossoms & Modern Synthetic Florals | Fleurs Muettes</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #09090d;
+            --card-bg: rgba(18, 18, 24, 0.88);
+            --card-hover: rgba(28, 28, 38, 0.98);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(212, 175, 55, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f9d71c;
+            
+            /* Floral Semantic Accents */
+            --hyacinth-accent: #10b981;
+            --peony-accent: #f43f5e;
+            --lilac-accent: #a855f7;
+            --honeysuckle-accent: #eab308;
+            --gardenia-accent: #38bdf8;
+            
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --text-muted: #6b7280;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.68;
+            padding: 40px 24px 80px;
+        }
+
+        .container {
+            max-width: 1560px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* Top Nav */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--gold-bright);
+        }
+
+        .special-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 28px;
+        }
+
+        .title-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 14px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--peony-accent) 60%, var(--honeysuckle-accent) 80%, var(--hyacinth-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            max-width: 1200px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .meta-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .pill i { color: var(--gold); }
+
+        /* Concept Overview: Fleurs Muettes */
+        .concept-banner {
+            background: linear-gradient(135deg, rgba(20, 20, 28, 0.95), rgba(30, 26, 40, 0.85));
+            border: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 960px) {
+            .concept-banner { grid-template-columns: 1fr; }
+        }
+
+        .concept-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+
+        .concept-stats {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .stat-text h4 {
+            font-size: 0.92rem;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .stat-text p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Selector Tabs */
+        .floral-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 22px;
+            color: var(--text-dim);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            color: #000;
+            background: var(--gold);
+            border-color: var(--gold-bright);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+        }
+
+        .tab-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Active Floral Panel */
+        .floral-view {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .floral-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Two-Column Grid: Architecture & Formula */
+        .floral-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1080px) {
+            .floral-grid { grid-template-columns: 1fr; }
+        }
+
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+        }
+
+        .box-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+
+        .info-card h4 {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+
+        /* Formula Table */
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin-top: 14px;
+        }
+
+        .formula-table th {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .formula-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            vertical-align: middle;
+        }
+
+        .formula-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .mat-name {
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .mat-name:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .mat-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .ppt-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.12);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            text-align: right;
+            min-width: 54px;
+        }
+
+        /* Key Molecules Cards */
+        .molecules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .molecule-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .molecule-card:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .mol-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .mol-sub {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .mol-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        /* Interactive Accord Calculator Lab */
+        .interactive-lab {
+            background: var(--card-bg);
+            border: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .lab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+
+        .lab-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .slider-control {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .slider-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .slider-label {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .slider-val {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        input[type=range] {
+            width: 100%;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+
+        .radar-box {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .facet-meter-wrap {
+            width: 100%;
+            margin-bottom: 14px;
+        }
+
+        .meter-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+
+        .meter-bar-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .meter-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* Molecule Drawer */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 440px;
+            max-width: 90vw;
+            height: 100vh;
+            background: #111116;
+            border-left: 1px solid var(--border-highlight);
+            box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+            z-index: 1000;
+            padding: 32px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.08);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+
+        .drawer-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .drawer-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 6px;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            margin-bottom: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .drawer-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .drawer-official {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .prop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .prop-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .prop-item .label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            margin-bottom: 2px;
+        }
+
+        .prop-item .value {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .drawer-desc-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--gold);
+            padding: 14px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-nav">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Course Map & Organ Hub</a>
+        <div style="display: flex; gap: 12px;">
+            <a href="special_floral_triad_biochemistry.html" class="back-link" style="color: var(--text-dim);"><i class="fas fa-spa"></i> Floral Trinity (Rose/Jasmine/Muguet)</a>
+            <a href="glossary.html" class="back-link" style="color: var(--text-dim);"><i class="fas fa-book"></i> Glossary</a>
+        </div>
+    </div>
+
+    <header>
+        <div class="special-badge"><i class="fas fa-atom"></i> Advanced Chemistry Masterclass</div>
+        <div class="title-row">
+            <div>
+                <h1>The Mute Blossoms & Synthetic Florals</h1>
+                <p class="lead">
+                    Engineering <strong>Hyacinth</strong>, <strong>Peony</strong>, <strong>Lilac</strong>, <strong>Honeysuckle</strong>, and <strong>Gardenia</strong>. Deconstruct the chemistry of flowers that yield no natural distillates (*fleurs muettes*) and master their compounding using verified Student Organ bottles.
+                </p>
+            </div>
+        </div>
+        <div class="meta-pills">
+            <span class="pill"><i class="fas fa-vial"></i> 5 Botanical Accords</span>
+            <span class="pill"><i class="fas fa-check-circle" style="color: #10b981;"></i> 100% Student Organ Verified</span>
+            <span class="pill"><i class="fas fa-wind"></i> Headspace SPME/GC-MS Theory</span>
+            <span class="pill"><i class="fas fa-balance-scale"></i> 1000 ppt Precise Formulas</span>
+        </div>
+    </header>
+
+    <!-- Concept Banner -->
+    <div class="concept-banner">
+        <div>
+            <div class="concept-title"><i class="fas fa-magic" style="color: var(--gold);"></i> The Paradox of "Fleurs Muettes" (Mute Flowers)</div>
+            <p class="concept-p">
+                In classical Grasse perfumery, certain flowers were famous for their intoxicating fragrance in nature, yet remained obstinately <strong>impossible to capture through the alembic</strong>. Distillation boils away their delicate monoterpenols or chars them into acrid pyrazines; solvent extractions yield either near-zero oil or an unrepresentative vegetal sediment.
+            </p>
+            <p class="concept-p">
+                To capture a mute flower, the perfumer must act as a <strong>synthetic architect</strong>. Armed with headspace analysis (trapping emissions from living, unplucked petals) and high-impact aromachemicals, we sculpt these blooms entirely from synthetic and semi-synthetic keystones.
+            </p>
+        </div>
+        <div class="concept-stats">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-temperature-high"></i></div>
+                <div class="stat-text">
+                    <h4>Thermolabile Esters</h4>
+                    <p>Molecules like phenylacetaldehyde and styralyl acetate undergo instant thermal degradation under steam distillation (100°C).</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-microscope"></i></div>
+                <div class="stat-text">
+                    <h4>Headspace SPME Revolution</h4>
+                    <p>Invented in the 1980s: trapping volatile molecules in a polymer fiber over living flowers without cutting them from the stem.</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-vials"></i></div>
+                <div class="stat-text">
+                    <h4>Pure Synthetic Construction</h4>
+                    <p>Every formula in this masterclass is verified against your actual Student Organ inventory database.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="floral-tabs" id="tab-container">
+        <!-- populated by JS -->
+    </div>
+
+    <!-- Floral Panes Container -->
+    <div id="views-container">
+        <!-- populated by JS -->
+    </div>
+
+    <!-- Interactive Simulator Lab -->
+    <div class="interactive-lab">
+        <div class="lab-header">
+            <div>
+                <div class="lab-title"><i class="fas fa-sliders-h" style="color: var(--gold);"></i> Synthetic Floral Vector Lab</div>
+                <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 4px;">
+                    Adjust the four fundamental olfactory vectors to see how the floral architecture shifts between Crisp Spring Sap, Powdery Balsam, Dewy Translucency, and Narcotic Indolic Flesh.
+                </p>
+            </div>
+            <button onclick="resetSliders()" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text-dim); padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 0.82rem;">
+                <i class="fas fa-undo"></i> Reset
+            </button>
+        </div>
+
+        <div class="slider-grid">
+            <div class="slider-control">
+                <div class="slider-top">
+                    <span class="slider-label"><i class="fas fa-leaf" style="color: #10b981;"></i> Pungent Green Sap (PADMA / Cyclogalbanate)</span>
+                    <span class="slider-val" id="val-green">25%</span>
+                </div>
+                <input type="range" id="slide-green" min="0" max="100" value="25" oninput="updateSimulator()">
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px;">Drives hyacinth shoots and gardenia rhubarb top note.</p>
+            </div>
+
+            <div class="slider-control">
+                <div class="slider-top">
+                    <span class="slider-label"><i class="fas fa-feather" style="color: #a855f7;"></i> Powdery Balsam (Terpineol / Anisaldehyde)</span>
+                    <span class="slider-val" id="val-powder">30%</span>
+                </div>
+                <input type="range" id="slide-powder" min="0" max="100" value="30" oninput="updateSimulator()">
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px;">Forms lilac pastry sweetness and heliotropic cushion.</p>
+            </div>
+
+            <div class="slider-control">
+                <div class="slider-top">
+                    <span class="slider-label"><i class="fas fa-tint" style="color: #f43f5e;"></i> Dewy Sheer Petal (Peonile / Florol)</span>
+                    <span class="slider-val" id="val-dew">40%</span>
+                </div>
+                <input type="range" id="slide-dew" min="0" max="100" value="40" oninput="updateSimulator()">
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px;">Suspends watery watercolor transparency for peony and freesia.</p>
+            </div>
+
+            <div class="slider-control">
+                <div class="slider-top">
+                    <span class="slider-label"><i class="fas fa-sun" style="color: #eab308;"></i> Nectar Honey & Indole (Phenylacetates / Indole)</span>
+                    <span class="slider-val" id="val-nectar">35%</span>
+                </div>
+                <input type="range" id="slide-nectar" min="0" max="100" value="35" oninput="updateSimulator()">
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px;">Delivers honeysuckle warmth and ripe white-flower narcotic flesh.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="radar-box">
+                <h4 style="font-size: 1rem; color: #fff; margin-bottom: 16px; align-self: flex-start;"><i class="fas fa-chart-bar" style="color: var(--gold);"></i> Olfactory Balance Index</h4>
+                
+                <div class="facet-meter-wrap">
+                    <div class="meter-label-row">
+                        <span>Spring Leaf & Sap Pungency</span>
+                        <span id="meter-lbl-green">25%</span>
+                    </div>
+                    <div class="meter-bar-bg"><div class="meter-bar-fill" id="bar-green" style="background: #10b981; width: 25%;"></div></div>
+                </div>
+
+                <div class="facet-meter-wrap">
+                    <div class="meter-label-row">
+                        <span>Confectioner & Anisic Powder</span>
+                        <span id="meter-lbl-powder">30%</span>
+                    </div>
+                    <div class="meter-bar-bg"><div class="meter-bar-fill" id="bar-powder" style="background: #a855f7; width: 30%;"></div></div>
+                </div>
+
+                <div class="facet-meter-wrap">
+                    <div class="meter-label-row">
+                        <span>Dewy Watercolor Petal Sheen</span>
+                        <span id="meter-lbl-dew">40%</span>
+                    </div>
+                    <div class="meter-bar-bg"><div class="meter-bar-fill" id="bar-dew" style="background: #f43f5e; width: 40%;"></div></div>
+                </div>
+
+                <div class="facet-meter-wrap">
+                    <div class="meter-label-row">
+                        <span>Golden Honey & Indolic Breath</span>
+                        <span id="meter-lbl-nectar">35%</span>
+                    </div>
+                    <div class="meter-bar-bg"><div class="meter-bar-fill" id="bar-nectar" style="background: #eab308; width: 35%;"></div></div>
+                </div>
+            </div>
+
+            <div class="radar-box" style="justify-content: flex-start; text-align: left; align-items: flex-start;">
+                <h4 style="font-size: 1rem; color: #fff; margin-bottom: 8px;"><i class="fas fa-compass" style="color: var(--gold);"></i> Synthesis Diagnostic</h4>
+                <div id="sim-diagnosis-title" style="font-size: 1.15rem; font-weight: 700; color: var(--gold); margin-bottom: 8px;">Balanced Hybrid Bouquet</div>
+                <p id="sim-diagnosis-desc" style="font-size: 0.9rem; color: var(--text-dim); line-height: 1.6;">
+                    Your parameters represent an airborne spring garden hybrid. Adjust individual sliders to lean directly into a pure Hyacinth snap, a powdery French Lilac, or a creamy narcotic Gardenia.
+                </p>
+                <div id="sim-matching-floral" style="margin-top: 14px; padding: 10px 14px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 8px; font-size: 0.85rem; color: var(--gold);">
+                    <i class="fas fa-bullseye"></i> Closest Botanical Silhouette: <strong>Dewy Spring Peony with Lilac nuances</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            Perfumery Student Organ Education • 2026 Academic Series
+        </div>
+        <div class="footer-links">
+            <a href="special_floral_triad_biochemistry.html">The Floral Trinity (Rose, Jasmine, Muguet)</a>
+            <a href="level_3_florol.html">Level 3: Florol</a>
+            <a href="level_1_perfume_studio.html">Perfume Studio</a>
+            <a href="glossary.html">Glossary</a>
+        </div>
+    </footer>
+</div>
+
+<!-- Slide-out Chemical Drawer -->
+<div class="drawer" id="mol-drawer">
+    <button class="drawer-close" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
+    <div class="drawer-badge" id="drawer-badge">Verified Organ Molecule</div>
+    <h3 class="drawer-title" id="drawer-name">PADMA</h3>
+    <div class="drawer-official" id="drawer-official">Phenyl Acetaldehyde Dimethyl Acetal</div>
+
+    <div class="prop-grid">
+        <div class="prop-item">
+            <div class="label">CAS Number</div>
+            <div class="value" id="drawer-cas">122-78-1</div>
+        </div>
+        <div class="prop-item">
+            <div class="label">Volatility Note</div>
+            <div class="value" id="drawer-vol">Top Note</div>
+        </div>
+        <div class="prop-item">
+            <div class="label">Odor Family</div>
+            <div class="value" id="drawer-family">Green (Harsh)</div>
+        </div>
+        <div class="prop-item">
+            <div class="label">LogP / MW</div>
+            <div class="value" id="drawer-logp">1.43 / 120.15</div>
+        </div>
+    </div>
+
+    <div class="drawer-desc-box" id="drawer-desc">
+        Odor description from Student Organ database.
+    </div>
+
+    <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+        <i class="fas fa-database" style="color: var(--gold);"></i> Linked directly to <strong>Student_Organ_Database.csv</strong>. 100% available in your student laboratory kit.
+    </div>
+</div>
+
+<script>
+const accordsData = [{"id": "hyacinth", "badge": "Spring Bulb / Pungent Green", "name": "Hyacinth (Hyacinthus orientalis)", "color": "#10b981", "bg_glow": "rgba(16, 185, 129, 0.12)", "border_color": "rgba(16, 185, 129, 0.35)", "hero_desc": "Crisp green shoot snap meets an opulent, narcotic indolic bloom. The chemical dilemma of hyacinth is its extreme initial pungency which collapses into honeyed lilac sweetness at a distance.", "mute_reason": "Hyacinth flowers produce virtually no essential oil via steam distillation (fractions degrade under heat, yielding burnt phenolic notes). Classical solvent extraction yielded minute, dark absolutes that lacked the radiant 'living bloom' snap.", "headspace_discovery": "Live flower SPME/GC-MS headspace sampling revealed high concentrations of phenylacetaldehyde, benzyl acetate, phenylethyl alcohol, and ocimene, with micro-traces of indole and methyl cinnamate.", "synthetic_revolution": "Raw phenylacetaldehyde easily polymerizes into a resinous solid and causes skin sensitization. Modern perfumers tame it using <strong>PADMA</strong> (Phenyl Acetaldehyde Dimethyl Acetal) and <strong>Hyacinth Body</strong>, energized by high-impact green esters like <strong>Cyclogalbanate</strong>.", "formula": [{"name": "PADMA (10% in DPG)", "key": "PADMA", "ppt": 80, "role": "Primary hyacinth honey-green backbone without polymerization"}, {"name": "Hyacinth Body (10% in DPG)", "key": "Hyacinth Body", "ppt": 60, "role": "Diffusive aquatic-green vegetative petal"}, {"name": "Cyclogalbanate", "key": "Cyclogalbanate", "ppt": 15, "role": "Sharp crushed-leaf galbanum snap"}, {"name": "Phenyl Ethyl Alcohol (PEA)", "key": "Phenyl Ethyl Alcohol (PEA)", "ppt": 340, "role": "Floral body & water-soluble petal foundation"}, {"name": "Alpha Terpineol", "key": "Alpha Terpineol", "ppt": 180, "role": "Lilac floral support & clean pine-floral volume"}, {"name": "Cinnamyl Acetate", "key": "Cinnamyl Acetate", "ppt": 45, "role": "Balsamic spicy floral bridge"}, {"name": "Hedione HC", "key": "Hedione HC", "ppt": 260, "role": "Radiance, air, and petal expansion"}, {"name": "Indole (10% in DPG)", "key": "Indole", "ppt": 20, "role": "Narcotic botanical darkness at the flower throat"}], "molecules": [{"key": "PADMA", "highlight": "The Tamed Green Honey", "desc": "Acetals protect the aldehyde group from oxidation while preserving the crisp green sap character."}, {"key": "Hyacinth Body", "highlight": "Petal Flesh & Stem", "desc": "Imparts authentic wet floral stem diffusion without acidic bite."}, {"key": "Cyclogalbanate", "highlight": "High-Impact Galbanum", "desc": "Modern cyclo-ester offering powerful green pyrazine-like leaf energy with IFRA safety."}]}, {"id": "peony", "badge": "Translucent Petal / Sheer Floral", "name": "Peony (Paeonia suffruticosa)", "color": "#f43f5e", "bg_glow": "rgba(244, 63, 94, 0.12)", "border_color": "rgba(244, 63, 94, 0.35)", "hero_desc": "The watercolor bloom. Peony is neither a heavy rose nor a simple lily; it is an ultra-sheer, dewy, crystalline petal texture with hints of citrus sparkle and wet morning air.", "mute_reason": "Peony petals possess an extraordinarily low volatile oil concentration. Any attempt at distillation boils off delicate monoterpenols and leaves behind odorless mucilage.", "headspace_discovery": "Headspace analysis proved that living peonies emit a matrix of linalool, citronellol, geraniol, and phenylethyl alcohol, alongside unique rose-furan and geranylacetone nuances.", "synthetic_revolution": "Modern perfumery re-invented Peony using high-tech synthetic keystones: <strong>Peonile</strong> (a nitrile molecule with exceptional stability and tenacious dewy-peony aura), coupled with <strong>Florol</strong> and <strong>Coranol</strong> for transparent petal mass.", "formula": [{"name": "Peonile", "key": "Peonile", "ppt": 120, "role": "Iconic nitrile peony heart; tenacious, crisp, slightly powdery"}, {"name": "Florol", "key": "Florol", "ppt": 240, "role": "Soft, moist, white-muguet petal volume without sharp aldehyde"}, {"name": "Coranol", "key": "Coranol", "ppt": 90, "role": "Radiant floral modifier bridging coriander floral freshness"}, {"name": "Citronellol", "key": "CitronellOL", "ppt": 160, "role": "Fresh citrusy-rose petal top"}, {"name": "Geraniol", "key": "Geraniol", "ppt": 70, "role": "Crisp, sweet, geranium-rose facet"}, {"name": "Hedione HC", "key": "Hedione HC", "ppt": 290, "role": "Weightless solar diffusion and petal shimmer"}, {"name": "Beta Ionone", "key": "Beta Ionone", "ppt": 25, "role": "Soft violet-berry petal velvety velvet finish"}, {"name": "Alpha Damascone (10% in DPG)", "key": "Alpha Damascone", "ppt": 5, "role": "Micro-dose apple-cider rose radiance"}], "molecules": [{"key": "Peonile", "highlight": "The Nitrile Keystone", "desc": "Created by Givaudan. A nitrile floral with remarkable tenacity and chemical resistance across all media."}, {"key": "Florol", "highlight": "Dewy Petal Hydration", "desc": "Delivers smooth water-cushion mouthfeel without the harshness of old aldehydes."}, {"key": "Coranol", "highlight": "Airy Coralline Lift", "desc": "Adds fresh, linalool-adjacent diffusion with 3x longer life on the blotter."}]}, {"id": "lilac", "badge": "Spring Powdery / Balsamic", "name": "Lilac (Syringa vulgaris)", "color": "#a855f7", "bg_glow": "rgba(168, 85, 247, 0.12)", "border_color": "rgba(168, 85, 247, 0.35)", "hero_desc": "The ephemeral Parisian spring blossom. Dense purple clusters radiating pasty almond sweetness, anisic powder, and balmy green coolness.", "mute_reason": "Lilac blossoms spoil within hours of harvest. Distillation degrades syringa aldehydes into sour brown tar, making natural commercial Lilac absolute non-existent.", "headspace_discovery": "Live blossom headspace demonstrated that pure alpha-terpineol, benzaldehyde, indole, anisaldehyde, and ocimenes drive the living floral envelope.", "synthetic_revolution": "Perfumers construct Lilac on a keystone of high-purity <strong>Alpha-Terpineol</strong> (purified from pine/turpentine), smoothed by <strong>Anisaldehyde</strong> (hawthorn powder) and <strong>Piperonyl Acetate</strong> (heliotrope marzipan warmth).", "formula": [{"name": "Alpha Terpineol", "key": "Alpha Terpineol", "ppt": 310, "role": "The core spine of lilac flower; fresh floral lilac character"}, {"name": "Anisaldehyde", "key": "Anisaldehyde", "ppt": 85, "role": "Creamy, anisic hawthorn powder & mimosa nuance"}, {"name": "Piperonyl Acetate", "key": "Piperonyl acetate", "ppt": 95, "role": "Heliotrope confectioner sweetness & vanilla-floral fixation"}, {"name": "Phenyl Ethyl Alcohol (PEA)", "key": "Phenyl Ethyl Alcohol (PEA)", "ppt": 230, "role": "Hydrating petal mass and soft rose undertone"}, {"name": "Amyl Cinnamic Aldehyde (ACA)", "key": "Amyl Cinnamic Aldehyde", "ppt": 80, "role": "Oily floral body and smooth fixative depth"}, {"name": "Bourgeonal (10% in DPG)", "key": "Bourgeonal", "ppt": 30, "role": "Watery watery green-muguet projection and spring moisture"}, {"name": "Florol", "key": "Florol", "ppt": 60, "role": "Petal softness buffer to smooth terpineol sharpness"}, {"name": "Hedione HC", "key": "Hedione HC", "ppt": 110, "role": "Diffusion and transparent lift"}], "molecules": [{"key": "Alpha Terpineol", "highlight": "The Lilac Resonance", "desc": "Must use high-grade alpha isomer; lower grades smell like industrial pine disinfectant."}, {"key": "Anisaldehyde", "highlight": "The Hawthorn Powder", "desc": "Injects the pale powdery pollen facet characteristic of cool lilac blooms."}, {"key": "Piperonyl acetate", "highlight": "Fixative Heliotrope", "desc": "Imparts the sweet confectioner marzipan cushion at the drydown."}]}, {"id": "honeysuckle", "badge": "Solar Honey / Tubular Nectar", "name": "Honeysuckle (Lonicera caprifolium)", "color": "#eab308", "bg_glow": "rgba(234, 179, 8, 0.12)", "border_color": "rgba(234, 179, 8, 0.35)", "hero_desc": "Warm golden evening air. Intense tubular flower nectar, sun-warmed apricot skin, rich beeswax, and a voluptuous jasmine-indolic breath.", "mute_reason": "Solvent extraction of honeysuckle flowers ('Chevrefeuille') has occasionally been attempted in niche facilities, but yields are prohibitively microscopic and the extract turns dark and jammy rather than fresh and airborne.", "headspace_discovery": "Headspace capture confirmed the presence of linalool, methyl jasmonate, cis-jasmone, ethyl phenylacetate, farnesene, and trace apricot lactones.", "synthetic_revolution": "Modern honeysuckle accords avoid heavy syrupy clich\u00e9s by pairing radiant <strong>Ethyl Linalool</strong> with diffusive <strong>Ethyl Phenyl Acetate</strong>, grounded by tenacious <strong>Phenyl Ethyl Phenyl Acetate</strong> and silky <strong>Aldehyde C-14</strong> (Peach lactone).", "formula": [{"name": "Ethyl Phenyl Acetate (10% in DPG)", "key": "Ethyl Phenyl Acetate", "ppt": 70, "role": "Honeyed nectar radiance with fruity top-note diffusion"}, {"name": "Phenyl Ethyl Phenyl Acetate (50% in DPG)", "key": "Phenyl Ethyl Phenyl Acetate", "ppt": 110, "role": "Warm beeswax, clover honey and clinging base fixation"}, {"name": "Ethyl Linalool", "key": "Ethyl Linalool", "ppt": 260, "role": "Solar, rounded floral freshness; softer and less harsh than linalool"}, {"name": "Aldehyde C-14 Gamma Undecalactone (10% in DPG)", "key": "Aldehyde C-14 Gamma Undecalactone", "ppt": 45, "role": "Velvety apricot-peach lactone facet characteristic of honeysuckle"}, {"name": "CIS Jasmone", "key": "CIS Jasmone", "ppt": 25, "role": "Authentic warm floral petal and leafy green jasmine nuance"}, {"name": "Methyl Benzoate (10% in DPG)", "key": "Methyl Benzoate", "ppt": 30, "role": "Sweet, penetrating, exotic ylang-like fruit top note"}, {"name": "Indole (10% in DPG)", "key": "Indole", "ppt": 20, "role": "Warm narcotic white-flower flesh"}, {"name": "Hedione HC", "key": "Hedione HC", "ppt": 440, "role": "Golden transparent sunlight vehicle"}], "molecules": [{"key": "Ethyl Phenyl Acetate", "highlight": "Airborne Nectar Droplet", "desc": "Provides diffusive solar honey without animalic urinous facets."}, {"key": "Ethyl Linalool", "highlight": "Smooth Floral Solar", "desc": "More floral, softer, and more persistent than classical natural linalool."}, {"key": "Aldehyde C-14 Gamma Undecalactone", "highlight": "Fleshy Apricot-Peach", "desc": "Supplies the luscious velvet skin texture of sunlit tubular honeysuckle."}]}, {"id": "gardenia", "badge": "Tropical White / Narcotic Cream", "name": "Gardenia (Gardenia jasminoides)", "color": "#38bdf8", "bg_glow": "rgba(56, 189, 248, 0.12)", "border_color": "rgba(56, 189, 248, 0.35)", "hero_desc": "The great paradox of white flowers. Opens with a startling, sharp green snap of rhubarb and unripe mushrooms before plunging into luxurious coconut cream and indolic white petal flesh.", "mute_reason": "Gardenia flowers turn brown and oxidized within minutes of being plucked. Distillation destroys all floral top notes, yielding an unusable dark vegetal mass.", "headspace_discovery": "Headspace analysis in the 1980s solved the gardenia enigma: the opening consists of high amounts of styrallyl acetate (methyl phenylcarbinyl acetate) and tiglates, transitioning into gamma-nonalactone, jasmine lactone, and cis-jasmone.", "synthetic_revolution": "Constructed around the indispensable shock of <strong>Styralyl Acetate</strong> (rhubarb-mushroom green), cradled by <strong>Aldehyde C-18</strong> (coconut lactone), <strong>Floropal</strong>, and <strong>Benzyl Salicylate</strong>.", "formula": [{"name": "Styralyl Acetate (10% in DPG)", "key": "Styralyl Acetate", "ppt": 80, "role": "The signature gardenia green flash (rhubarb, metallic leaf bud)"}, {"name": "Styralyl Alcohol", "key": "Styralyl Alcohol", "ppt": 40, "role": "Warm, spicy-gardenia floral mid note"}, {"name": "Aldehyde C-18 Gamma Nonalactone (10% in DPG)", "key": "Aldehyde C-18 Gamma Nonalactone", "ppt": 65, "role": "Rich, milky coconut creaminess defining gardenia petal texture"}, {"name": "Benzyl Salicylate", "key": "Benzyl Salicylate", "ppt": 290, "role": "Solar balsamic blender, imparting luxurious cosmetic sheen"}, {"name": "Floropal", "key": "Floropal", "ppt": 45, "role": "Herbal-green grapefruit-rhubarb floral bridge"}, {"name": "CIS Jasmone", "key": "CIS Jasmone", "ppt": 30, "role": "Lush narcotic floral realism"}, {"name": "Indole (10% in DPG)", "key": "Indole", "ppt": 30, "role": "Sensual indolic depth at full bloom"}, {"name": "Hedione HC", "key": "Hedione HC", "ppt": 420, "role": "Diffusive white radiance and humidity"}], "molecules": [{"key": "Styralyl Acetate", "highlight": "The Rhubarb Gardenia Flash", "desc": "The unmistakable hallmark of gardenia; intense green rhubarb leaf and metallic garden flower bud."}, {"key": "Aldehyde C-18 Gamma Nonalactone", "highlight": "The Coconut-Lactonic Flesh", "desc": "Imparts the opulent, heavy, milky velvet texture of thick white petals."}, {"key": "Floropal", "highlight": "The Floral-Green Acetal", "desc": "Diffusive grapefruit-rhubarb character that binds the top note to the floral heart."}]}];
+const rawMatsData = {"PADMA": {"name": "Phenyl Acetaldehyde Dimethyl Acetal (PADMA) 10% in DPG", "official": "phenylacetaldehyde", "cas": "122-78-1", "family": "Green (Harsh)", "volatility": "Top Note", "logp": 1.43, "mw": 120.15, "desc": "Top"}, "Hyacinth Body": {"name": "Hyacinth Body 10% in DPG", "official": "Ethyl phenethyl acetal", "cas": "2556-10-7", "family": "Green", "volatility": "Heart Note", "logp": 2.63, "mw": 194.27, "desc": "at 100.00 %. leafy green nasturtium fresh floral hyacinth Luebke, William tgsc, (1986)"}, "Cyclogalbanate": {"name": "Cyclogalbanate", "official": "Allyl cyclohexyloxyacetate", "cas": "68901-15-5", "family": "Green (Bitter)", "volatility": "Heart Note", "logp": 2.06, "mw": 198.26, "desc": "Top"}, "Phenyl Ethyl Alcohol (PEA)": {"name": "Phenyl Ethyl Alcohol (PEA)", "official": "2-PHENYLETHANOL", "cas": "60-12-8", "family": "Green (Harsh)", "volatility": "Top Note", "logp": 1.22, "mw": 122.17, "desc": "Top"}, "Cinnamyl Acetate": {"name": "Cinnamyl Acetate", "official": "Cinnamyl acetate", "cas": "103-54-8", "family": "Spicy", "volatility": "Heart Note", "logp": 2.26, "mw": 176.22, "desc": "at 100.00 %. sweet floral spicy balsam cinnamon Luebke, William tgsc, (1982)"}, "Alpha Terpineol": {"name": "Alpha Terpineol", "official": "alpha-TERPINEOL", "cas": "98-55-5", "family": "Floral (Lilac)", "volatility": "Heart Note", "logp": 2.5, "mw": 154.25, "desc": "Top"}, "Indole": {"name": "Indole 10% in DPG", "official": "indole", "cas": "120-72-9", "family": "Animalic (Fecal)", "volatility": "Top Note", "logp": 2.17, "mw": 117.15, "desc": "Modifier"}, "Hedione HC": {"name": "Hedione HC", "official": "Methyl dihydrojasmonate", "cas": "24851-98-7", "family": "Floral (Transparent)", "volatility": "Base Note", "logp": 2.73, "mw": 226.32, "desc": "Blender"}, "Peonile": {"name": "Peonile", "official": "alpha-cyclohexylidene benzeneacetonitrile", "cas": "10461-98-0", "family": "Floral (Peony)", "volatility": "Heart Note", "logp": 3.93, "mw": 197.28, "desc": "Heart"}, "Florol": {"name": "Florol", "official": "2H-Pyran-4-ol, tetrahydro-4-methyl-2-(2-methylpropyl)-", "cas": "63500-71-0", "family": "Floral (Muguet)", "volatility": "Heart Note", "logp": 1.96, "mw": 172.27, "desc": "Heart"}, "Coranol": {"name": "Coranol", "official": "4-cyclohexyl-2-methyl-2-butanol", "cas": "83926-73-2", "family": "Floral", "volatility": "Heart Note", "logp": 3.12, "mw": 170.3, "desc": "at 100.00 %. floral bois de rose coriander"}, "CitronellOL": {"name": "CitronellOL", "official": "Citronellol", "cas": "106-22-9", "family": "Floral (Mimosa)", "volatility": "Heart Note", "logp": 2.75, "mw": 156.27, "desc": "Heart"}, "Geraniol": {"name": "Geraniol", "official": "GERANIOL", "cas": "106-24-1", "family": "Floral (Rose)", "volatility": "Heart Note", "logp": 2.67, "mw": 154.25, "desc": "Heart"}, "Alpha Damascone": {"name": "Alpha Damascone 10% in DPG", "official": "DTXSID90880772", "cas": "43052-87-5", "family": "Fruit (Apple/Plum)", "volatility": "Heart Note", "logp": 3.51, "mw": 192.3, "desc": "Heart"}, "Beta Ionone": {"name": "Beta Ionone", "official": "BETA-IONONE", "cas": "79-77-6", "family": "Floral", "volatility": "Heart Note", "logp": 3.66, "mw": 192.3, "desc": "at 10.00 % in dipropylene glycol. floral woody sweet fruity berry tropical beeswax Luebke, William tgsc, (1983)"}, "Anisaldehyde": {"name": "Anisaldehyde", "official": "4-Methoxybenzaldehyde", "cas": "123-11-5", "family": "Aldehydic (Complex)", "volatility": "Top Note", "logp": 1.51, "mw": 136.15, "desc": "Base"}, "Piperonyl acetate": {"name": "Piperonyl acetate", "official": "PIPERONYL ACETATE", "cas": "326-61-4", "family": "Floral", "volatility": "Heart Note", "logp": 1.48, "mw": 194.19, "desc": "at 100.00 %. sweet floral strawberry jam hawthorn metallic Luebke, William tgsc, (1996)"}, "Amyl Cinnamic Aldehyde": {"name": "Amyl Cinnamic Aldehyde (ACA)", "official": "alpha-Amylcinnamaldehyde", "cas": "122-40-7", "family": "Floral (Mimosa)", "volatility": "Base Note", "logp": 3.85, "mw": 202.3, "desc": "Heart"}, "Bourgeonal": {"name": "Bourgeonal 10% in DPG", "official": "Bourgeonal", "cas": "18127-01-0", "family": "Floral (Mimosa)", "volatility": "Heart Note", "logp": 3.12, "mw": 190.29, "desc": "Heart"}, "Ethyl Phenyl Acetate": {"name": "Ethyl Phenyl Acetate 10% in DPG", "official": "ETHYL PHENYLACETATE", "cas": "101-97-3", "family": "Floral", "volatility": "Heart Note", "logp": 1.79, "mw": 164.2, "desc": "at 10.00 % in dipropylene glycol. sweet floral honey rose balsam cocoa Luebke, William tgsc, (1995)"}, "Phenyl Ethyl Phenyl Acetate": {"name": "Phenyl Ethyl Phenyl Acetate 50% in DPG", "official": "Phenethyl phenylacetate", "cas": "102-20-5", "family": "Floral", "volatility": "Base Note", "logp": 3.02, "mw": 240.3, "desc": "at 100.00 %. floral sweet rose honey balsam Luebke, William tgsc, (1984)"}, "Ethyl Linalool": {"name": "Ethyl Linalool", "official": "Ethyl linalool", "cas": "10339-55-6", "family": "Floral (Fresh)", "volatility": "Heart Note", "logp": 3.06, "mw": 168.28, "desc": "Heart-Top"}, "Aldehyde C-14 Gamma Undecalactone": {"name": "Aldehyde C-14 Gamma Undecalactone 10% in DPG", "official": "Gamma-undecalactone", "cas": "104-67-6", "family": "Fruit (Peach)", "volatility": "Heart Note", "logp": 3.05, "mw": 184.28, "desc": "Heart"}, "CIS Jasmone": {"name": "CIS Jasmone", "official": "cis-Jasmone", "cas": "488-10-8", "family": "Floral", "volatility": "Heart Note", "logp": 3.02, "mw": 164.25, "desc": "at 10.00 % in dipropylene glycol. woody herbal floral spicy jasmin celery Luebke, William tgsc, (1987)"}, "Methyl Benzoate": {"name": "Methyl Benzoate 10% in DPG", "official": "METHYL BENZOATE", "cas": "93-58-3", "family": "Phenolic", "volatility": "Top Note", "logp": 1.47, "mw": 136.15, "desc": "at 1.00 % in dipropylene glycol. phenolic wintergreen almond floral cananga Luebke, William tgsc, (1982)"}, "Styralyl Acetate": {"name": "Styralyl Acetate 10% in DPG", "official": "1-Phenylethyl acetate", "cas": "93-92-5", "family": "Green", "volatility": "Heart Note", "logp": 2.31, "mw": 164.2, "desc": "Characterized as Green in Fraterworks catalog."}, "Styralyl Alcohol": {"name": "Styralyl Alcohol", "official": "1-Phenylethanol", "cas": "98-85-1", "family": "Floral", "volatility": "Top Note", "logp": 1.74, "mw": 122.17, "desc": "at 100.00 %. fresh sweet acetophenone gardenia hyacinth Luebke, William tgsc, (1981)"}, "Aldehyde C-18 Gamma Nonalactone": {"name": "Aldehyde C-18 Gamma Nonalactone 10% in DPG", "official": "Gamma-nonalactone", "cas": "104-61-0", "family": "Fruit (Coconut)", "volatility": "Heart Note", "logp": 2.27, "mw": 156.22, "desc": "Base"}, "Benzyl Salicylate": {"name": "Benzyl Salicylate", "official": "BENZYL SALICYLATE", "cas": "118-58-1", "family": "Aldehydic (Complex)", "volatility": "Base Note", "logp": 2.75, "mw": 228.25, "desc": "Base"}, "Floropal": {"name": "Floropal", "official": "2,4,6-Trimethyl-4-phenyl-1,3-dioxane", "cas": "5182-36-5", "family": "Floral", "volatility": "Base Note", "logp": 3.07, "mw": 206.28, "desc": "at 100.00 %. fresh citrus gardenia green natural Luebke, William tgsc, (1986)"}};
+
+// Render Tabs & Panes
+function initApp() {
+    const tabContainer = document.getElementById("tab-container");
+    const viewsContainer = document.getElementById("views-container");
+
+    accordsData.forEach((acc, idx) => {
+        // Tab Button
+        const btn = document.createElement("button");
+        btn.className = `tab-btn ${idx === 0 ? 'active' : ''}`;
+        btn.innerHTML = `<i class="fas fa-spa" style="color: ${acc.color};"></i> ${acc.name.split(" ")[0]}`;
+        btn.onclick = () => selectTab(idx);
+        tabContainer.appendChild(btn);
+
+        // View Pane
+        const view = document.createElement("div");
+        view.className = `floral-view ${idx === 0 ? 'active' : ''}`;
+        view.id = `view-${acc.id}`;
+
+        view.innerHTML = `
+            <div class="floral-grid">
+                <!-- Left Column: Architecture & Headspace -->
+                <div class="section-box" style="border-top: 4px solid ${acc.color};">
+                    <div class="box-title" style="color: ${acc.color};">
+                        <i class="fas fa-seedling"></i> ${acc.name}
+                    </div>
+                    <div class="box-subtitle">${acc.badge}</div>
+                    <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 20px; font-weight: 300; line-height: 1.6;">
+                        ${acc.hero_desc}
+                    </p>
+
+                    <div class="info-card">
+                        <h4><i class="fas fa-ban" style="color: #f43f5e;"></i> Why Natural Extraction Fails (*Fleurs Muettes*)</h4>
+                        <p>${acc.mute_reason}</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="fas fa-dna" style="color: var(--gold);"></i> Headspace (SPME/GC-MS) Decoding</h4>
+                        <p>${acc.headspace_discovery}</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4><i class="fas fa-flask" style="color: ${acc.color};"></i> Modern Synthetic Architecture</h4>
+                        <p>${acc.synthetic_revolution}</p>
+                    </div>
+
+                    <div style="margin-top: 24px;">
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 12px;"><i class="fas fa-atom" style="color: var(--gold);"></i> Keystone Molecules in Organ</h4>
+                        <div class="molecules-grid">
+                            ${acc.molecules.map(m => `
+                                <div class="molecule-card" onclick="openDrawer('${m.key}')">
+                                    <div class="mol-name">${m.key}</div>
+                                    <div class="mol-sub">${m.highlight}</div>
+                                    <div class="mol-desc">${m.desc}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Compounding Formula (1000 ppt) -->
+                <div class="section-box" style="border-top: 4px solid var(--gold);">
+                    <div class="box-title">
+                        <i class="fas fa-balance-scale" style="color: var(--gold);"></i> 1000-Part Lab Formula
+                    </div>
+                    <div class="box-subtitle">Precise Student Organ Compounding Sheet</div>
+                    <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 16px;">
+                        Every ingredient is present in your inventory. Click any molecule name to view chemical constants, CAS, and volatility attributes.
+                    </p>
+
+                    <table class="formula-table">
+                        <thead>
+                            <tr>
+                                <th>Aroma Chemical</th>
+                                <th style="text-align: right;">Parts (ppt)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${acc.formula.map(row => `
+                                <tr>
+                                    <td>
+                                        <span class="mat-name" onclick="openDrawer('${row.key}')">${row.name}</span>
+                                        <span class="mat-role">${row.role}</span>
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <span class="ppt-badge">${row.ppt}</span>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                        <tfoot>
+                            <tr style="border-top: 2px solid var(--border);">
+                                <td style="font-weight: 700; color: #fff; padding-top: 14px;">Total Formula Mass</td>
+                                <td style="text-align: right; padding-top: 14px;">
+                                    <span class="ppt-badge" style="color: #fff; background: rgba(255,255,255,0.15);">1000 ppt</span>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div style="margin-top: 20px; background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 12px 16px; font-size: 0.82rem; color: var(--gold);">
+                        <i class="fas fa-info-circle"></i> <strong>Bench Tip:</strong> When compounding, pre-dilute high-impact items (Indole, PADMA, Bourgeonal) to 10% in DPG to avoid irrecoverable overdoses.
+                    </div>
+                </div>
+            </div>
+        `;
+        viewsContainer.appendChild(view);
+    });
+}
+
+function selectTab(index) {
+    const tabs = document.querySelectorAll(".tab-btn");
+    const views = document.querySelectorAll(".floral-view");
+    tabs.forEach((t, i) => t.classList.toggle("active", i === index));
+    views.forEach((v, i) => v.classList.toggle("active", i === index));
+}
+
+// Chemical Drawer Logic
+function openDrawer(matKey) {
+    const data = rawMatsData[matKey];
+    if (!data) return;
+
+    document.getElementById("drawer-name").textContent = data.name;
+    document.getElementById("drawer-official").textContent = data.official;
+    document.getElementById("drawer-cas").textContent = data.cas;
+    document.getElementById("drawer-vol").textContent = data.volatility;
+    document.getElementById("drawer-family").textContent = data.family;
+    document.getElementById("drawer-logp").textContent = `${data.logp} / ${data.mw}`;
+    document.getElementById("drawer-desc").textContent = data.desc || "Verified olfactory component from Student Organ inventory.";
+
+    document.getElementById("mol-drawer").classList.add("open");
+}
+
+function closeDrawer() {
+    document.getElementById("mol-drawer").classList.remove("open");
+}
+
+// Simulator Logic
+function updateSimulator() {
+    const green = parseInt(document.getElementById("slide-green").value);
+    const powder = parseInt(document.getElementById("slide-powder").value);
+    const dew = parseInt(document.getElementById("slide-dew").value);
+    const nectar = parseInt(document.getElementById("slide-nectar").value);
+
+    document.getElementById("val-green").textContent = green + "%";
+    document.getElementById("val-powder").textContent = powder + "%";
+    document.getElementById("val-dew").textContent = dew + "%";
+    document.getElementById("val-nectar").textContent = nectar + "%";
+
+    document.getElementById("bar-green").style.width = green + "%";
+    document.getElementById("bar-powder").style.width = powder + "%";
+    document.getElementById("bar-dew").style.width = dew + "%";
+    document.getElementById("bar-nectar").style.width = nectar + "%";
+
+    document.getElementById("meter-lbl-green").textContent = green + "%";
+    document.getElementById("meter-lbl-powder").textContent = powder + "%";
+    document.getElementById("meter-lbl-dew").textContent = dew + "%";
+    document.getElementById("meter-lbl-nectar").textContent = nectar + "%";
+
+    const diagTitle = document.getElementById("sim-diagnosis-title");
+    const diagDesc = document.getElementById("sim-diagnosis-desc");
+    const matchEl = document.getElementById("sim-matching-floral");
+
+    // Dynamic Analysis
+    if (green > 60 && green > powder && green > nectar) {
+        diagTitle.textContent = "Aggressive Spring Shoot & Leaf Sap";
+        diagDesc.textContent = "High concentration of PADMA and Cyclogalbanate dominates the architecture. The scent behaves like crushed bluebell stems or early hyacinth buds breaking through frost.";
+        matchEl.innerHTML = '<i class="fas fa-bullseye"></i> Dominant Silhouette: <strong>Wild Hyacinth (Jacinthe Sauvage)</strong>';
+    } else if (powder > 55 && powder > green && powder > dew) {
+        diagTitle.textContent = "Opulent Hawthorn & Balsamic Almond";
+        diagDesc.textContent = "The Terpineol and Anisaldehyde buffer creates a confectioner-like floral haze. Reminiscent of Parisian lilac groves and heliotrope blossoms warmed in the sun.";
+        matchEl.innerHTML = '<i class="fas fa-bullseye"></i> Dominant Silhouette: <strong>Purple French Lilac (Syringa)</strong>';
+    } else if (dew > 55 && dew > green && dew > nectar) {
+        diagTitle.textContent = "Translucent Dewdrop & Crisp Rose Petal";
+        diagDesc.textContent = "Peonile, Florol, and Coranol create an airy, aquatic, watercolor floral shield. Clean, non-indolic, modern luxury floral reminiscent of high-end floral waters.";
+        matchEl.innerHTML = '<i class="fas fa-bullseye"></i> Dominant Silhouette: <strong>White Spring Peony (Paeonia Alba)</strong>';
+    } else if (nectar > 50 && green > 35) {
+        diagTitle.textContent = "Rhubarb Flash plunging into Heavy White Flesh";
+        diagDesc.textContent = "The sharp green contrast of Styralyl Acetate combined with opulent lactones and indole creates the unmistakable creamy, mushroom-coconut bloom of gardenia.";
+        matchEl.innerHTML = '<i class="fas fa-bullseye"></i> Dominant Silhouette: <strong>Tropical Gardenia (Gardenia Jasminoides)</strong>';
+    } else if (nectar > 55) {
+        diagTitle.textContent = "Sunlit Evening Nectar & Golden Honey";
+        diagDesc.textContent = "Sweet phenylacetates and solar Ethyl Linalool radiate warmth like tubular honeysuckle vines breathing their scent into humid twilight air.";
+        matchEl.innerHTML = '<i class="fas fa-bullseye"></i> Dominant Silhouette: <strong>Night-Blooming Honeysuckle (Chèvrefeuille)</strong>';
+    } else {
+        diagTitle.textContent = "Harmonious Multi-Floral Spring Bouquet";
+        diagDesc.textContent = "Balanced distribution across green shoots, sheer petals, and soft honey powder. Excellent foundation for complex fine fragrance top-and-heart accords.";
+        matchEl.innerHTML = '<i class="fas fa-bullseye"></i> Dominant Silhouette: <strong>Complex Springtime Florist Accord</strong>';
+    }
+}
+
+function resetSliders() {
+    document.getElementById("slide-green").value = 25;
+    document.getElementById("slide-powder").value = 30;
+    document.getElementById("slide-dew").value = 40;
+    document.getElementById("slide-nectar").value = 35;
+    updateSimulator();
+}
+
+// Close drawer on escape
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
+});
+
+// Initialize on DOM load
+window.addEventListener("DOMContentLoaded", () => {
+    initApp();
+    updateSimulator();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Scent • Exploration Sandbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b0b0e;
+            --card-bg: rgba(22, 22, 27, 0.85);
+            --card-hover: rgba(30, 30, 38, 0.95);
+            --gold: #d4af37;
+            --gold-bright: #f9d71c;
+            --text-main: #f0f0f4;
+            --text-dim: #9898a0;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        header { text-align: center; margin-bottom: 45px; }
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto 30px;
+            font-weight: 300;
+        }
+        .level-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 45px;
+        }
+        .level-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 10px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .level-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold-bright);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+        }
+        .level-btn:hover:not(.active) {
+            border-color: var(--gold);
+            color: #fff;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-hint {
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin-bottom: 50px;
+        }
+        .node-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .node-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+            background: var(--card-hover);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .card-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--gold);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .card-sub {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .card-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 12px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .card-footer strong { color: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge">Perfumery Student Organ Sandbox</span>
+        <h1>The Architecture of Scent</h1>
+        <p class="subtitle">
+            An open exploration space. Enter through any scent door that catches your curiosity, discover its character, and wander laterally through connected notes.
+        </p>
+        
+        <div class="level-nav">
+            <a href="level_0_foundations.html" class="level-btn" style="border-color: rgba(56, 178, 172, 0.4); color: #81e6d9;"><i class="fas fa-graduation-cap"></i> Level 0: Foundations & Life Cycle</a>
+            <a href="index.html" class="level-btn active">Level 1: The Scent Constellation</a>
+            <a href="#level2Section" class="level-btn" onclick="showLevel(2)">Level 2: The Aromatic & Tea Organ</a>
+            <a href="level_2_two_bottle_dialogue.html" class="level-btn"><i class="fas fa-sliders-h"></i> 2-Bottle Lab</a>
+            <a href="special_mute_florals_synthetic_architecture.html" class="level-btn" style="border-color: rgba(244, 63, 94, 0.45); color: #fda4af;"><i class="fas fa-atom"></i> Masterclass: Mute Florals</a>
+            <a href="special_floral_triad_biochemistry.html" class="level-btn" style="border-color: rgba(212, 175, 55, 0.4); color: var(--gold);"><i class="fas fa-spa"></i> Masterclass: Floral Triad</a>
+            <a href="glossary.html" class="level-btn" style="border-color: var(--border-gold); color: var(--gold);"><i class="fas fa-book-open"></i> Glossary</a>
+        </div>
+    </header>
+
+    <!-- SPECIAL ADVANCED MASTERCLASSES BANNER -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; margin-bottom: 24px;">
+        <a href="special_mute_florals_synthetic_architecture.html" class="node-card" style="border-color: rgba(244, 63, 94, 0.45); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(244,63,94,0.08)); padding: 20px 24px; text-decoration: none;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                    <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #fda4af; background: rgba(244,63,94,0.15); padding: 2px 10px; border-radius: 12px; border: 1px solid rgba(244,63,94,0.3);">Advanced Chemistry Masterclass</span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: #fff;">The Mute Blossoms & Synthetic Florals</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0; line-height: 1.5;">
+                    Engineering <strong>Hyacinth</strong>, <strong>Peony</strong>, <strong>Lilac</strong>, <strong>Honeysuckle</strong>, and <strong>Gardenia</strong>. Deconstruct the chemistry of *fleurs muettes* and compound them with 100% verified Student Organ materials.
+                </p>
+            </div>
+            <div style="color: #fda4af; font-weight: 700; font-size: 0.85rem; margin-top: 12px; display: flex; align-items: center; gap: 6px;">
+                Enter Masterclass <i class="fas fa-arrow-right"></i>
+            </div>
+        </a>
+
+        <a href="special_floral_triad_biochemistry.html" class="node-card" style="border-color: rgba(212, 175, 55, 0.45); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(212,175,55,0.08)); padding: 20px 24px; text-decoration: none;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                    <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--gold); background: rgba(212,175,55,0.15); padding: 2px 10px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">Special Masterclass</span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: #fff;">Molecular Triad of Floral Architecture</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0; line-height: 1.5;">
+                    Deep biochemical deconstruction of <strong>Rose Otto</strong>, <strong>Jasmine Grandiflorum/Sambac</strong>, and synthetic <strong>Muguet</strong> with interactive biosimilarity maps.
+                </p>
+            </div>
+            <div style="color: var(--gold); font-weight: 700; font-size: 0.85rem; margin-top: 12px; display: flex; align-items: center; gap: 6px;">
+                Enter Triad Lab <i class="fas fa-arrow-right"></i>
+            </div>
+        </a>
+    </div>
+
+    <!-- LEVEL 0 ORIENTATION BANNER -->
+    <div style="margin-bottom: 30px;">
+        <a href="level_0_foundations.html" class="node-card" style="border-color: rgba(56, 178, 172, 0.45); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(56,178,172,0.08)); padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; text-decoration: none;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+                    <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #81e6d9; background: rgba(56,178,172,0.15); padding: 2px 10px; border-radius: 12px; border: 1px solid rgba(56,178,172,0.3);">Essential Orientation</span>
+                    <span style="font-size: 1.15rem; font-weight: 700; color: #fff;">Level 0: Foundations of Scent Architecture</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0; line-height: 1.5;">
+                    Master the foundational map: Raw Material ➔ Accord ➔ Base ➔ Fragrance, and the 5-stage life cycle from Creative Briefing to Scent Mind-Mapping, Blotter Testing, and 100-Part Bottling.
+                </p>
+            </div>
+            <div style="color: #81e6d9; font-weight: 700; font-size: 0.9rem; white-space: nowrap; margin-left: 20px; display: flex; align-items: center; gap: 8px;">
+                Start Here <i class="fas fa-arrow-right"></i>
+            </div>
+        </a>
+    </div>
+
+    <!-- LEVEL 1 CONTAINER -->
+    <div id="level1Container">
+        <div class="section-header">
+            <div class="section-title"><i class="fas fa-compass" style="color: var(--gold);"></i> Level 1: 5-Bottle Scent Constellation</div>
+            <div class="section-hint"><i class="fas fa-link"></i> Every note links laterally to sibling notes</div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Citrus Door -->
+            <a href="level_1_citrus.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-lemon"></i></div>
+                        <div>
+                            <div class="card-sub">Starting Door</div>
+                            <div class="card-title">Citrus & Peels</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Sharp, mouth-watering zest that bursts outward and vanishes quickly. Discover why citrus feels like an explosion of morning light.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Rose</strong> • <strong>Wood</strong> • <strong>Vanilla</strong>
+                </div>
+            </a>
+
+            <!-- Rose Door -->
+            <a href="level_1_rose.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-spa"></i></div>
+                        <div>
+                            <div class="card-sub">Starting Door</div>
+                            <div class="card-title">Floral Petals</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Warm, velvety honeyed petals. Discover how flowers form the living, beating heart of perfumes and bridge top notes into the drydown.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Citrus</strong> • <strong>Green Leaf</strong> • <strong>Wood</strong>
+                </div>
+            </a>
+
+            <!-- Wood Door -->
+            <a href="level_1_wood.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-tree"></i></div>
+                        <div>
+                            <div class="card-sub">Starting Door</div>
+                            <div class="card-title">Woods & Roots</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Dry pencil shavings, cedar bark, and damp forest roots. Discover how heavy molecules create a calm, patient, tactile skin anchor.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Citrus</strong> • <strong>Rose</strong> • <strong>Vanilla</strong>
+                </div>
+            </a>
+
+            <!-- Vanilla Door -->
+            <a href="level_1_vanilla.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-cookie-bite"></i></div>
+                        <div>
+                            <div class="card-sub">Starting Door</div>
+                            <div class="card-title">Warm Balsam & Vanilla</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Sweet resinous warmth, toasted almond, and cozy blankets. Discover how sweet balsamic crystals slow down evaporation and soften sharp edges.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Wood</strong> • <strong>Citrus</strong> • <strong>Rose</strong>
+                </div>
+            </a>
+
+            <!-- Green Door -->
+            <a href="level_1_green.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                        <div>
+                            <div class="card-sub">Starting Door</div>
+                            <div class="card-title">Cut Grass & Green Sap</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Bitter snap of freshly broken stems and rain on cut grass. Discover how green notes slice through sweetness and inject outdoor realism.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Rose</strong> • <strong>Citrus</strong> • <strong>Wood</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 1 ACCORDS WORKSHOP -->
+            <a href="level_1_accords.html" class="node-card" style="border-color: rgba(72, 187, 120, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(72,187,120,0.06));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(72,187,120,0.15); color: #68d391;"><i class="fas fa-music"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #68d391;">Level 1 Accords Lab</div>
+                            <div class="card-title">The Foundation Chords</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Learn how 1 + 1 = 3! Synthesize the 4 foundational chords (Living Rose, Rose-Wood, Earl Grey Tea, Grojsman Hug) using your 5 starter bottles.
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #68d391;">
+                    <i class="fas fa-vial"></i> Explore <strong>4 Fundamental Accords</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 1 STUDIO: COMPLETE PERFUME MILESTONE -->
+            <a href="level_1_perfume_studio.html" class="node-card" style="border-color: var(--border-gold); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(212,175,55,0.08));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(212,175,55,0.15); color: var(--gold);"><i class="fas fa-spray-can"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: var(--gold-bright);">Level 1 Studio Milestone</div>
+                            <div class="card-title">4 Archetypes & 15% EdP</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Formulate and bottle a complete 15% Eau de Parfum across 4 classical styles (Cologne, Neo-Rose, Cashmere Amber, Crisp Green) using only 5 bottles!
+                    </p>
+                </div>
+                <div class="card-footer" style="color: var(--gold);">
+                    <i class="fas fa-trophy"></i> Compound <strong>PERFUME-01 (15% EdP)</strong>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- LEVEL 2 CONTAINER -->
+    <div id="level2Container" style="margin-top: 50px;">
+        <div class="section-header" style="border-color: rgba(159, 122, 234, 0.4);">
+            <div class="section-title"><i class="fas fa-layer-group" style="color: #9f7aea;"></i> Level 2: The 4 Complementary Powerhouse Bottles</div>
+            <div class="section-hint" style="color: #9f7aea;"><i class="fas fa-plus-circle"></i> Adds Aromatic Herbs, Wind, Almond-Hay & Bitter Lichen</div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Lavender Door -->
+            <a href="level_2_lavender.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #9f7aea;"><i class="fas fa-wind"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #9f7aea;">Level 2 Note</div>
+                            <div class="card-title">French Lavender Oil</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Crisp, aristocratic cleanliness of Provencal fields. Unlocks the clean herbal grooming world and forms Pillar 1 of the Fougère.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Coumarin</strong> • <strong>Hedione</strong> • <strong>Evernyl</strong>
+                </div>
+            </a>
+
+            <!-- Hedione Door -->
+            <a href="level_2_hedione.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #4ba6a6;"><i class="fas fa-wind"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #4ba6a6;">Level 2 Note</div>
+                            <div class="card-title">Hedione (Diffuser)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        The acoustic amplifier of modern perfumery: transparent floral wind and negative space that makes perfumes project and breathe.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Lavender</strong> • <strong>Coumarin</strong> • <strong>Evernyl</strong>
+                </div>
+            </a>
+
+            <!-- Coumarin Door -->
+            <a href="level_2_coumarin.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #ed8936;"><i class="fas fa-sun"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #ed8936;">Level 2 Note</div>
+                            <div class="card-title">Coumarin (Tonka Hay)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Sweet cut hay, toasted almond marzipan, and shaving cream lather. The 1882 synthetic revolution that birthed modern perfumery.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Lavender</strong> • <strong>Evernyl</strong> • <strong>Hedione</strong>
+                </div>
+            </a>
+
+            <!-- Evernyl Door -->
+            <a href="level_2_evernyl.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #38a169;"><i class="fas fa-tree"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #38a169;">Level 2 Note</div>
+                            <div class="card-title">Evernyl (Oakmoss)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Injects the essential <strong>earthy vibe</strong> to both Fougère and Chypre, with a unique sweet-moss paradox (spun-sugar caramel at higher doses). 100% skin-safe IFRA oakmoss anchor.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Coumarin</strong> • <strong>Lavender</strong> • <strong>Hedione</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 2 ACCORDS WORKSHOP -->
+            <a href="level_2_accords.html" class="node-card" style="border-color: rgba(159, 122, 234, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(159,122,234,0.06));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(159,122,234,0.15); color: #d6bcfa;"><i class="fas fa-music"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #d6bcfa;">Level 2 Accords Lab</div>
+                            <div class="card-title">Aromatic & Solar Chords</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Synthesize the 4 iconic 19th & 20th century chords: Fougère Keystone (1882), Ellena Green Tea (1992), Barbershop Foam, and Jasmine Wind.
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #d6bcfa;">
+                    <i class="fas fa-vial"></i> Explore <strong>4 Aromatic Accords</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 2 STUDIO: COMPLETE PERFUME MILESTONE -->
+            <a href="level_2_perfume_studio.html" class="node-card" style="border-color: rgba(159, 122, 234, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(159,122,234,0.08));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(159,122,234,0.15); color: #9f7aea;"><i class="fas fa-spray-can"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #b794f4;">Level 2 Studio Milestone</div>
+                            <div class="card-title">Fougère, Tea & Tonka</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Combine Level 1 + Level 2 bottles to compound and bottle 3 new commercial styles: Solar Aromatic Fougère, Thé Vert Oasis, or Smoked Tonka!
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #b794f4;">
+                    <i class="fas fa-trophy"></i> Compound <strong>PERFUME-02 (15% EdP)</strong>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- LEVEL 3 CONTAINER -->
+    <div id="level3Container" style="margin-top: 50px;">
+        <div class="section-header" style="border-color: rgba(197, 48, 48, 0.4);">
+            <div class="section-title"><i class="fas fa-dungeon" style="color: #feb2b2;"></i> Level 3: The Grand Chypre & Leather Organ</div>
+            <div class="section-hint" style="color: #feb2b2;"><i class="fas fa-fire"></i> Ancient Balsamic Amber, Peaty Leather, Dewy Petals & Dark Cellar Earth</div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Labdanum Door -->
+            <a href="level_3_labdanum.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #feb2b2;"><i class="fas fa-fire"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #feb2b2;">Level 3 Note</div>
+                            <div class="card-title">Labdanum Resinoid</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Sacred, leathery rockrose amber resin. Forms the warm balsamic shadow of the 1917 Chypre and bridges into animalic leather.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>IBQ</strong> • <strong>Patchouli</strong> • <strong>Florol</strong>
+                </div>
+            </a>
+
+            <!-- IBQ Door -->
+            <a href="level_3_ibq.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #ecc94b;"><i class="fas fa-vest"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #ecc94b;">Level 3 Note</div>
+                            <div class="card-title">IBQ / Pyralone</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Bitter cured leather hide with a secret damp-peat mossy facet. The 1944 rebellious spine behind Bandit and Cabochard.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Labdanum</strong> • <strong>Evernyl</strong> • <strong>Florol</strong>
+                </div>
+            </a>
+
+            <!-- Florol Door -->
+            <a href="level_3_florol.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #ed64a6;"><i class="fas fa-spa"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #ed64a6;">Level 3 Note</div>
+                            <div class="card-title">Florol (Dewy Petal)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Cool, watery muguet lily petals. Softens harsh bitter leathers into beige suede and creates modern luminous Neo-Chypre hearts.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>IBQ</strong> • <strong>Labdanum</strong> • <strong>Hedione</strong>
+                </div>
+            </a>
+
+            <!-- Patchouli Door -->
+            <a href="level_3_patchouli.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #fbd38d;"><i class="fas fa-seedling"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #fbd38d;">Level 3 Note</div>
+                            <div class="card-title">Patchouli Oil</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Damp cellar earth, bitter dark cocoa, and aged teakwood. The eternal grounding partner to Rose and anchor of the Great Chypre.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Rose</strong> • <strong>Labdanum</strong> • <strong>IBQ</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 3 ACCORDS WORKSHOP -->
+            <a href="level_3_accords.html" class="node-card" style="border-color: rgba(197, 48, 48, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(197,48,48,0.06));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(197,48,48,0.15); color: #feb2b2;"><i class="fas fa-music"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #feb2b2;">Level 3 Accords Lab</div>
+                            <div class="card-title">Chypre & Leather Chords</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Synthesize the 4 master French chords: Coty Chypre Triad (1917), Cellier Peaty Suede (1944), Neo-Chypre Petal Heart, and Amber Earth.
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #feb2b2;">
+                    <i class="fas fa-vial"></i> Explore <strong>4 Chypre & Leather Accords</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 3 STUDIO: COMPLETE PERFUME MILESTONE -->
+            <a href="level_3_perfume_studio.html" class="node-card" style="border-color: rgba(197, 48, 48, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(197,48,48,0.08));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(197,48,48,0.15); color: #feb2b2;"><i class="fas fa-spray-can"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #fed7d7;">Level 3 Studio Milestone</div>
+                            <div class="card-title">Grand Chypre & Leather</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Compound and bottle the two ultimate masterpieces of French perfumery: François Coty's 1917 Chypre Chiaroscuro or Germaine Cellier's 1944 Peaty Suede!
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #feb2b2;">
+                    <i class="fas fa-trophy"></i> Compound <strong>PERFUME-03 (15% EdP)</strong>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- LEVEL 4 CONTAINER: THE CLASSICAL AMBER ARCHETYPE -->
+    <div id="level4Container" style="margin-top: 50px; margin-bottom: 60px;">
+        <div class="section-header" style="border-color: rgba(221, 107, 32, 0.4);">
+            <div class="section-title"><i class="fas fa-layer-group" style="color: #dd6b20;"></i> Level 4: The Classical Amber Archetype (1925 Shalimar)</div>
+            <div class="section-hint" style="color: #dd6b20;"><i class="fas fa-fire"></i> Golden Balsams, 3.5x Ethyl Vanillin, Sacred Smoke & Macrocyclic Musks</div>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Benzoin Door -->
+            <a href="level_4_benzoin.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #dd6b20;"><i class="fas fa-burn"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #dd6b20;">Level 4 Note</div>
+                            <div class="card-title">Benzoin Siam (50%)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Sweet golden resin tears weeping from Styrax tree bark. Honeyed vanilla balsam, toasted almond marzipan, and the natural fixative cushion.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Ethyl Vanillin</strong> • <strong>Labdanum</strong> • <strong>Bergamot</strong>
+                </div>
+            </a>
+
+            <!-- Ethyl Vanillin Door -->
+            <a href="level_4_ethyl_vanillin.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #f6e05e;"><i class="fas fa-ice-cream"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #f6e05e;">Level 4 Note</div>
+                            <div class="card-title">Ethyl Vanillin (10%)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        The 1925 synthetic revolution. 3.5x stronger than standard Vanillin with dark crème brûlée caramel, smoky bourbon oak, and the spine of Shalimar.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Bergamot</strong> • <strong>Benzoin</strong> • <strong>Clearwood</strong>
+                </div>
+            </a>
+
+            <!-- Frankincense Door -->
+            <a href="level_4_frankincense.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #cbd5e0;"><i class="fas fa-church"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #cbd5e0;">Level 4 Note</div>
+                            <div class="card-title">Frankincense (Olibanum)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Boswellia carterii sacred gum resin. Sparking lemony-pine top notes plunging into cold cathedral stone smoke that balances sugar.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Benzoin</strong> • <strong>Iso E Super</strong> • <strong>Florol</strong>
+                </div>
+            </a>
+
+            <!-- Musk Door -->
+            <a href="level_4_musk.html" class="node-card">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="color: #b794f4;"><i class="fas fa-feather-alt"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #b794f4;">Level 4 Note</div>
+                            <div class="card-title">Ethylene Brassylate (Musk)</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        The smooth, biodegradable macrocyclic musk cushion. Warm intimate skin, powdery blackberry seed, and weightless diffusion for heavy resins.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    Direct Links: <strong>Ethyl Vanillin</strong> • <strong>Rose</strong> • <strong>Labdanum</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 4 ACCORDS WORKSHOP -->
+            <a href="level_4_accords.html" class="node-card" style="border-color: rgba(221, 107, 32, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(221,107,32,0.06));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(221,107,32,0.15); color: #fbd38d;"><i class="fas fa-music"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #fbd38d;">Level 4 Accords Lab</div>
+                            <div class="card-title">Golden Amber & Sacred Chords</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Synthesize the 4 great golden chords: Historic Ambre 83, Shalimar Velvet Cushion (1925), Sacred Stone Incense, and Modern Amber Noir.
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #fbd38d;">
+                    <i class="fas fa-vial"></i> Explore <strong>4 Golden Amber Accords</strong>
+                </div>
+            </a>
+
+            <!-- LEVEL 4 STUDIO: COMPLETE PERFUME MILESTONE -->
+            <a href="level_4_perfume_studio.html" class="node-card" style="border-color: rgba(221, 107, 32, 0.4); background: linear-gradient(135deg, rgba(22,22,27,0.95), rgba(221,107,32,0.08));">
+                <div>
+                    <div class="card-top">
+                        <div class="card-icon" style="background: rgba(221,107,32,0.15); color: #dd6b20;"><i class="fas fa-spray-can"></i></div>
+                        <div>
+                            <div class="card-sub" style="color: #dd6b20;">Level 4 Studio Milestone</div>
+                            <div class="card-title">The Grand Classical Amber</div>
+                        </div>
+                    </div>
+                    <p class="card-desc">
+                        Compound and bottle the legendary 1925 Shalimar Imperial Amber, Sacred Smoke & Petals, or Modern Amber Noir in a full 15% Eau de Parfum!
+                    </p>
+                </div>
+                <div class="card-footer" style="color: #dd6b20;">
+                    <i class="fas fa-trophy"></i> Compound <strong>PERFUME-04 (15% EdP)</strong>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
