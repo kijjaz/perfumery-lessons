@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #070708;
+            --bg-card: rgba(20, 20, 22, 0.75);
+            --bg-input: rgba(30, 30, 35, 0.8);
+            --text-primary: #f3f3f5;
+            --text-dim: #a0a0a5;
+            --gold-primary: #d4af37;
+            --gold-bright: #f9d71c;
+            --gold-glow: rgba(212, 175, 55, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.3);
+            --accent-teal: #4ba6a6;
+            --accent-purple: #9b51e0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Google Sans Flex', 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            max-width: 1150px;
+            margin: 0 auto;
+            background-image: 
+                radial-gradient(circle at 10% 15%, rgba(212, 175, 55, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 90% 85%, rgba(75, 166, 166, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 {
+            font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold-primary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase;
+        }
+        .subtitle { font-size: 1.15rem; color: var(--text-dim); font-weight: 300; margin-bottom: 20px; }
+        .nav-link-btn {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card);
+            border: 1px solid var(--border-gold); color: var(--gold-primary); padding: 8px 18px;
+            border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+            transition: all 0.25s ease; margin-bottom: 20px;
+        }
+        .nav-link-btn:hover { background: var(--gold-primary); color: #000; box-shadow: 0 0 12px var(--gold-glow); }
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 28px; margin-bottom: 30px; backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .card-gold { border-color: var(--border-gold); box-shadow: 0 8px 32px 0 var(--gold-glow); }
+        .card-title { font-size: 1.35rem; font-weight: 700; color: var(--gold-primary); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+        .section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-primary); margin: 40px 0 20px; border-left: 4px solid var(--gold-primary); padding-left: 15px; }
+        .mol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .mol-card { background: rgba(25, 25, 28, 0.8); border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; }
+        .mol-card:hover { border-color: var(--border-gold); }
+        .mol-name { font-weight: 700; color: var(--gold-primary); font-size: 1.1rem; }
+        .mol-cas { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--text-dim); background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px; }
+        .mono { font-family: 'Space Mono', monospace; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+        th { background: rgba(212, 175, 55, 0.1); color: var(--gold-primary); padding: 12px; border-bottom: 2px solid var(--border-gold); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
+        td { padding: 12px; border-bottom: 1px solid var(--border-color); }
+    </style>
+
+    <title>Lesson 2.2: The Art of the Olfactory Bridge</title>
+</head>
+<body>
+    <a href="../index.html" class="nav-link-btn"><i class="fa-solid fa-arrow-left"></i> Return to Course Portal</a>
+    <header>
+        <h1>Lesson 2.2: The Art of the Olfactory Bridge</h1>
+        <div class="subtitle">Module 2: The Functional Hierarchy (Physics for Artists)</div>
+    </header>
+
+    <div class="card card-gold">
+        <div class="card-title"><i class="fa-solid fa-bridge"></i> Lesson Overview</div>
+        <p><strong>Difficulty:</strong> Intermediate | <strong>Estimated Time:</strong> 90 Minutes</p>
+        <p style="margin-top:10px;">Understand why fragrances fracture, contrast horizontal Blenders with vertical Bridges, and master monoterpene alcohols, aldehydic blenders, and synthetic woods.</p>
+    </div>
+
+    <h2 class="section-title">1. Blender vs. Bridge Architecture</h2>
+    <div class="card">
+        <div style="grid-template-columns: 1fr 1fr; display:grid; gap:20px;">
+            <div style="background:rgba(255,255,255,0.03); padding:18px; border-radius:12px; border:1px solid var(--border-color);">
+                <h3 style="color:var(--gold-primary); margin-bottom:8px;">The Blender (Horizontal)</h3>
+                <p style="font-size:0.9rem;">Operates across materials in the same evaporation phase. Dilutes sharp edges and smooths out clashing notes within a single tier.</p>
+            </div>
+            <div style="background:rgba(212,175,55,0.08); padding:18px; border-radius:12px; border:1px solid var(--border-gold);">
+                <h3 style="color:var(--gold-bright); margin-bottom:8px;">The Bridge (Vertical)</h3>
+                <p style="font-size:0.9rem;">Operates vertically across evaporation gaps. Possesses olfactory facets of both volatile top notes and heavy base anchors to prevent formula fracturing.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

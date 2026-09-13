@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landmark Study: Jean Paul Gaultier — Le Male (1995) | Perfumery Analytical Archive</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #09090d;
+            --card-bg: rgba(18, 18, 24, 0.85);
+            --card-hover: rgba(28, 28, 38, 0.98);
+            --border: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(212, 175, 55, 0.35);
+            --gold: #d4af37;
+            --gold-bright: #f9d71c;
+            --accent-top: #38bdf8;
+            --accent-mid: #f472b6;
+            --accent-base: #10b981;
+            --accent-amber: #f59e0b;
+            --text-main: #f3f4f6;
+            --text-dim: #9ca3af;
+            --text-muted: #6b7280;
+            --font-mono: 'Space Mono', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.65;
+            padding: 40px 24px 80px;
+        }
+
+        .container {
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* Archive Category Pill */
+        .archive-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        header {
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 25px;
+        }
+
+        .title-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-top) 85%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .pill i { color: var(--gold); }
+
+        p.lead {
+            font-size: 1.12rem;
+            color: var(--text-dim);
+            max-width: 1100px;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* Disclaimer Alert Banner */
+        .disclaimer-banner {
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .disclaimer-banner i {
+            color: var(--accent-amber);
+            font-size: 1.25rem;
+            margin-top: 2px;
+        }
+
+        .disclaimer-text {
+            font-size: 0.88rem;
+            color: #d1d5db;
+            line-height: 1.55;
+        }
+
+        /* Metric / Highlight Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-highlight);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .stat-sub {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(12px);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.28rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+        }
+
+        .section-title i {
+            color: var(--gold);
+        }
+
+        /* 4D Life Cycle: 3 Windows Grid */
+        .lifecycle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .window-box {
+            background: rgba(14, 14, 20, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .window-title {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .window-time {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .window-desc {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+
+        /* Narrative / Dialectic Grid */
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+            margin-top: 10px;
+        }
+
+        .narrative-box {
+            background: rgba(12, 12, 16, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .narrative-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .narrative-box p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        /* Search input */
+        .search-box {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(14, 14, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px 12px 42px;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        /* Filter Controls */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold);
+            color: #ffffff;
+        }
+
+        /* Full-Width Responsive Table */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(14, 14, 18, 0.95);
+            color: var(--text-dim);
+            font-family: var(--font-mono);
+            font-weight: 600;
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.35;
+        }
+
+        td {
+            padding: 11px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            vertical-align: middle;
+            line-height: 1.45;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Column width distributions (6 columns) */
+        #formulaTable th:nth-child(1), #formulaTable td:nth-child(1) { width: 12%; min-width: 110px; }
+        #formulaTable th:nth-child(2), #formulaTable td:nth-child(2) { width: 12%; min-width: 115px; }
+        #formulaTable th:nth-child(3), #formulaTable td:nth-child(3) { width: 26%; min-width: 200px; }
+        #formulaTable th:nth-child(4), #formulaTable td:nth-child(4) { width: 27%; min-width: 200px; }
+        #formulaTable th:nth-child(5), #formulaTable td:nth-child(5) { width: 12%; min-width: 105px; }
+        #formulaTable th:nth-child(6), #formulaTable td:nth-child(6) { width: 11%; min-width: 100px; }
+
+        /* Volatility Tags */
+        .tier-tag {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .tier-Top {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-top);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+
+        .tier-Middle {
+            background: rgba(244, 114, 182, 0.15);
+            color: var(--accent-mid);
+            border: 1px solid rgba(244, 114, 182, 0.35);
+        }
+
+        .tier-Base {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-base);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        /* Functional Architectural Accord Roles */
+        .role-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .role-heart {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+        }
+
+        .role-modifier {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+
+        .role-blender {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+        }
+
+        .role-fixative {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+        }
+
+        .material-title {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .material-role {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        .declared-note {
+            font-size: 0.8rem;
+            color: #d1d5db;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .declared-note i {
+            color: var(--gold);
+            margin-right: 4px;
+            font-size: 0.72rem;
+        }
+
+        .dosage-badge {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.84rem;
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .source-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .src-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .src-tag.gcms {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-top);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .src-tag.patent {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-amber);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        /* Bibliography grid */
+        .biblio-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 10px 24px;
+            margin-top: 10px;
+        }
+
+        .biblio-item {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.45;
+        }
+
+        .biblio-num {
+            font-family: var(--font-mono);
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+            width: 28px;
+        }
+
+        .interactive-tagline {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Archive Category Pill -->
+    <div class="archive-badge">
+        <i class="fas fa-archive"></i> Landmark Perfume Deconstruction & Analytical Archive
+    </div>
+
+    <!-- SECTION 1: HEADER & CORE IDENTITY -->
+    <header>
+        <div class="title-row">
+            <div>
+                <h1>Jean Paul Gaultier: Le Male (1995)</h1>
+                <p class="lead">Deconstruction of Francis Kurkdjian’s archetype: The barbershop lavender fougère transfigured into an opulent Amber gourmand through massive clean white musks, coumarin, vanilla, and cooling mint.</p>
+            </div>
+            <div class="meta-pills">
+                <div class="pill"><i class="fas fa-flask"></i> Perfumer: Francis Kurkdjian</div>
+                <div class="pill"><i class="fas fa-tags"></i> Archetype: Aromatic Fougère — Amber</div>
+                <div class="pill"><i class="fas fa-atom"></i> Structural Overdose: Galaxolide / Tonalide (~50%) + Mint/Lavender Dialectic</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DISCLAIMER BANNER -->
+    <div class="disclaimer-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="disclaimer-text">
+            <strong>Formulation Notice & Epistemic Disclaimer:</strong> The dosages, percentages, and materials documented below are <em>not</em> the proprietary trade secret commercial formula of Jean Paul Gaultier / Puig. All figures represent analytical approximations, calibrated ranges from multiple GCMS studies, patent filings (e.g. US6737396B2), and educational reconstructions. Micro-impact components are declared as <em>Trace</em>, <em>Estimated</em>, or <em>Relative peak intensity</em>.
+        </div>
+    </div>
+
+    <!-- SECTION 2: FORMULA METRICS / STAT CARDS -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <span class="stat-label">Core Overdose #1</span>
+            <span class="stat-value" style="color: #38bdf8;">~50% Clean Musks</span>
+            <span class="stat-sub">Galaxolide & Tonalide laundry-clean foundation</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Core Overdose #2</span>
+            <span class="stat-value" style="color: #f59e0b;">~6% Coumarin</span>
+            <span class="stat-sub">Almond/tonka bridge anchoring the Fougère-Amber spine</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Opening Shock</span>
+            <span class="stat-value" style="color: #10b981;">Mint + Dihydromyrcenol</span>
+            <span class="stat-sub">Electric barbershop coolness & metallic lavender sheen</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-label">Aeration Engine</span>
+            <span class="stat-value" style="color: #f472b6;">Hedione + Floralcy</span>
+            <span class="stat-sub">Orange flower & transparent jasmine preventing syrup density</span>
+        </div>
+    </div>
+
+    <!-- SECTION 3: 4D LIFE CYCLE - 3 TEMPORAL EVALUATION WINDOWS -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-clock"></i> 4D Life Cycle: The 3 Temporal Evaluation Windows
+            </div>
+            <span class="interactive-tagline">Evaporation Kinetics & Perceptual Trajectory</span>
+        </div>
+
+        <div class="lifecycle-grid">
+            <div class="window-box" style="border-left-color: var(--accent-top);">
+                <div class="window-title" style="color: var(--accent-top);"><i class="fas fa-bolt"></i> Window 1: The Flash</div>
+                <div class="window-time">0 to 15 Minutes</div>
+                <div class="window-desc">
+                    High-impact volatile burst: <strong>Spearmint / Peppermint (L-carvone/menthol)</strong> paired with crisp <strong>Dihydromyrcenol</strong>, radiant <strong>Sfuma Lemon / Bergamot FCF</strong>, and herbal <strong>Armoise (Artemisia)</strong>. Strikes the nose with an electric, ultra-clean barbershop freshness.
+                </div>
+            </div>
+            <div class="window-box" style="border-left-color: var(--accent-mid);">
+                <div class="window-title" style="color: var(--accent-mid);"><i class="fas fa-spa"></i> Window 2: The Bloom</div>
+                <div class="window-time">30 Minutes to 2 Hours</div>
+                <div class="window-desc">
+                    The aromatic core unfolds: <strong>Provencal Lavender & Lavandin</strong> blended with <strong>Chinese Geranium</strong>, warmed by sweet <strong>Orange Flower Absolute</strong> and lifted by <strong>Hedione® HC</strong>, <strong>Linalool/Linalyl Acetate</strong>, and powdery <strong>Methyl Ionone Gamma</strong>. Trace cinnamon/eugenol provides warm spice color.
+                </div>
+            </div>
+            <div class="window-box" style="border-left-color: var(--accent-base);">
+                <div class="window-title" style="color: var(--accent-base);"><i class="fas fa-shield-alt"></i> Window 3: The Drydown</div>
+                <div class="window-time">4 Hours to 24+ Hours</div>
+                <div class="window-desc">
+                    The legendary monolithic anchor takes over: <strong>Galaxolide & Tonalide (~50%)</strong> and macrocyclic <strong>Muscenone</strong> fused with <strong>Coumarin (~6%)</strong>, <strong>Vanillin (~1-3%)</strong>, benzoin, and velvety <strong>Iso E Super</strong>. Trace cumin and animalic notes provide sensual warmth that endures on fabric for days.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: ARCHITECTURAL ANATOMY & THEMATIC ACCORDS -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-balance-scale"></i> Architectural Anatomy & Thematic Accords
+            </div>
+            <span class="interactive-tagline">The Fougère-to-Amber Dialectic</span>
+        </div>
+        
+        <div class="narrative-grid">
+            <div class="narrative-box">
+                <h3 style="color: #f59e0b;"><i class="fas fa-candy-cane"></i> 1. The Fougère-to-Amber Pivot</h3>
+                <p>Classical masculine fougères rely on lavender, coumarin, and bitter oakmoss. Kurkdjian removed the heavy moss/leather bitterness and inverted the proportions into an opulent <strong>Amber</strong> base with vanilla, benzoin, and a staggering overdose of coumarin.</p>
+                <p>The result bridges shaving foam masculinity with oriental evening sensuality.</p>
+            </div>
+            <div class="narrative-box">
+                <h3 style="color: #38bdf8;"><i class="fas fa-tshirt"></i> 2. The Monolithic White Musk Saturated Core</h3>
+                <p>Le Male is practically built on a massive bed of polycyclic and macrocyclic musks (Galaxolide, Tonalide, Muscenone) reaching up to <strong>50%</strong> of the formula.</p>
+                <p>This imparts an iconic "hot iron on freshly starched laundry" radiance that carries the sweet vanilla effortlessly through space.</p>
+            </div>
+            <div class="narrative-box">
+                <h3 style="color: #10b981;"><i class="fas fa-snowflake"></i> 3. The Cooling Mint Counterweight</h3>
+                <p>To prevent the rich vanillic amber base from collapsing into dense cloying pastry, crisp cooling mint (spearmint/peppermint) and dihydromyrcenol slice across the top.</p>
+                <p>The ice-and-fire tension between icy mint and warm vanilla forms the signature olfactory fingerprint.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 5: RAW MATERIALS & APPROXIMATED FORMULA MATRIX -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-vial"></i> Raw Materials & Approximated Formula Matrix
+            </div>
+            <span class="interactive-tagline">Interactive Filtering by Volatility & Architectural Function</span>
+        </div>
+
+        <!-- Search Filter -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by material, note, CAS, m/z peak, or olfactory role..." onkeyup="filterTable()">
+        </div>
+
+        <!-- Filter Buttons Bar -->
+        <div class="filter-bar">
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-right: 4px;">VOLATILITY:</span>
+            <button class="filter-btn active" onclick="setFilter('all', this)"><i class="fas fa-layer-group"></i> All (32)</button>
+            <button class="filter-btn" onclick="setFilter('Top', this)"><i class="fas fa-feather-alt"></i> Top Flash</button>
+            <button class="filter-btn" onclick="setFilter('Middle', this)"><i class="fas fa-heart"></i> Heart Bloom</button>
+            <button class="filter-btn" onclick="setFilter('Base', this)"><i class="fas fa-anchor"></i> Base Tenacity</button>
+
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-left: 12px; margin-right: 4px;">FUNCTION:</span>
+            <button class="filter-btn" onclick="setFilter('role-heart', this)"><i class="fas fa-star" style="color: #fbbf24;"></i> Heart Protagonist</button>
+            <button class="filter-btn" onclick="setFilter('role-modifier', this)"><i class="fas fa-magic" style="color: #f87171;"></i> Modifier</button>
+            <button class="filter-btn" onclick="setFilter('role-blender', this)"><i class="fas fa-random" style="color: #38bdf8;"></i> Blender / Bridge</button>
+            <button class="filter-btn" onclick="setFilter('role-fixative', this)"><i class="fas fa-anchor" style="color: #34d399;"></i> Fixative Anchor</button>
+        </div>
+
+        <!-- Full-Width Matrix Table -->
+        <div class="table-responsive">
+            <table id="formulaTable">
+                <thead>
+                    <tr>
+                        <th>Tier / Life Cycle</th>
+                        <th>Architectural Role</th>
+                        <th>Material & Commercial Note</th>
+                        <th>Olfactory Role & Sensory Impact</th>
+                        <th>Dosage / % (Approx / Range)</th>
+                        <th>Source / Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- 1. Limonene / Sfuma Lemon / Bergamot -->
+                    <tr data-tier="Top" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Limonene / Sfuma Lemon / Bergamot</div>
+                            <div class="material-role">CAS 5989-27-5 • m/z 137 peak • Citrus terpene / essential oils</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Citrus / Lemon / Bergamot</span>
+                        </td>
+                        <td>Volatile terpene providing sparkling citrus sparkle, opening shock, and radiant brightness.</td>
+                        <td><span class="dosage-badge">Approx 0.05% - 18.75% (Profile range)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">GCMS m/z 137</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 2. Citral -->
+                    <tr data-tier="Top" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Citral</div>
+                            <div class="material-role">CAS 5392-40-5 • Isomeric aldehyde mix</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Lemon Zest / Fuzzy Citrus</span>
+                        </td>
+                        <td>Warmer, fuzzy, candy-like lemon zest top; adds tactile sweetness to opening citrus shock.</td>
+                        <td><span class="dosage-badge">Trace (~0.01%)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 3. Mint / Spearmint (Menthol / L-Carvone) -->
+                    <tr data-tier="Top" data-role="role-heart">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">Mint / Spearmint Oil (Menthol / L-Carvone)</div>
+                            <div class="material-role">CAS 6485-40-1 • Essential oil & terpenes</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Fresh Mint / Peppermint</span>
+                        </td>
+                        <td>Signature cooling opening shock and aromatic freshness; forms the ice half of the fire/ice tension.</td>
+                        <td><span class="dosage-badge">Estimated 2.0% - 5.0% (Trace in formula base)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 4. Dihydromyrcenol -->
+                    <tr data-tier="Top" data-role="role-blender">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">Dihydromyrcenol</div>
+                            <div class="material-role">CAS 18479-58-8 • 2,6-dimethyloct-7-en-2-ol</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Fresh Metallic Lavender / Fresh Laundry</span>
+                        </td>
+                        <td>Drives the 'men’s fresh' engine; powerful metallic, radiant lavender sheen; bridges citrus top into herbs.</td>
+                        <td><span class="dosage-badge">Approx 7.0% - 20.6%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">Core Fresh</span>
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 5. Linalyl Acetate -->
+                    <tr data-tier="Top" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Linalyl Acetate</div>
+                            <div class="material-role">CAS 115-95-7 • Terpene ester</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Bergamot / Lavender Sheen</span>
+                        </td>
+                        <td>High-volatility fresh ester; natural bridge connecting citrus bergamot flash with lavender bloom.</td>
+                        <td><span class="dosage-badge">Approx 5.0% - 11.25%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 6. Armoise (Mugwort / Artemisia) -->
+                    <tr data-tier="Top" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Armoise Oil (Artemisia vulgaris)</div>
+                            <div class="material-role">Natural botanical fraction • Thujone/camphor</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Herbal Absinthe / Camphorous</span>
+                        </td>
+                        <td>Thujonic, camphorous herbal body; anchors the top flash and gives masculine aromatic backbone.</td>
+                        <td><span class="dosage-badge">Moderate / Functional (~0.5% - 1%)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 7. Triplal -->
+                    <tr data-tier="Top" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Top">Top • Flash</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Triplal (Ligustrazal)</div>
+                            <div class="material-role">CAS 68039-49-6 • Dimethyl cyclohexenyl carboxaldehyde</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Green Ivy / Crushed Leaf</span>
+                        </td>
+                        <td>High-impact green leaf accent; gives herbal-floral top note lift and fresh crispness.</td>
+                        <td><span class="dosage-badge">Trace (~0.05% @ 1% dil)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 8. Lavender & Lavandin Oil -->
+                    <tr data-tier="Middle" data-role="role-heart">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">Lavender & Lavandin Grosso Oil</div>
+                            <div class="material-role">Natural botanical oils • Linalool / Linalyl Acetate core</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Provencal Lavender / Barbershop Herbs</span>
+                        </td>
+                        <td>Aromatic fougère heart protagonist; Lavandin used at 2:1 ratio over true lavender for sweeter, rounder herbalcy.</td>
+                        <td><span class="dosage-badge">Approx 1.0% - 2.0% (Up to 12% in accord)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">Fougère Core</span>
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 9. Linalool -->
+                    <tr data-tier="Middle" data-role="role-blender">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">Linalool</div>
+                            <div class="material-role">CAS 78-70-6 • 3,7-dimethylocta-1,6-dien-3-ol</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Bergamot-Lavender Floralcy</span>
+                        </td>
+                        <td>Transparent floral blender; bridges citrus-mint top into aromatic lavender heart with zero volume seam.</td>
+                        <td><span class="dosage-badge">Significant (Estimated 5% - 15%)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 10. Chinese Geranium Oil -->
+                    <tr data-tier="Middle" data-role="role-heart">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">Chinese Geranium Essential Oil</div>
+                            <div class="material-role">Natural botanical oil • Geraniol / Citronellol</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Rosy / Minty / Green Floral</span>
+                        </td>
+                        <td>Floral fougère bridge; its minty-rosy facet binds cooling top notes to the warm floral core.</td>
+                        <td><span class="dosage-badge">Approx 3.75% (120 parts)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 11. Citronellol (GCMS Peak) -->
+                    <tr data-tier="Middle" data-role="role-heart">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">Citronellol</div>
+                            <div class="material-role">CAS 106-22-9 • m/z 157 peak (GCMS detected)</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Floral / Rose-Geranium</span>
+                        </td>
+                        <td>Heart expansion component; provides floral body, rosaceous volume, and extends freshness into the drydown.</td>
+                        <td><span class="dosage-badge">Detected (Relative peak intensity)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">GCMS m/z 157</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 12. Orange Flower Absolute / Neroli -->
+                    <tr data-tier="Middle" data-role="role-heart">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">Orange Flower Absolute / Neroli Accord</div>
+                            <div class="material-role">Citrus aurantium natural absolute & bases</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Orange Blossom / Golden Floral</span>
+                        </td>
+                        <td>White floral heart; adds golden sunlit warmth and sweetness to counter the sharp metallic aromatics.</td>
+                        <td><span class="dosage-badge">Moderate / Functional (Estimated ~1% - 3%)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 13. Hedione / Hedione HC -->
+                    <tr data-tier="Middle" data-role="role-blender">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">Hedione® / Hedione® HC (Methyl Dihydrojasmonate)</div>
+                            <div class="material-role">CAS 24851-98-7 • Cis-isomer enriched ester</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Transparent Jasmine / Dewy Radiance</span>
+                        </td>
+                        <td>Diffusive sillage engine; lifts heavy vanilla and musks into warm air; prevents formula from smelling thick or stodgy.</td>
+                        <td><span class="dosage-badge">Approx 9.38% - 15.0%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">Sillage Engine</span>
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 14. Alpha-Isomethyl Ionone (Methyl Ionone Gamma) -->
+                    <tr data-tier="Middle" data-role="role-heart">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-heart"><i class="fas fa-star"></i> Protagonist</span></td>
+                        <td>
+                            <div class="material-title">Alpha-Isomethyl Ionone (Methyl Ionone Gamma)</div>
+                            <div class="material-role">CAS 127-51-5 • Cetone Alpha</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Violet / Powdery Orris</span>
+                        </td>
+                        <td>Subdued powdery floral through-line; provides cosmetic barbershop cleanliness and velvety heart texture.</td>
+                        <td><span class="dosage-badge">Approx 1.5% - 3.0%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 15. Lilial & Lyral (Vintage Accord) -->
+                    <tr data-tier="Middle" data-role="role-blender">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">Lilial & Lyral (Vintage Muguet Synthetics)</div>
+                            <div class="material-role">CAS 80-54-6 & 31906-04-4 • Hydroxyaldehydes (Historical)</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Lily of the Valley / Watery Floral Lift</span>
+                        </td>
+                        <td>Provides floral transparency, lift, and opening between molecules; historically vital for 1995 diffusion.</td>
+                        <td><span class="dosage-badge">Approx 5.0% - 7.0% (Vintage pre-ban)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 16. Cinnamon Bark & Eugenol -->
+                    <tr data-tier="Middle" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Cinnamon Bark Oil & Eugenol</div>
+                            <div class="material-role">CAS 97-53-0 • Phenylpropanoid spice fractions</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Warm Spice / Clove-Cinnamon</span>
+                        </td>
+                        <td>Adds fiery warmth and chromatic depth to the fougère heart, bridging lavender to vanilla.</td>
+                        <td><span class="dosage-badge">Trace (~0.05% - 0.2%)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 17. GCMS Signature Peak m/z 246 -->
+                    <tr data-tier="Middle" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Middle">Middle • Bloom</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Specific Modifier (m/z 246 peak)</div>
+                            <div class="material-role">Unassigned characteristic fragment • Mid-phase biomarker</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Unique Analytical Fingerprint</span>
+                        </td>
+                        <td>Signature olfactory signal detected in extractive electrospray mass spectrometry unique to Le Male.</td>
+                        <td><span class="dosage-badge">Abundant (GCMS Signature)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">GCMS m/z 246</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 18. Coumarin -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Coumarin</div>
+                            <div class="material-role">CAS 91-64-5 • 1-benzopyran-2-one</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Tonka Bean / Sweet Hay / Almond</span>
+                        </td>
+                        <td>Key component of the Fougère-Amber spine; provides warm, almond-hay fixative sweetness; anchors lavender.</td>
+                        <td><span class="dosage-badge">Approx 1.88% - 6.0% (Overdose level)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">Spine Overdose</span>
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 19. Vanillin / Vanilla Accord -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Vanillin / Ethyl Vanillin</div>
+                            <div class="material-role">CAS 121-33-5 • 4-hydroxy-3-methoxybenzaldehyde</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Creamy Vanilla / Sweet Balsamic</span>
+                        </td>
+                        <td>Primary gourmand anchor; smooth, creamy, sensual sweetness that permanently pulled the fougère into Amber territory.</td>
+                        <td><span class="dosage-badge">Approx 0.63% - 4.0%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 20. Benzoin Resinoid -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Benzoin Resinoid (Styrax tonkinensis)</div>
+                            <div class="material-role">Natural balsam extract • Coniferyl benzoate core</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Amber Resin / Warm Balsamic</span>
+                        </td>
+                        <td>Rich amber resinous foundation; provides creamy balsamic depth and authentic amber drydown density.</td>
+                        <td><span class="dosage-badge">Estimated ~2.0% - 5.0%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 21. Galaxolide 50 & Tonalide (Overdose) -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Galaxolide (HHCB) & Tonalide (AHTN)</div>
+                            <div class="material-role">CAS 1222-05-5 & 1506-02-1 • Polycyclic crystalline musks</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Clean White Musk / Starched Laundry</span>
+                        </td>
+                        <td>The massive backbone of the fragrance; defines the signature clean, powdery, indestructible sillage trail.</td>
+                        <td><span class="dosage-badge">~50.0% (Combined in formula)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">50% Overdose</span>
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                                <a href="#ref-6" class="src-tag">[6]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 22. Muscenone -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Muscenone (Firmenich)</div>
+                            <div class="material-role">CAS 82356-59-0 • 3-methylcyclopentadec-5-en-1-one</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Skin-like Musk / Animalic Warmth</span>
+                        </td>
+                        <td>Powerful macrocyclic musk; adds sensual human warmth, velvet softness, and extreme substantivity to white musks.</td>
+                        <td><span class="dosage-badge">Approx 3.13% (100 parts)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 23. (1-ethoxyethoxy)cyclododecane -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">(1-ethoxyethoxy)cyclododecane</div>
+                            <div class="material-role">Patented fixative (US6737396B2) • Macrocyclic ether</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Woody Amber Fixative / Enhancer</span>
+                        </td>
+                        <td>Exalting booster; reinforces musky and aromatic longevity, multiplying tenacity across 24+ hours.</td>
+                        <td><span class="dosage-badge">2.0% - 3.1% (Patent specification)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag patent">US Patent</span>
+                                <a href="#ref-3" class="src-tag">[3]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 24. Iso E Super (Sylvamber) -->
+                    <tr data-tier="Base" data-role="role-blender">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">Iso E Super / Sylvamber</div>
+                            <div class="material-role">CAS 54464-57-2 • Tetramethyl acetyloctahydronaphthalenes</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Cedarwood / Ambergris Sheen</span>
+                        </td>
+                        <td>Velvety cedar-ambergris texture; provides transparent woody sillage, structural volume, and warmth.</td>
+                        <td><span class="dosage-badge">Significant (~5% - 10%)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 25. Honey Accord -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Honey Accord (Phenylacetic Acid derivatives)</div>
+                            <div class="material-role">Aroma base • Waxy floral animalic</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Syrupy Honey / Waxy Sweetness</span>
+                        </td>
+                        <td>Provides syrupy gourmand tenacity, animalic body, and velvety richness in modern flankers & drydowns.</td>
+                        <td><span class="dosage-badge">Approx 1% - 5% (Higher in Elixir versions)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 26. Tobacco Accord -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Tobacco Base / Damascenone + Coumarin complex</div>
+                            <div class="material-role">Woody-balsamic accord</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Blond Pipe Tobacco / Smoky Warmth</span>
+                        </td>
+                        <td>Smoky dry anchor; adds sophisticated tactile grain and prevents pure confectionary collapse.</td>
+                        <td><span class="dosage-badge">Trace to 2%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-2" class="src-tag">[2]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 27. Cumin & Castoreum Accord -->
+                    <tr data-tier="Base" data-role="role-modifier">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-modifier"><i class="fas fa-magic"></i> Modifier</span></td>
+                        <td>
+                            <div class="material-title">Cumin Seed Oil & Castoreum Blend</div>
+                            <div class="material-role">Natural botanical & animalic reconstruction</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Animalic Grit / Warm Skin</span>
+                        </td>
+                        <td>The subtle "dirty" masculine edge; prevents clean laundry musks from smelling sterile; adds sensual skin intimacy.</td>
+                        <td><span class="dosage-badge">Trace to 0.1%</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-5" class="src-tag">[5]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 28. Amber Accord -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Amber Accord (Labdanum / Vanillin / Benzoin)</div>
+                            <div class="material-role">Classical resinous balsamic core</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Golden Amber / Warm Balsamic</span>
+                        </td>
+                        <td>Provides the dense, warm, and balsamic foundation typical of the modern Amber genre.</td>
+                        <td><span class="dosage-badge">Estimated / Range</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <a href="#ref-4" class="src-tag">[4]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 29. GCMS Core Peaks m/z 219 & 236 -->
+                    <tr data-tier="Base" data-role="role-blender">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-blender"><i class="fas fa-random"></i> Blender</span></td>
+                        <td>
+                            <div class="material-title">Structural Core Peaks (m/z 219 & 236)</div>
+                            <div class="material-role">High molecular weight fragments • ESI-MS detection</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Heavy Structural Backbone</span>
+                        </td>
+                        <td>Significant analytical peaks contributing to the Le Male signature fingerprint, heavy sillage, and volume.</td>
+                        <td><span class="dosage-badge">High Intensity (Fingerprint)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">GCMS Peak</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- 30. Diethyl Phthalate (DEP) -->
+                    <tr data-tier="Base" data-role="role-fixative">
+                        <td><span class="tier-tag tier-Base">Base • Tenacity</span></td>
+                        <td><span class="role-badge role-fixative"><i class="fas fa-anchor"></i> Fixative</span></td>
+                        <td>
+                            <div class="material-title">Diethyl Phthalate (DEP)</div>
+                            <div class="material-role">CAS 84-66-2 • Plasticizer & carrier solvent</div>
+                            <span class="declared-note"><i class="fas fa-tag"></i> Note: Technical Carrier / Fixative</span>
+                        </td>
+                        <td>Non-odorous vehicle and evaporation retarder; quantified in commercial bottles via electrospray ionization MS.</td>
+                        <td><span class="dosage-badge">0.99% – 1.1% (w/w)</span></td>
+                        <td>
+                            <div class="source-badges">
+                                <span class="src-tag gcms">ESI-MS Quant</span>
+                                <a href="#ref-1" class="src-tag">[1]</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- SECTION 6: PRACTICAL COMPOUNDING & ANALYTICAL INSIGHTS -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-microscope"></i> Compounding & Analytical Chemistry Insights
+            </div>
+            <span class="interactive-tagline">GCMS Calibrations & Organ Practicalities</span>
+        </div>
+        <div style="font-size: 0.95rem; color: var(--text-dim); line-height: 1.7;">
+            <p><strong>1. The 50% Clean Musk Threshold & Maceration Stability:</strong> Compounding Le Male requires dissolving substantial crystalline polycyclic musks (Galaxolide 50% in IPM/DEP and Tonalide). Without adequate solubilizers (such as Dihydromyrcenol and Hedione in the mid-flight), the crystalline materials can precipitate out during cold storage. Adequate maceration (minimum 3–4 weeks) is essential to eliminate a harsh kerosene solvent glare.</p>
+            <br>
+            <p><strong>2. The Coumarin Overdose vs Modern IFRA Limits:</strong> Vintage 1995 batches utilized Coumarin at ~6%, delivering a deep almond-hay sweetness. Under modern IFRA 51st Amendment standards, coumarin is restricted in Category 4 finished cosmetics (typically limited to ~1.0%–1.5% in commercial reformulations). Vintage restorations compensate by using pure tonka fractions and heliotropin-like boosters.</p>
+            <br>
+            <p><strong>3. The Ice & Fire Dialectic (Mint + Vanillin):</strong> Francis Kurkdjian’s masterstroke was balancing ~2–5% cooling spearmint/menthol directly over a rich warm vanillin/amber baseline. In inexperienced hands, mint easily smells like toothpaste; in Le Male, pairing it with <em>Armoise</em> (camphorous body) and <em>Dihydromyrcenol</em> transitions the herbal cooling into an abstract metallic lavender bloom before the vanilla emerges.</p>
+            <br>
+            <p><strong>4. Vintage Muguet Engines (Lilial & Lyral):</strong> GCMS records of 1990s batches show 5%–7% Lilial and Lyral. Following EU and IFRA cosmetic prohibitions on both aldehydes, modern batches pivot to Florol, Hivernal, and enhanced Hedione HC to recreate the watery white floral lift that allows 50% musks to diffuse.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 7: LITERATURE & ANALYTICAL CITATIONS -->
+    <div class="section-card">
+        <div class="section-header">
+            <div class="section-title">
+                <i class="fas fa-book"></i> Literature & Analytical Citations
+            </div>
+            <span class="interactive-tagline">6 Analytical & Historical Sources</span>
+        </div>
+
+        <div class="biblio-list">
+            <div class="biblio-item" id="ref-1">
+                <span class="biblio-num">[1]</span>
+                <span>Detection of Diethyl Phthalate in Perfumes by Extractive Electrospray Ionization Mass Spectrometry (EESI-MS Analysis & Molecular Peak Biomarkers).</span>
+            </div>
+            <div class="biblio-item" id="ref-2">
+                <span class="biblio-num">[2]</span>
+                <span>Jean Paul Gaultier Le Male Elixir vs Elixir Absolu – Full Formula Comparison & Olfactory Architecture Review.</span>
+            </div>
+            <div class="biblio-item" id="ref-3">
+                <span class="biblio-num">[3]</span>
+                <span>US Patent US6737396B2 — Use of (1-ethoxyethoxy)cyclododecane in a perfume composition as perfume fixative and/or enhancer (Google Patents).</span>
+            </div>
+            <div class="biblio-item" id="ref-4">
+                <span class="biblio-num">[4]</span>
+                <span>Reformulated Perfumes: A Complete Guide to IFRA Standards, Coumarin Restrictions, and Original 1995 Versions (ScentX Technical Series).</span>
+            </div>
+            <div class="biblio-item" id="ref-5">
+                <span class="biblio-num">[5]</span>
+                <span>How to Make JPG Le Male (Type) — Analytical Formulation Compounding Study & Accord Reconstruction.</span>
+            </div>
+            <div class="biblio-item" id="ref-6">
+                <span class="biblio-num">[6]</span>
+                <span>How to Make JPG Le Male (Type) Part 2 — Quantitative Laboratory Weighing Guide & Raw Material Ratios.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JAVASCRIPT: FILTERING & SEARCH -->
+<script>
+    let activeFilter = 'all';
+
+    function setFilter(filterVal, btn) {
+        activeFilter = filterVal;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterTable();
+    }
+
+    function filterTable() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#formulaTable tbody tr');
+
+        rows.forEach(row => {
+            const tier = row.getAttribute('data-tier');
+            const role = row.getAttribute('data-role');
+            const text = row.textContent.toLowerCase();
+
+            const matchesFilter = (activeFilter === 'all' || tier === activeFilter || role === activeFilter);
+            const matchesSearch = (!query || text.includes(query));
+
+            if (matchesFilter && matchesSearch) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
