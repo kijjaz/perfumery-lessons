@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Aromatics & Volatile Architecture • Studio Sandbox</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #09090c;
+            --surface: rgba(18, 18, 24, 0.85);
+            --surface-hover: rgba(28, 28, 38, 0.95);
+            --surface-card: #121217;
+            --surface-elevated: #1a1a23;
+            --gold: #d4af37;
+            --gold-bright: #ffd700;
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --text-main: #f0f0f5;
+            --text-dim: #9494a2;
+            --text-muted: #666675;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.35);
+            --top-note: #4fc3f7;
+            --heart-note: #ba68c8;
+            --base-note: #ffb74d;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.04) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(79, 195, 247, 0.03) 0%, transparent 45%);
+        }
+
+        /* HEADER */
+        header {
+            padding: 30px 40px 20px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(9, 9, 12, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        .brand-zone {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-badge {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--gold);
+            border: 1px solid var(--border-gold);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--border);
+        }
+
+        /* SEARCH & FILTER BAR */
+        .controls-panel {
+            max-width: 1500px;
+            margin: 15px auto 0;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 320px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-dim);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 18px 14px 48px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.25s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
+        }
+
+        .filter-select {
+            padding: 0 16px;
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-family: inherit;
+            cursor: pointer;
+            height: 48px;
+            transition: all 0.2s;
+        }
+
+        .filter-select:hover, .filter-select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        /* MAIN CONTAINER */
+        main {
+            max-width: 1500px;
+            margin: 25px auto;
+            padding: 0 40px;
+            flex: 1;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 480px;
+            gap: 30px;
+        }
+
+        @media (max-width: 1100px) {
+            main { grid-template-columns: 1fr; }
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .stats-count strong { color: var(--gold); }
+
+        /* RECIPES GRID */
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 16px;
+            align-content: start;
+        }
+
+        .recipe-card {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--border);
+            transition: background 0.25s;
+        }
+
+        .recipe-card:hover {
+            border-color: var(--border-gold);
+            background: var(--surface-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .recipe-card.active {
+            border-color: var(--gold);
+            background: rgba(26, 26, 35, 0.95);
+        }
+
+        .recipe-card.active::before {
+            background: var(--gold);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-right: 8px;
+        }
+
+        .iba-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 10px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pyramid-mini {
+            display: flex;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 14px;
+        }
+
+        .pyramid-bar { height: 100%; }
+        .pyramid-bar.top { background: var(--top-note); }
+        .pyramid-bar.heart { background: var(--heart-note); }
+        .pyramid-bar.base { background: var(--base-note); }
+
+        .card-ingredients {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-top: auto;
+        }
+
+        /* DETAIL INSPECTOR SIDEBAR */
+        .inspector-panel {
+            background: var(--surface-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            position: sticky;
+            top: 130px;
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .inspector-placeholder {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+        }
+
+        .inspector-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--border);
+        }
+
+        .inspector-header {
+            margin-bottom: 20px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .inspector-badge-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .inspector-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .inspector-archetype {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .spec-box {
+            background: var(--surface-elevated);
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .spec-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .spec-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* VOLATILITY PYRAMID INSPECTION */
+        .section-headline {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pyramid-detail {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 25px;
+        }
+
+        .pyramid-slot {
+            flex: 1;
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .pyramid-slot.top { background: rgba(79, 195, 247, 0.15); color: var(--top-note); border: 1px solid rgba(79, 195, 247, 0.3); }
+        .pyramid-slot.heart { background: rgba(186, 104, 200, 0.15); color: var(--heart-note); border: 1px solid rgba(186, 104, 200, 0.3); }
+        .pyramid-slot.base { background: rgba(255, 183, 77, 0.15); color: var(--base-note); border: 1px solid rgba(255, 183, 77, 0.3); }
+
+        /* INGREDIENT LIST WITH CHEMICAL TGSC DRAWER */
+        .ingredient-item {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .ingredient-item:hover {
+            border-color: var(--border-gold);
+        }
+
+        .ing-main-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ing-name {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .ing-measure {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        .ing-chem-row {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .chem-tag {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .subs-block {
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .subs-block strong { color: var(--gold); }
+
+        /* GARNISH AROMATICS */
+        .garnish-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .garnish-icon {
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        /* INSTRUCTIONS */
+        .instructions-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-dim);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            margin-top: 10px;
+        }
+
+        /* TAGS */
+        .pill {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-dim);
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="brand-zone">
+                <span class="brand-badge">TGSC Studio Matrix</span>
+                <h1>Cocktail Aromatics & Volatile Architecture</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Scent Curriculum</a>
+                <a href="glossary.html" class="nav-link">Glossary</a>
+                <a href="studio/tgsc_fragrances.json" class="nav-link" target="_blank"><i class="fa-solid fa-code"></i> TGSC JSON</a>
+            </nav>
+        </div>
+
+        <div class="controls-panel">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by drink, ingredient, or aroma molecule (e.g. Negroni, Mezcal, Eugenol, Citral)...">
+            </div>
+
+            <select id="familyFilter" class="filter-select">
+                <option value="">All Odor Families</option>
+                <option value="Citrus">Citrus</option>
+                <option value="Herbal / Aromatic">Herbal / Aromatic</option>
+                <option value="Spicy">Spicy</option>
+                <option value="Fruity">Fruity</option>
+                <option value="Gourmand / Lactonic">Gourmand / Lactonic</option>
+                <option value="Woody">Woody / Balsamic</option>
+                <option value="Smoky / Phenolic">Smoky / Phenolic</option>
+            </select>
+
+            <select id="archetypeFilter" class="filter-select">
+                <option value="">All Structural Archetypes</option>
+                <option value="Sour">Sour / Daisy / Sidecar Family</option>
+                <option value="Stirred">Stirred Aperitif (Manhattan / Negroni)</option>
+                <option value="Spirit-Forward">Spirit-Forward / Old Fashioned</option>
+                <option value="Highball">Highball / Collins / Long Drink</option>
+                <option value="Citrus Heavy">Citrus Heavy / Acid Forward</option>
+            </select>
+
+            <select id="sourceFilter" class="filter-select">
+                <option value="">All Historical Sources</option>
+                <option value="bar_assistant">Bar Assistant (Modern Craft)</option>
+                <option value="boston">Mr. Boston (1930s Mid-Century)</option>
+                <option value="cocktaildb">TheCocktailDB (Party / Contemporary)</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <div class="stats-bar">
+            <div class="stats-count">Displaying <strong id="matchCount">0</strong> cocktails mapped to TGSC chemical matrices</div>
+            <div class="hint-text"><kbd style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">/</kbd> to focus search</div>
+        </div>
+
+        <div class="recipes-grid" id="recipesGrid">
+            <!-- Cards rendered via JS -->
+        </div>
+
+        <aside class="inspector-panel" id="inspector">
+            <div class="inspector-placeholder">
+                <i class="fa-solid fa-martini-glass-citron"></i>
+                <h3>Select a Cocktail</h3>
+                <p>Click any drink on the left to inspect its volatile pyramid, TGSC chemical matches, and mathematical substitutes.</p>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Load Data Bundle -->
+    <script src="cocktail_aroma_data.js"></script>
+
+    <script>
+        const DB = window.COCKTAIL_AROMA_DB || { recipes: [], ingredients: {}, substitutes: {}, garnishes: {} };
+
+        let filteredRecipes = [...DB.recipes];
+        let selectedId = null;
+
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const familyFilter = document.getElementById('familyFilter');
+        const archetypeFilter = document.getElementById('archetypeFilter');
+        const sourceFilter = document.getElementById('sourceFilter');
+        const recipesGrid = document.getElementById('recipesGrid');
+        const inspector = document.getElementById('inspector');
+        const matchCount = document.getElementById('matchCount');
+
+        function filterData() {
+            const query = searchInput.value.toLowerCase().trim();
+            const fam = familyFilter.value;
+            const arch = archetypeFilter.value;
+            const src = sourceFilter.value;
+
+            filteredRecipes = DB.recipes.filter(r => {
+                // Query matching (Drink name, ingredient name, or key aroma chemical)
+                if (query) {
+                    const matchName = r.name.toLowerCase().includes(query);
+                    const matchIng = r.ings.some(i => i.n.toLowerCase().includes(query));
+                    const matchMol = r.ings.some(i => {
+                        const meta = DB.ingredients[i.n.toLowerCase()] || {};
+                        return (meta.molecules || []).some(m => m.toLowerCase().includes(query));
+                    });
+                    if (!matchName && !matchIng && !matchMol) return false;
+                }
+
+                // Family filter
+                if (fam && !r.fams.some(f => f.includes(fam))) return false;
+
+                // Archetype filter
+                if (arch && !r.arch.includes(arch)) return false;
+
+                // Source filter
+                if (src && r.src !== src) return false;
+
+                return true;
+            });
+
+            matchCount.textContent = filteredRecipes.length;
+            renderGrid();
+        }
+
+        function renderGrid() {
+            recipesGrid.innerHTML = '';
+            const slice = filteredRecipes.slice(0, 80); // render top 80 for peak performance
+
+            slice.forEach(r => {
+                const card = document.createElement('article');
+                card.className = `recipe-card ${r.id === selectedId ? 'active' : ''}`;
+                card.onclick = () => selectRecipe(r.id);
+
+                // Calculate volatility bar percentages
+                const totalNotes = (r.pyramid['Top Note'] || 0) + (r.pyramid['Heart Note'] || 0) + (r.pyramid['Base Note'] || 0) || 1;
+                const topPct = ((r.pyramid['Top Note'] || 0) / totalNotes) * 100;
+                const heartPct = ((r.pyramid['Heart Note'] || 0) / totalNotes) * 100;
+                const basePct = ((r.pyramid['Base Note'] || 0) / totalNotes) * 100;
+
+                const ingNames = r.ings.map(i => i.n).join(' • ');
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-title">${r.name}</div>
+                        ${r.iba ? '<span class="iba-badge">IBA</span>' : ''}
+                    </div>
+                    <div class="card-meta">
+                        ${r.glass ? `<span><i class="fa-solid fa-wine-glass"></i> ${r.glass}</span>` : ''}
+                        ${r.abv ? `<span><i class="fa-solid fa-fire"></i> ${r.abv}%</span>` : ''}
+                        <span><i class="fa-solid fa-layer-group"></i> ${r.arch.split('/')[0].trim()}</span>
+                    </div>
+                    <div class="pyramid-mini" title="Top: ${Math.round(topPct)}% | Heart: ${Math.round(heartPct)}% | Base: ${Math.round(basePct)}%">
+                        <div class="pyramid-bar top" style="width: ${topPct}%"></div>
+                        <div class="pyramid-bar heart" style="width: ${heartPct}%"></div>
+                        <div class="pyramid-bar base" style="width: ${basePct}%"></div>
+                    </div>
+                    <div class="card-ingredients">${ingNames}</div>
+                `;
+                recipesGrid.appendChild(card);
+            });
+
+            if (slice.length === 0) {
+                recipesGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--text-dim);">No cocktails matched your criteria. Try loosening search filters.</div>';
+            }
+        }
+
+        function selectRecipe(id) {
+            selectedId = id;
+            const r = DB.recipes.find(x => x.id === id);
+            if (!r) return;
+
+            document.querySelectorAll('.recipe-card').forEach(el => el.classList.remove('active'));
+            renderGrid();
+
+            // Total notes
+            const totalNotes = (r.pyramid['Top Note'] || 0) + (r.pyramid['Heart Note'] || 0) + (r.pyramid['Base Note'] || 0) || 1;
+            const topPct = Math.round(((r.pyramid['Top Note'] || 0) / totalNotes) * 100);
+            const heartPct = Math.round(((r.pyramid['Heart Note'] || 0) / totalNotes) * 100);
+            const basePct = Math.round(((r.pyramid['Base Note'] || 0) / totalNotes) * 100);
+
+            // Render Ingredients with Chemical Details
+            let ingsHtml = '';
+            r.ings.forEach(ing => {
+                const clean = ing.n.toLowerCase().trim();
+                const meta = DB.ingredients[clean] || {};
+                const subs = DB.substitutes[clean] || [];
+
+                let chemDetails = '';
+                if (meta.source || meta.cas || (meta.molecules && meta.molecules.length)) {
+                    chemDetails = `
+                        <div class="ing-chem-row">
+                            <div><strong>Matrix:</strong> ${meta.source || 'Natural Extract'} ${meta.cas ? `<span class="chem-tag">CAS ${meta.cas}</span>` : ''}</div>
+                            ${meta.molecules && meta.molecules.length ? `<div><strong>Volatiles:</strong> ${meta.molecules.slice(0, 4).join(', ')}</div>` : ''}
+                            ${meta.tgsc_rec ? `<div><strong>TGSC Accord:</strong> <span style="color: var(--gold);">${meta.tgsc_rec}</span></div>` : ''}
+                        </div>
+                    `;
+                }
+
+                let subsHtml = '';
+                if (subs.length > 0) {
+                    const subLinks = subs.map(s => `${s.name} (${Math.round(s.score * 100)}%)`).join(', ');
+                    subsHtml = `<div class="subs-block"><strong>Functional Substitutes:</strong> ${subLinks}</div>`;
+                }
+
+                ingsHtml += `
+                    <div class="ingredient-item">
+                        <div class="ing-main-row">
+                            <span class="ing-name">${ing.n}</span>
+                            <span class="ing-measure">${ing.m || ''}</span>
+                        </div>
+                        ${chemDetails}
+                        ${subsHtml}
+                    </div>
+                `;
+            });
+
+            // Garnish section
+            let garnishHtml = '';
+            if (r.garnish) {
+                garnishHtml = `
+                    <div class="garnish-box">
+                        <i class="fa-solid fa-lemon garnish-icon"></i>
+                        <div>
+                            <strong>Volatile Headspace (Garnish):</strong><br>
+                            ${r.garnish}
+                        </div>
+                    </div>
+                `;
+            }
+
+            inspector.innerHTML = `
+                <div class="inspector-header">
+                    <div class="inspector-badge-row">
+                        ${r.iba ? '<span class="iba-badge">IBA Official</span>' : ''}
+                        <span class="pill">${r.src.toUpperCase()}</span>
+                    </div>
+                    <h2 class="inspector-title">${r.name}</h2>
+                    <div class="inspector-archetype"><i class="fa-solid fa-shapes"></i> ${r.arch}</div>
+                </div>
+
+                <div class="spec-grid">
+                    <div class="spec-box">
+                        <div class="spec-label">Serving Glass</div>
+                        <div class="spec-val">${r.glass || 'Cocktail'}</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="spec-label">Technique</div>
+                        <div class="spec-val">${r.method || 'Shake'}</div>
+                    </div>
+                    <div class="spec-box">
+                        <div class="spec-label">Calculated ABV</div>
+                        <div class="spec-val">${r.abv ? r.abv + '%' : '18-22%'}</div>
+                    </div>
+                </div>
+
+                ${garnishHtml}
+
+                <div class="section-headline"><i class="fa-solid fa-mountain"></i> Olfactory Volatility Pyramid</div>
+                <div class="pyramid-detail">
+                    <div class="pyramid-slot top">Top Notes<br>${topPct}%</div>
+                    <div class="pyramid-slot heart">Heart Notes<br>${heartPct}%</div>
+                    <div class="pyramid-slot base">Base Notes<br>${basePct}%</div>
+                </div>
+
+                <div class="section-headline"><i class="fa-solid fa-flask"></i> Formulation & Chemical Architecture</div>
+                ${ingsHtml}
+
+                ${r.inst ? `
+                    <div class="section-headline" style="margin-top: 20px;"><i class="fa-solid fa-list-check"></i> Mixological Method</div>
+                    <div class="instructions-text">${r.inst}</div>
+                ` : ''}
+            `;
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', filterData);
+        familyFilter.addEventListener('change', filterData);
+        archetypeFilter.addEventListener('change', filterData);
+        sourceFilter.addEventListener('change', filterData);
+
+        // Keyboard shortcut: '/' to focus search
+        window.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+
+        // Initial load
+        filterData();
+        // Select first prominent classic cocktail (e.g. Negroni, Manhattan, or first result)
+        const classic = DB.recipes.find(r => r.name.toLowerCase() === 'negroni') || DB.recipes[0];
+        if (classic) selectRecipe(classic.id);
+    </script>
+</body>
+</html>
